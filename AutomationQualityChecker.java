@@ -231,7 +231,6 @@ public class AutomationQualityChecker {
             this.count = 1;
         }
     }
-
     // Entry used in grouped duplicate-locator JSON output.
     private static class DuplicateEntry {
         final String file;
