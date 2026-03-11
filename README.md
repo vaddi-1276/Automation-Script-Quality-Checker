@@ -3,6 +3,7 @@
 `AutomationQualityChecker` is a standalone Java CLI tool that scans test automation code and reports common quality issues:
 
 - Hard-coded waits/sleeps
+- Hardcoded test data in test steps/assignments
 - Duplicate locators
 - Poor/weak assertions
 - Unused functions
@@ -56,7 +57,7 @@ java AutomationQualityChecker [options] <targets...>
 - `--json <output.json>` Write detailed JSON report
 - `--txt <output.txt>` Write detailed plain-text report
 - `--md <output.md>` Write detailed Markdown report
-- `--show-lines` Print per-finding file/line details in terminal
+- `--show-lines` Print per-finding `file:line:column` details in terminal
 - `--max-lines-per-issue <n>` Limit console findings per issue
 - `--changed-function <name>` Changed function to map impacted tests (repeatable)
 - `--changed-file <path>` Optional file used to validate changed function names
@@ -104,13 +105,14 @@ java AutomationQualityChecker \
 The tool always prints a summary:
 
 - Hard Wait Found
+- Test Data Hardcoding
 - Duplicate Locators
 - Poor Assertions
 - Unused Functions
 - Missing Validations
 - Files Scanned
 
-Use `--show-lines` to print individual findings (`file:line | detail`).
+Use `--show-lines` to print individual findings (`file:line:column | detail`).
 
 ## Report Structure
 
