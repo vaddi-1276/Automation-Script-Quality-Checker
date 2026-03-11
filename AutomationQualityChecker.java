@@ -30,7 +30,6 @@ public class AutomationQualityChecker {
     // Fixed issue ordering to keep console/TXT/MD/JSON outputs consistent.
     private static final String[] ISSUE_ORDER = {
             "hard_wait",
-            "hardcoded_test_data",
             "duplicate_locator",
             "poor_assertion",
             "unused_function",
@@ -108,14 +107,12 @@ public class AutomationQualityChecker {
     private static class Finding {
         final String file;
         final int line;
-        final int column;
         final String issue;
         final String detail;
 
-        Finding(String file, int line, int column, String issue, String detail) {
+        Finding(String file, int line, String issue, String detail) {
             this.file = file;
             this.line = line;
-            this.column = column;
             this.issue = issue;
             this.detail = detail;
         }
@@ -125,13 +122,11 @@ public class AutomationQualityChecker {
     private static class LocatorMatch {
         final String value;
         final int line;
-        final int column;
         final String source;
 
-        LocatorMatch(String value, int line, int column, String source) {
+        LocatorMatch(String value, int line, String source) {
             this.value = value;
             this.line = line;
-            this.column = column;
             this.source = source;
         }
     }
@@ -140,12 +135,10 @@ public class AutomationQualityChecker {
     private static class FunctionDecl {
         final String name;
         final int line;
-        final int column;
 
-        FunctionDecl(String name, int line, int column) {
+        FunctionDecl(String name, int line) {
             this.name = name;
             this.line = line;
-            this.column = column;
         }
     }
 
@@ -154,25 +147,21 @@ public class AutomationQualityChecker {
         final Summary summary;
         final FindingsByIssue findings;
         final DynamicArray<DuplicateGroup> duplicateGroups;
-        final DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights;
 
         BuildResult(
                 Summary summary,
                 FindingsByIssue findings,
-                DynamicArray<DuplicateGroup> duplicateGroups,
-                DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights
+                DynamicArray<DuplicateGroup> duplicateGroups
         ) {
             this.summary = summary;
             this.findings = findings;
             this.duplicateGroups = duplicateGroups;
-            this.duplicateRefactorInsights = duplicateRefactorInsights;
         }
     }
 
     // Summary counters shown in reports.
     private static class Summary {
         final int hardWaitFound;
-        final int hardcodedTestData;
         final int duplicateLocators;
         final int poorAssertions;
         final int unusedFunctions;
@@ -181,7 +170,6 @@ public class AutomationQualityChecker {
 
         Summary(
                 int hardWaitFound,
-                int hardcodedTestData,
                 int duplicateLocators,
                 int poorAssertions,
                 int unusedFunctions,
@@ -189,7 +177,6 @@ public class AutomationQualityChecker {
                 int totalFilesScanned
         ) {
             this.hardWaitFound = hardWaitFound;
-            this.hardcodedTestData = hardcodedTestData;
             this.duplicateLocators = duplicateLocators;
             this.poorAssertions = poorAssertions;
             this.unusedFunctions = unusedFunctions;
@@ -201,7 +188,6 @@ public class AutomationQualityChecker {
     // Buckets findings by issue type for reporting and serialization.
     private static class FindingsByIssue {
         final DynamicArray<Finding> hardWait = new DynamicArray<>();
-        final DynamicArray<Finding> hardcodedTestData = new DynamicArray<>();
         final DynamicArray<Finding> duplicateLocator = new DynamicArray<>();
         final DynamicArray<Finding> poorAssertion = new DynamicArray<>();
         final DynamicArray<Finding> unusedFunction = new DynamicArray<>();
@@ -211,8 +197,6 @@ public class AutomationQualityChecker {
             switch (issue) {
                 case "hard_wait":
                     return hardWait;
-                case "hardcoded_test_data":
-                    return hardcodedTestData;
                 case "duplicate_locator":
                     return duplicateLocator;
                 case "poor_assertion":
@@ -267,32 +251,6 @@ public class AutomationQualityChecker {
 
         DuplicateGroup(String locator) {
             this.locator = locator;
-        }
-    }
-
-    // Ranked refactor opportunity derived from duplicate locator clusters.
-    private static class DuplicateRefactorInsight {
-        final String locator;
-        final int occurrences;
-        final int distinctFiles;
-        final String topModule;
-        final String priority;
-        final String recommendation;
-
-        DuplicateRefactorInsight(
-                String locator,
-                int occurrences,
-                int distinctFiles,
-                String topModule,
-                String priority,
-                String recommendation
-        ) {
-            this.locator = locator;
-            this.occurrences = occurrences;
-            this.distinctFiles = distinctFiles;
-            this.topModule = topModule;
-            this.priority = priority;
-            this.recommendation = recommendation;
         }
     }
 
@@ -395,93 +353,13 @@ public class AutomationQualityChecker {
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
             for (Pattern pat : patterns) {
-                Matcher m = pat.matcher(line);
-                if (m.find()) {
-                    findings.add(new Finding(path.toString(), i + 1, m.start() + 1, "hard_wait", line.trim()));
+                if (pat.matcher(line).find()) {
+                    findings.add(new Finding(path.toString(), i + 1, "hard_wait", line.trim()));
                     break;
                 }
             }
         }
         return findings;
-    }
-
-    // Flags likely hardcoded test data literals (credentials/PII/form inputs) in tests.
-    private static DynamicArray<Finding> detectHardcodedTestData(Path path, DynamicArray<String> lines) {
-        DynamicArray<Finding> findings = new DynamicArray<>();
-        Pattern fillSecondArg = Pattern.compile("\\b(?:page|cy)\\.[A-Za-z_]\\w*\\s*\\([^,]+,\\s*([\"'])(.+?)\\1");
-        Pattern fillOrTypeValue = Pattern.compile("\\.(?:fill|type|sendKeys|setValue)\\s*\\(\\s*([\"'])(.+?)\\1\\s*\\)");
-        Pattern jsSensitiveAssign = Pattern.compile(
-                "^\\s*(?:const|let|var)\\s+([A-Za-z_]\\w*(?:email|user(?:name)?|password|phone|mobile|otp|token|ssn|dob|address|pin|zipcode)[A-Za-z_0-9]*)\\s*=\\s*([\"'])(.+?)\\2"
-        );
-        Pattern pySensitiveAssign = Pattern.compile(
-                "^\\s*([A-Za-z_]\\w*(?:email|user(?:name)?|password|phone|mobile|otp|token|ssn|dob|address|pin|zipcode)[A-Za-z_0-9]*)\\s*=\\s*([\"'])(.+?)\\2"
-        );
-
-        for (int i = 0; i < lines.size(); i++) {
-            String line = lines.get(i);
-            Matcher opMatcher = fillSecondArg.matcher(line);
-            if (opMatcher.find()) {
-                String value = opMatcher.group(2);
-                if (isLikelyHardcodedData(value)) {
-                    findings.add(new Finding(path.toString(), i + 1, opMatcher.start(2) + 1, "hardcoded_test_data", line.trim()));
-                    continue;
-                }
-            }
-
-            Matcher typedValueMatcher = fillOrTypeValue.matcher(line);
-            if (typedValueMatcher.find()) {
-                String value = typedValueMatcher.group(2);
-                if (isLikelyHardcodedData(value)) {
-                    findings.add(new Finding(path.toString(), i + 1, typedValueMatcher.start(2) + 1, "hardcoded_test_data", line.trim()));
-                    continue;
-                }
-            }
-
-            Matcher jsAssignMatcher = jsSensitiveAssign.matcher(line);
-            if (jsAssignMatcher.find()) {
-                String value = jsAssignMatcher.group(3);
-                if (isLikelyHardcodedData(value)) {
-                    findings.add(new Finding(path.toString(), i + 1, jsAssignMatcher.start(3) + 1, "hardcoded_test_data", line.trim()));
-                    continue;
-                }
-            }
-
-            Matcher pyAssignMatcher = pySensitiveAssign.matcher(line);
-            if (pyAssignMatcher.find()) {
-                String value = pyAssignMatcher.group(3);
-                if (isLikelyHardcodedData(value)) {
-                    findings.add(new Finding(path.toString(), i + 1, pyAssignMatcher.start(3) + 1, "hardcoded_test_data", line.trim()));
-                }
-            }
-        }
-        return findings;
-    }
-
-    // Filters out obvious non-hardcoded/dynamic values to reduce false positives.
-    private static boolean isLikelyHardcodedData(String value) {
-        if (value == null) {
-            return false;
-        }
-        String trimmed = value.trim();
-        if (trimmed.isEmpty()) {
-            return false;
-        }
-        String lower = trimmed.toLowerCase();
-        if (lower.contains("${")
-                || lower.contains("process.env")
-                || lower.contains("system.getenv")
-                || lower.contains("faker.")
-                || lower.contains("random")
-                || lower.contains("uuid")
-                || lower.contains("date.now")
-                || lower.contains("new date")
-                || lower.contains("testdata")
-                || lower.contains("fixture")
-                || lower.contains("config.")
-                || lower.contains("env.")) {
-            return false;
-        }
-        return true;
     }
 
     // Extracts common locator usages (Playwright/Cypress/Selenium/etc.) from source lines.
@@ -499,7 +377,7 @@ public class AutomationQualityChecker {
             for (Pattern pat : patterns) {
                 Matcher m = pat.matcher(line);
                 if (m.find()) {
-                    locators.add(new LocatorMatch(m.group(2), i + 1, m.start(2) + 1, line.trim()));
+                    locators.add(new LocatorMatch(m.group(2), i + 1, line.trim()));
                     break;
                 }
             }
@@ -520,9 +398,8 @@ public class AutomationQualityChecker {
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
             for (Pattern pat : patterns) {
-                Matcher m = pat.matcher(line);
-                if (m.find()) {
-                    findings.add(new Finding(path.toString(), i + 1, m.start() + 1, "poor_assertion", line.trim()));
+                if (pat.matcher(line).find()) {
+                    findings.add(new Finding(path.toString(), i + 1, "poor_assertion", line.trim()));
                     break;
                 }
             }
@@ -543,7 +420,7 @@ public class AutomationQualityChecker {
             for (Pattern p : patterns) {
                 Matcher m = p.matcher(line);
                 if (m.find()) {
-                    names.add(new FunctionDecl(m.group(1), i + 1, m.start(1) + 1));
+                    names.add(new FunctionDecl(m.group(1), i + 1));
                     break;
                 }
             }
@@ -569,12 +446,9 @@ public class AutomationQualityChecker {
         while (i < lines.size()) {
             String line = lines.get(i);
             boolean isTestStart = false;
-            int testStartColumn = 1;
             for (Pattern p : testStartPatterns) {
-                Matcher m = p.matcher(line);
-                if (m.find()) {
+                if (p.matcher(line).find()) {
                     isTestStart = true;
-                    testStartColumn = m.start() + 1;
                     break;
                 }
             }
@@ -597,7 +471,7 @@ public class AutomationQualityChecker {
             }
 
             if (!hasAssertion) {
-                findings.add(new Finding(path.toString(), start + 1, testStartColumn, "missing_validation", lines.get(start).trim()));
+                findings.add(new Finding(path.toString(), start + 1, "missing_validation", lines.get(start).trim()));
             }
             i = end;
         }
@@ -620,7 +494,6 @@ public class AutomationQualityChecker {
 
             combinedTextBuilder.append(joinStrings(lines, "\n")).append('\n');
             allFindings.hardWait.addAll(detectHardWaits(path, lines));
-            allFindings.hardcodedTestData.addAll(detectHardcodedTestData(path, lines));
             allFindings.poorAssertion.addAll(detectPoorAssertions(path, lines));
             allFindings.missingValidation.addAll(detectMissingValidations(path, lines));
 
@@ -630,7 +503,7 @@ public class AutomationQualityChecker {
                 addLocatorOccurrence(
                         locatorOccurrences,
                         lm.value,
-                        new Finding(path.toString(), lm.line, lm.column, "duplicate_locator", lm.source)
+                        new Finding(path.toString(), lm.line, "duplicate_locator", lm.source)
                 );
             }
 
@@ -638,7 +511,7 @@ public class AutomationQualityChecker {
             for (int j = 0; j < fnDecls.size(); j++) {
                 FunctionDecl fn = fnDecls.get(j);
                 if (!fn.name.startsWith("_")) {
-                    declaredFunctions.add(new Finding(path.toString(), fn.line, fn.column, "unused_function", fn.name));
+                    declaredFunctions.add(new Finding(path.toString(), fn.line, "unused_function", fn.name));
                 }
             }
         }
@@ -667,7 +540,6 @@ public class AutomationQualityChecker {
 
         Summary summary = new Summary(
                 allFindings.hardWait.size(),
-                allFindings.hardcodedTestData.size(),
                 allFindings.duplicateLocator.size(),
                 allFindings.poorAssertion.size(),
                 allFindings.unusedFunction.size(),
@@ -683,147 +555,13 @@ public class AutomationQualityChecker {
                 DuplicateGroup group = new DuplicateGroup(bucket.locator);
                 for (int j = 0; j < bucket.occurrences.size(); j++) {
                     Finding o = bucket.occurrences.get(j);
-                    group.entries.add(new DuplicateEntry(o.file, o.line + ":" + o.column, o.detail));
+                    group.entries.add(new DuplicateEntry(o.file, String.valueOf(o.line), o.detail));
                 }
                 duplicatesGrouped.add(group);
             }
         }
 
-        DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights =
-                createDuplicateRefactorInsights(duplicatesGrouped);
-        return new BuildResult(summary, allFindings, duplicatesGrouped, duplicateRefactorInsights);
-    }
-
-    // Builds ranked duplicate-locator refactor opportunities for dashboard triage.
-    private static DynamicArray<DuplicateRefactorInsight> createDuplicateRefactorInsights(DynamicArray<DuplicateGroup> groups) {
-        DynamicArray<DuplicateRefactorInsight> insights = new DynamicArray<>();
-        for (int i = 0; i < groups.size(); i++) {
-            DuplicateGroup group = groups.get(i);
-            int occurrences = group.entries.size();
-            int distinctFiles = countDistinctFiles(group.entries);
-            String topModule = findTopModule(group.entries);
-            int score = occurrences * 2 + distinctFiles;
-            String priority = score >= 10 ? "high" : (score >= 6 ? "medium" : "low");
-            String recommendation;
-            if (occurrences >= 4 && distinctFiles >= 3) {
-                recommendation = "Extract to shared page object constant; duplicate usage spans multiple modules.";
-            } else if (distinctFiles >= 2) {
-                recommendation = "Move locator into reusable helper/page object to reduce repetition.";
-            } else {
-                recommendation = "Keep one canonical locator declaration and reference it from helpers.";
-            }
-            insights.add(new DuplicateRefactorInsight(
-                    group.locator,
-                    occurrences,
-                    distinctFiles,
-                    topModule,
-                    priority,
-                    recommendation
-            ));
-        }
-        return sortDuplicateRefactorInsights(insights);
-    }
-
-    // Counts unique files represented in duplicate entries.
-    private static int countDistinctFiles(DynamicArray<DuplicateEntry> entries) {
-        DynamicArray<String> uniqueFiles = new DynamicArray<>();
-        for (int i = 0; i < entries.size(); i++) {
-            String file = entries.get(i).file;
-            boolean seen = false;
-            for (int j = 0; j < uniqueFiles.size(); j++) {
-                if (uniqueFiles.get(j).equals(file)) {
-                    seen = true;
-                    break;
-                }
-            }
-            if (!seen) {
-                uniqueFiles.add(file);
-            }
-        }
-        return uniqueFiles.size();
-    }
-
-    // Derives the most repeated module-like path segment from duplicate entries.
-    private static String findTopModule(DynamicArray<DuplicateEntry> entries) {
-        DynamicArray<TokenCount> modules = new DynamicArray<>();
-        for (int i = 0; i < entries.size(); i++) {
-            incrementTokenCount(modules, inferModule(entries.get(i).file));
-        }
-        String top = "unknown";
-        int max = 0;
-        for (int i = 0; i < modules.size(); i++) {
-            TokenCount tokenCount = modules.get(i);
-            if (tokenCount.count > max) {
-                max = tokenCount.count;
-                top = tokenCount.token;
-            }
-        }
-        return top;
-    }
-
-    // Approximates a module key from a full file path.
-    private static String inferModule(String filePath) {
-        String normalized = filePath.replace('\\', '/');
-        String[] anchors = new String[] {"/src/", "/tests/", "/e2e/", "/pages/", "/components/"};
-        for (String anchor : anchors) {
-            int idx = normalized.indexOf(anchor);
-            if (idx >= 0) {
-                String tail = normalized.substring(idx + anchor.length());
-                int slash = tail.indexOf('/');
-                return slash >= 0 ? anchor.substring(1, anchor.length() - 1) + "/" + tail.substring(0, slash) : anchor.substring(1, anchor.length() - 1);
-            }
-        }
-        int lastSlash = normalized.lastIndexOf('/');
-        if (lastSlash > 0) {
-            int prevSlash = normalized.lastIndexOf('/', lastSlash - 1);
-            if (prevSlash >= 0) {
-                return normalized.substring(prevSlash + 1, lastSlash);
-            }
-            return normalized.substring(0, lastSlash);
-        }
-        return "root";
-    }
-
-    // Sorts insights by priority score, then by occurrence count.
-    private static DynamicArray<DuplicateRefactorInsight> sortDuplicateRefactorInsights(DynamicArray<DuplicateRefactorInsight> insights) {
-        DynamicArray<DuplicateRefactorInsight> sorted = new DynamicArray<>();
-        for (int i = 0; i < insights.size(); i++) {
-            sorted.add(insights.get(i));
-        }
-        for (int i = 1; i < sorted.size(); i++) {
-            DuplicateRefactorInsight current = sorted.get(i);
-            int j = i - 1;
-            while (j >= 0 && compareDuplicateInsight(sorted.get(j), current) > 0) {
-                sorted.set(j + 1, sorted.get(j));
-                j--;
-            }
-            sorted.set(j + 1, current);
-        }
-        return sorted;
-    }
-
-    // Comparator prioritizes high-impact refactors first.
-    private static int compareDuplicateInsight(DuplicateRefactorInsight left, DuplicateRefactorInsight right) {
-        int byPriority = Integer.compare(priorityRank(left.priority), priorityRank(right.priority));
-        if (byPriority != 0) {
-            return byPriority;
-        }
-        int byOccurrences = Integer.compare(right.occurrences, left.occurrences);
-        if (byOccurrences != 0) {
-            return byOccurrences;
-        }
-        return left.locator.compareTo(right.locator);
-    }
-
-    // Priority ranking helper where lower number means higher priority.
-    private static int priorityRank(String priority) {
-        if ("high".equals(priority)) {
-            return 0;
-        }
-        if ("medium".equals(priority)) {
-            return 1;
-        }
-        return 2;
+        return new BuildResult(summary, allFindings, duplicatesGrouped);
     }
 
     // Adds one locator occurrence into an existing bucket or creates a new bucket.
@@ -872,8 +610,6 @@ public class AutomationQualityChecker {
         switch (issue) {
             case "hard_wait":
                 return "Hard Wait Found";
-            case "hardcoded_test_data":
-                return "Test Data Hardcoding";
             case "duplicate_locator":
                 return "Duplicate Locators";
             case "poor_assertion":
@@ -892,7 +628,6 @@ public class AutomationQualityChecker {
         System.out.println("Automation Script Quality Report");
         System.out.println("--------------------------------");
         System.out.println("Hard Wait Found: " + summary.hardWaitFound);
-        System.out.println("Test Data Hardcoding: " + summary.hardcodedTestData);
         System.out.println("Duplicate Locators: " + summary.duplicateLocators);
         System.out.println("Poor Assertions: " + summary.poorAssertions);
         System.out.println("Unused Functions: " + summary.unusedFunctions);
@@ -918,32 +653,13 @@ public class AutomationQualityChecker {
         return sorted;
     }
 
-    // Comparator for finding ordering: file path, then line/column.
+    // Comparator for finding ordering: file path first, then line number.
     private static int compareFinding(Finding left, Finding right) {
         int byFile = left.file.compareTo(right.file);
         if (byFile != 0) {
             return byFile;
         }
-        int byLine = Integer.compare(left.line, right.line);
-        if (byLine != 0) {
-            return byLine;
-        }
-        return Integer.compare(left.column, right.column);
-    }
-
-    // Prefer /src/... in output when present to keep paths compact.
-    private static String compactPath(String filePath) {
-        String normalized = filePath.replace('\\', '/');
-        int srcIndex = normalized.indexOf("/src/");
-        if (srcIndex >= 0) {
-            return normalized.substring(srcIndex);
-        }
-        return normalized;
-    }
-
-    // Standard location format used in console/TXT/MD outputs.
-    private static String formatLocation(Finding finding) {
-        return compactPath(finding.file) + ":" + finding.line + ":" + finding.column;
+        return Integer.compare(left.line, right.line);
     }
 
     // Sorts locator buckets alphabetically by locator string.
@@ -966,7 +682,7 @@ public class AutomationQualityChecker {
 
     // Optional detailed console section, with configurable per-issue truncation.
     private static void printDetailedConsoleFindings(FindingsByIssue findings, int maxPerIssue) {
-        System.out.println("\nDetailed Findings (file:line:column)");
+        System.out.println("\nDetailed Findings (file:line)");
         System.out.println("-----------------------------");
         for (String issue : ISSUE_ORDER) {
             DynamicArray<Finding> issueFindings = sortFindings(findings.get(issue));
@@ -981,7 +697,7 @@ public class AutomationQualityChecker {
             }
             for (int i = 0; i < limit; i++) {
                 Finding f = issueFindings.get(i);
-                System.out.println("  " + formatLocation(f) + " | " + f.detail);
+                System.out.println("  " + f.file + ":" + f.line + " | " + f.detail);
             }
         }
     }
@@ -1049,14 +765,12 @@ public class AutomationQualityChecker {
                 String line = lines.get(lineIndex);
                 for (int t = 0; t < tokenPatterns.size(); t++) {
                     TokenPattern tokenPattern = tokenPatterns.get(t);
-                    Matcher m = tokenPattern.pattern.matcher(line);
-                    if (m.find()) {
+                    if (tokenPattern.pattern.matcher(line).find()) {
                         FunctionImpact impact = findFunctionImpact(impacted, tokenPattern.functionName);
                         if (impact != null) {
                             impact.references.add(new Finding(
                                     path.toString(),
                                     lineIndex + 1,
-                                    m.start() + 1,
                                     "impacted_test",
                                     line.trim()
                             ));
@@ -1075,7 +789,6 @@ public class AutomationQualityChecker {
                     if (impact != null) {
                         impact.references.addAt(0, new Finding(
                                 changedFilePath.toString(),
-                                1,
                                 1,
                                 "impacted_test_note",
                                 "Note: '" + fn + "' not found in changed file text; verify function name."
@@ -1130,7 +843,7 @@ public class AutomationQualityChecker {
             }
             for (int j = 0; j < limit; j++) {
                 Finding r = refsSorted.get(j);
-                System.out.println("  " + formatLocation(r) + " | " + r.detail);
+                System.out.println("  " + r.file + ":" + r.line + " | " + r.detail);
             }
         }
     }
@@ -1144,7 +857,6 @@ public class AutomationQualityChecker {
         out.add("Summary");
         out.add("-------");
         out.add("Hard Wait Found: " + summary.hardWaitFound);
-        out.add("Test Data Hardcoding: " + summary.hardcodedTestData);
         out.add("Duplicate Locators: " + summary.duplicateLocators);
         out.add("Poor Assertions: " + summary.poorAssertions);
         out.add("Unused Functions: " + summary.unusedFunctions);
@@ -1164,7 +876,7 @@ public class AutomationQualityChecker {
             }
             for (int i = 0; i < issueFindings.size(); i++) {
                 Finding f = issueFindings.get(i);
-                out.add(formatLocation(f) + " | " + f.detail);
+                out.add(f.file + ":" + f.line + " | " + f.detail);
             }
             out.add("");
         }
@@ -1179,7 +891,6 @@ public class AutomationQualityChecker {
         out.add("## Summary");
         out.add("");
         out.add("- Hard Wait Found: **" + summary.hardWaitFound + "**");
-        out.add("- Test Data Hardcoding: **" + summary.hardcodedTestData + "**");
         out.add("- Duplicate Locators: **" + summary.duplicateLocators + "**");
         out.add("- Poor Assertions: **" + summary.poorAssertions + "**");
         out.add("- Unused Functions: **" + summary.unusedFunctions + "**");
@@ -1198,7 +909,7 @@ public class AutomationQualityChecker {
             }
             for (int i = 0; i < issueFindings.size(); i++) {
                 Finding f = issueFindings.get(i);
-                out.add("- `" + formatLocation(f) + "` - `" + f.detail + "`");
+                out.add("- `" + f.file + ":" + f.line + "` - `" + f.detail + "`");
             }
             out.add("");
         }
@@ -1274,7 +985,6 @@ public class AutomationQualityChecker {
         return "{"
                 + "\"file\":" + quote(f.file) + ","
                 + "\"line\":" + f.line + ","
-                + "\"column\":" + f.column + ","
                 + "\"issue\":" + quote(f.issue) + ","
                 + "\"detail\":" + quote(f.detail)
                 + "}";
@@ -1284,7 +994,6 @@ public class AutomationQualityChecker {
     private static String summaryToJson(Summary summary) {
         return "{"
                 + "\"hard_wait_found\":" + summary.hardWaitFound + ","
-                + "\"hardcoded_test_data\":" + summary.hardcodedTestData + ","
                 + "\"duplicate_locators\":" + summary.duplicateLocators + ","
                 + "\"poor_assertions\":" + summary.poorAssertions + ","
                 + "\"unused_functions\":" + summary.unusedFunctions + ","
@@ -1326,23 +1035,6 @@ public class AutomationQualityChecker {
         return "{" + joinStrings(groupRows, ",") + "}";
     }
 
-    // Serializes ranked duplicate-locator refactor opportunities.
-    private static String duplicateRefactorInsightsToJson(DynamicArray<DuplicateRefactorInsight> insights) {
-        DynamicArray<String> rows = new DynamicArray<>();
-        for (int i = 0; i < insights.size(); i++) {
-            DuplicateRefactorInsight insight = insights.get(i);
-            rows.add("{"
-                    + "\"locator\":" + quote(insight.locator) + ","
-                    + "\"occurrences\":" + insight.occurrences + ","
-                    + "\"distinct_files\":" + insight.distinctFiles + ","
-                    + "\"top_module\":" + quote(insight.topModule) + ","
-                    + "\"priority\":" + quote(insight.priority) + ","
-                    + "\"recommendation\":" + quote(insight.recommendation)
-                    + "}");
-        }
-        return "[" + joinStrings(rows, ",") + "]";
-    }
-
     // Serializes impacted test references keyed by changed function.
     private static String impactedTestsToJson(DynamicArray<FunctionImpact> impactedTests) {
         DynamicArray<String> rows = new DynamicArray<>();
@@ -1362,14 +1054,12 @@ public class AutomationQualityChecker {
             Summary summary,
             FindingsByIssue findings,
             DynamicArray<DuplicateGroup> duplicateGroups,
-            DynamicArray<FunctionImpact> impactedTests,
-            DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights
+            DynamicArray<FunctionImpact> impactedTests
     ) {
         return "{"
                 + "\"summary\":" + summaryToJson(summary) + ","
                 + "\"findings\":" + findingsToJson(findings) + ","
                 + "\"duplicate_locator_groups\":" + duplicateGroupsToJson(duplicateGroups) + ","
-                + "\"duplicate_refactor_intelligence\":" + duplicateRefactorInsightsToJson(duplicateRefactorInsights) + ","
                 + "\"impacted_tests\":" + impactedTestsToJson(impactedTests)
                 + "}";
     }
@@ -1457,7 +1147,7 @@ public class AutomationQualityChecker {
         System.err.println("  --json <output.json>                Optional output JSON file path.");
         System.err.println("  --txt <output.txt>                  Optional output TXT file path.");
         System.err.println("  --md <output.md>                    Optional output Markdown file path.");
-        System.err.println("  --show-lines                        Print file:line:column findings in terminal.");
+        System.err.println("  --show-lines                        Print file:line findings in terminal.");
         System.err.println("  --max-lines-per-issue <n>           Limit terminal findings per issue.");
         System.err.println("  --changed-function <name>           Changed function to find impacted tests. Repeatable.");
         System.err.println("  --changed-file <path>               Optional changed file path for function validation.");
@@ -1494,13 +1184,7 @@ public class AutomationQualityChecker {
 
         try {
             if (args.jsonOutput != null) {
-                String payload = createJsonPayload(
-                        result.summary,
-                        result.findings,
-                        result.duplicateGroups,
-                        impactedTests,
-                        result.duplicateRefactorInsights
-                );
+                String payload = createJsonPayload(result.summary, result.findings, result.duplicateGroups, impactedTests);
                 Files.writeString(Paths.get(args.jsonOutput), payload, StandardCharsets.UTF_8);
                 System.out.println("\nDetailed JSON report written to: " + args.jsonOutput);
             }
