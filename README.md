@@ -1,27 +1,27 @@
-# AutomationQualityChecker
+# Automation Quality Checker
 
-`AutomationQualityChecker` is a standalone Java CLI tool that scans test automation code and reports common quality issues:
+`AutomationQualityChecker` is a standalone Java-based automation test quality scanner. It analyzes source files and reports common reliability/maintainability issues, then optionally exports structured reports for dashboards and CI use.
 
-- Hard-coded waits/sleeps
-- Hardcoded test data in test steps/assignments
-- Duplicate locators
-- Poor/weak assertions
-- Unused functions
-- Tests with missing validations
+This repository includes:
 
-It supports JavaScript/TypeScript and Python files by default and can optionally export reports as JSON, TXT, and Markdown.
+- `AutomationQualityChecker.java` (core CLI scanner)
+- `AutomationQualityChecker_UI_Design.html` (interactive dashboard UI)
+- `ui_live_server.py` (local backend to run CLI from UI and stream logs)
 
-## Features
+## What It Detects
 
-- Recursive scan of files and directories
-- Configurable file extensions
-- Deterministic (sorted) output for stable reports
-- Console summary with optional detailed lines
-- Optional impacted-test lookup for changed functions
+The scanner reports six issue categories:
 
-## Supported File Extensions
+- `hard_wait` - explicit sleeps/waits (for example `waitForTimeout`, `sleep`, `cy.wait`)
+- `hardcoded_test_data` - inline credentials/data literals in likely test contexts
+- `duplicate_locator` - same locator reused across files/areas
+- `poor_assertion` - weak assertions that provide low verification value
+- `unused_function` - declared helper/functions not referenced
+- `missing_validation` - test action flows with no nearby assertion/validation
 
-By default:
+## Supported Languages and Extensions
+
+Default extensions:
 
 - `.js`
 - `.ts`
@@ -29,67 +29,94 @@ By default:
 - `.tsx`
 - `.py`
 
-Override with `--extensions`.
+Override with `--extensions` to scan other text-based automation files.
 
 ## Requirements
 
-- Java 11 or later (uses `Files.readString` and `Files.writeString`)
+- Java 11+
+- Python 3.8+ (only if you use the live UI backend)
 
-## Compile
+## Project Structure
+
+- `AutomationQualityChecker.java` - parser, detectors, summary, and report serialization
+- `AutomationQualityChecker_UI_Design.html` - static frontend to configure runs and visualize results
+- `ui_live_server.py` - local HTTP API:
+  - compiles/runs Java checker
+  - streams execution logs via Server-Sent Events (SSE)
+  - returns parsed `report.json` payload to UI
+
+## CLI Usage
+
+Compile:
 
 ```bash
 javac AutomationQualityChecker.java
 ```
 
-This creates `AutomationQualityChecker.class` and nested class files.
-
-## Usage
+Run:
 
 ```bash
 java AutomationQualityChecker [options] <targets...>
 ```
 
-`<targets...>` can be one or more files/directories.
+`<targets...>` can be one or more files or directories.
 
 ## CLI Options
 
-- `--extensions <.js,.ts,...>` Comma-separated extensions to scan
-- `--json <output.json>` Write detailed JSON report
-- `--txt <output.txt>` Write detailed plain-text report
-- `--md <output.md>` Write detailed Markdown report
-- `--show-lines` Print per-finding `file:line:column` details in terminal
-- `--max-lines-per-issue <n>` Limit console findings per issue
-- `--changed-function <name>` Changed function to map impacted tests (repeatable)
-- `--changed-file <path>` Optional file used to validate changed function names
-- `--max-impacted-per-function <n>` Limit impacted lines per changed function
+- `--extensions <.js,.ts,...>`  
+  Comma-separated extensions; values are normalized to lowercase and dot-prefixed.
 
-## Examples
+- `--json <output.json>`  
+  Write JSON payload with summary, findings, duplicate analysis, and impacted tests.
 
-### Basic scan
+- `--txt <output.txt>`  
+  Write detailed plain-text report grouped by issue.
+
+- `--md <output.md>`  
+  Write detailed Markdown report grouped by issue.
+
+- `--show-lines`  
+  Print issue lines to terminal in `file:line:column | detail` format.
+
+- `--max-lines-per-issue <n>`  
+  Limit number of detailed console lines printed per issue category.
+
+- `--changed-function <name>` (repeatable)  
+  Function(s) to map test-impact references.
+
+- `--changed-file <path>`  
+  Optional path used to validate changed function names.
+
+- `--max-impacted-per-function <n>`  
+  Limit impacted-reference lines shown in console output.
+
+## CLI Examples
+
+Basic recursive scan:
 
 ```bash
 java AutomationQualityChecker .
 ```
 
-### Scan specific folders with detailed console output
+Scan selected folders with detailed console lines:
 
 ```bash
 java AutomationQualityChecker --show-lines --max-lines-per-issue 20 tests src
 ```
 
-### Custom extensions
+Custom extension set:
 
 ```bash
 java AutomationQualityChecker --extensions .js,.ts,.py .
 ```
 
-### Export all report formats
+Generate all report types:
 
 ```bash
 java AutomationQualityChecker --json report.json --txt report.txt --md report.md .
 ```
 
-### Impacted tests for changed functions
+Impacted test lookup for changed functions:
 
 ```bash
 java AutomationQualityChecker \
@@ -100,9 +127,9 @@ java AutomationQualityChecker \
   .
 ```
 
-## Console Output (Summary)
+## Console Output
 
-The tool always prints a summary:
+The CLI always prints summary counters:
 
 - Hard Wait Found
 - Test Data Hardcoding
@@ -112,45 +139,91 @@ The tool always prints a summary:
 - Missing Validations
 - Files Scanned
 
-Use `--show-lines` to print individual findings (`file:line:column | detail`).
+With `--show-lines`, detailed findings are printed in fixed issue order for stable triage output.
 
-## Report Structure
+## JSON Report Schema (`--json`)
 
-### JSON (`--json`)
+Top-level keys in generated payload:
 
-Top-level keys:
+- `summary` (object)
+- `findings` (object keyed by issue id)
+- `duplicate_locator_groups` (object keyed by locator string)
+- `duplicate_refactor_intelligence` (array)
+- `impacted_tests` (object keyed by changed function name)
 
-- `summary`
-- `findings`
-- `duplicate_locator_groups`
-- `impacted_tests`
+`summary` fields:
 
-### TXT (`--txt`)
+- `hard_wait_found`
+- `hardcoded_test_data`
+- `duplicate_locators`
+- `poor_assertions`
+- `unused_functions`
+- `missing_validations`
+- `total_files_scanned`
 
-- Human-readable summary
-- Findings grouped by issue type
+`findings[issue]` entry shape:
 
-### Markdown (`--md`)
+- `file` (string)
+- `line` (number)
+- `column` (number)
+- `issue` (string)
+- `detail` (string)
 
-- Same grouping as TXT in Markdown format
+`duplicate_refactor_intelligence` entry shape:
 
-## Detection Notes
+- `locator`
+- `occurrences`
+- `distinct_files`
+- `top_module`
+- `priority`
+- `recommendation`
 
-The checker uses regex-based heuristics. That means:
+## Live UI Dashboard
 
-- It is fast and dependency-free
-- Some false positives/negatives are possible
-- Results are best used as quality signals, not strict static-analysis guarantees
+The HTML dashboard maps UI controls to CLI flags and displays scan output with tabs, metrics, and logs.
 
-## Exit Behavior
+### Start Live UI
 
-- Invalid CLI arguments: exits with code `2`
-- Output write failure: exits with code `1`
-- Successful scan: normal completion (code `0`)
+```bash
+python3 ui_live_server.py
+```
+
+Open:
+
+- `http://127.0.0.1:8787/AutomationQualityChecker_UI_Design.html`
+
+### UI Features
+
+- Configure scan targets/extensions and changed-function inputs
+- Trigger real run (`Run Live Scan`) or demo payload (`Run Demo Data`)
+- Stream build/run logs in real time
+- Issue tabs with counts and detailed entries
+- Health check indicator using `/api/health`
+
+### Backend API Endpoints (used by UI)
+
+- `GET /api/health` - server status
+- `POST /api/run` - compile and run checker with payload
+- `GET /api/logs/{runId}` - SSE log stream
+- `GET /api/result/{runId}` - run completion state + report payload
+- `POST /api/stop/{runId}` - stop active run
+
+## Behavior and Limitations
+
+- Detection is heuristic and regex-based (fast and dependency-free).
+- False positives/negatives are possible; treat results as quality signals.
+- Report ordering is deterministic for stable outputs in CI and code reviews.
+
+## Exit Codes
+
+- `0` - successful completion
+- `1` - output/report write failure
+- `2` - invalid CLI arguments
 
 ## Quick Start
 
 ```bash
 javac AutomationQualityChecker.java
 java AutomationQualityChecker --show-lines --json report.json .
+python3 ui_live_server.py
 ```
