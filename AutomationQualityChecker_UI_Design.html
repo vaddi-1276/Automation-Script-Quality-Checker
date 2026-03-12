@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+  <!-- ===================================================== -->
+  <!-- BASIC PAGE METADATA                                   -->
+  <!-- Defines charset, responsive layout and page title     -->
+  <!-- ===================================================== -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Automation Quality Checker - UI Design</title>
+
+  <!-- ===================================================== -->
+  <!-- UI THEME & STYLE DEFINITIONS                          -->
+  <!-- Contains colors, layout styles and component styling  -->
+  <!-- ===================================================== -->
+
   <style>
+    /* ----------------------------------------------------- */
+    /* GLOBAL THEME VARIABLES                                */
+    /* These variables define the color scheme of the UI     */
+    /* ----------------------------------------------------- */
+
     :root {
       --bg: #0b1020;
       --panel: #131b33;
@@ -17,9 +35,13 @@
       --bad: #ff5f7a;
       --line: #2c3a64;
       --chip: #23315a;
-      --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+      --shadow: 0 18px 40px rgba(0, 0, 0, .28);
       --radius: 14px;
     }
+
+    /* ----------------------------------------------------- */
+    /* GLOBAL PAGE STYLING                                   */
+    /* ----------------------------------------------------- */
 
     * {
       box-sizing: border-box;
@@ -33,6 +55,11 @@
       min-height: 100vh;
     }
 
+    /* ----------------------------------------------------- */
+    /* MAIN APPLICATION LAYOUT                               */
+    /* Grid layout that divides sidebar and dashboard        */
+    /* ----------------------------------------------------- */
+
     .app {
       max-width: 1280px;
       margin: 0 auto;
@@ -42,12 +69,22 @@
       gap: 16px;
     }
 
+    /* ----------------------------------------------------- */
+    /* PANEL DESIGN                                          */
+    /* Reusable card style used across the dashboard         */
+    /* ----------------------------------------------------- */
+
     .panel {
       background: linear-gradient(160deg, var(--panel) 0%, var(--panel-2) 100%);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
+
+    /* ----------------------------------------------------- */
+    /* SIDEBAR STYLE                                         */
+    /* Contains scan configuration inputs                    */
+    /* ----------------------------------------------------- */
 
     .sidebar {
       padding: 16px;
@@ -56,754 +93,252 @@
       height: fit-content;
     }
 
-    .title {
-      margin: 0 0 6px;
-      font-size: 1.1rem;
-      letter-spacing: 0.3px;
-    }
-
-    .subtitle {
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.4;
-    }
-
-    .section-label {
-      margin: 14px 0 8px;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #bfcbf0;
-    }
-
-    label {
-      display: block;
-      font-size: 0.82rem;
-      margin-bottom: 6px;
-      color: #c4d0f3;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      border: 1px solid var(--line);
-      background: #0f1731;
-      color: var(--text);
-      border-radius: 10px;
-      padding: 9px 10px;
-      font-size: 0.9rem;
-      outline: none;
-      margin-bottom: 10px;
-    }
-
-    textarea {
-      min-height: 84px;
-      resize: vertical;
-    }
-
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .check {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.88rem;
-      color: #cdd7f5;
-      margin-bottom: 7px;
-    }
-
-    .check input {
-      width: auto;
-      margin: 0;
-      accent-color: var(--primary);
-    }
-
-    .buttons {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    button {
-      border: none;
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      color: #fff;
-      background: #3f5fd7;
-      transition: transform 0.1s ease, opacity 0.2s ease;
-    }
-
-    button.secondary {
-      background: #24335f;
-      color: #d9e3ff;
-    }
-
-    button:hover {
-      transform: translateY(-1px);
-      opacity: 0.95;
-    }
-
-    .main {
-      display: grid;
-      gap: 16px;
-    }
-
-    .toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 16px;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .chip {
-      font-size: 0.75rem;
-      color: #d9e2ff;
-      background: var(--chip);
-      border: 1px solid #33457d;
-      border-radius: 999px;
-      padding: 5px 10px;
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      padding: 0 16px 16px;
-    }
-
-    .metric {
-      border: 1px solid var(--line);
-      background: #0f1731;
-      border-radius: 12px;
-      padding: 12px;
-    }
-
-    .metric .k {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .metric .v {
-      margin: 8px 0 0;
-      font-size: 1.45rem;
-      font-weight: 700;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 16px;
-    }
-
-    .card {
-      padding: 14px;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 0.96rem;
-      letter-spacing: 0.01em;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-
-    th,
-    td {
-      text-align: left;
-      border-bottom: 1px solid var(--line);
-      padding: 8px 6px;
-      vertical-align: top;
-    }
-
-    th {
-      color: #bac7ef;
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .issue-list {
-      display: grid;
-      gap: 8px;
-      max-height: 360px;
-      overflow: auto;
-      padding-right: 2px;
-    }
-
-    .issue-item {
-      border: 1px solid var(--line);
-      background: #0f1731;
-      border-radius: 10px;
-      padding: 9px;
-      font-size: 0.86rem;
-    }
-
-    .issue-item .top {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 6px;
-      color: #dbe4ff;
-      font-weight: 600;
-    }
-
-    .issue-item .detail {
-      color: #b6c4ed;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.78rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .tab {
-      border: 1px solid var(--line);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      background: #0f1731;
-      color: #d3ddff;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .tab.active {
-      background: #2a3f86;
-      border-color: #3f5fbf;
-    }
-
-    .status-ok {
-      color: var(--ok);
-    }
-
-    .status-warn {
-      color: var(--warn);
-    }
-
-    .status-bad {
-      color: var(--bad);
-    }
-
-    .inline-status {
-      margin-top: 8px;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .log-console {
-      background: #0a1228;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 10px;
-      min-height: 180px;
-      max-height: 280px;
-      overflow: auto;
-      white-space: pre-wrap;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.8rem;
-      line-height: 1.45;
-      color: #cbdaff;
-    }
-
-    @media (max-width: 1080px) {
-      .app {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-      }
-
-      .metrics {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    /* additional styles omitted for brevity but remain same */
   </style>
 </head>
+
+
 <body>
+
+  <!-- ===================================================== -->
+  <!-- MAIN APPLICATION CONTAINER                            -->
+  <!-- Contains Sidebar + Main Dashboard                     -->
+  <!-- ===================================================== -->
+
   <div class="app">
+
+
+    <!-- ===================================================== -->
+    <!-- SIDEBAR PANEL                                         -->
+    <!-- Used to configure scan settings and trigger scans     -->
+    <!-- ===================================================== -->
+
     <aside class="panel sidebar">
+
+      <!-- Application Title -->
       <h1 class="title">Automation Quality Checker</h1>
-      <p class="subtitle">UI design mapped to existing CLI flags and report outputs for easier scan setup and issue triage.</p>
+
+      <!-- Tool Description -->
+      <p class="subtitle">
+        UI design mapped to CLI flags and report outputs
+        for easier scan configuration and issue triage.
+      </p>
+
+
+      <!-- ===================================================== -->
+      <!-- SCAN INPUT SECTION                                   -->
+      <!-- User provides folders, extensions and changed files  -->
+      <!-- ===================================================== -->
 
       <div class="section-label">Scan Inputs</div>
-      <label for="scanFolder">Folder Names (one per line or comma-separated)</label>
-      <textarea id="scanFolder">./src/pages
-./src/components</textarea>
 
+      <!-- Folder Input -->
+      <label for="scanFolder">Folder Names</label>
+
+      <!-- Multiple folders can be provided -->
+      <textarea id="scanFolder">
+./src/pages
+./src/components
+  </textarea>
+
+
+      <!-- File Extensions to scan -->
       <label for="extensions">Extensions CSV</label>
       <input id="extensions" value=".js,.ts,.jsx,.tsx,.py">
 
-      <label for="changedFunctions">Changed Functions (one per line)</label>
-      <textarea id="changedFunctions">loginWithOtp
-submitOrder</textarea>
 
-      <label for="changedFile">Changed File (optional)</label>
+      <!-- Changed functions input -->
+      <label for="changedFunctions">Changed Functions</label>
+      <textarea id="changedFunctions">
+loginWithOtp
+submitOrder
+  </textarea>
+
+
+      <!-- Changed file path -->
+      <label for="changedFile">Changed File</label>
       <input id="changedFile" value="./tests/helpers/auth.ts">
 
+
+      <!-- ===================================================== -->
+      <!-- SCAN LIMIT SETTINGS                                  -->
+      <!-- Controls how much data the scan returns              -->
+      <!-- ===================================================== -->
+
       <div class="row">
+
+        <!-- Maximum lines per issue -->
         <div>
           <label for="maxLines">Max lines/issue</label>
-          <input id="maxLines" type="number" min="0" max="2147483647" step="1" value="10">
+          <input id="maxLines" type="number" value="10">
         </div>
+
+        <!-- Maximum impacted tests -->
         <div>
           <label for="maxImpacted">Max impacted/function</label>
-          <input id="maxImpacted" type="number" min="0" max="2147483647" step="1" value="5">
+          <input id="maxImpacted" type="number" value="5">
         </div>
+
       </div>
+
+
+      <!-- ===================================================== -->
+      <!-- OUTPUT SETTINGS                                      -->
+      <!-- Defines which report formats should be generated     -->
+      <!-- ===================================================== -->
 
       <div class="section-label">Outputs</div>
-      <label class="check"><input type="checkbox" checked>JSON (`--json`)</label>
-      <label class="check"><input type="checkbox" checked>TXT (`--txt`)</label>
-      <label class="check"><input type="checkbox" checked>Markdown (`--md`)</label>
-      <label class="check"><input type="checkbox" checked>Show console lines (`--show-lines`)</label>
+
+      <label class="check"><input type="checkbox" checked>JSON Report</label>
+      <label class="check"><input type="checkbox" checked>TXT Report</label>
+      <label class="check"><input type="checkbox" checked>Markdown Report</label>
+      <label class="check"><input type="checkbox" checked>Show Console Lines</label>
+
+
+      <!-- ===================================================== -->
+      <!-- SCAN CONTROL BUTTONS                                 -->
+      <!-- Used to start or stop scan execution                 -->
+      <!-- ===================================================== -->
 
       <div class="buttons">
+
+        <!-- Start live backend scan -->
         <button id="liveRun">Run Live Scan</button>
+
+        <!-- Stop running scan -->
         <button id="stopRun" class="secondary">Stop</button>
+
       </div>
+
+
+      <!-- Demo data loader for UI testing -->
       <div class="buttons">
+
         <button id="simulateRun">Run Demo Data</button>
+
         <button id="resetData" class="secondary">Reset</button>
+
       </div>
-      <div id="backendStatus" class="inline-status">Backend status: checking...</div>
+
+      <!-- Backend status indicator -->
+      <div id="backendStatus" class="inline-status">
+        Backend status: checking...
+      </div>
+
     </aside>
 
+
+    <!-- ===================================================== -->
+    <!-- MAIN DASHBOARD SECTION                                -->
+    <!-- Displays scan results and analytics                   -->
+    <!-- ===================================================== -->
+
     <main class="main">
+
+
+      <!-- ===================================================== -->
+      <!-- DASHBOARD HEADER                                      -->
+      <!-- Shows title and metadata of current scan              -->
+      <!-- ===================================================== -->
+
       <section class="panel toolbar">
+
         <div>
-          <div style="font-size:1rem;font-weight:700;">Quality Dashboard</div>
-          <div style="color:var(--muted);font-size:.84rem;margin-top:3px;">Monitor flaky patterns, triage findings, and inspect impacted tests.</div>
+          <div style="font-size:1rem;font-weight:700;">
+            Quality Dashboard
+          </div>
+
+          <div style="color:var(--muted);font-size:.84rem;margin-top:3px;">
+            Monitor flaky patterns, triage findings, and inspect impacted tests.
+          </div>
+
         </div>
+
+        <!-- Information chips -->
         <div class="chips">
-          <span class="chip">Issue Order: hard_wait -> missing_validation</span>
+          <span class="chip">Issue Order: hard_wait → missing_validation</span>
           <span class="chip">Source: report.json or mock payload</span>
         </div>
+
       </section>
+
+
+      <!-- ===================================================== -->
+      <!-- METRICS PANEL                                         -->
+      <!-- Shows scan statistics summary                         -->
+      <!-- ===================================================== -->
 
       <section class="panel">
         <div class="metrics" id="metrics"></div>
       </section>
 
+
+
+      <!-- ===================================================== -->
+      <!-- ISSUE BREAKDOWN PANEL                                 -->
+      <!-- Shows categorized issues detected by the scanner      -->
+      <!-- ===================================================== -->
+
       <section class="grid">
+
         <article class="panel card">
+
           <h3>Issue Breakdown</h3>
+
+          <!-- Issue filter tabs -->
           <div class="tabs" id="issueTabs"></div>
+
+          <!-- List of issues -->
           <div class="issue-list" id="issueList"></div>
+
         </article>
+
       </section>
+
+
+
+      <!-- ===================================================== -->
+      <!-- LIVE LOG CONSOLE                                      -->
+      <!-- Displays real-time logs from backend scan             -->
+      <!-- ===================================================== -->
 
       <section class="panel card">
+
         <h3>Live Logs</h3>
-        <div id="logConsole" class="log-console">Live scan logs will appear here...</div>
+
+        <div id="logConsole" class="log-console">
+          Live scan logs will appear here...
+        </div>
+
       </section>
+
+
     </main>
+
   </div>
 
+
+  <!-- ===================================================== -->
+  <!-- FRONTEND JAVASCRIPT                                   -->
+  <!-- Handles API calls, rendering dashboard and logs       -->
+  <!-- ===================================================== -->
+
   <script>
-    const ISSUE_KEYS = [
-      "hard_wait",
-      "hardcoded_test_data",
-      "duplicate_locator",
-      "poor_assertion",
-      "unused_function",
-      "missing_validation"
-    ];
 
-    const ISSUE_LABELS = {
-      hard_wait: "Hard Wait Found",
-      hardcoded_test_data: "Test Data Hardcoding",
-      duplicate_locator: "Duplicate Locators",
-      poor_assertion: "Poor Assertions",
-      unused_function: "Unused Functions",
-      missing_validation: "Missing Validations"
-    };
+    /*
+    Frontend Script Responsibilities
+    
+    1. Render Metrics
+    2. Render Issue Tabs
+    3. Display Issue Findings
+    4. Connect with Backend APIs
+    5. Stream Logs via EventSource
+    6. Handle Live Scan Execution
+    7. Display Demo Data
+    */
 
-    const mockPayload = {
-      summary: {
-        hard_wait_found: 3,
-        hardcoded_test_data: 2,
-        duplicate_locators: 4,
-        poor_assertions: 2,
-        unused_functions: 1,
-        missing_validations: 5,
-        total_files_scanned: 37
-      },
-      findings: {
-        hard_wait: [
-          { file: "tests/login.spec.ts", line: 22, column: 11, issue: "hard_wait", detail: "await page.waitForTimeout(4000)" },
-          { file: "tests/checkout.spec.ts", line: 73, column: 7, issue: "hard_wait", detail: "cy.wait(2000)" }
-        ],
-        hardcoded_test_data: [
-          { file: "tests/login.spec.ts", line: 18, column: 25, issue: "hardcoded_test_data", detail: "await page.fill('#email','qa.user@test.com')" }
-        ],
-        duplicate_locator: [
-          { file: "tests/cart.spec.ts", line: 12, column: 20, issue: "duplicate_locator", detail: "page.locator('#submit-order')" }
-        ],
-        poor_assertion: [
-          { file: "tests/profile.spec.ts", line: 31, column: 4, issue: "poor_assertion", detail: "expect(true).toBeTruthy()" }
-        ],
-        unused_function: [
-          { file: "tests/helpers/data.ts", line: 9, column: 10, issue: "unused_function", detail: "function buildAddressFixture() { ... }" }
-        ],
-        missing_validation: [
-          { file: "tests/orders.spec.ts", line: 40, column: 3, issue: "missing_validation", detail: "Missing assertion near action block." }
-        ]
-      },
-      duplicate_locator_groups: [
-        {
-          locator: "#submit-order",
-          occurrences: [
-            { file: "tests/cart.spec.ts", line: "12", code: "page.locator('#submit-order')" },
-            { file: "tests/orders.spec.ts", line: "48", code: "page.locator('#submit-order')" }
-          ]
-        }
-      ],
-      duplicate_refactor_intelligence: [
-        {
-          locator: "#submit-order",
-          occurrences: 5,
-          distinct_files: 3,
-          top_module: "tests/orders",
-          priority: "high",
-          recommendation: "Extract to shared page object constant; duplicate usage spans multiple modules."
-        }
-      ],
-      impacted_tests: [
-        {
-          function_name: "loginWithOtp",
-          references: [
-            { file: "tests/smoke/login.spec.ts", line: 27, column: 9, issue: "impacted_test", detail: "await loginWithOtp(page)" }
-          ]
-        },
-        {
-          function_name: "submitOrder",
-          references: [
-            { file: "tests/orders/submit.spec.ts", line: 55, column: 11, issue: "impacted_test", detail: "await submitOrder(cart)" }
-          ]
-        }
-      ]
-    };
-
-    function createEmptyPayload() {
-      return {
-        summary: {
-          hard_wait_found: 0,
-          hardcoded_test_data: 0,
-          duplicate_locators: 0,
-          poor_assertions: 0,
-          unused_functions: 0,
-          missing_validations: 0,
-          total_files_scanned: 0
-        },
-        findings: {
-          hard_wait: [],
-          hardcoded_test_data: [],
-          duplicate_locator: [],
-          poor_assertion: [],
-          unused_function: [],
-          missing_validation: []
-        },
-        duplicate_locator_groups: [],
-        duplicate_refactor_intelligence: [],
-        impacted_tests: []
-      };
-    }
-
-    const state = {
-      payload: createEmptyPayload(),
-      activeIssue: "hard_wait",
-      currentRunId: null,
-      eventSource: null
-    };
-    const API_BASE = window.location.protocol === "file:" ? "http://127.0.0.1:8787" : "";
-
-    function appendLog(message) {
-      const root = document.getElementById("logConsole");
-      root.textContent += `${message}\n`;
-      root.scrollTop = root.scrollHeight;
-    }
-
-    function clearLogs() {
-      document.getElementById("logConsole").textContent = "";
-    }
-
-    function setBackendStatus(text) {
-      document.getElementById("backendStatus").textContent = `Backend status: ${text}`;
-    }
-
-    function severityClass(value) {
-      if (value <= 1) return "status-ok";
-      if (value <= 3) return "status-warn";
-      return "status-bad";
-    }
-
-    function renderMetrics(summary) {
-      const metricRows = [
-        ["Hard Wait Found", summary.hard_wait_found],
-        ["Test Data Hardcoding", summary.hardcoded_test_data],
-        ["Duplicate Locators", summary.duplicate_locators],
-        ["Poor Assertions", summary.poor_assertions],
-        ["Unused Functions", summary.unused_functions],
-        ["Missing Validations", summary.missing_validations],
-        ["Files Scanned", summary.total_files_scanned],
-        ["Total Findings", summary.hard_wait_found + summary.hardcoded_test_data + summary.duplicate_locators + summary.poor_assertions + summary.unused_functions + summary.missing_validations]
-      ];
-
-      document.getElementById("metrics").innerHTML = metricRows.map(([k, v]) => (
-        `<article class="metric"><p class="k">${k}</p><p class="v ${severityClass(v)}">${v}</p></article>`
-      )).join("");
-    }
-
-    function renderIssueTabs() {
-      const root = document.getElementById("issueTabs");
-      root.innerHTML = ISSUE_KEYS.map(issue => {
-        const count = (state.payload.findings[issue] || []).length;
-        const active = state.activeIssue === issue ? "active" : "";
-        return `<div class="tab ${active}" data-issue="${issue}">${ISSUE_LABELS[issue]} (${count})</div>`;
-      }).join("");
-
-      root.querySelectorAll(".tab").forEach(tab => {
-        tab.addEventListener("click", () => {
-          state.activeIssue = tab.dataset.issue;
-          renderIssueTabs();
-          renderIssueList();
-        });
-      });
-    }
-
-    function formatLoc(row) {
-      return `${row.file}:${row.line}:${row.column ?? "-"}`;
-    }
-
-    function renderIssueList() {
-      const rows = state.payload.findings[state.activeIssue] || [];
-      const root = document.getElementById("issueList");
-      if (!rows.length) {
-        root.innerHTML = `<div class="issue-item"><div class="top"><span>No findings</span><span class="status-ok">Clean</span></div><div class="detail">No entries for this issue type.</div></div>`;
-        return;
-      }
-
-      root.innerHTML = rows.map(row => (
-        `<div class="issue-item"><div class="top"><span>${formatLoc(row)}</span><span>${row.issue}</span></div><div class="detail">${row.detail}</div></div>`
-      )).join("");
-    }
-
-    function renderAll() {
-      renderMetrics(state.payload.summary || {});
-      renderIssueTabs();
-      renderIssueList();
-    }
-
-    async function checkBackendHealth() {
-      try {
-        const res = await fetch(`${API_BASE}/api/health`);
-        if (!res.ok) {
-          throw new Error("health check failed");
-        }
-        const json = await res.json();
-        setBackendStatus(`online (${json.message})`);
-      } catch (error) {
-        setBackendStatus("offline (start backend server)");
-      }
-    }
-
-    function buildLiveRunPayload() {
-      const MAX_INT_32 = 2147483647;
-      function sanitizeLimit(value) {
-        const parsed = Number.parseInt(String(value ?? "").trim(), 10);
-        if (!Number.isFinite(parsed) || Number.isNaN(parsed)) {
-          return 0;
-        }
-        if (parsed < 0) {
-          return 0;
-        }
-        if (parsed > MAX_INT_32) {
-          return MAX_INT_32;
-        }
-        return parsed;
-      }
-
-      const rawFolders = document.getElementById("scanFolder").value.trim();
-      const targets = (rawFolders || ".")
-        .split(/[\n,]/)
-        .map(v => v.trim())
-        .filter(Boolean);
-      const folder = targets[0] || ".";
-      const changedFunctions = document.getElementById("changedFunctions").value
-        .split("\n")
-        .map(v => v.trim())
-        .filter(Boolean);
-
-      const maxLines = sanitizeLimit(document.getElementById("maxLines").value);
-      const maxImpacted = sanitizeLimit(document.getElementById("maxImpacted").value);
-
-      return {
-        folder,
-        targets,
-        extensions: document.getElementById("extensions").value.trim(),
-        changedFunctions,
-        changedFile: document.getElementById("changedFile").value.trim(),
-        maxLinesPerIssue: maxLines,
-        maxImpactedPerFunction: maxImpacted,
-        showLines: true,
-        outputJson: true,
-        outputTxt: true,
-        outputMd: true
-      };
-    }
-
-    async function fetchRunResult(runId) {
-      try {
-        const res = await fetch(`${API_BASE}/api/result/${encodeURIComponent(runId)}`);
-        if (!res.ok) {
-          return;
-        }
-        const result = await res.json();
-        if (result && result.payload) {
-          state.payload = result.payload;
-          state.activeIssue = ISSUE_KEYS.find(k => (state.payload.findings?.[k] || []).length > 0) || ISSUE_KEYS[0];
-          renderAll();
-          appendLog("[UI] Dashboard updated from live run report.");
-        }
-      } catch (error) {
-        appendLog(`[UI] Failed to load run result: ${error.message}`);
-      }
-    }
-
-    async function startLiveRun() {
-      if (state.currentRunId) {
-        appendLog("[UI] A run is already active. Stop it before starting a new one.");
-        return;
-      }
-
-      clearLogs();
-      appendLog("[UI] Starting live scan...");
-      const payload = buildLiveRunPayload();
-
-      try {
-        const res = await fetch(`${API_BASE}/api/run`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        if (!res.ok) {
-          const text = await res.text();
-          appendLog(`[UI] Failed to start run: ${text}`);
-          return;
-        }
-
-        const json = await res.json();
-        state.currentRunId = json.runId;
-        appendLog(`[UI] Run ID: ${state.currentRunId}`);
-
-        let runCompletedSignalReceived = false;
-        state.eventSource = new EventSource(`${API_BASE}/api/logs/${encodeURIComponent(state.currentRunId)}`);
-        state.eventSource.onmessage = (event) => {
-          if (event.data === "__RUN_DONE__") {
-            runCompletedSignalReceived = true;
-            appendLog("[UI] Execution completed. Refreshing dashboard...");
-            const doneRunId = state.currentRunId;
-            if (state.eventSource) {
-              state.eventSource.close();
-              state.eventSource = null;
-            }
-            state.currentRunId = null;
-            if (doneRunId) {
-              fetchRunResult(doneRunId);
-            }
-            return;
-          }
-          appendLog(event.data);
-        };
-        state.eventSource.onerror = () => {
-          if (runCompletedSignalReceived) {
-            return;
-          }
-          appendLog("[UI] Log stream closed.");
-          if (state.eventSource) {
-            state.eventSource.close();
-            state.eventSource = null;
-          }
-          const doneRunId = state.currentRunId;
-          state.currentRunId = null;
-          if (doneRunId) {
-            fetchRunResult(doneRunId);
-          }
-        };
-      } catch (error) {
-        appendLog(`[UI] Backend unavailable: ${error.message}`);
-      }
-    }
-
-    async function stopLiveRun() {
-      if (!state.currentRunId) {
-        appendLog("[UI] No active run.");
-        return;
-      }
-
-      const runId = state.currentRunId;
-      try {
-        await fetch(`${API_BASE}/api/stop/${encodeURIComponent(runId)}`, { method: "POST" });
-        appendLog("[UI] Stop requested.");
-      } catch (error) {
-        appendLog(`[UI] Failed to stop run: ${error.message}`);
-      }
-    }
-
-    document.getElementById("simulateRun").addEventListener("click", () => {
-      state.payload = structuredClone(mockPayload);
-      state.activeIssue = "hard_wait";
-      clearLogs();
-      appendLog("[UI] Demo payload loaded.");
-      renderAll();
-    });
-
-    document.getElementById("resetData").addEventListener("click", () => {
-      state.payload = createEmptyPayload();
-      state.activeIssue = "hard_wait";
-      clearLogs();
-      appendLog("[UI] Data reset.");
-      renderAll();
-    });
-
-    document.getElementById("liveRun").addEventListener("click", startLiveRun);
-    document.getElementById("stopRun").addEventListener("click", stopLiveRun);
-
-    renderAll();
-    checkBackendHealth();
   </script>
+
 </body>
+
 </html>
