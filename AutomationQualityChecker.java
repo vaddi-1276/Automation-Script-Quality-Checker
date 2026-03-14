@@ -814,7 +814,10 @@ public class AutomationQualityChecker {
                 Pattern.compile("\\b(email|username|user(name)?|phone|mobile)\\b\\s*[:=]\\s*[\"'][^\"']+[\"']"),
 
                 // Detects hardcoded URLs or endpoints
-                Pattern.compile("\\b(url|endpoint|baseUrl|baseURL)\\b\\s*[:=]\\s*[\"']https?://[^\"']+[\"']")
+                Pattern.compile("\\b(url|endpoint|baseUrl|baseURL)\\b\\s*[:=]\\s*[\"']https?://[^\"']+[\"']"),
+
+                // Detects login/authenticate with inline credentials (e.g. login("admin", "admin123"))
+                Pattern.compile("\\b(login|authenticate|setCredentials)\\s*\\(\\s*[\"'][^\"']+[\"']\\s*,\\s*[\"'][^\"']+[\"']\\s*\\)")
         };
 
         DynamicArray<Finding> findings = new DynamicArray<>();
@@ -969,8 +972,9 @@ public class AutomationQualityChecker {
             String automationLanguage) {
 
         // Test actions (common across frameworks)
+        // Use \\.check\\( and \\.uncheck\\( to avoid matching "check" in "check-in-button"
         Pattern actionPattern = Pattern.compile(
-                "\\b(click|fill|type|tap|submit|navigate|goto|goTo|sendKeys|selectOption|check|uncheck)\\b");
+                "\\b(click|fill|type|tap|submit|navigate|goto|goTo|sendKeys|selectOption)\\b|\\.(check|uncheck)\\s*\\(");
 
         Pattern assertionPattern = getAssertionKeywordsPattern(automationLanguage);
 
@@ -1011,11 +1015,14 @@ public class AutomationQualityChecker {
         String lang = automationLanguage == null ? "" : automationLanguage.trim().toLowerCase();
         boolean useAll = lang.isEmpty() || "all".equals(lang);
 
-        // Java (Selenium): By.id(, By.xpath(, By.cssSelector(
+        // Java (Selenium): By.id(, By.xpath(, By.cssSelector(, and XPath/CSS string literals
         Pattern[] javaPatterns = new Pattern[] {
                 Pattern.compile("\\bBy\\.id\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)"),
                 Pattern.compile("\\bBy\\.xpath\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)"),
-                Pattern.compile("\\bBy\\.cssSelector\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)")
+                Pattern.compile("\\bBy\\.cssSelector\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)"),
+                Pattern.compile("=\\s*\"(//[^\"]*)\"\\s*;"),
+                Pattern.compile("=\\s*\"(#[^\"]*)\"\\s*;"),
+                Pattern.compile("=\\s*\"(\\.[^\"]*)\"\\s*;")
         };
         // Playwright: locator(
         Pattern[] playwrightPatterns = new Pattern[] {
@@ -1112,6 +1119,9 @@ public class AutomationQualityChecker {
             DynamicArray<String> lines) {
 
         Pattern[] functionPatterns = new Pattern[] {
+
+                // Java methods (public/private void methodName( or @Test public void methodName()
+                Pattern.compile("(?:public|private|protected)\\s+(?:static\\s+)?(?:void|[A-Za-z_]\\w*)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*\\("),
 
                 // JS function
                 Pattern.compile("\\bfunction\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*\\("),
