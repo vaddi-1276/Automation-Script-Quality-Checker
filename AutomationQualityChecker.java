@@ -90,7 +90,7 @@ public class AutomationQualityChecker {
      * are provided through CLI arguments.
      * -----------------------------------------------------
      */
-    private static final Set<String> SUPPORTED_EXTENSIONS = Set.of(".js", ".ts", ".jsx", ".tsx", ".py");
+    private static final Set<String> SUPPORTED_EXTENSIONS = Set.of(".js", ".ts", ".jsx", ".tsx", ".py", ".java");
 
     /*
      * -----------------------------------------------------
@@ -594,6 +594,18 @@ public class AutomationQualityChecker {
 
         // Maximum number of impacted references per function
         int maxImpactedPerFunction = 0;
+
+        // Optional hard wait behavior preset (for example: selenium)
+        String hardWaitPreset = "";
+
+        // In selenium preset mode, optionally treat assertions as hard wait markers
+        boolean seleniumAssertionAsHardWait = false;
+
+        // Comma-separated list of issue types to detect (empty = all)
+        String enableIssues = "";
+
+        // Automation language for framework-specific patterns (all, java, javascript_playwright, javascript_cypress, python)
+        String automationLanguage = "";
     }
 
     // ------------------------------------------------------------------
@@ -714,36 +726,66 @@ public class AutomationQualityChecker {
     // ------------------------------------------------------------------
     private static DynamicArray<Finding> detectHardWaits(
             Path path,
-            DynamicArray<String> lines) {
+            DynamicArray<String> lines,
+            String hardWaitPreset,
+            boolean seleniumAssertionAsHardWait) {
 
-        Pattern[] patterns = new Pattern[] {
+        Pattern threadSleepPattern = Pattern.compile("\\bThread\\.sleep\\s*\\(\\s*\\d+\\s*\\)");
+        Pattern waitForTimeoutPattern = Pattern.compile("\\bwaitForTimeout\\s*\\(\\s*\\d+\\s*\\)");
+        Pattern pythonSleepPattern = Pattern.compile("\\btime\\.sleep\\s*\\(\\s*\\d+(\\.\\d+)?\\s*\\)");
+        Pattern genericSleepPattern = Pattern.compile("\\bsleep\\s*\\(\\s*\\d+(\\.\\d+)?\\s*\\)");
+        Pattern cypressWaitPattern = Pattern.compile("\\bcy\\.wait\\s*\\(\\s*\\d+\\s*\\)");
+        Pattern seleniumAssertionPattern = Pattern.compile(
+                "\\b(assert|assertTrue|assertEquals|assertThat|Assertions\\.[A-Za-z_][A-Za-z0-9_]*|Assert\\.[A-Za-z_][A-Za-z0-9_]*)\\s*\\(");
 
-                Pattern.compile("\\bwaitForTimeout\\s*\\(\\s*\\d+\\s*\\)"),
-                Pattern.compile("\\bThread\\.sleep\\s*\\(\\s*\\d+\\s*\\)"),
-                Pattern.compile("\\btime\\.sleep\\s*\\(\\s*\\d+(\\.\\d+)?\\s*\\)"),
-                Pattern.compile("\\bsleep\\s*\\(\\s*\\d+(\\.\\d+)?\\s*\\)"),
-                Pattern.compile("\\bcy\\.wait\\s*\\(\\s*\\d+\\s*\\)")
-        };
+        boolean seleniumPreset = "selenium".equalsIgnoreCase(hardWaitPreset == null ? "" : hardWaitPreset.trim());
 
         DynamicArray<Finding> findings = new DynamicArray<>();
 
         for (int i = 0; i < lines.size(); i++) {
 
             String line = lines.get(i);
+            Matcher threadSleep = threadSleepPattern.matcher(line);
+            if (threadSleep.find()) {
+                findings.add(new Finding(
+                        path.toString(),
+                        i + 1,
+                        threadSleep.start() + 1,
+                        "hard_wait",
+                        line.trim()));
+            }
 
-            for (Pattern pat : patterns) {
+            // In selenium preset mode, hard waits are predefined from UI.
+            if (!seleniumPreset) {
+                Pattern[] nonSeleniumPatterns = new Pattern[] {
+                        waitForTimeoutPattern,
+                        pythonSleepPattern,
+                        genericSleepPattern,
+                        cypressWaitPattern
+                };
 
-                Matcher m = pat.matcher(line);
+                for (Pattern pat : nonSeleniumPatterns) {
+                    Matcher m = pat.matcher(line);
+                    if (m.find()) {
+                        findings.add(new Finding(
+                                path.toString(),
+                                i + 1,
+                                m.start() + 1,
+                                "hard_wait",
+                                line.trim()));
+                    }
+                }
+            }
 
-                if (m.find()) {
-
-                    findings.add(
-                            new Finding(
-                                    path.toString(),
-                                    i + 1,
-                                    m.start() + 1,
-                                    "hard_wait",
-                                    line.trim()));
+            if (seleniumPreset && seleniumAssertionAsHardWait) {
+                Matcher assertion = seleniumAssertionPattern.matcher(line);
+                if (assertion.find()) {
+                    findings.add(new Finding(
+                            path.toString(),
+                            i + 1,
+                            assertion.start() + 1,
+                            "hard_wait",
+                            line.trim()));
                 }
             }
         }
@@ -806,32 +848,67 @@ public class AutomationQualityChecker {
     }
 
     // ------------------------------------------------------------------
+    // Returns weak assertion patterns for the given automation language.
+    // ------------------------------------------------------------------
+    private static Pattern[] getWeakAssertionPatterns(String automationLanguage) {
+        String lang = automationLanguage == null ? "" : automationLanguage.trim().toLowerCase();
+        boolean useAll = lang.isEmpty() || "all".equals(lang);
+
+        // Java (Selenium): assert, assertTrue, assertEquals
+        Pattern[] javaPatterns = new Pattern[] {
+                Pattern.compile("\\bassert\\s*\\([^)]*\\)\\s*;?\\s*$"),
+                Pattern.compile("\\bassertTrue\\s*\\(\\s*true\\s*\\)"),
+                Pattern.compile("\\bassertEquals\\s*\\([^)]*,\\s*true\\s*\\)"),
+                Pattern.compile("\\bassertThat\\s*\\([^)]*\\)\\.isTrue\\s*\\(")
+        };
+        // Playwright JS/TS: expect().toBeTruthy(), expect().toBeDefined()
+        Pattern[] playwrightPatterns = new Pattern[] {
+                Pattern.compile("\\bexpect\\s*\\([^)]*\\)\\s*\\.toBeTruthy\\s*\\("),
+                Pattern.compile("\\bexpect\\s*\\([^)]*\\)\\s*\\.toBeDefined\\s*\\("),
+                Pattern.compile("\\bexpect\\s*\\(\\s*true\\s*\\)\\s*\\.to(Be|Equal)\\s*\\(\\s*true\\s*\\)")
+        };
+        // Cypress: .should('exist'), weak should
+        Pattern[] cypressPatterns = new Pattern[] {
+                Pattern.compile("\\.should\\s*\\(\\s*[\"']exist[\"']\\s*\\)"),
+                Pattern.compile("\\.should\\s*\\(\\s*[\"']be\\.visible[\"']\\s*\\)")
+        };
+        // Python: assert, weak expect
+        Pattern[] pythonPatterns = new Pattern[] {
+                Pattern.compile("\\bassert\\s+[A-Za-z_][A-Za-z0-9_]*\\s*$"),
+                Pattern.compile("\\bassert\\s*\\([^)]*\\)\\s*;?\\s*$"),
+                Pattern.compile("\\bexpect\\s*\\([^)]*\\)\\.to_be_truthy\\s*\\(")
+        };
+
+        if (useAll) {
+            Pattern[] all = new Pattern[javaPatterns.length + playwrightPatterns.length + cypressPatterns.length + pythonPatterns.length];
+            System.arraycopy(javaPatterns, 0, all, 0, javaPatterns.length);
+            System.arraycopy(playwrightPatterns, 0, all, javaPatterns.length, playwrightPatterns.length);
+            System.arraycopy(cypressPatterns, 0, all, javaPatterns.length + playwrightPatterns.length, cypressPatterns.length);
+            System.arraycopy(pythonPatterns, 0, all, javaPatterns.length + playwrightPatterns.length + cypressPatterns.length, pythonPatterns.length);
+            return all;
+        }
+        switch (lang) {
+            case "java": return javaPatterns;
+            case "javascript_playwright": return playwrightPatterns;
+            case "javascript_cypress": return cypressPatterns;
+            case "python": return pythonPatterns;
+            default: return javaPatterns;
+        }
+    }
+
+    // ------------------------------------------------------------------
     // Detects weak or poor assertions in tests.
-    //
-    // Weak assertions usually do not validate real outcomes.
-    // Example of weak assertions:
-    // expect(x).toBeTruthy()
-    // assert(true)
-    // expect(true).toBe(true)
-    //
-    // These assertions don't verify application behavior properly.
+    // Uses framework-specific patterns based on automation language.
     // ------------------------------------------------------------------
     private static DynamicArray<Finding> detectPoorAssertions(
             Path path,
-            DynamicArray<String> lines) {
+            DynamicArray<String> lines,
+            String automationLanguage) {
 
-        Pattern[] weakAssertions = new Pattern[] {
-
-                Pattern.compile("\\bexpect\\s*\\([^)]*\\)\\s*\\.toBeTruthy\\s*\\("),
-                Pattern.compile("\\bexpect\\s*\\([^)]*\\)\\s*\\.toBeDefined\\s*\\("),
-                Pattern.compile("\\bassert\\s*\\([^)]*\\)\\s*;?\\s*$"),
-                Pattern.compile("\\bassertTrue\\s*\\(\\s*true\\s*\\)"),
-                Pattern.compile("\\bexpect\\s*\\(\\s*true\\s*\\)\\s*\\.to(Be|Equal)\\s*\\(\\s*true\\s*\\)")
-        };
+        Pattern[] weakAssertions = getWeakAssertionPatterns(automationLanguage);
 
         DynamicArray<Finding> findings = new DynamicArray<>();
 
-        // Scan every line
         for (int i = 0; i < lines.size(); i++) {
 
             String line = lines.get(i);
@@ -858,28 +935,44 @@ public class AutomationQualityChecker {
     }
 
     // ------------------------------------------------------------------
+    // Returns assertion keyword pattern for missing validation detection.
+    // ------------------------------------------------------------------
+    private static Pattern getAssertionKeywordsPattern(String automationLanguage) {
+        String lang = automationLanguage == null ? "" : automationLanguage.trim().toLowerCase();
+        boolean useAll = lang.isEmpty() || "all".equals(lang);
+
+        if (useAll) {
+            return Pattern.compile(
+                    "\\b(expect|assert|assertTrue|assertEquals|assertThat|should|verify|toBe|toEqual|toContain|to_be_attached|to_be_visible|to_contain_text)\\b");
+        }
+        switch (lang) {
+            case "java":
+                return Pattern.compile("\\b(assert|assertTrue|assertEquals|assertThat|Assertions?\\.[A-Za-z_][A-Za-z0-9_]*)\\b");
+            case "javascript_playwright":
+                return Pattern.compile("\\b(expect|toBe|toEqual|toContain|toBeAttached|toBeVisible|toContainText)\\b");
+            case "javascript_cypress":
+                return Pattern.compile("\\b(should|expect)\\b");
+            case "python":
+                return Pattern.compile("\\b(assert|expect|to_be_attached|to_be_visible|to_contain_text)\\b");
+            default:
+                return Pattern.compile("\\b(expect|assert|should)\\b");
+        }
+    }
+
+    // ------------------------------------------------------------------
     // Detects test actions that do not have validation.
-    //
-    // Example:
-    // page.click()
-    // page.fill()
-    // navigate()
-    // selectOption()
-    //
-    // If an action occurs but no assertion exists,
-    // the test might not verify the result.
+    // Uses framework-specific assertion keywords based on automation language.
     // ------------------------------------------------------------------
     private static DynamicArray<Finding> detectMissingValidations(
             Path path,
-            DynamicArray<String> lines) {
+            DynamicArray<String> lines,
+            String automationLanguage) {
 
-        // Test actions
+        // Test actions (common across frameworks)
         Pattern actionPattern = Pattern.compile(
                 "\\b(click|fill|type|tap|submit|navigate|goto|goTo|sendKeys|selectOption|check|uncheck)\\b");
 
-        // Validation patterns
-        Pattern assertionPattern = Pattern.compile(
-                "\\b(expect|assert|should\\s*\\(|verify|toBe|toEqual|toContain)\\b");
+        Pattern assertionPattern = getAssertionKeywordsPattern(automationLanguage);
 
         DynamicArray<Finding> findings = new DynamicArray<>();
 
@@ -911,38 +1004,68 @@ public class AutomationQualityChecker {
     }
 
     // ------------------------------------------------------------------
+    // Returns locator patterns for the given automation language.
+    // all = use all framework patterns; otherwise use language-specific.
+    // ------------------------------------------------------------------
+    private static Pattern[] getLocatorPatterns(String automationLanguage) {
+        String lang = automationLanguage == null ? "" : automationLanguage.trim().toLowerCase();
+        boolean useAll = lang.isEmpty() || "all".equals(lang);
+
+        // Java (Selenium): By.id(, By.xpath(, By.cssSelector(
+        Pattern[] javaPatterns = new Pattern[] {
+                Pattern.compile("\\bBy\\.id\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)"),
+                Pattern.compile("\\bBy\\.xpath\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)"),
+                Pattern.compile("\\bBy\\.cssSelector\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)")
+        };
+        // Playwright: locator(
+        Pattern[] playwrightPatterns = new Pattern[] {
+                Pattern.compile("\\blocator\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)")
+        };
+        // Cypress: cy.get(
+        Pattern[] cypressPatterns = new Pattern[] {
+                Pattern.compile("\\bcy\\.get\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)")
+        };
+        // Python: find_element(
+        Pattern[] pythonPatterns = new Pattern[] {
+                Pattern.compile("\\bfind_element\\s*\\([^,]*,\\s*([\"'][^\"']+[\"'])\\s*\\)")
+        };
+        // Generic CSS/XPath (used when all)
+        Pattern[] genericPatterns = new Pattern[] {
+                Pattern.compile("([\"']#[^\"']+[\"'])"),
+                Pattern.compile("([\"']\\.[^\"']+[\"'])"),
+                Pattern.compile("([\"']//[^\"']+[\"'])")
+        };
+
+        if (useAll) {
+            int total = javaPatterns.length + playwrightPatterns.length + cypressPatterns.length + pythonPatterns.length + genericPatterns.length;
+            Pattern[] all = new Pattern[total];
+            int idx = 0;
+            System.arraycopy(javaPatterns, 0, all, idx, javaPatterns.length); idx += javaPatterns.length;
+            System.arraycopy(playwrightPatterns, 0, all, idx, playwrightPatterns.length); idx += playwrightPatterns.length;
+            System.arraycopy(cypressPatterns, 0, all, idx, cypressPatterns.length); idx += cypressPatterns.length;
+            System.arraycopy(pythonPatterns, 0, all, idx, pythonPatterns.length); idx += pythonPatterns.length;
+            System.arraycopy(genericPatterns, 0, all, idx, genericPatterns.length);
+            return all;
+        }
+        switch (lang) {
+            case "java": return javaPatterns;
+            case "javascript_playwright": return playwrightPatterns;
+            case "javascript_cypress": return cypressPatterns;
+            case "python": return pythonPatterns;
+            default: return javaPatterns;
+        }
+    }
+
+    // ------------------------------------------------------------------
     // Extracts locator usage from automation frameworks.
-    //
-    // Supported locator styles include:
-    // • Playwright
-    // • Selenium
-    // • Cypress
-    // • CSS selectors
-    // • XPath selectors
-    //
-    // The tool later uses these locators to detect duplicates.
+    // Uses framework-specific patterns based on automation language.
     // ------------------------------------------------------------------
     private static DynamicArray<LocatorMatch> extractLocators(
             Path path,
-            DynamicArray<String> lines) {
+            DynamicArray<String> lines,
+            String automationLanguage) {
 
-        Pattern[] locatorPatterns = new Pattern[] {
-
-                // Playwright locator()
-                Pattern.compile("\\blocator\\s*\\(\\s*([\"'][^\"']+[\"'])\\s*\\)"),
-
-                // Selenium By.*
-                Pattern.compile("\\b(By\\.[A-Za-z]+\\s*\\(\\s*[\"'][^\"']+[\"']\\s*\\))"),
-
-                // CSS id selector
-                Pattern.compile("([\"']#[^\"']+[\"'])"),
-
-                // CSS class selector
-                Pattern.compile("([\"']\\.[^\"']+[\"'])"),
-
-                // XPath
-                Pattern.compile("([\"']//[^\"']+[\"'])")
-        };
+        Pattern[] locatorPatterns = getLocatorPatterns(automationLanguage);
 
         DynamicArray<LocatorMatch> matches = new DynamicArray<>();
 
@@ -1044,7 +1167,9 @@ public class AutomationQualityChecker {
     // 5. Detect unused functions
     // 6. Build a final summary report
     // ------------------------------------------------------------------
-    private static BuildResult buildReport(DynamicArray<Path> files) {
+    private static BuildResult buildReport(DynamicArray<Path> files, CliArgs args) {
+
+        java.util.Set<String> enabledIssues = parseEnableIssues(args.enableIssues);
 
         // Stores all findings categorized by issue type
         FindingsByIssue allFindings = new FindingsByIssue();
@@ -1078,61 +1203,74 @@ public class AutomationQualityChecker {
             combinedTextBuilder.append(joinStrings(lines, "\n")).append('\n');
 
             // -----------------------------------------------------------
-            // Run all detectors
+            // Run detectors (only for enabled issue types)
             // -----------------------------------------------------------
 
-            // Detect hard waits
-            allFindings.hardWait.addAll(detectHardWaits(path, lines));
+            if (isIssueEnabled(enabledIssues, "hard_wait")) {
+                allFindings.hardWait.addAll(
+                        detectHardWaits(
+                                path,
+                                lines,
+                                args.hardWaitPreset,
+                                args.seleniumAssertionAsHardWait));
+            }
 
-            // Detect hardcoded credentials / test data
-            allFindings.hardcodedTestData.addAll(detectHardcodedTestData(path, lines));
+            if (isIssueEnabled(enabledIssues, "hardcoded_test_data")) {
+                allFindings.hardcodedTestData.addAll(detectHardcodedTestData(path, lines));
+            }
 
-            // Detect weak assertions
-            allFindings.poorAssertion.addAll(detectPoorAssertions(path, lines));
+            if (isIssueEnabled(enabledIssues, "poor_assertion")) {
+                allFindings.poorAssertion.addAll(detectPoorAssertions(path, lines, args.automationLanguage));
+            }
 
-            // Detect tests missing validations
-            allFindings.missingValidation.addAll(detectMissingValidations(path, lines));
+            if (isIssueEnabled(enabledIssues, "missing_validation")) {
+                allFindings.missingValidation.addAll(detectMissingValidations(path, lines, args.automationLanguage));
+            }
 
             // -----------------------------------------------------------
             // Extract locators and track duplicates
             // -----------------------------------------------------------
-            DynamicArray<LocatorMatch> locators = extractLocators(path, lines);
+            if (isIssueEnabled(enabledIssues, "duplicate_locator")) {
+                DynamicArray<LocatorMatch> locators = extractLocators(path, lines, args.automationLanguage);
 
-            for (int j = 0; j < locators.size(); j++) {
+                for (int j = 0; j < locators.size(); j++) {
 
-                LocatorMatch lm = locators.get(j);
+                    LocatorMatch lm = locators.get(j);
 
-                // Store locator occurrence
-                addLocatorOccurrence(
-                        locatorOccurrences,
-                        lm.value,
-                        new Finding(
-                                path.toString(),
-                                lm.line,
-                                lm.column,
-                                "duplicate_locator",
-                                lm.source));
+                    // Store locator occurrence
+                    addLocatorOccurrence(
+                            locatorOccurrences,
+                            lm.value,
+                            new Finding(
+                                    path.toString(),
+                                    lm.line,
+                                    lm.column,
+                                    "duplicate_locator",
+                                    lm.source));
+                }
             }
 
             // -----------------------------------------------------------
             // Extract declared functions for unused-function detection
             // -----------------------------------------------------------
-            DynamicArray<FunctionDecl> fnDecls = extractFunctionNames(path, lines);
+            if (isIssueEnabled(enabledIssues, "unused_function")) {
+                DynamicArray<FunctionDecl> fnDecls = extractFunctionNames(path, lines);
 
-            for (int j = 0; j < fnDecls.size(); j++) {
+                for (int j = 0; j < fnDecls.size(); j++) {
 
-                FunctionDecl fn = fnDecls.get(j);
+                    FunctionDecl fn = fnDecls.get(j);
 
-                // Ignore private/internal helper functions starting with "_"
-                if (!fn.name.startsWith("_")) {
+                    // Ignore private/internal helper functions starting with "_"
+                    if (!fn.name.startsWith("_")) {
 
-                    declaredFunctions.add(
-                            new Finding(
-                                    path.toString(),
-                                    fn.line,
-                                    fn.column,
-                                    "unused_function",
-                                    fn.name));
+                        declaredFunctions.add(
+                                new Finding(
+                                        path.toString(),
+                                        fn.line,
+                                        fn.column,
+                                        "unused_function",
+                                        fn.name));
+                    }
                 }
             }
         }
@@ -2790,6 +2928,22 @@ public class AutomationQualityChecker {
                     args.maxImpactedPerFunction = Integer.parseInt(requireValue(argv, ++i, arg));
                     break;
 
+                case "--hard-wait-preset":
+                    args.hardWaitPreset = requireValue(argv, ++i, arg);
+                    break;
+
+                case "--selenium-assertion-as-hard-wait":
+                    args.seleniumAssertionAsHardWait = true;
+                    break;
+
+                case "--enable-issues":
+                    args.enableIssues = requireValue(argv, ++i, arg);
+                    break;
+
+                case "--automation-language":
+                    args.automationLanguage = requireValue(argv, ++i, arg);
+                    break;
+
                 default:
 
                     // Unknown flag handling
@@ -2879,6 +3033,28 @@ public class AutomationQualityChecker {
     }
 
     // ------------------------------------------------------------------
+    // Parses --enable-issues CSV into a set of issue IDs.
+    // Empty or null input means all issues are enabled.
+    // ------------------------------------------------------------------
+    private static java.util.Set<String> parseEnableIssues(String value) {
+        java.util.Set<String> set = new java.util.LinkedHashSet<>();
+        if (value == null || value.trim().isEmpty()) {
+            return set; // empty = all enabled
+        }
+        for (String s : value.split(",")) {
+            String id = s.trim();
+            if (!id.isEmpty()) {
+                set.add(id);
+            }
+        }
+        return set;
+    }
+
+    private static boolean isIssueEnabled(java.util.Set<String> enabled, String issueId) {
+        return enabled.isEmpty() || enabled.contains(issueId);
+    }
+
+    // ------------------------------------------------------------------
     // Prints CLI usage instructions to the terminal.
     //
     // Displayed when:
@@ -2902,6 +3078,10 @@ public class AutomationQualityChecker {
                 .println("  --changed-function <name>           Changed function to find impacted tests. Repeatable.");
         System.err.println("  --changed-file <path>               Optional changed file path for function validation.");
         System.err.println("  --max-impacted-per-function <n>     Limit impacted test lines per changed function.");
+        System.err.println("  --hard-wait-preset <name>           Hard wait preset (for example: selenium).");
+        System.err.println("  --selenium-assertion-as-hard-wait   In selenium preset, treat assertions as hard wait.");
+        System.err.println("  --enable-issues <csv>               Comma-separated issue types (empty = all).");
+        System.err.println("  --automation-language <name>        Language for patterns (all, java, javascript_playwright, javascript_cypress, python).");
     }
 
     // ------------------------------------------------------------------
@@ -2941,7 +3121,7 @@ public class AutomationQualityChecker {
         DynamicArray<Path> files = collectFiles(args.targets, extensions);
 
         // Run static analysis
-        BuildResult result = buildReport(files);
+        BuildResult result = buildReport(files, args);
 
         // Print summary to console
         printConsoleReport(result.summary);

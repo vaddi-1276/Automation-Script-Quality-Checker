@@ -93,7 +93,412 @@
       height: fit-content;
     }
 
-    /* additional styles omitted for brevity but remain same */
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .toolbar {
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .title {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      line-height: 1.05;
+      letter-spacing: .01em;
+    }
+
+    .subtitle {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+
+    .section-label {
+      margin: 16px 0 8px;
+      color: #bdd0ff;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 4px;
+      font-size: .78rem;
+      color: #c6d5ff;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #314572;
+      border-radius: 10px;
+      background: rgba(8, 16, 36, .75);
+      color: var(--text);
+      font: inherit;
+      font-size: .86rem;
+      padding: 9px 10px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    textarea {
+      min-height: 58px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #6f92ff;
+      box-shadow: 0 0 0 3px rgba(95, 131, 255, .22);
+      background: rgba(11, 22, 47, .95);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0 0;
+      font-size: .83rem;
+      color: #d5e0ff;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .check input {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      accent-color: var(--primary);
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    button {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 9px 10px;
+      background: linear-gradient(180deg, #6e8fff, #4a6de9);
+      color: #f7f9ff;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+      cursor: pointer;
+      transition: transform .18s ease, filter .18s ease, box-shadow .18s ease, border-color .18s ease;
+      box-shadow: 0 8px 16px rgba(49, 88, 224, .32);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
+      filter: none;
+      box-shadow: none;
+    }
+
+    button.secondary {
+      background: rgba(23, 36, 70, .85);
+      border-color: #36508a;
+      box-shadow: none;
+      color: #dce6ff;
+    }
+
+    .inline-status {
+      margin-top: 10px;
+      border: 1px solid #2f4478;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: .78rem;
+      color: #d8e3ff;
+      background: rgba(12, 20, 44, .72);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .issue-checks {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .patterns-panel {
+      margin-top: 8px;
+      padding: 10px;
+      background: rgba(0, 0, 0, .2);
+      border-radius: 8px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .pattern-block {
+      margin-bottom: 10px;
+    }
+
+    .pattern-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .pattern-label {
+      font-weight: 700;
+      color: #bdd0ff;
+      margin-bottom: 6px;
+    }
+
+    .pattern-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .75rem;
+    }
+
+    .pattern-table td {
+      padding: 3px 8px 3px 0;
+      vertical-align: top;
+    }
+
+    .pattern-key {
+      color: var(--muted);
+      white-space: nowrap;
+      width: 1%;
+    }
+
+    .pattern-table code {
+      font-family: ui-monospace, monospace;
+      color: var(--primary);
+      font-size: .85em;
+    }
+
+    .main-patterns-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .main-patterns-panel .pattern-block {
+      background: rgba(0, 0, 0, .15);
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+    }
+
+    .main-patterns-panel .pattern-label {
+      font-size: .9rem;
+      margin-bottom: 8px;
+    }
+
+    .main-patterns-panel .pattern-table td {
+      padding: 4px 8px 4px 0;
+    }
+
+    .hard-wait-defs code {
+      font-family: ui-monospace, monospace;
+      color: var(--primary);
+      font-size: .85em;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #35508d;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: var(--chip);
+      color: #d6e2ff;
+      font-size: .76rem;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .panel:has(.metrics) {
+      padding: 14px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      min-height: 84px;
+    }
+
+    .metric {
+      border: 1px solid #2f4678;
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: rgba(10, 19, 42, .68);
+      min-height: 72px;
+    }
+
+    .metric-label {
+      color: #b8c8ef;
+      font-size: .76rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .metric-value {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-top: 4px;
+      color: #f5f8ff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .card {
+      padding: 14px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: .98rem;
+      letter-spacing: .01em;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .tab {
+      border: 1px solid #375492;
+      background: rgba(16, 29, 62, .85);
+      border-radius: 999px;
+      color: #d7e3ff;
+      padding: 6px 11px;
+      font-size: .76rem;
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+
+    .tab.active {
+      background: rgba(75, 110, 234, .26);
+      border-color: #6a8eff;
+      color: #f2f6ff;
+    }
+
+    .issue-list {
+      max-height: 360px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-right: 4px;
+    }
+
+    .issue-item {
+      border: 1px solid #2e4473;
+      border-radius: 10px;
+      background: rgba(9, 18, 38, .66);
+      padding: 10px;
+      font-size: .83rem;
+      line-height: 1.4;
+    }
+
+    .issue-title {
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: #f5f8ff;
+    }
+
+    .issue-meta {
+      color: #adc0eb;
+      font-size: .75rem;
+    }
+
+    .log-console {
+      margin-top: 8px;
+      border: 1px solid #2f4778;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(8, 15, 31, .88), rgba(7, 13, 28, .95));
+      min-height: 150px;
+      max-height: 240px;
+      overflow: auto;
+      padding: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", monospace;
+      font-size: .8rem;
+      color: #dbe6ff;
+      line-height: 1.42;
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 1080px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .app {
+        padding: 12px;
+      }
+
+      .row,
+      .buttons,
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        padding: 14px;
+      }
+
+      .chips {
+        justify-content: flex-start;
+      }
+    }
   </style>
 </head>
 
@@ -126,6 +531,21 @@
 
 
       <!-- ===================================================== -->
+      <!-- AUTOMATION LANGUAGE                                   -->
+      <!-- Select the programming language of your test suite   -->
+      <!-- ===================================================== -->
+
+      <div class="section-label">Automation Language</div>
+      <label for="automationLanguage">Programming Language</label>
+      <select id="automationLanguage">
+        <option value="all" selected>All</option>
+        <option value="java">Java (Selenium)</option>
+        <option value="javascript_playwright">JavaScript / TypeScript (Playwright)</option>
+        <option value="javascript_cypress">JavaScript / TypeScript (Cypress)</option>
+        <option value="python">Python</option>
+      </select>
+
+      <!-- ===================================================== -->
       <!-- SCAN INPUT SECTION                                   -->
       <!-- User provides folders, extensions and changed files  -->
       <!-- ===================================================== -->
@@ -144,20 +564,7 @@
 
       <!-- File Extensions to scan -->
       <label for="extensions">Extensions CSV</label>
-      <input id="extensions" value=".js,.ts,.jsx,.tsx,.py">
-
-
-      <!-- Changed functions input -->
-      <label for="changedFunctions">Changed Functions</label>
-      <textarea id="changedFunctions">
-loginWithOtp
-submitOrder
-  </textarea>
-
-
-      <!-- Changed file path -->
-      <label for="changedFile">Changed File</label>
-      <input id="changedFile" value="./tests/helpers/auth.ts">
+      <input id="extensions" value=".java,.js,.ts,.jsx,.tsx,.py">
 
 
       <!-- ===================================================== -->
@@ -170,7 +577,7 @@ submitOrder
         <!-- Maximum lines per issue -->
         <div>
           <label for="maxLines">Max lines/issue</label>
-          <input id="maxLines" type="number" value="10">
+          <input id="maxLines" type="number" value="100">
         </div>
 
         <!-- Maximum impacted tests -->
@@ -189,10 +596,25 @@ submitOrder
 
       <div class="section-label">Outputs</div>
 
-      <label class="check"><input type="checkbox" checked>JSON Report</label>
-      <label class="check"><input type="checkbox" checked>TXT Report</label>
-      <label class="check"><input type="checkbox" checked>Markdown Report</label>
-      <label class="check"><input type="checkbox" checked>Show Console Lines</label>
+      <label class="check"><input id="outJson" type="checkbox" checked>JSON Report</label>
+      <label class="check"><input id="outTxt" type="checkbox" checked>TXT Report</label>
+      <label class="check"><input id="outMd" type="checkbox" checked>Markdown Report</label>
+      <label class="check"><input id="showLines" type="checkbox" checked>Show Console Lines</label>
+
+      <div class="section-label">Issue Types to Detect</div>
+      <div id="issueTypeChecks" class="issue-checks">
+        <label class="check"><input type="checkbox" id="chkHardWait" data-issue="hard_wait" checked>Hard waits</label>
+        <label class="check"><input type="checkbox" id="chkHardcodedData" data-issue="hardcoded_test_data" checked>Hardcoded test data</label>
+        <label class="check"><input type="checkbox" id="chkDuplicateLocator" data-issue="duplicate_locator" checked>Duplicate locators</label>
+        <label class="check"><input type="checkbox" id="chkPoorAssertion" data-issue="poor_assertion" checked>Weak assertions</label>
+        <label class="check"><input type="checkbox" id="chkUnusedFunction" data-issue="unused_function" checked>Unused helper functions</label>
+        <label class="check"><input type="checkbox" id="chkMissingValidation" data-issue="missing_validation" checked>Missing validations</label>
+      </div>
+
+      <div class="section-label">Detection Patterns</div>
+      <div id="detectionPatternsPanel" class="patterns-panel"></div>
+      <input type="hidden" id="hardWaitPreset" value="selenium">
+      <label class="check" id="seleniumAssertionLabel"><input id="seleniumAssertionAsHardWait" type="checkbox" checked>Include assertions as hard wait (Java/Selenium mode)</label>
 
 
       <!-- ===================================================== -->
@@ -256,7 +678,7 @@ submitOrder
 
         <!-- Information chips -->
         <div class="chips">
-          <span class="chip">Issue Order: hard_wait → missing_validation</span>
+          <span class="chip">Issue Order: Hard Wait | Hardcoded Data | Duplicate Locator | Poor Assertion | Unused Function | Missing Validation</span>
           <span class="chip">Source: report.json or mock payload</span>
         </div>
 
@@ -272,6 +694,19 @@ submitOrder
         <div class="metrics" id="metrics"></div>
       </section>
 
+
+      <!-- ===================================================== -->
+      <!-- DETECTION PATTERNS PANEL                              -->
+      <!-- Shows patterns used for each language based on selection -->
+      <!-- ===================================================== -->
+
+      <section class="panel card">
+        <h3>Detection Patterns</h3>
+        <div class="patterns-subtitle" style="color:var(--muted);font-size:.84rem;margin-bottom:12px;">
+          Patterns used for scanning based on selected Programming Language
+        </div>
+        <div id="mainDetectionPatterns" class="main-patterns-panel"></div>
+      </section>
 
 
       <!-- ===================================================== -->
@@ -324,18 +759,460 @@ submitOrder
   <!-- ===================================================== -->
 
   <script>
+    const ISSUE_CONFIG = [
+      { id: "hard_wait", label: "Hard Wait", summaryKey: "hard_wait_found" },
+      { id: "hardcoded_test_data", label: "Hardcoded Data", summaryKey: "hardcoded_test_data" },
+      { id: "duplicate_locator", label: "Duplicate Locator", summaryKey: "duplicate_locators" },
+      { id: "poor_assertion", label: "Poor Assertion", summaryKey: "poor_assertions" },
+      { id: "unused_function", label: "Unused Function", summaryKey: "unused_functions" },
+      { id: "missing_validation", label: "Missing Validation", summaryKey: "missing_validations" }
+    ];
 
-    /*
-    Frontend Script Responsibilities
-    
-    1. Render Metrics
-    2. Render Issue Tabs
-    3. Display Issue Findings
-    4. Connect with Backend APIs
-    5. Stream Logs via EventSource
-    6. Handle Live Scan Execution
-    7. Display Demo Data
-    */
+    const state = {
+      running: false,
+      runId: null,
+      eventSource: null,
+      selectedIssue: ISSUE_CONFIG[0].id,
+      currentPayload: null
+    };
+
+    const refs = {
+      metrics: document.getElementById("metrics"),
+      issueTabs: document.getElementById("issueTabs"),
+      issueList: document.getElementById("issueList"),
+      logConsole: document.getElementById("logConsole"),
+      backendStatus: document.getElementById("backendStatus"),
+      liveRun: document.getElementById("liveRun"),
+      stopRun: document.getElementById("stopRun"),
+      simulateRun: document.getElementById("simulateRun"),
+      resetData: document.getElementById("resetData"),
+      scanFolder: document.getElementById("scanFolder"),
+      extensions: document.getElementById("extensions"),
+      maxLines: document.getElementById("maxLines"),
+      maxImpacted: document.getElementById("maxImpacted"),
+      outJson: document.getElementById("outJson"),
+      outTxt: document.getElementById("outTxt"),
+      outMd: document.getElementById("outMd"),
+      showLines: document.getElementById("showLines"),
+      automationLanguage: document.getElementById("automationLanguage"),
+      hardWaitPreset: document.getElementById("hardWaitPreset"),
+      seleniumAssertionAsHardWait: document.getElementById("seleniumAssertionAsHardWait"),
+      seleniumAssertionLabel: document.getElementById("seleniumAssertionLabel"),
+      detectionPatternsPanel: document.getElementById("detectionPatternsPanel"),
+      mainDetectionPatterns: document.getElementById("mainDetectionPatterns")
+    };
+
+    const ISSUE_IDS = ["hard_wait", "hardcoded_test_data", "duplicate_locator", "poor_assertion", "unused_function", "missing_validation"];
+
+    const DETECTION_PATTERNS = {
+      java: {
+        label: "Java (Selenium)",
+        hardWait: ["Thread.sleep("],
+        hardcodedData: ["password", "token", "email", "url"],
+        locator: ["By.id(", "By.xpath(", "By.cssSelector("],
+        weakAssertion: ["assert(", "assertTrue(true)", "assertEquals(..., true)"],
+        unusedFunction: ["function ", "def "],
+        assertion: ["assert", "assertTrue", "assertEquals", "assertThat"]
+      },
+      javascript_playwright: {
+        label: "Playwright JS/TS",
+        hardWait: ["waitForTimeout("],
+        hardcodedData: ["password", "token", "email", "url"],
+        locator: ["locator("],
+        weakAssertion: ["expect().toBeTruthy(", "expect().toBeDefined("],
+        unusedFunction: ["function ", "const ... =>"],
+        assertion: ["expect", "toBe", "toEqual", "toContain"]
+      },
+      javascript_cypress: {
+        label: "Cypress",
+        hardWait: ["cy.wait("],
+        hardcodedData: ["password", "token", "email", "url"],
+        locator: ["cy.get("],
+        weakAssertion: [".should('exist')", ".should('be.visible')"],
+        unusedFunction: ["function ", "const ... =>"],
+        assertion: ["should", "expect"]
+      },
+      python: {
+        label: "Python (Selenium / Playwright)",
+        hardWait: ["time.sleep("],
+        hardcodedData: ["password", "token", "email", "url"],
+        locator: ["find_element("],
+        weakAssertion: ["assert ", "expect().to_be_truthy("],
+        unusedFunction: ["def "],
+        assertion: ["assert", "expect", "to_be_attached", "to_be_visible"]
+      }
+    };
+
+    const AUTOMATION_LANGUAGE_CONFIG = {
+      all: { extensions: ".java,.js,.ts,.jsx,.tsx,.py", hardWaitPreset: "javascript", showAssertionCheckbox: false, enabledIssues: ISSUE_IDS },
+      java: { extensions: ".java", hardWaitPreset: "selenium", showAssertionCheckbox: true, enabledIssues: ISSUE_IDS },
+      javascript_playwright: { extensions: ".js,.ts,.jsx,.tsx", hardWaitPreset: "javascript", showAssertionCheckbox: false, enabledIssues: ISSUE_IDS },
+      javascript_cypress: { extensions: ".js,.ts,.jsx,.tsx", hardWaitPreset: "javascript", showAssertionCheckbox: false, enabledIssues: ISSUE_IDS },
+      python: { extensions: ".py", hardWaitPreset: "python", showAssertionCheckbox: false, enabledIssues: ISSUE_IDS }
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function formatLocation(file, line, col) {
+      let path = String(file || "unknown file").replace(/\\/g, "/").trim();
+      const srcIdx = path.indexOf("src/");
+      if (srcIdx >= 0) path = "/" + path.substring(srcIdx);
+      else if (path && !path.startsWith("/")) path = "/" + path;
+      const ln = line ?? "-";
+      const cn = col ?? "-";
+      return `${path}:${ln}:${cn}`;
+    }
+
+    function toLines(raw) {
+      return String(raw || "")
+        .split(/\r?\n/)
+        .map((x) => x.trim())
+        .filter(Boolean);
+    }
+
+    function setButtons() {
+      refs.liveRun.disabled = state.running;
+      refs.simulateRun.disabled = state.running;
+      refs.stopRun.disabled = !state.running;
+    }
+
+    function appendLog(line) {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, "0");
+      const mm = String(now.getMinutes()).padStart(2, "0");
+      const ss = String(now.getSeconds()).padStart(2, "0");
+      const prefix = `[${hh}:${mm}:${ss}] `;
+      if (!refs.logConsole.textContent || refs.logConsole.textContent.includes("will appear here")) {
+        refs.logConsole.textContent = "";
+      }
+      refs.logConsole.textContent += `${prefix}${line}\n`;
+      refs.logConsole.scrollTop = refs.logConsole.scrollHeight;
+    }
+
+    function getIssueCount(payload, issueId) {
+      const findings = payload?.findings?.[issueId];
+      if (Array.isArray(findings)) {
+        return findings.length;
+      }
+      const summaryKey = ISSUE_CONFIG.find((x) => x.id === issueId)?.summaryKey;
+      return Number(payload?.summary?.[summaryKey] || 0);
+    }
+
+    function renderMetrics(payload) {
+      const summary = payload?.summary || {};
+      const cards = [
+        { label: "Files Scanned", value: summary.total_files_scanned ?? 0 },
+        { label: "Hard Wait", value: summary.hard_wait_found ?? 0 },
+        { label: "Hardcoded Data", value: summary.hardcoded_test_data ?? 0 },
+        { label: "Duplicate Locator", value: summary.duplicate_locators ?? 0 },
+        { label: "Poor Assertion", value: summary.poor_assertions ?? 0 },
+        { label: "Unused Function", value: summary.unused_functions ?? 0 },
+        { label: "Missing Validation", value: summary.missing_validations ?? 0 }
+      ];
+      refs.metrics.innerHTML = cards.map((card) => `
+        <div class="metric">
+          <div class="metric-label">${escapeHtml(card.label)}</div>
+          <div class="metric-value">${escapeHtml(card.value)}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderIssueTabs(payload) {
+      refs.issueTabs.innerHTML = ISSUE_CONFIG.map((issue) => {
+        const count = getIssueCount(payload, issue.id);
+        const active = state.selectedIssue === issue.id ? "active" : "";
+        return `<button class="tab ${active}" data-issue="${issue.id}" type="button">${escapeHtml(issue.label)} (${count})</button>`;
+      }).join("");
+
+      refs.issueTabs.querySelectorAll("button[data-issue]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.selectedIssue = btn.getAttribute("data-issue");
+          renderIssueTabs(state.currentPayload);
+          renderIssueList(state.currentPayload);
+        });
+      });
+    }
+
+    function renderIssueList(payload) {
+      const items = payload?.findings?.[state.selectedIssue];
+      if (!Array.isArray(items) || items.length === 0) {
+        refs.issueList.innerHTML = "<div class=\"issue-item\"><div class=\"issue-title\">No findings in this category</div><div class=\"issue-meta\">Try another tab or run a new scan.</div></div>";
+        return;
+      }
+      refs.issueList.innerHTML = items.map((item, idx) => `
+        <div class="issue-item">
+          <div class="issue-title">${idx + 1}. ${escapeHtml(item.detail || item.issue || "Issue")}</div>
+          <div class="issue-meta">${escapeHtml(formatLocation(item.file, item.line, item.column))}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderPayload(payload) {
+      state.currentPayload = payload || {};
+      renderMetrics(state.currentPayload);
+      renderIssueTabs(state.currentPayload);
+      renderIssueList(state.currentPayload);
+    }
+
+    function getEmptyPayload() {
+      return {
+        summary: {
+          total_files_scanned: 0,
+          hard_wait_found: 0,
+          hardcoded_test_data: 0,
+          duplicate_locators: 0,
+          poor_assertions: 0,
+          unused_functions: 0,
+          missing_validations: 0
+        },
+        findings: {
+          hard_wait: [],
+          hardcoded_test_data: [],
+          duplicate_locator: [],
+          poor_assertion: [],
+          unused_function: [],
+          missing_validation: []
+        }
+      };
+    }
+
+    async function checkBackendHealth() {
+      try {
+        const resp = await fetch("/api/health");
+        if (!resp.ok) {
+          throw new Error(`status ${resp.status}`);
+        }
+        refs.backendStatus.textContent = "Backend status: connected";
+      } catch (error) {
+        refs.backendStatus.textContent = "Backend status: offline (start ui_live_server.py)";
+      }
+    }
+
+    function collectRunPayload() {
+      return {
+        targets: toLines(refs.scanFolder.value),
+        extensions: refs.extensions.value.trim(),
+        changedFunctions: [],
+        changedFile: "",
+        maxLinesPerIssue: Number(refs.maxLines.value || 0),
+        maxImpactedPerFunction: Number(refs.maxImpacted.value || 0),
+        outputJson: refs.outJson.checked,
+        outputTxt: refs.outTxt.checked,
+        outputMd: refs.outMd.checked,
+        showLines: refs.showLines.checked,
+        hardWaitPreset: refs.hardWaitPreset.value.trim(),
+        seleniumAssertionAsHardWait: refs.seleniumAssertionAsHardWait.checked,
+        enabledIssues: getEnabledIssues(),
+        automationLanguage: refs.automationLanguage.value.trim()
+      };
+    }
+
+    async function waitForResult(runId) {
+      for (let i = 0; i < 90; i++) {
+        const resp = await fetch(`/api/result/${encodeURIComponent(runId)}`);
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data.done) {
+            return data.payload || null;
+          }
+        }
+        await new Promise((resolve) => setTimeout(resolve, 400));
+      }
+      return null;
+    }
+
+    async function runLiveScan() {
+      if (state.running) {
+        return;
+      }
+      state.running = true;
+      state.runId = null;
+      setButtons();
+      refs.logConsole.textContent = "";
+      appendLog("Submitting run request...");
+
+      try {
+        const runResp = await fetch("/api/run", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(collectRunPayload())
+        });
+        const runData = await runResp.json();
+        if (!runResp.ok || !runData.runId) {
+          throw new Error(runData.error || "Unable to start run");
+        }
+
+        state.runId = runData.runId;
+        appendLog(`Run started (${state.runId}).`);
+
+        await new Promise((resolve) => {
+          state.eventSource = new EventSource(`/api/logs/${encodeURIComponent(state.runId)}`);
+          state.eventSource.onmessage = (event) => {
+            if (event.data === "__RUN_DONE__") {
+              state.eventSource.close();
+              state.eventSource = null;
+              resolve();
+              return;
+            }
+            appendLog(event.data);
+          };
+          state.eventSource.onerror = () => {
+            appendLog("Log stream interrupted.");
+            if (state.eventSource) {
+              state.eventSource.close();
+              state.eventSource = null;
+            }
+            resolve();
+          };
+        });
+
+        const payload = await waitForResult(state.runId);
+        if (payload) {
+          renderPayload(payload);
+          appendLog("Report rendered successfully.");
+        } else {
+          appendLog("Run completed, but report payload was empty.");
+        }
+      } catch (error) {
+        appendLog(`Run failed: ${error.message}`);
+      } finally {
+        state.running = false;
+        setButtons();
+      }
+    }
+
+    async function stopLiveScan() {
+      if (!state.runId) {
+        appendLog("No active run to stop.");
+        return;
+      }
+      try {
+        await fetch(`/api/stop/${encodeURIComponent(state.runId)}`, { method: "POST" });
+        appendLog("Stop requested.");
+      } catch (error) {
+        appendLog(`Stop failed: ${error.message}`);
+      }
+    }
+
+    function runDemoData() {
+      const demoPayload = {
+        summary: {
+          hard_wait_found: 4,
+          hardcoded_test_data: 3,
+          duplicate_locators: 2,
+          poor_assertions: 5,
+          unused_functions: 1,
+          missing_validations: 6,
+          total_files_scanned: 19
+        },
+        findings: {
+          hard_wait: [
+            { file: "src/pages/login.spec.ts", line: 24, column: 9, issue: "hard_wait", detail: "waitForTimeout(3000) used before assertion." },
+            { file: "src/tests/order.test.js", line: 88, column: 5, issue: "hard_wait", detail: "sleep(2000) introduces flaky timing dependency." }
+          ],
+          hardcoded_test_data: [
+            { file: "src/tests/auth.spec.ts", line: 17, column: 15, issue: "hardcoded_test_data", detail: "Inline email/password string found in test." }
+          ],
+          duplicate_locator: [
+            { file: "src/pages/cart.page.ts", line: 36, column: 12, issue: "duplicate_locator", detail: "Locator '#submit-order' repeated across modules." }
+          ],
+          poor_assertion: [
+            { file: "src/tests/payment.spec.ts", line: 44, column: 10, issue: "poor_assertion", detail: "Generic truthy assertion with low signal." }
+          ],
+          unused_function: [
+            { file: "src/helpers/legacy.ts", line: 91, column: 1, issue: "unused_function", detail: "Function 'formatOtpLegacy' is never referenced." }
+          ],
+          missing_validation: [
+            { file: "src/tests/checkout.spec.ts", line: 52, column: 7, issue: "missing_validation", detail: "Click action has no nearby validation step." }
+          ]
+        }
+      };
+      renderPayload(demoPayload);
+      appendLog("Demo payload loaded.");
+    }
+
+    function resetDashboard() {
+      state.selectedIssue = ISSUE_CONFIG[0].id;
+      renderPayload(getEmptyPayload());
+      refs.logConsole.textContent = "Live scan logs will appear here...";
+      appendLog("Dashboard reset.");
+    }
+
+    const PATTERN_ROWS = [
+      { key: "hardWait", label: "Hard waits" },
+      { key: "hardcodedData", label: "Hardcoded test data" },
+      { key: "locator", label: "Duplicate locators" },
+      { key: "weakAssertion", label: "Weak assertions" },
+      { key: "unusedFunction", label: "Unused helper functions" },
+      { key: "assertion", label: "Missing validations" }
+    ];
+
+    function renderDetectionPatterns(lang) {
+      const langKeys = ["java", "javascript_playwright", "javascript_cypress", "python"];
+      const patterns = lang === "all"
+        ? langKeys.map((k) => DETECTION_PATTERNS[k]).filter(Boolean)
+        : [DETECTION_PATTERNS[lang]].filter(Boolean);
+      if (patterns.length === 0) return;
+
+      const renderTable = (p) => {
+        let rows = "";
+        PATTERN_ROWS.forEach((row) => {
+          const vals = p[row.key];
+          if (!vals || !Array.isArray(vals)) return;
+          rows += `<tr><td class="pattern-key">${escapeHtml(row.label)}</td><td>${vals.map((x) => `<code>${escapeHtml(x)}</code>`).join(" ")}</td></tr>`;
+        });
+        return rows;
+      };
+
+      let html = "";
+      patterns.forEach((p) => {
+        html += `<div class="pattern-block">`;
+        html += `<div class="pattern-label">${escapeHtml(p.label)}</div>`;
+        html += `<table class="pattern-table"><tbody>${renderTable(p)}</tbody></table></div>`;
+      });
+
+      if (refs.detectionPatternsPanel) refs.detectionPatternsPanel.innerHTML = html;
+      if (refs.mainDetectionPatterns) refs.mainDetectionPatterns.innerHTML = html;
+    }
+
+    function updateAutomationLanguageUI() {
+      const lang = refs.automationLanguage.value;
+      const config = AUTOMATION_LANGUAGE_CONFIG[lang] || AUTOMATION_LANGUAGE_CONFIG.all;
+      refs.extensions.value = config.extensions;
+      refs.hardWaitPreset.value = config.hardWaitPreset;
+      refs.seleniumAssertionLabel.style.display = config.showAssertionCheckbox ? "block" : "none";
+      const enabled = new Set(config.enabledIssues || ISSUE_IDS);
+      ISSUE_IDS.forEach((id) => {
+        const chk = document.querySelector(`#issueTypeChecks input[data-issue="${id}"]`);
+        if (chk) chk.checked = enabled.has(id);
+      });
+      renderDetectionPatterns(lang);
+    }
+
+    function getEnabledIssues() {
+      return ISSUE_IDS.filter((id) => {
+        const chk = document.querySelector(`#issueTypeChecks input[data-issue="${id}"]`);
+        return chk && chk.checked;
+      });
+    }
+
+    refs.automationLanguage.addEventListener("change", updateAutomationLanguageUI);
+    refs.liveRun.addEventListener("click", runLiveScan);
+    refs.stopRun.addEventListener("click", stopLiveScan);
+    refs.simulateRun.addEventListener("click", runDemoData);
+    refs.resetData.addEventListener("click", resetDashboard);
+
+    updateAutomationLanguageUI();
+    setButtons();
+    renderPayload(getEmptyPayload());
+    checkBackendHealth();
+    setInterval(checkBackendHealth, 5000);
 
   </script>
 
