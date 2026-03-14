@@ -66,6 +66,21 @@ def build_command(body):
     if body.get("showLines", True):
         cmd.append("--show-lines")
 
+    hard_wait_preset = str(body.get("hardWaitPreset", "")).strip()
+    if hard_wait_preset:
+        cmd += ["--hard-wait-preset", hard_wait_preset]
+
+    automation_language = str(body.get("automationLanguage", "")).strip()
+    if automation_language:
+        cmd += ["--automation-language", automation_language]
+
+    if body.get("seleniumAssertionAsHardWait", False):
+        cmd.append("--selenium-assertion-as-hard-wait")
+
+    enabled_issues = body.get("enabledIssues", [])
+    if isinstance(enabled_issues, list) and enabled_issues:
+        cmd += ["--enable-issues", ",".join(str(x) for x in enabled_issues)]
+
     max_lines = parse_bounded_int(body.get("maxLinesPerIssue", 0))
     if max_lines > 0:
         cmd += ["--max-lines-per-issue", str(max_lines)]
