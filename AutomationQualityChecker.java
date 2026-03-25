@@ -16,7 +16,6 @@ Detects Issues Such As:
 • Duplicate locators
 • Weak assertions
 • Unused helper functions
-• Missing validations
 
 Outputs:
 • Console summary
@@ -105,8 +104,7 @@ public class AutomationQualityChecker {
             "hardcoded_test_data",
             "duplicate_locator",
             "poor_assertion",
-            "unused_function",
-            "missing_validation"
+            "unused_function"
     };
 
     /*
@@ -223,13 +221,20 @@ public class AutomationQualityChecker {
         final int column;
         final String issue;
         final String detail;
+        /** Optional auto-fix hint for JSON/console/TXT/MD when non-null. */
+        final String suggestedFix;
 
         Finding(String file, int line, int column, String issue, String detail) {
+            this(file, line, column, issue, detail, null);
+        }
+
+        Finding(String file, int line, int column, String issue, String detail, String suggestedFix) {
             this.file = file;
             this.line = line;
             this.column = column;
             this.issue = issue;
             this.detail = detail;
+            this.suggestedFix = suggestedFix;
         }
     }
 
@@ -300,16 +305,55 @@ public class AutomationQualityChecker {
         final FindingsByIssue findings;
         final DynamicArray<DuplicateGroup> duplicateGroups;
         final DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights;
+        final DynamicArray<FlakyFileAnalysis> flakyTestAnalysis;
 
         BuildResult(
                 Summary summary,
                 FindingsByIssue findings,
                 DynamicArray<DuplicateGroup> duplicateGroups,
-                DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights) {
+                DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights,
+                DynamicArray<FlakyFileAnalysis> flakyTestAnalysis) {
             this.summary = summary;
             this.findings = findings;
             this.duplicateGroups = duplicateGroups;
             this.duplicateRefactorInsights = duplicateRefactorInsights;
+            this.flakyTestAnalysis = flakyTestAnalysis;
+        }
+    }
+
+    /*
+     * Per-file counters while scanning (flaky-risk heuristics).
+     */
+    private static class FlakyFileAccumulator {
+
+        final String file;
+        int hardWaitCount;
+        boolean retryDetected;
+
+        FlakyFileAccumulator(String file) {
+            this.file = file;
+        }
+    }
+
+    /*
+     * Flaky-test risk summary for one file (JSON + reports).
+     */
+    private static class FlakyFileAnalysis {
+
+        final String file;
+        final String flakyTestRisk;
+        final int hardWaitCount;
+        final boolean retryUsageDetected;
+
+        FlakyFileAnalysis(
+                String file,
+                String flakyTestRisk,
+                int hardWaitCount,
+                boolean retryUsageDetected) {
+            this.file = file;
+            this.flakyTestRisk = flakyTestRisk;
+            this.hardWaitCount = hardWaitCount;
+            this.retryUsageDetected = retryUsageDetected;
         }
     }
 
@@ -327,7 +371,6 @@ public class AutomationQualityChecker {
         final int duplicateLocators;
         final int poorAssertions;
         final int unusedFunctions;
-        final int missingValidations;
         final int totalFilesScanned;
 
         Summary(
@@ -336,14 +379,12 @@ public class AutomationQualityChecker {
                 int duplicateLocators,
                 int poorAssertions,
                 int unusedFunctions,
-                int missingValidations,
                 int totalFilesScanned) {
             this.hardWaitFound = hardWaitFound;
             this.hardcodedTestData = hardcodedTestData;
             this.duplicateLocators = duplicateLocators;
             this.poorAssertions = poorAssertions;
             this.unusedFunctions = unusedFunctions;
-            this.missingValidations = missingValidations;
             this.totalFilesScanned = totalFilesScanned;
         }
     }
@@ -363,7 +404,6 @@ public class AutomationQualityChecker {
         final DynamicArray<Finding> duplicateLocator = new DynamicArray<>();
         final DynamicArray<Finding> poorAssertion = new DynamicArray<>();
         final DynamicArray<Finding> unusedFunction = new DynamicArray<>();
-        final DynamicArray<Finding> missingValidation = new DynamicArray<>();
 
         DynamicArray<Finding> get(String issue) {
 
@@ -382,9 +422,6 @@ public class AutomationQualityChecker {
 
                 case "unused_function":
                     return unusedFunction;
-
-                case "missing_validation":
-                    return missingValidation;
 
                 default:
                     return new DynamicArray<>();
@@ -512,7 +549,6 @@ public class AutomationQualityChecker {
      * • Hardcoded test data
      * • Duplicate locators
      * • Weak assertions
-     * • Missing validations
      * • Unused functions
      * 
      * The tool scans multiple file types like:
@@ -752,7 +788,8 @@ public class AutomationQualityChecker {
                         i + 1,
                         threadSleep.start() + 1,
                         "hard_wait",
-                        line.trim()));
+                        line.trim(),
+                        suggestedFixForHardWait(line)));
             }
 
             // In selenium preset mode, hard waits are predefined from UI.
@@ -772,7 +809,8 @@ public class AutomationQualityChecker {
                                 i + 1,
                                 m.start() + 1,
                                 "hard_wait",
-                                line.trim()));
+                                line.trim(),
+                                suggestedFixForHardWait(line)));
                     }
                 }
             }
@@ -785,7 +823,8 @@ public class AutomationQualityChecker {
                             i + 1,
                             assertion.start() + 1,
                             "hard_wait",
-                            line.trim()));
+                            line.trim(),
+                            suggestedFixForHardWait(line)));
                 }
             }
         }
@@ -927,7 +966,8 @@ public class AutomationQualityChecker {
                             i + 1,
                             matcher.start() + 1,
                             "poor_assertion",
-                            line.trim()));
+                            line.trim(),
+                            suggestedFixForPoorAssertion(line, automationLanguage)));
 
                     break;
                 }
@@ -938,73 +978,209 @@ public class AutomationQualityChecker {
     }
 
     // ------------------------------------------------------------------
-    // Returns assertion keyword pattern for missing validation detection.
+    // Heuristic: first CSS id/class or XPath-like string on the line for fix templates.
     // ------------------------------------------------------------------
-    private static Pattern getAssertionKeywordsPattern(String automationLanguage) {
-        String lang = automationLanguage == null ? "" : automationLanguage.trim().toLowerCase();
-        boolean useAll = lang.isEmpty() || "all".equals(lang);
+    private static String guessSelectorFromLine(String line) {
 
-        if (useAll) {
-            return Pattern.compile(
-                    "\\b(expect|assert|assertTrue|assertEquals|assertThat|should|verify|toBe|toEqual|toContain|to_be_attached|to_be_visible|to_contain_text)\\b");
+        Matcher m = Pattern.compile("[\"']([#.][^\"']{1,120}|[/]{1,2}[^\"']{1,120})[\"']").matcher(line);
+
+        if (m.find()) {
+            return m.group(1);
         }
-        switch (lang) {
-            case "java":
-                return Pattern.compile("\\b(assert|assertTrue|assertEquals|assertThat|Assertions?\\.[A-Za-z_][A-Za-z0-9_]*)\\b");
-            case "javascript_playwright":
-                return Pattern.compile("\\b(expect|toBe|toEqual|toContain|toBeAttached|toBeVisible|toContainText)\\b");
-            case "javascript_cypress":
-                return Pattern.compile("\\b(should|expect)\\b");
-            case "python":
-                return Pattern.compile("\\b(assert|expect|to_be_attached|to_be_visible|to_contain_text)\\b");
-            default:
-                return Pattern.compile("\\b(expect|assert|should)\\b");
-        }
+
+        return null;
     }
 
     // ------------------------------------------------------------------
-    // Detects test actions that do not have validation.
-    // Uses framework-specific assertion keywords based on automation language.
+    // Suggested replacement for hard-wait / timing anti-patterns.
     // ------------------------------------------------------------------
-    private static DynamicArray<Finding> detectMissingValidations(
-            Path path,
-            DynamicArray<String> lines,
-            String automationLanguage) {
+    private static String suggestedFixForHardWait(String line) {
 
-        // Test actions (common across frameworks)
-        // Use \\.check\\( and \\.uncheck\\( to avoid matching "check" in "check-in-button"
-        Pattern actionPattern = Pattern.compile(
-                "\\b(click|fill|type|tap|submit|navigate|goto|goTo|sendKeys|selectOption)\\b|\\.(check|uncheck)\\s*\\(");
+        String sel = guessSelectorFromLine(line);
+        String ph = sel != null ? sel : "<target-selector>";
 
-        Pattern assertionPattern = getAssertionKeywordsPattern(automationLanguage);
+        if (line.contains("waitForTimeout")) {
+            return "Replace with waitForSelector('" + ph + "') or locator('" + ph + "').waitFor() instead of a fixed delay.";
+        }
 
-        DynamicArray<Finding> findings = new DynamicArray<>();
+        if (line.contains("Thread.sleep")) {
+            return "Replace Thread.sleep with WebDriverWait(driver, Duration.ofSeconds(...))"
+                    + ".until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector('" + ph + "'))) (or By.id/xpath as appropriate).";
+        }
+
+        if (line.contains("cy.wait")) {
+            return "Replace cy.wait(ms) with cy.get('<selector>').should('be.visible') (or should('have.text', '...')) tied to real state.";
+        }
+
+        if (line.contains("time.sleep")) {
+            return "Replace time.sleep() with an explicit wait (e.g. WebDriverWait or Playwright expect(locator).to_be_visible()).";
+        }
+
+        if (Pattern.compile("\\bsleep\\s*\\(").matcher(line).find()) {
+            return "Use a condition-based wait (element visible/clickable/network idle) instead of sleep().";
+        }
+
+        return "Prefer explicit waits on a stable condition instead of fixed delays or assertions as synchronization.";
+    }
+
+    // ------------------------------------------------------------------
+    // Stronger assertion templates for weak patterns.
+    // ------------------------------------------------------------------
+    private static String suggestedFixForPoorAssertion(String line, String automationLanguage) {
+
+        String lang = automationLanguage == null ? "" : automationLanguage.trim().toLowerCase();
+
+        if (line.contains("toBeTruthy") || line.contains("to_be_truthy")) {
+            return "Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).";
+        }
+
+        if (line.contains("toBeDefined")) {
+            return "Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().";
+        }
+
+        if (line.contains(".should") && line.contains("exist")) {
+            return "Strengthen: chain .should('have.text', '...') or .should('be.enabled') after locating the element.";
+        }
+
+        if (line.contains(".should") && line.contains("visible")) {
+            return "Add a semantic assertion: value, text, ARIA, or URL — not only visibility.";
+        }
+
+        if (line.contains("assertTrue") && line.contains("true")) {
+            return "Replace assertTrue(true) with a real condition, e.g. assertTrue(element.isDisplayed()) or assertEquals(expected, actual).";
+        }
+
+        if ("java".equals(lang) && line.contains("assert") && line.contains("(")) {
+            return "Prefer assertThat(actual).isEqualTo(expected) or Assertions.assertEquals(expected, actual) with concrete expected values.";
+        }
+
+        return "Replace weak/truthy checks with assertions on exact text, attributes, counts, or state.";
+    }
+
+    // ------------------------------------------------------------------
+    // Detects retry APIs / annotations associated with flaky tests.
+    // ------------------------------------------------------------------
+    private static boolean detectRetryUsage(DynamicArray<String> lines) {
+
+        Pattern retryPattern = Pattern.compile(
+                "\\b(retry|retries)\\s*\\(|@Retry\\b|test\\.retry\\b|jest\\.retryTimes\\b|it\\.retry\\b|describe\\.retry\\b|this\\.retries\\b|flaky\\s*\\(",
+                Pattern.CASE_INSENSITIVE);
 
         for (int i = 0; i < lines.size(); i++) {
 
-            String line = lines.get(i);
-
-            Matcher action = actionPattern.matcher(line);
-
-            // Skip lines that do not contain actions
-            if (!action.find()) {
-                continue;
+            if (retryPattern.matcher(lines.get(i)).find()) {
+                return true;
             }
-
-            // Skip lines that already contain validation
-            if (assertionPattern.matcher(line).find()) {
-                continue;
-            }
-
-            findings.add(new Finding(
-                    path.toString(),
-                    i + 1,
-                    action.start() + 1,
-                    "missing_validation",
-                    line.trim()));
         }
 
-        return findings;
+        return false;
+    }
+
+    private static FlakyFileAccumulator getOrCreateFlakyAccumulator(
+            DynamicArray<FlakyFileAccumulator> list,
+            String file) {
+
+        for (int i = 0; i < list.size(); i++) {
+
+            if (list.get(i).file.equals(file)) {
+                return list.get(i);
+            }
+        }
+
+        FlakyFileAccumulator a = new FlakyFileAccumulator(file);
+
+        list.add(a);
+
+        return a;
+    }
+
+    private static String computeFlakyRiskLevel(FlakyFileAccumulator acc) {
+
+        int score = 0;
+
+        if (acc.hardWaitCount >= 4) {
+            score += 4;
+        } else if (acc.hardWaitCount >= 2) {
+            score += 2;
+        } else if (acc.hardWaitCount >= 1) {
+            score += 1;
+        }
+
+        if (acc.retryDetected) {
+            score += 3;
+        }
+
+        if (score >= 6) {
+            return "HIGH";
+        }
+
+        if (score >= 3) {
+            return "MEDIUM";
+        }
+
+        return "LOW";
+    }
+
+    private static DynamicArray<FlakyFileAnalysis> finalizeFlakyAnalysis(DynamicArray<FlakyFileAccumulator> accumulators) {
+
+        DynamicArray<FlakyFileAnalysis> out = new DynamicArray<>();
+
+        for (int i = 0; i < accumulators.size(); i++) {
+
+            FlakyFileAccumulator acc = accumulators.get(i);
+
+            String risk = computeFlakyRiskLevel(acc);
+
+            out.add(
+                    new FlakyFileAnalysis(
+                            acc.file,
+                            risk,
+                            acc.hardWaitCount,
+                            acc.retryDetected));
+        }
+
+        // Sort: HIGH first, then MEDIUM, then LOW; then file path
+        for (int i = 1; i < out.size(); i++) {
+
+            FlakyFileAnalysis cur = out.get(i);
+
+            int j = i - 1;
+
+            while (j >= 0) {
+
+                FlakyFileAnalysis prev = out.get(j);
+
+                int cmp = Integer.compare(flakyRiskRank(prev.flakyTestRisk), flakyRiskRank(cur.flakyTestRisk));
+
+                if (cmp > 0 || (cmp == 0 && prev.file.compareTo(cur.file) > 0)) {
+
+                    out.set(j + 1, prev);
+
+                    j--;
+
+                } else {
+
+                    break;
+                }
+            }
+
+            out.set(j + 1, cur);
+        }
+
+        return out;
+    }
+
+    private static int flakyRiskRank(String risk) {
+
+        if ("HIGH".equals(risk)) {
+            return 0;
+        }
+
+        if ("MEDIUM".equals(risk)) {
+            return 1;
+        }
+
+        return 2;
     }
 
     // ------------------------------------------------------------------
@@ -1190,6 +1366,9 @@ public class AutomationQualityChecker {
         // Stores all declared functions for unused-function analysis
         DynamicArray<Finding> declaredFunctions = new DynamicArray<>();
 
+        // Per-file signals for flaky-test heuristics
+        DynamicArray<FlakyFileAccumulator> flakyAccumulators = new DynamicArray<>();
+
         // Used to store full combined text of all scanned files
         // This helps detect function usage later
         StringBuilder combinedTextBuilder = new StringBuilder();
@@ -1209,6 +1388,10 @@ public class AutomationQualityChecker {
                 continue;
             }
 
+            FlakyFileAccumulator flakyAcc = getOrCreateFlakyAccumulator(flakyAccumulators, path.toString());
+
+            flakyAcc.retryDetected = flakyAcc.retryDetected || detectRetryUsage(lines);
+
             // Combine file content into a single string for later analysis
             combinedTextBuilder.append(joinStrings(lines, "\n")).append('\n');
 
@@ -1217,12 +1400,15 @@ public class AutomationQualityChecker {
             // -----------------------------------------------------------
 
             if (isIssueEnabled(enabledIssues, "hard_wait")) {
-                allFindings.hardWait.addAll(
-                        detectHardWaits(
-                                path,
-                                lines,
-                                args.hardWaitPreset,
-                                args.seleniumAssertionAsHardWait));
+                DynamicArray<Finding> hardWaitBatch = detectHardWaits(
+                        path,
+                        lines,
+                        args.hardWaitPreset,
+                        args.seleniumAssertionAsHardWait);
+
+                flakyAcc.hardWaitCount += hardWaitBatch.size();
+
+                allFindings.hardWait.addAll(hardWaitBatch);
             }
 
             if (isIssueEnabled(enabledIssues, "hardcoded_test_data")) {
@@ -1231,10 +1417,6 @@ public class AutomationQualityChecker {
 
             if (isIssueEnabled(enabledIssues, "poor_assertion")) {
                 allFindings.poorAssertion.addAll(detectPoorAssertions(path, lines, args.automationLanguage));
-            }
-
-            if (isIssueEnabled(enabledIssues, "missing_validation")) {
-                allFindings.missingValidation.addAll(detectMissingValidations(path, lines, args.automationLanguage));
             }
 
             // -----------------------------------------------------------
@@ -1247,6 +1429,10 @@ public class AutomationQualityChecker {
 
                     LocatorMatch lm = locators.get(j);
 
+                    String dupFix = "Extract a reusable locator (shared constant or Page Object field) for "
+                            + lm.value
+                            + " and reference it from each test instead of repeating the raw selector.";
+
                     // Store locator occurrence
                     addLocatorOccurrence(
                             locatorOccurrences,
@@ -1256,7 +1442,8 @@ public class AutomationQualityChecker {
                                     lm.line,
                                     lm.column,
                                     "duplicate_locator",
-                                    lm.source));
+                                    lm.source,
+                                    dupFix));
                 }
             }
 
@@ -1339,7 +1526,6 @@ public class AutomationQualityChecker {
                 allFindings.duplicateLocator.size(),
                 allFindings.poorAssertion.size(),
                 allFindings.unusedFunction.size(),
-                allFindings.missingValidation.size(),
                 files.size());
 
         // ---------------------------------------------------------------
@@ -1379,12 +1565,15 @@ public class AutomationQualityChecker {
         DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights = createDuplicateRefactorInsights(
                 duplicatesGrouped);
 
+        DynamicArray<FlakyFileAnalysis> flakyTestAnalysis = finalizeFlakyAnalysis(flakyAccumulators);
+
         // Return final result
         return new BuildResult(
                 summary,
                 allFindings,
                 duplicatesGrouped,
-                duplicateRefactorInsights);
+                duplicateRefactorInsights,
+                flakyTestAnalysis);
     }
 
     // ------------------------------------------------------------------
@@ -1781,9 +1970,6 @@ public class AutomationQualityChecker {
             case "unused_function":
                 return "Unused Functions";
 
-            case "missing_validation":
-                return "Missing Validations";
-
             default:
                 return issue;
         }
@@ -1810,9 +1996,58 @@ public class AutomationQualityChecker {
 
         System.out.println("Unused Functions: " + summary.unusedFunctions);
 
-        System.out.println("Missing Validations: " + summary.missingValidations);
-
         System.out.println("Files Scanned: " + summary.totalFilesScanned);
+    }
+
+    // ------------------------------------------------------------------
+    // Prints flaky-test risk summary derived from waits and retries.
+    // ------------------------------------------------------------------
+    private static void printFlakySummary(DynamicArray<FlakyFileAnalysis> flaky) {
+
+        if (flaky.isEmpty()) {
+            return;
+        }
+
+        int high = 0;
+
+        int medium = 0;
+
+        for (int i = 0; i < flaky.size(); i++) {
+
+            String r = flaky.get(i).flakyTestRisk;
+
+            if ("HIGH".equals(r)) {
+                high++;
+            } else if ("MEDIUM".equals(r)) {
+                medium++;
+            }
+        }
+
+        int low = flaky.size() - high - medium;
+
+        System.out.println("");
+
+        System.out.println(
+                "Flaky test risk (by file): HIGH=" + high + ", MEDIUM=" + medium + ", LOW=" + low);
+
+        System.out.println("Per-file details: JSON key \"flaky_test_analysis\".");
+
+        for (int i = 0; i < flaky.size(); i++) {
+
+            FlakyFileAnalysis a = flaky.get(i);
+
+            if (!"HIGH".equals(a.flakyTestRisk)) {
+                continue;
+            }
+
+            System.out.println(
+                    "  HIGH — "
+                            + a.file
+                            + " | waits="
+                            + a.hardWaitCount
+                            + ", retry="
+                            + a.retryUsageDetected);
+        }
     }
 
     // ------------------------------------------------------------------
@@ -2028,6 +2263,11 @@ public class AutomationQualityChecker {
 
                 System.out.println(
                         "  " + formatLocation(f) + " | " + f.detail);
+
+                if (f.suggestedFix != null) {
+
+                    System.out.println("      suggested_fix: " + f.suggestedFix);
+                }
             }
         }
     }
@@ -2360,7 +2600,8 @@ public class AutomationQualityChecker {
     // ------------------------------------------------------------------
     private static String createDetailedTextReport(
             Summary summary,
-            FindingsByIssue findings) {
+            FindingsByIssue findings,
+            DynamicArray<FlakyFileAnalysis> flakyTestAnalysis) {
 
         // Use a dynamic list to build report line-by-line
         DynamicArray<String> out = new DynamicArray<>();
@@ -2383,7 +2624,6 @@ public class AutomationQualityChecker {
         out.add("Duplicate Locators: " + summary.duplicateLocators);
         out.add("Poor Assertions: " + summary.poorAssertions);
         out.add("Unused Functions: " + summary.unusedFunctions);
-        out.add("Missing Validations: " + summary.missingValidations);
         out.add("Files Scanned: " + summary.totalFilesScanned);
 
         out.add("");
@@ -2418,10 +2658,45 @@ public class AutomationQualityChecker {
 
                 out.add(
                         formatLocation(f) + " | " + f.detail);
+
+                if (f.suggestedFix != null) {
+
+                    out.add("    suggested_fix: " + f.suggestedFix);
+                }
             }
 
             out.add("");
         }
+
+        // ------------------------------------------------------------------
+        // Flaky test risk (per file)
+        // ------------------------------------------------------------------
+        out.add("Flaky test risk (by file)");
+        out.add("-------------------------");
+        out.add("");
+
+        if (flakyTestAnalysis.isEmpty()) {
+
+            out.add("No files scanned.");
+
+        } else {
+
+            for (int i = 0; i < flakyTestAnalysis.size(); i++) {
+
+                FlakyFileAnalysis a = flakyTestAnalysis.get(i);
+
+                out.add(
+                        a.file
+                                + " | flaky_test_risk="
+                                + a.flakyTestRisk
+                                + " | hard_waits="
+                                + a.hardWaitCount
+                                + " | retry_usage_detected="
+                                + a.retryUsageDetected);
+            }
+        }
+
+        out.add("");
 
         // Convert list into single string separated by newlines
         return joinStrings(out, "\n");
@@ -2441,7 +2716,10 @@ public class AutomationQualityChecker {
     // • CI pipeline artifacts
     // • Documentation dashboards
     // ------------------------------------------------------------------
-    private static String createMarkdownReport(Summary summary, FindingsByIssue findings) {
+    private static String createMarkdownReport(
+            Summary summary,
+            FindingsByIssue findings,
+            DynamicArray<FlakyFileAnalysis> flakyTestAnalysis) {
 
         // Dynamic list used to build the report line-by-line
         DynamicArray<String> out = new DynamicArray<>();
@@ -2463,7 +2741,6 @@ public class AutomationQualityChecker {
         out.add("- Duplicate Locators: **" + summary.duplicateLocators + "**");
         out.add("- Poor Assertions: **" + summary.poorAssertions + "**");
         out.add("- Unused Functions: **" + summary.unusedFunctions + "**");
-        out.add("- Missing Validations: **" + summary.missingValidations + "**");
         out.add("- Files Scanned: **" + summary.totalFilesScanned + "**");
 
         out.add("");
@@ -2494,7 +2771,45 @@ public class AutomationQualityChecker {
                 Finding f = issueFindings.get(i);
 
                 out.add(
-                        "- `" + formatLocation(f) + "` - `" + f.detail + "`");
+                        "- `" + formatLocation(f) + "` — `" + f.detail + "`");
+
+                if (f.suggestedFix != null) {
+
+                    out.add("  - **suggested_fix:** " + f.suggestedFix);
+                }
+            }
+
+            out.add("");
+        }
+
+        // ------------------------------------------------------------------
+        out.add("## Flaky test risk (by file)");
+        out.add("");
+
+        if (flakyTestAnalysis.isEmpty()) {
+
+            out.add("_No files scanned._");
+            out.add("");
+
+        } else {
+
+            out.add("| File | flaky_test_risk | hard_waits | retry_usage |");
+            out.add("| --- | --- | ---: | :---: |");
+
+            for (int i = 0; i < flakyTestAnalysis.size(); i++) {
+
+                FlakyFileAnalysis a = flakyTestAnalysis.get(i);
+
+                out.add(
+                        "| `"
+                                + a.file
+                                + "` | **"
+                                + a.flakyTestRisk
+                                + "** | "
+                                + a.hardWaitCount
+                                + " | "
+                                + a.retryUsageDetected
+                                + " |");
             }
 
             out.add("");
@@ -2657,6 +2972,7 @@ public class AutomationQualityChecker {
                 + "\"column\":" + f.column + ","
                 + "\"issue\":" + quote(f.issue) + ","
                 + "\"detail\":" + quote(f.detail)
+                + (f.suggestedFix != null ? ",\"suggested_fix\":" + quote(f.suggestedFix) : "")
                 + "}";
     }
 
@@ -2672,7 +2988,6 @@ public class AutomationQualityChecker {
     // "duplicate_locators": 5,
     // "poor_assertions": 1,
     // "unused_functions": 4,
-    // "missing_validations": 2,
     // "total_files_scanned": 25
     // }
     // ------------------------------------------------------------------
@@ -2684,7 +2999,6 @@ public class AutomationQualityChecker {
                 + "\"duplicate_locators\":" + summary.duplicateLocators + ","
                 + "\"poor_assertions\":" + summary.poorAssertions + ","
                 + "\"unused_functions\":" + summary.unusedFunctions + ","
-                + "\"missing_validations\":" + summary.missingValidations + ","
                 + "\"total_files_scanned\":" + summary.totalFilesScanned
                 + "}";
     }
@@ -2723,6 +3037,28 @@ public class AutomationQualityChecker {
         }
 
         return "{" + joinStrings(entries, ",") + "}";
+    }
+
+    // ------------------------------------------------------------------
+    // Per-file flaky-test risk (waits and retries).
+    // ------------------------------------------------------------------
+    private static String flakyTestAnalysisToJson(DynamicArray<FlakyFileAnalysis> rows) {
+
+        DynamicArray<String> items = new DynamicArray<>();
+
+        for (int i = 0; i < rows.size(); i++) {
+
+            FlakyFileAnalysis r = rows.get(i);
+
+            items.add("{"
+                    + "\"file\":" + quote(r.file) + ","
+                    + "\"flaky_test_risk\":" + quote(r.flakyTestRisk) + ","
+                    + "\"hard_wait_count\":" + r.hardWaitCount + ","
+                    + "\"retry_usage_detected\":" + (r.retryUsageDetected ? "true" : "false")
+                    + "}");
+        }
+
+        return "[" + joinStrings(items, ",") + "]";
     }
 
     // ------------------------------------------------------------------
@@ -2867,7 +3203,8 @@ public class AutomationQualityChecker {
             FindingsByIssue findings,
             DynamicArray<DuplicateGroup> duplicateGroups,
             DynamicArray<FunctionImpact> impactedTests,
-            DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights) {
+            DynamicArray<DuplicateRefactorInsight> duplicateRefactorInsights,
+            DynamicArray<FlakyFileAnalysis> flakyTestAnalysis) {
 
         return "{"
                 + "\"summary\":" + summaryToJson(summary) + ","
@@ -2875,7 +3212,8 @@ public class AutomationQualityChecker {
                 + "\"duplicate_locator_groups\":" + duplicateGroupsToJson(duplicateGroups) + ","
                 + "\"duplicate_refactor_intelligence\":" + duplicateRefactorInsightsToJson(duplicateRefactorInsights)
                 + ","
-                + "\"impacted_tests\":" + impactedTestsToJson(impactedTests)
+                + "\"impacted_tests\":" + impactedTestsToJson(impactedTests) + ","
+                + "\"flaky_test_analysis\":" + flakyTestAnalysisToJson(flakyTestAnalysis)
                 + "}";
     }
 
@@ -3136,6 +3474,8 @@ public class AutomationQualityChecker {
         // Print summary to console
         printConsoleReport(result.summary);
 
+        printFlakySummary(result.flakyTestAnalysis);
+
         // Optionally print detailed findings
         if (args.showLines) {
 
@@ -3173,7 +3513,8 @@ public class AutomationQualityChecker {
                         result.findings,
                         result.duplicateGroups,
                         impactedTests,
-                        result.duplicateRefactorInsights);
+                        result.duplicateRefactorInsights,
+                        result.flakyTestAnalysis);
 
                 Files.writeString(
                         Paths.get(args.jsonOutput),
@@ -3187,7 +3528,8 @@ public class AutomationQualityChecker {
 
                 String txt = createDetailedTextReport(
                         result.summary,
-                        result.findings);
+                        result.findings,
+                        result.flakyTestAnalysis);
 
                 Files.writeString(
                         Paths.get(args.txtOutput),
@@ -3201,7 +3543,8 @@ public class AutomationQualityChecker {
 
                 String md = createMarkdownReport(
                         result.summary,
-                        result.findings);
+                        result.findings,
+                        result.flakyTestAnalysis);
 
                 Files.writeString(
                         Paths.get(args.mdOutput),

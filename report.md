@@ -2,75 +2,4354 @@
 
 ## Summary
 
-- Hard Wait Found: **15**
-- Test Data Hardcoding: **0**
-- Duplicate Locators: **0**
-- Poor Assertions: **0**
-- Unused Functions: **0**
-- Missing Validations: **28**
-- Files Scanned: **10**
+- Hard Wait Found: **1119**
+- Test Data Hardcoding: **57**
+- Duplicate Locators: **251**
+- Poor Assertions: **617**
+- Unused Functions: **4**
+- Files Scanned: **290**
 
 ## Hard Wait Found
 
-- `/src/test/java/com/hrm/tests/AttendanceTest.java:30:9` - `Assert.assertNotNull(attendanceStatus, "Attendance status should be displayed");`
-- `/src/test/java/com/hrm/tests/AttendanceTest.java:41:9` - `Assert.assertNotNull(attendanceStatus, "Attendance status should be displayed");`
-- `/src/test/java/com/hrm/tests/AttendanceTest.java:47:9` - `Assert.assertTrue(attendancePage.isAttendanceRecordsTableDisplayed(),`
-- `/src/test/java/com/hrm/tests/EmployeeManagementTest.java:30:9` - `Assert.assertNotNull(successMessage, "Success message should be displayed");`
-- `/src/test/java/com/hrm/tests/EmployeeManagementTest.java:31:9` - `Assert.assertTrue(successMessage.contains("success") || successMessage.contains("added"),`
-- `/src/test/java/com/hrm/tests/EmployeeManagementTest.java:38:9` - `Assert.assertTrue(employeePage.isEmployeeTableDisplayed(),`
-- `/src/test/java/com/hrm/tests/EmployeeManagementTest.java:50:9` - `Assert.assertTrue(true, "Form validation should prevent saving empty form");`
-- `/src/test/java/com/hrm/tests/LeaveManagementTest.java:30:9` - `Assert.assertNotNull(leaveStatus, "Leave status should be displayed");`
-- `/src/test/java/com/hrm/tests/LeaveManagementTest.java:36:9` - `Assert.assertTrue(leavePage.isLeaveRequestsTableDisplayed(),`
-- `/src/test/java/com/hrm/tests/LoginTest.java:16:9` - `Thread.sleep(1000);`
-- `/src/test/java/com/hrm/tests/LoginTest.java:19:9` - `Assert.assertTrue(dashboardPage.isDashboardDisplayed(), "Dashboard should be displayed after successful login");`
-- `/src/test/java/com/hrm/tests/LoginTest.java:27:9` - `Thread.sleep(1000);`
-- `/src/test/java/com/hrm/tests/LoginTest.java:29:9` - `Assert.assertNotNull(errorMessage, "Error message should be displayed");`
-- `/src/test/java/com/hrm/tests/LoginTest.java:30:9` - `Assert.assertTrue(errorMessage.contains("Invalid") || errorMessage.contains("incorrect"),`
-- `/src/test/java/com/hrm/tests/LoginTest.java:41:9` - `Assert.assertNotNull(errorMessage, "Error message should be displayed for empty credentials");`
+- `/src/pages/administration/TagsSecurityPage.js:651:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/TagsSecurityPage.js:916:29` — `await this.page.waitForTimeout(1000); // Wait for 1 second before checking again`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/TagsSecurityPage.js:999:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/advancedJobsPage.js:589:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/advancedJobsPage.js:685:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/dashboard_security_Tab.js:548:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/dashboard_security_Tab.js:559:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/dashboard_security_Tab.js:572:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/dashboard_security_Tab.js:581:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/dashboard_security_Tab.js:590:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/dashboard_security_Tab.js:603:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/dashboard_security_Tab.js:614:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:328:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:376:29` — `await this.page.waitForTimeout(100);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:400:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:409:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:416:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:423:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:429:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:435:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:443:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:450:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:456:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:484:25` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:522:25` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:624:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/administration/systemSettingsPage.js:866:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/advancedTools/compareSchemasPage.js:259:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/advancedTools/compareSchemasPage.js:281:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/advancedTools/compareSchemasPage.js:751:25` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/advancedTools/connectorsPage.js:228:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/askEdgi/askEdgiMarketplacePage.js:42:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/askEdgi/askEdgiPage.js:1870:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/askEdgi/askEdgiPage.js:1954:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/askEdgi/askEdgiPage.js:2092:29` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1226:23` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1235:23` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1243:23` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1252:23` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1260:23` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1268:23` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1286:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1336:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1387:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1408:23` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1434:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1465:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1519:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1710:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1721:23` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1778:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1790:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:1797:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:2132:27` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:2252:23` — `await this.page.waitForTimeout(500); // Small delay for better stability`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:2637:18` — `await page.waitForTimeout(3000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:2857:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:3235:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:3538:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4278:18` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4311:18` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4677:24` — `// await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4692:23` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4736:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4829:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4848:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4878:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4893:21` — `await this.page.waitForTimeout(2000); // Additional wait for sort to apply`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4952:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:4982:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5003:21` — `await this.page.waitForTimeout(6000); // Additional wait for sort to apply`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5126:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5178:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5224:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5277:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5324:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5376:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5425:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5438:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5451:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/basePage.js:5474:21` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:65:23` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:70:21` — `await this.page.waitForTimeout(5000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:72:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:78:25` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:88:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:91:23` — `await this.page.waitForTimeout(5000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:94:23` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:101:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:106:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:112:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:118:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:122:21` — `await this.page.waitForTimeout(7000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:609:28` — `// await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:658:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:700:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:727:23` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:964:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:966:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:971:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:989:23` — `await this.page.waitForTimeout(12000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:991:23` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1015:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1017:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1022:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1024:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1029:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1031:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1045:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1047:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1052:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1054:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1059:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1061:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1075:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1077:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1082:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1084:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1089:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1091:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1096:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1102:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1109:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1111:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1113:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1135:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1137:21` — `await this.page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1140:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1153:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1155:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1158:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1160:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1162:21` — `await this.page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1165:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1185:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1187:21` — `await this.page.waitForTimeout(8000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1194:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1204:21` — `await this.page.waitForTimeout(40000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1226:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1248:21` — `await this.page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1264:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1267:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1281:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1283:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1285:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1287:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1297:23` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1312:21` — `await this.page.waitForTimeout(9000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1314:21` — `await this.page.waitForTimeout(9000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1328:23` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1331:23` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1333:27` — `//await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1335:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1337:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1341:23` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1345:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1348:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1356:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1358:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1370:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1379:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1391:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1411:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1413:21` — `await this.page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1416:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1418:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1421:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1423:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1433:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1435:21` — `await this.page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1438:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1441:23` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1444:23` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1446:23` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1462:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:285:30` — `// await this.page.waitForTimeout(30000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:288:30` — `// await this.page.waitForTimeout(30000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:296:30` — `// await this.page.waitForTimeout(30000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:299:30` — `// await this.page.waitForTimeout(30000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:369:23` — `await this.page.waitForTimeout(500);  // reduced timeout slightly`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:509:21` — `await this.page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:634:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:636:21` — `await this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:650:23` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:684:23` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:1539:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:555:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:569:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:578:21` — `await this.page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:599:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:624:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:640:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:646:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:650:21` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:879:24` — `// await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:881:24` — `// await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:1179:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:1211:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:1374:23` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:1406:25` — `await this.page.waitForTimeout(500); // Reduced wait time for efficiency`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:1442:25` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:2112:23` — `await this.page.waitForTimeout(1000); // Wait for 1 second to ensure the display count is updated`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/certificationPolicy/certificationpolicy.js:605:16` — `await page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/certificationPolicy/certificationpolicy.js:610:16` — `await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/compare_profile_results/compare_profile_results.js:275:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:320:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:333:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:1019:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:1036:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:1045:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:1074:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:1085:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:204:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:211:25` — `await this.page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:215:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:225:25` — `await this.page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:235:25` — `await this.page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:319:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:442:29` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:491:29` — `await this.page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:537:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:540:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:547:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:555:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:566:25` — `await this.page.waitForTimeout(150);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:579:25` — `await this.page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:1000:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:1021:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:1069:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:1121:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:1130:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:1139:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:1148:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/customFields/customFieldsPage.js:1157:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:1743:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3006:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3342:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3350:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3358:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3366:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3374:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3381:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3396:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3485:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3492:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3498:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3505:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3511:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3517:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3564:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3571:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3578:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3585:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3592:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3598:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3837:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3858:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3882:28` — `// await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3889:29` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3903:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:1779:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3059:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3372:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3380:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3388:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3396:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3404:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3411:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3428:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3518:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3525:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3531:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3538:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3544:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3550:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3597:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3604:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3611:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3618:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3625:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3631:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3870:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3891:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3915:28` — `// await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3922:29` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_APIPage.js:3936:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:1722:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:2895:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3251:29` — `await this.page.waitForTimeout(2000); // optional: can reduce or remove if unnecessary`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3272:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3344:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3351:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3357:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3364:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3370:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3376:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3423:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3430:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3437:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3444:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3451:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3457:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3695:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3716:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3740:28` — `// await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3747:29` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_CodesPage.js:3761:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:954:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1050:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1055:21` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1066:21` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1309:15` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1365:15` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1457:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1505:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1539:23` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1709:23` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:1296:25` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:1330:25` — `await this.page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:1344:25` — `await this.page.waitForTimeout(2000); // Additional wait for sort to apply`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2520:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2527:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2534:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2541:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2548:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2554:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2635:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2642:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2648:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2655:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2661:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2667:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2714:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2721:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2728:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2735:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2742:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2748:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2991:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:3012:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:3040:37` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:3052:37` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:3714:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:3728:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2072:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2079:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2086:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2093:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2100:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2106:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2194:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2201:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2207:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2214:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2220:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2226:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2273:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2280:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2287:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2294:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2301:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2307:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2550:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2571:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2601:29` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2614:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_FilePage.js:2651:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2315:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2322:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2329:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2336:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2343:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2349:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2436:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2443:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2449:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2456:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2462:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2468:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2515:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2522:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2529:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2536:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2543:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2549:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2791:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2812:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2840:37` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2853:37` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:1524:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:1538:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2776:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2783:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2790:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2797:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2804:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2810:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2898:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2905:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2911:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2918:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2924:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2930:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2977:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2984:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2991:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2998:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:3005:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:3011:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:3250:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:3271:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:3295:28` — `// await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:3302:29` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_ReportPage.js:3316:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3457:25` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3507:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3594:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3602:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3610:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3618:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3626:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3633:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3750:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3757:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3763:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3770:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3776:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3782:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3849:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3856:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3863:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3870:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3877:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3883:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:4134:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:4155:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:4189:28` — `// await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:4196:29` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:4210:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:4220:25` — `await this.page.waitForTimeout(3000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:4276:20` — `await page.waitForTimeout(5000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:4285:24` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3688:25` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3738:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3825:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3833:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3841:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3849:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3857:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3864:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4012:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4019:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4025:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4032:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4038:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4044:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4111:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4118:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4125:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4132:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4139:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4145:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4521:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4542:19` — `this.page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4576:28` — `// await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4583:29` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4597:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4607:25` — `await this.page.waitForTimeout(3000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4663:20` — `await page.waitForTimeout(5000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataCatalog/dc_TablesPage.js:4672:24` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:279:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:328:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:347:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:375:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:394:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:415:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:432:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:520:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:594:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:175:25` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:182:25` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:279:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:287:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:540:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:543:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:588:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:352:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:356:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:385:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:389:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:482:25` — `await this.page.waitForTimeout(1000); // Wait for search results`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:819:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:949:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:989:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1167:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1176:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1189:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1198:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1207:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1219:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1251:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1271:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1313:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1316:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1325:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1382:25` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1422:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1445:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:1456:29` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:1011:33` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:1586:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:1605:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:1608:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:1736:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:2180:29` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:2200:25` — `await this.page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:2300:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3095:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3110:29` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3278:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3297:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3343:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3354:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3367:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3400:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3409:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3438:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3496:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3515:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3591:29` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:4016:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/elasticSearch/elasticSearchPage.js:363:33` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/elasticSearch/elasticSearchPage.js:398:41` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/elasticSearch/elasticSearchPage.js:406:45` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/elasticSearch/elasticSearchPage.js:416:41` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/elasticSearch/elasticSearchPage.js:428:45` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/fileManager/fileManagerPage.js:309:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/fileManager/fileManagerPage.js:921:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/fileManager/fileManagerPage.js:947:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/fileManager/fileManagerPage.js:958:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/fileManager/fileManagerPage.js:1155:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/fileManager/fileManagerPage.js:1318:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:506:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:547:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:575:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:628:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:653:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:678:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:703:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:728:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:800:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:1378:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:1433:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:1758:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:1779:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:1837:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:1981:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:1992:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:2001:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/governanceCatalog/gdqPage.js:2057:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/homePage/homePage.js:456:33` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/jobs/jobsPage.js:52:33` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/login/login.js:134:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/loginPage.js:204:24` — `await targetPage.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/loginPage.js:244:21` — `await this.page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/myDesk/myDesk.js:132:29` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/myDesk/myDesk.js:141:29` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/myDesk/myDesk.js:149:29` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/myDesk/myDesk.js:158:29` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/myDesk/myDesk.js:166:29` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/myDesk/myDesk.js:174:29` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/myWatchlist/myWatchlist.js:143:29` — `await this.page.waitForTimeout(3000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/myWatchlist/myWatchlist.js:148:29` — `await this.page.waitForTimeout(3000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/myWatchlist/myWatchlist.js:174:41` — `await this.page.waitForTimeout(10000); // wait for badge/table to refresh`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/projects/projectsPage.js:1429:33` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/projects/projectsPage.js:1437:33` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/projects/projectsPage.js:1445:33` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/projects/projectsPage.js:1452:29` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/projects/projectsPage.js:1477:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/projects/projectsPage.js:1493:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/projects/projectsPage.js:1619:25` — `await this.page.waitForTimeout(3000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:348:25` — `await this.page.waitForTimeout(1000); // Wait for search results to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:446:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:507:25` — `await this.page.waitForTimeout(1000); // Wait for search results to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:632:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:642:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:651:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:662:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:672:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:681:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:690:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:699:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:712:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:723:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:734:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:743:25` — `await this.page.waitForTimeout(300);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:752:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:765:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:776:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:785:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:796:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:823:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:832:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:848:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:886:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:899:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:917:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:938:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:972:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:983:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:992:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:1001:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:1090:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:1103:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:1116:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:1145:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:1151:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:1165:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:1171:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/reference_data_management/reference_data_management.js:1589:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/ropa/configureRopaAttributesPage.js:663:25` — `await this.page.waitForTimeout(500); // Small wait after scroll`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:532:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:776:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:778:25` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/serviceDesk/serviceDeskPage.js:1139:29` — `await this.page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/serviceDesk/serviceDeskPage.js:1297:29` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/serviceDesk/serviceDeskPage.js:1580:25` — `await this.page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:489:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:533:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:559:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:772:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:845:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:858:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:872:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:885:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:898:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:911:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:924:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:952:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:1051:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:1095:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:1139:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:1183:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:1616:25` — `await this.page.waitForTimeout(30000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:1619:25` — `await this.page.waitForTimeout(30000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:2109:25` — `await this.page.waitForTimeout(30000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:2113:25` — `await this.page.waitForTimeout(30000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_Secure.js:2358:28` — `//     await this.page.waitForTimeout(20000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:870:25` — `await this.page.waitForTimeout(2000) // Increased timeout to ensure modal is fully loaded`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:947:25` — `await this.page.waitForTimeout(2000) // Increased timeout to ensure modal is fully loaded`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1593:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1639:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1680:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1757:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1770:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1784:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1797:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1810:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1823:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1836:25` — `await this.page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1864:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:1970:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:2014:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:2058:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:2102:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:3036:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:3045:25` — `await this.page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/pages/tags/tagsPage_open.js:3208:28` — `//     await this.page.waitForTimeout(20000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Advanced_Tools/compareSchemas.spec.js:98:18` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Advanced_Tools/compareSchemas.spec.js:275:18` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Advanced_Tools/upload_files_folders.spec.js:173:16` — `await page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1110:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1153:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1194:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1232:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1397:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1458:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2062:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:3256:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:3290:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:3329:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1233:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1449:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1593:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1636:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1679:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1719:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1892:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1954:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4827:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4893:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4954:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:272:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:1759:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:1872:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:1949:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2025:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2096:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2272:23` — `//         await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2363:23` — `//         await page.waitForTimeout(1000); // still respecting wait`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2568:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2673:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1023:14` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1219:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1227:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1235:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1243:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1251:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1258:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1791:22` — `await page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1899:22` — `await page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2052:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2060:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2068:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2076:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2084:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2091:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2119:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2687:18` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2754:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2818:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4629:14` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5227:14` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5636:14` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5828:16` — `await page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5948:16` — `await page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6066:14` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6754:14` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7365:14` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8415:14` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:9485:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:302:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:1847:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:1924:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:1996:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2063:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2950:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2957:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2963:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2970:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3027:20` — `await page.waitForTimeout(1000); // still respecting wait`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3273:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3368:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:6993:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:7166:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:8028:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:8088:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:8143:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:294:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:430:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2175:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2253:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2326:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2395:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2981:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:3282:16` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5136:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5203:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5267:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5701:20` — `await page.waitForTimeout(6000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5774:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:1859:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:1942:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:2019:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:2092:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:2200:16` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:2995:24` — `await page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:3104:19` — `//     await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:3244:24` — `await page.waitForTimeout(200);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4197:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4436:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4503:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4559:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:309:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2468:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2475:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2481:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2488:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2544:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2547:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2550:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2553:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2556:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2777:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3022:20` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3029:20` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3035:20` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3042:20` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3048:20` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3054:20` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:4969:21` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:5029:17` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:5084:17` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:5790:20` — `await page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:5884:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:6030:20` — `await page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:1878:23` — `//     await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:1888:23` — `//     await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2097:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2169:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2238:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2299:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2612:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2721:20` — `await page.waitForTimeout(1000); // still respecting wait`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2909:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2999:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:3197:23` — `//     await page.waitForTimeout(500); // Small delay to prevent excessive looping`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:3205:23` — `//     await page.waitForTimeout(500); // Small delay to prevent excessive looping`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:3389:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:3402:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:3623:20` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:3783:20` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4128:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:7059:21` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:7119:17` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:7174:17` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:671:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2837:29` — `// //     //     await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2847:29` — `// //     //     await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3140:22` — `// //     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3227:22` — `// //     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3311:22` — `// //     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3387:22` — `// //     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3744:25` — `// //     // await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3753:25` — `// //     // await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3761:25` — `// //     // await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3769:25` — `// //     // await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3913:28` — `// //         //await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3918:29` — `// //         // await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3923:29` — `// //         // await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3928:29` — `// //         // await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3932:29` — `// //         // await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4098:23` — `//         await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4154:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4232:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4510:29` — `// //     //     await page.waitForTimeout(500); // Small delay to prevent excessive looping`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4518:29` — `// //     //     await page.waitForTimeout(500); // Small delay to prevent excessive looping`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4737:26` — `// //         await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4750:26` — `// //         await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4844:22` — `// //     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8450:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8501:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8548:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:9454:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:510:18` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:548:18` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:590:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:332:16` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:340:16` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:348:16` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:356:16` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:364:16` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:371:16` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:626:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:1074:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/filecolumn_viewer.spec.js:371:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/filecolumn_viewer.spec.js:394:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:175:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:382:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:404:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:169:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:419:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:441:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_AIRecommendations.spec.js:137:23` — `await newPage.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_AIRecommendations.spec.js:207:23` — `await newPage.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_AIRecommendations.spec.js:213:23` — `await newPage.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Add_Update_CategoryListPage.spec.js:92:19` — `// await page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Add_Update_CategoryListPage.spec.js:124:19` — `// await page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Add_Update_CategoryListPage.spec.js:179:19` — `// await page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Add_Update_CategoryListPage.spec.js:224:19` — `// await page.waitForTimeout(4000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Add_Update_CategoryListPage.spec.js:296:19` — `// await page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_ConfigureGovRoles.spec.js:146:23` — `// await page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_ConfigureGovRoles.spec.js:202:23` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_ConfigureGovRoles.spec.js:234:23` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_ConfigureView.spec.js:276:24` — `await page.waitForTimeout(500); // Small wait`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:131:23` — `// await page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:194:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:466:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:475:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:484:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:493:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:502:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:571:23` — `// await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:596:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:605:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:614:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:623:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:632:20` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_DeleteTerm.spec.js:228:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_DeleteTerm.spec.js:297:20` — `await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_ManageDataAssociations.spec.js:90:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:64:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:100:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:180:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:372:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:408:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:444:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:481:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:518:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:555:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:592:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:630:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:667:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:704:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:741:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:778:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:817:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:855:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:896:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:937:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_RequesttoPublishTerm.spec.js:347:19` — `// await page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_SGA.spec.js:463:23` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_SGA.spec.js:468:23` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_SGA.spec.js:514:23` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_SGA.spec.js:532:23` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_SGA.spec.js:540:23` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_TermDirectPublish.spec.js:426:19` — `// await page.waitForTimeout(30000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_TermRelationship.spec.js:177:23` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/bg_TreePageScenarios.spec.js:200:32` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:202:17` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:207:17` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:254:17` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:285:19` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:505:17` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:517:17` — `// await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:524:14` — `await page.waitForTimeout(5000); // Ensure cleanup is done`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/DataCatalog_Databases.spec.js:151:19` — `//     await page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:85:20` — `await page.waitForTimeout(2000); // Wait for catalog widget to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:100:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:210:20` — `await page.waitForTimeout(2000); // Wait for catalog widget to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:230:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:259:23` — `// await page.waitForTimeout(5000); // Wait for job to start processing`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:336:20` — `await page.waitForTimeout(2000); // Wait for catalog widget to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:356:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:537:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:648:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:980:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1038:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1129:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1178:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1247:20` — `await page.waitForTimeout(2000); // Wait for catalog widget to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1261:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1289:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1304:20` — `await page.waitForTimeout(2000); // Wait for catalog widget to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1319:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1374:23` — `// await page.waitForTimeout(2000); // Wait for catalog widget to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1388:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1403:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1425:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1457:23` — `// await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1475:23` — `// await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1532:20` — `await page.waitForTimeout(2000); // Wait for catalog widget to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1546:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1559:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1603:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1682:23` — `await newPage.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1698:23` — `await newPage.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1736:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1741:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:2984:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:3003:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:5796:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:5849:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:5860:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:5867:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:5887:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:5998:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6002:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6012:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6016:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6095:19` — `// await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6099:19` — `// await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6123:19` — `// await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6127:19` — `// await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6165:19` — `// await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6169:19` — `// await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:1434:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:1439:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:1451:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:1665:14` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:1700:14` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:2150:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:2202:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:2247:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:2399:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:2444:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Data_Stories/DataStories.spec.js:2481:14` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Datalake_ovalsight/datalake_ovalsight.spec.js:1315:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Datalake_ovalsight/datalake_ovalsight.spec.js:1345:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Datalake_ovalsight/datalake_ovalsight.spec.js:1517:23` — `//     await page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Datalake_ovalsight/datalake_ovalsight.spec.js:1519:23` — `//     await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:1297:14` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:3894:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:4507:16` — `await page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:4516:16` — `await page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:4553:14` — `await page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:4562:14` — `await page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:4616:14` — `await page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:4625:14` — `await page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/File_Manager/fileManager.spec.js:865:20` — `await page.waitForTimeout(120000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:194:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1586:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1602:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1640:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1659:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1678:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1688:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1749:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1769:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1788:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1798:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1819:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1865:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1888:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1907:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1917:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1945:23` — `await newPage.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1981:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:2007:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:2053:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:2076:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:2106:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:2157:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:2166:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:2265:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:2303:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:407:24` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:410:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:433:20` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:437:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:482:24` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:485:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:507:20` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:511:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:552:20` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:556:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:580:20` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:584:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:909:16` — `await page.waitForTimeout(1000); // Wait for the popup/modal to appear`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:2447:20` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:2451:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:2457:16` — `await page.waitForTimeout(3000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:2482:20` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:2486:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:2674:20` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:2678:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:2700:20` — `await page.waitForTimeout(1000); // Wait for DOM to update`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Home_Page/home_page.spec.js:2704:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Inbox/inbox.spec.js:350:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Login/login.spec.js:434:16` — `await page.waitForTimeout(1000); // Wait for popup to appear`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Login/login.spec.js:438:20` — `await page.waitForTimeout(1000); // Wait for delete action to complete`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Login/login.spec.js:446:16` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Login/login.spec.js:498:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Login/login.spec.js:522:16` — `await page.waitForTimeout(1000); // Wait for delete action to complete`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyDesk/myDesk.spec.js:2029:16` — `await page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyDesk/myDesk.spec.js:2035:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyDesk/myDesk.spec.js:2042:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyProject_Tasks/myproject_tasks.spec.js:725:16` — `await page.waitForTimeout(5000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyProject_Tasks/myproject_tasks.spec.js:732:20` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyProject_Tasks/myproject_tasks.spec.js:738:24` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:240:16` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:284:16` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2722:20` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2765:20` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2959:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2983:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3001:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3011:20` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3122:20` — `await page.waitForTimeout(2000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Projects/projects.spec.js:1761:16` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Projects/projects.spec.js:2107:16` — `await page.waitForTimeout(3000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:158:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:278:32` — `await page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:357:32` — `await page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:1764:28` — `await page.waitForTimeout(1000); // Wait for dropdown options to load`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:1767:28` — `await page.waitForTimeout(500); // Brief pause after selection`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:2534:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/ROPA/ropaProcessingActivities.spec.js:379:27` — `// await page.waitForTimeout(90000); // Wait for 90 seconds to see the success message`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Reference_Data_Management/reference_data_management.spec.js:423:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Reference_Data_Management/reference_data_management.spec.js:429:16` — `await page.waitForTimeout(500);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Security_Dashboard/dashboard_Security.spec.js:154:19` — `//     await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/Security_Tags/Tags_Security.spec.js:427:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:906:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:978:28` — `await page.waitForTimeout(2000); // wait 2 seconds before each retry`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:1750:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:1752:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:1873:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:1988:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2107:16` — `await page.waitForTimeout(1000)`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2326:20` — `await page.waitForTimeout(1000); // optional wait before next reload`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2735:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2746:28` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2752:24` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2797:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2808:28` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2814:24` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2934:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2945:28` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:2951:24` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:3000:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:3011:28` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:3017:24` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_open.spec.js:3620:20` — `await page.waitForTimeout(1000); // Optional delay after reload`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_secure.spec.js:1138:24` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Tags/tags_secure.spec.js:1209:28` — `await page.waitForTimeout(2000); // wait 2 seconds before each retry`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Users_And_Roles/Users_Roles_Teams.spec.js:1028:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Users_And_Roles/Users_Roles_Teams.spec.js:1112:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Users_And_Roles/Users_Roles_Teams.spec.js:1173:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Users_And_Roles/Users_Roles_Teams.spec.js:1297:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/Users_And_Roles/Users_Roles_Teams.spec.js:1370:16` — `await page.waitForTimeout(1000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/tests/utilsTestingcode.spec.js:58:19` — `//     await page.waitForTimeout(10000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/utils/reportScreenshot.js:53:20` — `//  await page.waitForTimeout(100000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/utils/reportScreenshot.js:58:19` — `// await page.waitForTimeout(50000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/utils/reportScreenshot.js:67:20` — `//  await page.waitForTimeout(20000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/utils/utils.js:277:18` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/utils/utils.js:331:18` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/utils/utils.js:341:23` — `//   await page.waitForTimeout(1000); // Wait a bit after re-typing`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/utils/utils.js:651:16` — `await page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
+- `/src/utils/utils.js:1723:23` — `await this.page.waitForTimeout(2000);`
+  - **suggested_fix:** Replace with waitForSelector('<target-selector>') or locator('<target-selector>').waitFor() instead of a fixed delay.
 
 ## Test Data Hardcoding
 
-No findings.
+- `/src/tests/Advanced_Tools/compareSchemas.spec.js:25:7` — `username: "compare_schema_01",`
+- `/src/tests/Advanced_Tools/compareSchemas.spec.js:26:7` — `password: "Yamini@55555",`
+- `/src/tests/Business_Glossary/businessGlossay_ListPage.spec.js:24:7` — `let username = "   ";`
+- `/src/tests/ConfigureRoPAAttributes/configureRoPAAttributes.spec.js:22:13` — `username: "ropa_recorder_auth",`
+- `/src/tests/ConfigureRoPAAttributes/configureRoPAAttributes.spec.js:23:13` — `password: "Testing@1234",`
+- `/src/tests/CustomExternalDashboard/customExternalDashboard.spec.js:32:15` — `const username = 'dq_authorrole_01';`
+- `/src/tests/CustomExternalDashboard/customExternalDashboard.spec.js:33:15` — `const password = 'Admin@123456';`
+- `/src/tests/DataLiteracy/dataLiteracy.spec.js:30:9` — `username: "data_literacy_author",`
+- `/src/tests/DataLiteracy/dataLiteracy.spec.js:31:9` — `password: "Testing@123456"`
+- `/src/tests/DataLiteracy/dataLiteracy.spec.js:154:9` — `username: "data_literacy_viewer",`
+- `/src/tests/DataLiteracy/dataLiteracy.spec.js:155:9` — `password: "Testing@123456"`
+- `/src/tests/File_Manager/fileManager.spec.js:75:125` — `const { username, password } = utils.testData.fileManagerAdmin ?? utils.testData.validUserQa ?? { username: "fm_admin", password: "OvalEdge@123" };`
+- `/src/tests/GovApps/govApps.spec.js:21:9` — `username: "governance_author",`
+- `/src/tests/GovApps/govApps.spec.js:22:9` — `password: "Testing@123456"`
+- `/src/tests/GovernDataQuery/goDQ.spec.js:237:15` — `const username = 'usro_nonadmin_user'; // Static value as per JSON`
+- `/src/tests/GovernDataQuery/goDQ.spec.js:238:15` — `const password = '0valEdge!123'; // Static value as per JSON`
+- `/src/tests/GovernDataQuery/goDQ.spec.js:968:9` — `username: "usro_admin_user",`
+- `/src/tests/GovernDataQuery/goDQ.spec.js:969:9` — `password: "0valEdge!1234"`
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1031:15` — `const username = 'usro_nonadmin_user'; // Static value as per JSON`
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1032:15` — `const password = '0valEdge!123'; // Static value as per JSON`
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1246:15` — `const username = 'usro_admin_user'; // Static value as per JSON`
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1247:15` — `const password = '0valEdge!1234'; // Static value as per JSON`
+- `/src/tests/QuestionWall/question_wall.spec.js:197:85` — `{ objectType: basePage.click_on_searched_name_to_Navigate(database_schema), username: '@question',replytext:database_schema },`
+- `/src/tests/QuestionWall/question_wall.spec.js:198:79` — `{ objectType: basePage.click_on_searched_name_to_Navigate(tablename), username: '@question',replytext:tablename },`
+- `/src/tests/QuestionWall/question_wall.spec.js:199:88` — `{ objectType: tablecolumnsPage.click_on_searched_name_to_Navigate(columnname), username: '@question',replytext:columnname },`
+- `/src/tests/QuestionWall/question_wall.spec.js:200:79` — `{ objectType: filesPage.click_on_searched_name_to_Navigate(FileName), username: '@question',replytext:FileName },`
+- `/src/tests/QuestionWall/question_wall.spec.js:201:87` — `{ objectType: filecolumnsPage.click_on_searched_name_to_Navigate(FileColumn), username: '@question',replytext:FileColumn },`
+- `/src/tests/QuestionWall/question_wall.spec.js:202:84` — `{ objectType: reportsPage.click_on_searched_name_to_Navigate(Report_Name), username: '@question',replytext:Report_Name },`
+- `/src/tests/QuestionWall/question_wall.spec.js:203:91` — `{ objectType: reportcolumnsPage.click_on_searched_name_to_Navigate(ReportColumn), username: '@question',replytext:ReportColumn },`
+- `/src/tests/QuestionWall/question_wall.spec.js:204:76` — `{ objectType: codesPage.click_on_searched_name_to_Navigate(Codes), username: '@question',replytext:Codes },`
+- `/src/tests/QuestionWall/question_wall.spec.js:205:74` — `{ objectType: apisPage.click_on_searched_name_to_Navigate(APIs), username: '@question',replytext:APIs },`
+- `/src/tests/QuestionWall/question_wall.spec.js:206:91` — `{ objectType: apiattributePage.click_on_searched_name_to_Navigate(APIAttributes), username: '@question',replytext:APIAttributes },`
+- `/src/tests/QuestionWall/question_wall.spec.js:292:85` — `{ objectType: basePage.click_on_searched_name_to_Navigate(database_schema), username: '@question',replytext:database_schema },`
+- `/src/tests/QuestionWall/question_wall.spec.js:293:79` — `{ objectType: basePage.click_on_searched_name_to_Navigate(tablename), username: '@question',replytext:tablename },`
+- `/src/tests/QuestionWall/question_wall.spec.js:294:88` — `{ objectType: tablecolumnsPage.click_on_searched_name_to_Navigate(columnname), username: '@question',replytext:columnname },`
+- `/src/tests/QuestionWall/question_wall.spec.js:295:79` — `{ objectType: filesPage.click_on_searched_name_to_Navigate(FileName), username: '@question',replytext:FileName },`
+- `/src/tests/QuestionWall/question_wall.spec.js:296:87` — `{ objectType: filecolumnsPage.click_on_searched_name_to_Navigate(FileColumn), username: '@question',replytext:FileColumn },`
+- `/src/tests/QuestionWall/question_wall.spec.js:297:84` — `{ objectType: reportsPage.click_on_searched_name_to_Navigate(Report_Name), username: '@question',replytext:Report_Name },`
+- `/src/tests/QuestionWall/question_wall.spec.js:298:91` — `{ objectType: reportcolumnsPage.click_on_searched_name_to_Navigate(ReportColumn), username: '@question',replytext:ReportColumn },`
+- `/src/tests/QuestionWall/question_wall.spec.js:299:76` — `{ objectType: codesPage.click_on_searched_name_to_Navigate(Codes), username: '@question',replytext:Codes },`
+- `/src/tests/QuestionWall/question_wall.spec.js:300:74` — `{ objectType: apisPage.click_on_searched_name_to_Navigate(APIs), username: '@question',replytext:APIs },`
+- `/src/tests/QuestionWall/question_wall.spec.js:301:91` — `{ objectType: apiattributePage.click_on_searched_name_to_Navigate(APIAttributes), username: '@question',replytext:APIAttributes },`
+- `/src/tests/QuestionWall/question_wall.spec.js:392:89` — `{ objectType: basePage.click_on_searched_name_to_Navigate(database_schema), username: '@question',replytext:database_schema },`
+- `/src/tests/QuestionWall/question_wall.spec.js:393:83` — `{ objectType: basePage.click_on_searched_name_to_Navigate(tablename), username: '@question',replytext:tablename },`
+- `/src/tests/QuestionWall/question_wall.spec.js:394:92` — `{ objectType: tablecolumnsPage.click_on_searched_name_to_Navigate(columnname), username: '@question',replytext:columnname },`
+- `/src/tests/QuestionWall/question_wall.spec.js:395:83` — `{ objectType: filesPage.click_on_searched_name_to_Navigate(FileName), username: '@question',replytext:FileName },`
+- `/src/tests/QuestionWall/question_wall.spec.js:396:91` — `{ objectType: filecolumnsPage.click_on_searched_name_to_Navigate(FileColumn), username: '@question',replytext:FileColumn },`
+- `/src/tests/QuestionWall/question_wall.spec.js:397:88` — `{ objectType: reportsPage.click_on_searched_name_to_Navigate(Report_Name), username: '@question',replytext:Report_Name },`
+- `/src/tests/QuestionWall/question_wall.spec.js:398:95` — `{ objectType: reportcolumnsPage.click_on_searched_name_to_Navigate(ReportColumn), username: '@question',replytext:ReportColumn },`
+- `/src/tests/QuestionWall/question_wall.spec.js:399:80` — `{ objectType: codesPage.click_on_searched_name_to_Navigate(Codes), username: '@question',replytext:Codes },`
+- `/src/tests/QuestionWall/question_wall.spec.js:400:78` — `{ objectType: apisPage.click_on_searched_name_to_Navigate(APIs), username: '@question',replytext:APIs },`
+- `/src/tests/QuestionWall/question_wall.spec.js:401:95` — `{ objectType: apiattributePage.click_on_searched_name_to_Navigate(APIAttributes), username: '@question',replytext:APIAttributes }`
+- `/src/tests/ROPA/ropaProcessingActivities.spec.js:30:13` — `username: "ropa_recorder_auth",`
+- `/src/tests/ROPA/ropaProcessingActivities.spec.js:31:13` — `password: "Testing@1234",`
+- `/src/tests/Reference_Data_Management/reference_data_management.spec.js:37:9` — `username: "rdm_user",`
+- `/src/tests/Reference_Data_Management/reference_data_management.spec.js:38:9` — `password: "Rizwana@2807"`
+- `/src/tests/Reporting_Framework/reportingFramework.spec.js:41:89` — `const userCredentials = utils.testData.reportingFrameworkUser || { username: 'RFW', password: '0valEdge@123456' };`
 
 ## Duplicate Locators
 
-No findings.
+- `/src/pages/Dashboard/Dashboard.js:49:102` — `this.viewer_data_literacy_dashboard_title = this.viewer_data_literacy_dashboard_tile.locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/adminSecurityPage.js:11:79` — `this.connectorNineDots =  this.page.getByTestId('connection').locator('#dropdownMenu2');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#dropdownMenu2' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/advancedJobsPage.js:21:56` — `this.advancedJobPagination = this.page.locator('.pagination_counts');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.pagination_counts' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/advancedJobsPage.js:100:48` — `this.sortOrderList = this.page.locator('#oetpSortOrderList');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#oetpSortOrderList' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/advancedJobsPage.js:109:81` — `this.securityRestrictedColumnLabel = (rowLocator) => rowLocator.locator('label').nth(2);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/advancedJobsPage.js:600:53` — `const maskLabel = maskedRow.locator('label').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/advancedJobsPage.js:767:45` — `const toast = this.page.locator("#smallbox1");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "#smallbox1" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/dashboard_security_Tab.js:108:51` — `this.jobListContainer = this.page.locator('#bind_all_jobs');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#bind_all_jobs' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/dashboard_security_Tab.js:114:72` — `this.jobRowEyeIcon = (jobId) => this.jobRowById(jobId).locator('use').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'use' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/systemSettingsPage.js:22:67` — `this.tablesLimitValueButton = this.tablesLimitRow.locator('button').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/systemSettingsPage.js:30:95` — `this.configurationRowValueButton = (keyName) => this.loginAndHomeRow(keyName).locator('button').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/systemSettingsPage.js:31:93` — `this.configurationRowValueLink = (keyName) => this.loginAndHomeRow(keyName).locator('a');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'a' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/systemSettingsPage.js:96:61` — `this.sessionTimeoutErrorMessage = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/systemSettingsPage.js:107:47` — `this.toastSuccess = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/administration/systemSettingsPage.js:311:58` — `const tableBody = this.settingsContainer.locator('tbody');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/buildAutoLineagePage.js:37:48` — `this.buildLineageToast = this.page.locator('#smallbox1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/buildAutoLineagePage.js:44:82` — `this.rowSelectionCheckbox = (name) => this.sourceCodeRowByName(name).locator('label span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/compareSchemasPage.js:63:16` — `.locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/compareSchemasPage.js:74:16` — `.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/compareSchemasPage.js:76:16` — `.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/compareSchemasPage.js:138:116` — `this.deleteDialog = this.page.locator('[data-testid="DeleteCompareSchema-OeDialogBox-delete-manual"]').locator('#oe-component');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#oe-component' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/connectorsPage.js:22:95` — `this.autoLineageToggle = this.page.locator('label', { hasText: /Auto Lineage/i }).locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/connectorsPage.js:56:56` — `return this.crawlerOptionLabel(optionText).locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/tempLineageCorrectionPage.js:51:49` — `this.successMessageBox1 = this.page.locator('#smallbox1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/advancedTools/tempLineageCorrectionPage.js:52:49` — `this.successMessageBox2 = this.page.locator('#smallbox2');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox2' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:45:48` — `this.scrollableDiv = this.page.locator('#scrollableDiv');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#scrollableDiv' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:78:58` — `this.objectSelectorContainer = this.page.locator('#bind_object_selector_oetable');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#bind_object_selector_oetable' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:97:83` — `this.metadataSearchResultsTbody = this.metadataSearchResultsTable.locator('tbody');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:122:74` — `this.shareCopyLinkButton = this.shareThreadDialogActions.locator('div').filter({ hasText: 'Copy Link' }).getByTestId('OeButton-defaultId-manual');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:123:74` — `this.shareLinkedInButton = this.shareThreadDialogActions.locator('div').filter({ hasText: 'LinkedIn' }).getByTestId('OeButton-defaultId-manual');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:124:72` — `this.shareRedditButton = this.shareThreadDialogActions.locator('div').filter({ hasText: 'Reddit' }).getByTestId('OeButton-defaultId-manual');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:154:49` — `this.chartsH1Header = this.page.locator('h1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'h1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:276:57` — `this.resultTableBody = this.resultTable.locator('tbody');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:334:47` — `this.homeHeaderH1 = this.page.locator('h1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'h1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:368:55` — `this.scrollableDivResults = this.page.locator('#scrollableDiv');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#scrollableDiv' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/askEdgi/askEdgiPage.js:770:49` — `await this.utils.mouseHover(row.locator('div').first());`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/basePage.js:432:18` — `.locator('a')`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'a' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/basePage.js:840:54` — `this.successMessageSmallbox1 = this.page.locator('#smallbox1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/basePage.js:1294:68` — `const options = await this.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/basePage.js:1344:68` — `const options = await this.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/basePage.js:1570:38` — `const editor = this.page.locator('.fr-element.fr-view').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.fr-element.fr-view' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:252:36` — `this.popup = this.page.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:244:36` — `this.popup = this.page.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:233:52` — `this.sdObjectSelectOutside = this.page.locator('.MuiBackdrop-invisible');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.MuiBackdrop-invisible' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/certificationPolicy/certificationpolicy.js:264:62` — `this.governPolicyJobSuccessToast = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/certificationPolicy/certificationpolicy.js:277:66` — `this.governPolicyJobSuccessSmallbox1 = this.page.locator('#smallbox1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/certificationPolicy/certificationpolicy.js:289:59` — `this.scheduleSuccessSmallbox2 = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/compare_profile_results/compare_profile_results.js:137:70` — `const sourceOptionsLocator = this.source_Select_Date.locator('option');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/compare_profile_results/compare_profile_results.js:155:70` — `const sourceOptionsLocator = this.source_Select_Date.locator('option');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:38:59` — `this.detailPageTableContainer = this.page.locator('#bind_dqconnectorfuncsupport');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#bind_dqconnectorfuncsupport' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:80:68` — `this.detailPageTableContainerClickable = this.page.locator('#bind_dqconnectorfuncsupport');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#bind_dqconnectorfuncsupport' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:108:51` — `this.detailPageTableContainer.locator('div').filter({ hasText: new RegExp(text, 'i') }).first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:151:51` — `return useLabel ? baseLocator.locator('label').first() : baseLocator.locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:151:90` — `return useLabel ? baseLocator.locator('label').first() : baseLocator.locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:190:102` — `this.page.getByRole('listitem').filter({ hasText: new RegExp(filterText, 'i') }).locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:194:102` — `this.page.getByRole('listitem').filter({ hasText: new RegExp(filterText, 'i') }).locator('use').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'use' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js:229:90` — `this.page.getByRole('cell', { name: new RegExp(functionName, 'i') }).locator('img').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/customFields/customFieldsPage.js:81:92` — `this.sectionFilterOptionLabel = (index) => this.sectionFilterOption(index).locator('label');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/customFields/customFieldsPage.js:86:104` — `this.sectionFilterChipCloseIcon = (sectionName) => this.sectionFilterChip(sectionName).locator('img, use').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'img, use' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/customFields/customFieldsPage.js:107:160` — `this.sectionFilterChipSpan = (sectionName) => this.page.getByRole('listitem').filter({ hasText: new RegExp(`Section : ${sectionName}`, 'i') }).locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/customFields/customFieldsPage.js:1185:65` — `const noDataCell = this.customFieldsMainElement.locator('td');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'td' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:1093:59` — `this.reference_tab_validation = this.page.locator('(//tbody//tr//td//a)[1]')`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '(//tbody//tr//td//a)[1]' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataCatalog/dc_FilePage.js:896:59` — `this.reference_tab_validation = this.page.locator('(//tbody//tr//td//a)[1]')`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '(//tbody//tr//td//a)[1]' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1304:59` — `this.reference_tab_validation = this.page.locator('(//tbody//tr//td//a)[1]')`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '(//tbody//tr//td//a)[1]' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3518:47` — `const parentLi = checkbox.locator('..');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '..' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1037:58` — `this.certificationErrorToast = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1348:59` — `this.reference_tab_validation = this.page.locator('(//tbody//tr//td//a)[1]')`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '(//tbody//tr//td//a)[1]' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3749:47` — `const parentLi = checkbox.locator('..');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '..' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:68:83` — `this.folderListRowByPath = (pathText) => this.folderListContainer.locator('tbody').locator(`text=${pathText}`);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:23:69` — `this.dataChangesSearchInput = this.dataChangesTable.locator('role=textbox').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=textbox' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:48:103` — `this.typeFilterOption = (index) => this.page.locator(`[data-testid="type-${index}"]`).locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:51:121` — `this.connectionNameFilterOption = (index) => this.page.locator(`[data-testid="databasename-${index}"]`).locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:54:111` — `this.schemaFilterOption = (index) => this.page.locator(`[data-testid="schemaname-${index}"]`).locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:63:67` — `this.tableSearchInput = this.metadataChangesTable.locator('role=textbox').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=textbox' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:64:68` — `this.titleSearchButton = this.metadataChangesTable.locator('role=cell').filter({ hasText: /^Title$/i }).locator('role=button').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=cell' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:64:121` — `this.titleSearchButton = this.metadataChangesTable.locator('role=cell').filter({ hasText: /^Title$/i }).locator('role=button').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:65:67` — `this.titleSearchInput = this.metadataChangesTable.locator('role=textbox').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=textbox' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:68:81` — `this.metadataChangesTableCellButton = this.metadataChangesTable.locator('role=cell').filter({ hasText: /^Table$/ }).locator('role=button').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=cell' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:68:133` — `this.metadataChangesTableCellButton = this.metadataChangesTable.locator('role=cell').filter({ hasText: /^Table$/ }).locator('role=button').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:100:101` — `this.lastCrawledDateSortButton = this.page.locator('[data-testid="lastcrawldate"]').locator('role=button');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:101:99` — `this.lastMetaSyncDateSortButton = this.page.locator('[data-testid="changedate"]').locator('role=button');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:103:48` — `this.sortOrderList = this.page.locator('#oetpSortOrderList');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#oetpSortOrderList' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:104:70` — `this.sortOrderListAscendingIcon = this.sortOrderList.locator('use').nth(2);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'use' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:105:71` — `this.sortOrderListDescendingIcon = this.sortOrderList.locator('img').nth(3);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:465:45` — `const titleSpan = this.page.locator('span').filter({ hasText: new RegExp(`^${titleText}$`, 'i') }).first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataProducts/dataProductsPage.js:65:56` — `this.modalMultiselectInput = this.page.locator('#multiselect-container').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#multiselect-container' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataProducts/dataProductsPage.js:103:100` — `this.page.getByRole('listitem').filter({ hasText: new RegExp(chipText, 'i') }).locator('img').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataProducts/dataProductsPage.js:205:41` — `const input = this.page.locator('#multiselect-container').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#multiselect-container' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityFunctions/dataQualityFunctionsPage.js:73:81` — `this.queryRowByConnector = (connectorName) => this.queriesTable.locator('tbody tr').filter({ hasText: new RegExp(connectorName, 'i') }).first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody tr' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityFunctions/dataQualityFunctionsPage.js:76:109` — `const row = connectorName ? this.queryRowByConnector(connectorName) : this.queriesTable.locator('tbody tr').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody tr' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityFunctions/dataQualityFunctionsPage.js:219:55` — `const tableBody = this.functionsTable.locator('div').filter({ hasText: /Function.*Description.*Status/i }).first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRemediationCenter/dataQualityRemediationCenterPage.js:15:61` — `this.systemViewDropdownBackdrop = this.page.locator('.MuiBackdrop-root');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.MuiBackdrop-root' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:28:152` — `this.objectTypeMultiselectAutocomplete = this.page.locator('[data-testid="StaticOptionsSelectField-Multiselect-autocomplete-manual"]').locator('div').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:41:99` — `this.fileSystemFilterOption = this.page.locator('[data-testid="databasename-7"]').locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:49:57` — `this.modelsTableBody = this.modelsTable.locator('tbody');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:89:58` — `this.modelMetricsModalHeader = this.page.locator('#oe-component');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#oe-component' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:101:72` — `this.jobRowEyeIcon = (jobName) => this.jobRow(jobName).locator('use').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'use' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:102:44` — `this.jobsTable = this.page.locator('#bind_all_jobs');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#bind_all_jobs' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:104:63` — `this.jobLogEntry = (text) => this.contentArea.locator('div').filter({ hasText: text }).nth(4);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:111:78` — `this.modelCellDiv = (modelName) => this.modelCell(modelName).locator('div').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:116:115` — `this.recommendationRowCheckbox = this.page.getByRole('row', { name: /Object Type Object Name/i }).locator('label');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:119:109` — `this.detailPageElement = this.page.locator('[data-testid="automation.dqrulesdetail.elem"]').locator('div').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:168:62` — `this.modelsTableContainer = this.modelsTable.locator('div').filter({ hasText: /Rule Model NameDescriptionObject TypeObject CountRecommended CountStatusLast/i }).nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:347:54` — `const catalogWidgetTable = this.page.locator('#bind_object_selector_oetable');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#bind_object_selector_oetable' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:393:94` — `const filterOptionLabel = this.page.locator(`//*[@item-name="${fileName}"]`).locator('label');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:421:121` — `const fileNameCell = this.page.locator(`[data-testid="oefile.filename"]`).filter({ hasText: fileName }).locator('div');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:634:67` — `const tableBody = this.recommendationSummaryTable.locator('tbody');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js:794:33` — `const img = row.locator('img').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:60:43` — `this.backdrop = this.page.locator('.MuiBackdrop-root');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.MuiBackdrop-root' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:91:47` — `this.toastSuccess = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:125:62` — `this.objectExecutionResultsTable = this.page.locator('#bind_objectExecutionResults');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#bind_objectExecutionResults' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:155:71` — `this.objectExecutionResultsTableContainer = this.page.locator('#bind_objectExecutionResults');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#bind_objectExecutionResults' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:241:44` — `this.toastBox1 = this.page.locator('#smallbox1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:242:44` — `this.toastBox2 = this.page.locator('#smallbox2');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox2' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:321:78` — `this.objectLevelViolationEditor = this.advancedSettingsModal.locator('.fr-element.fr-view').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.fr-element.fr-view' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:339:117` — `this.functionEditIcon = this.page.locator('[data-testid="automation.dqrule.gtcf1_iconsContainer"]').locator('role=img');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:378:71` — `this.ruleExecutionsFirstRow = this.ruleExecutionsGrid.locator('tbody tr').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody tr' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:469:79` — `this.failedValuesErrorTableCell = this.failedValuesErrorTable.locator('td');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'td' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:554:119` — `this.summaryMonetaryValueEditIcon = this.page.getByTestId('automation.dqrule.gtcf1_iconsContainer_2').locator('role=img');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:562:153` — `this.executionResultText = (executionId) => this.page.locator(`[data-testid="dqrexecution.result"] >> internal:text="${executionId}"i`).locator('..').locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '..' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:562:167` — `this.executionResultText = (executionId) => this.page.locator(`[data-testid="dqrexecution.result"] >> internal:text="${executionId}"i`).locator('..').locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:564:105` — `this.summaryMonetaryValueSaveIcon = this.page.getByTestId('automation.dqrule.elem_186').locator('role=img');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:566:117` — `this.summaryCriticalityEditIcon = this.page.getByTestId('automation.dqrule.gtcf1_iconsContainer_3').locator('role=img');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:568:115` — `this.summaryViolationEditIcon = this.page.getByTestId('automation.dqrule.gtcf1_iconsContainer_4').locator('role=img');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:571:122` — `this.summaryCorrectiveActionEditIcon = this.page.getByTestId('automation.dqrule.gtcf1_iconsContainer_5').locator('role=img');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:580:79` — `this.stewardSaveIcon = (name) => this.stewardUserOption(name).locator('role=img');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'role=img' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:1382:42` — `const matchingCell = row.locator('span').filter({ hasText: objectName }).first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:2241:35` — `const cells = row.locator('td');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'td' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3524:92` — `const additionalAssociationsSpan = this.additionalAssociationsColumnHeader.locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:4263:146` — `const resultLocator = this.page.locator(`[data-testid="dqrexecution.result"]`).filter({ hasText: new RegExp(executionId, 'i') }).locator('span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:31:88` — `this.connectorTypeHeader = this.page.locator('[data-testid="server"]').locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:33:94` — `this.lastModifiedOnHeader = this.page.locator('[data-testid="lastmoddate"]').locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:34:103` — `this.dataLakeOvalSightHeader = this.page.locator('[data-testid="dataLakeOvalSight"]').locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:35:97` — `this.lastOvalSightScanHeader = this.page.locator('[data-testid="lastrundate"]').locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:36:117` — `this.folderOvalsightSchedulerHeader = this.page.locator('[data-testid="folderOvalsightScheduler"]').locator('span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:40:85` — `this.fileManagerTableContainerBody = this.fileManagerTableContainer.locator('tbody');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:47:148` — `this.dataLakeOvalSightIcon = (connectorName) => this.page.locator(`[data-connname="${connectorName}"] [id*="dataLakeOvalSight"] `).locator('img, use').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'img, use' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:49:169` — `this.folderOvalsightSchedulerDiv = (connectorName) => this.connectorRow(connectorName).locator('[data-testid="fileexplorer.folderOvalsightScheduler"]').locator('div').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:133:64` — `this.uploadDialogFileLabel = this.uploadDialog.locator('label').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:157:78` — `this.connectionNameHeaderButtons = this.connectionNameHeader.locator('button');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:158:68` — `this.createdByHeaderButtons = this.createdByHeader.locator('button');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:170:96` — `this.lastModifiedSortButton = this.page.locator('[data-testid="lastmoddate"]').locator('button').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:171:97` — `this.lastOvalSightSortButton = this.page.locator('[data-testid="lastrundate"]').locator('button').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'button' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:187:58` — `this.fileDeletedSuccessToast = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/fileManager/fileManagerPage.js:196:56` — `this.dcContextDropdownMenu = this.page.locator('#dropdownMenu2');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#dropdownMenu2' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanaceApp/govAppPage.js:284:48` — `const successToast = this.page.locator('#smallbox1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:74:49` — `this.successMessage = this.page.locator('#smallbox1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:78:51` — `this.gdqTableBody = this.gdqTable.locator('tbody');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:109:50` — `this.term1Selection2 = this.page.locator('label').filter({ hasText: /GDQTerm2GDQTerm3GDQTerm4GDQTerm5MydeskTermNOCLASSIFICATIONSSelect Term/i });`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:111:50` — `this.term2Selection2 = this.page.locator('label').filter({ hasText: /GDQTermGDQTerm3GDQTerm4GDQTerm5MydeskTermNOCLASSIFICATIONSSelect Term/i });`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:113:50` — `this.term3Selection2 = this.page.locator('label').filter({ hasText: /GDQTermGDQTerm2GDQTerm4GDQTerm5MydeskTermNOCLASSIFICATIONSSelect Term/i });`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:115:50` — `this.term4Selection2 = this.page.locator('label').filter({ hasText: /GDQTermGDQTerm2GDQTerm3GDQTerm5MydeskTermNOCLASSIFICATIONSSelect Term/i });`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:130:115` — `this.gdqRowCheckbox = (gdqName) => this.page.getByRole('row', { name: new RegExp(gdqName, 'i') }).locator('label span');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:140:72` — `this.noClassificationsElement = this.termsListGlossary.locator('div').filter({ hasText: /NO_CLASSIFICATIONS/i }).nth(4);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:192:60` — `this.termsUpdateSuccessMessage = this.page.locator('#smallbox2');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox2' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:195:58` — `this.termsSaveSuccessMessage = this.page.locator('#smallbox2');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox2' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:310:61` — `this.jobSubmittedSuccessMessage = this.page.locator('#smallbox2');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox2' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:366:56` — `this.errorMessageContainer = this.page.locator('#smallbox1');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#smallbox1' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:374:58` — `this.deleteGDQSuccessMessage = this.page.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:378:85` — `this.gdqRowCheckboxByText = (rowText) => this.gdqRowByText(rowText).locator('label span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:387:59` — `this.downloadMessageContainer = this.page.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:1130:41` — `const label = this.page.locator('label').filter({ hasText: new RegExp(expectedText, 'i') });`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:1374:69` — `const scrollableDiv = this.complianceTableContainer.locator('div').filter({ hasText: /GDQTerm/i }).nth(2);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:1390:35` — `const label = row.locator('label');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governanceCatalog/gdqPage.js:2240:22` — `.locator('div')`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/governedDataQuery/gdq.js:128:38` — `this.popup = this.page.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/homePage/homePage.js:57:40` — `this.popup = this.page.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/jobs/jobsPage.js:11:60` — `this.latestJobNameLink = this.latestJobRow.locator('a').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'a' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/jobs/jobsPage.js:103:41` — `} else if (await jobRow.locator('a').first().isVisible().catch(() => false)) {`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'a' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/jobs/jobsPage.js:104:60` — `await this.utils.clickOnElement(jobRow.locator('a').first(), `Open job log for ${jobName}`);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'a' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/myProfile/myProfilePage.js:123:76` — `this.cp_password_history_error_message_dynamic = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/myProfile/myProfilePage.js:124:63` — `this.passwordChangeSuccessMessage = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/myProfile/myProfilePage.js:125:64` — `this.newPasswordMustBeErrorMessage = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/myProfile/myProfilePage.js:126:63` — `this.passwordHistoryErrorSmallBox = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/reference_data_management/reference_data_management.js:162:51` — `this.rdmDownloadToast = this.page.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/reference_data_management/reference_data_management.js:182:102` — `this.rdmSummaryAttributeCheckbox = (rowText) => this.rdmSummaryAttributeRow(rowText).locator('label span').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'label span' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/reference_data_management/reference_data_management.js:186:60` — `this.rdmSummarySuccessMessage1 = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/reference_data_management/reference_data_management.js:187:60` — `this.rdmSummarySuccessMessage2 = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/reference_data_management/reference_data_management.js:188:60` — `this.rdmSummarySuccessMessage3 = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/reference_data_management/reference_data_management.js:229:69` — `this.rdmAttributeChangesDownloadMessage = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/reference_data_management/reference_data_management.js:287:54` — `const rows = await this.rdmListTable.locator('tbody tr').count();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'tbody tr' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/configureRopaAttributesPage.js:676:62` — `const employeesInput = employeesAutocomplete.locator('div').nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/configureRopaAttributesPage.js:866:56` — `const othersInput = othersAutocomplete.locator("div").nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "div" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/configureRopaAttributesPage.js:1314:60` — `const disposalInput = disposalAutocomplete.locator("div").nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "div" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:78:57` — `).locator('label:has-text("Steward*")').locator("..").locator("select");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for ".." and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:78:71` — `).locator('label:has-text("Steward*")').locator("..").locator("select");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "select" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:81:22` — `.locator("..")`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for ".." and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:82:22` — `.locator("select");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "select" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:88:22` — `.locator("..")`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for ".." and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:89:22` — `.locator("select");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "select" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:132:78` — `this.collectionPointsDiv = this.collectionPointsAutocomplete.locator("div").nth(1);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "div" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:222:55` — `this.updateSuccessMessage = this.page.locator("#smallbox2");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "#smallbox2" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:269:56` — `this.summarySuccessMessage = this.page.locator("#smallbox1");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "#smallbox1" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:1095:41` — `const toast = this.page.locator("#smallbox1");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "#smallbox1" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:1125:41` — `const toast = this.page.locator("#smallbox1");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "#smallbox1" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaReportsPage.js:57:51` — `this.reportAddedToast = this.page.locator("#smallbox1");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "#smallbox1" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaReportsPage.js:58:53` — `this.reportDeletedToast = this.page.locator("#smallbox2");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "#smallbox2" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/ropa/ropaReportsPage.js:360:22` — `.locator("div")`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "div" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/serviceDesk/serviceDeskPage.js:148:56` — `this.sdObjectSelectOutside = this.page.locator('.MuiBackdrop-invisible');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.MuiBackdrop-invisible' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/serviceDesk/serviceDeskPage.js:180:40` — `this.popup = this.page.locator('.SmallBox .content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.SmallBox .content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/serviceDesk/serviceDeskPage.js:322:119` — `this.tableCellByName = (cellName) => this.page.getByRole('cell', { name: new RegExp(cellName, 'i') }).locator('div').first();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/serviceDesk/serviceDeskPage.js:816:33` — `await selectRow.locator("//label").first().click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/pages/serviceDesk/serviceDeskPage.js:1615:63` — `const summaryDiv = this.requestIdSummaryTable.locator('div').filter({ hasText: /Request IDSummaryRequest/i }).nth(2);`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/virtualObjects/virtualObjectsPage.js:14:52` — `this.dcPaginationCount = this.page.locator('.pagination_counts');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.pagination_counts' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/virtualObjects/virtualObjectsPage.js:34:62` — `this.voColumnsRequiredErrorToast = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/virtualObjects/virtualObjectsPage.js:35:63` — `this.voDuplicateColumnsErrorToast = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/pages/virtualObjects/virtualObjectsPage.js:36:49` — `this.voSuccessToast = this.page.locator('.small-box-content');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '.small-box-content' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4598:66` — `const options = await this.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4637:70` — `const options = await basePage.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5196:66` — `const options = await this.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5235:70` — `const options = await basePage.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5605:66` — `const options = await this.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5644:70` — `const options = await basePage.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6035:66` — `const options = await this.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6074:70` — `const options = await basePage.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6723:66` — `const options = await this.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6762:70` — `const options = await basePage.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7334:66` — `const options = await this.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7373:70` — `const options = await basePage.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8384:66` — `const options = await this.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8423:70` — `const options = await basePage.advanced_select_condition.locator('option').all();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'option' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_DeleteTerm.spec.js:255:74` — `await utils.clickOnElement(dcTableColumnPage.columnField.locator("//a"));`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//a" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_DeleteTerm.spec.js:292:74` — `await utils.clickOnElement(dcTableColumnPage.columnField.locator("//a"));`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//a" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_ManageDataAssociations.spec.js:742:74` — `await utils.clickOnElement(dcTableColumnPage.columnField.locator("//a"));`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//a" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_ManageDataAssociations.spec.js:767:74` — `await utils.clickOnElement(dcTableColumnPage.columnField.locator("//a"));`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//a" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_ManageDataAssociations.spec.js:833:74` — `await utils.clickOnElement(dcTableColumnPage.columnField.locator("//a"));`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//a" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_ManageDataAssociations.spec.js:891:74` — `await utils.clickOnElement(dcTableColumnPage.columnField.locator("//a"));`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//a" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_Miscellaneous_Term_Request.spec.js:71:95` — `await utils.clickOnElement(bgPage.bg_ListView_ValidateTermisCreated(termName).locator("//a"));`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//a" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_PermissionsDomain.spec.js:273:116` — `// await utils.fluentWait(page, page.getByRole('row', { name: 'JWF_SQLSERVER_Playwright3 stage' }).locator('span').first());`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_PermissionsDomain.spec.js:274:114` — `// await utils.clickOnElement(page.getByRole('row', { name: 'JWF_SQLSERVER_Playwright3 stage' }).locator('span').first(), "Select Database");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'span' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_TermReferences.spec.js:351:88` — `await utils.clickOnElement(dataStoriesPage.dataStoriesStoryEditorField.locator("//a"));`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//a" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_TermReferences.spec.js:404:101` — `dcDBPage.dcSummaryPageBusinessDescriptionEditClick("Technical Description").locator('a'),`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'a' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_TermReferences.spec.js:420:100` — `dcDBPage.dcSummaryPageBusinessDescriptionEditClick("Business Description").locator('a'),`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'a' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/bg_Term_DeAssociate.spec.js:114:74` — `await utils.clickOnElement(dcTableColumnPage.columnField.locator("//a"), "Click on Column field link");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//a" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:540:25` — `//   await page.locator('#globaldomaininfo').click({timeout:5000});`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#globaldomaininfo' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:570:25` — `//   await page.locator('#globaldomaininfo').click({timeout:5000});`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#globaldomaininfo' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/DataLiteracy/dataLiteracy.spec.js:112:46` — `const operationErrorToast = page.locator("#smallbox1");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "#smallbox1" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/DataLiteracy/dataLiteracy.spec.js:134:44` — `const jobSubmittedToast = page.locator("#smallbox2");`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "#smallbox2" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Reference_Data_Management/reference_data_management.spec.js:1208:52` — `const stewardOptionDiv = stewardOption.locator('div');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for 'div' and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/addObjectstoACandRaiseSR.spec.js:74:29` — `await selectRow.locator("//label").first().click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/addObjectstoACandRaiseSR.spec.js:75:29` — `await selectRow.locator("//label").nth(1).click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/addObjectstoACandRaiseSR.spec.js:109:29` — `await selectRow.locator("//label").first().click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/addObjectstoACandRaiseSR.spec.js:110:29` — `await selectRow.locator("//label").nth(1).click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/groupingSRConnectionType.spec.js:76:29` — `await selectRow.locator("//label").first().click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/groupingSRConnectionType.spec.js:83:29` — `await selectRow.locator("//label").first().click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/groupingSRWOrkflow.spec.js:67:32` — `// await selectRow.locator("//label").first().click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/groupingSRWOrkflow.spec.js:69:29` — `await selectRow.locator("//label").nth(1).click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/groupingSRWOrkflow.spec.js:84:29` — `await selectRow.locator("//label").first().click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/tests/Service_Desk/groupingSRWOrkflow.spec.js:85:29` — `await selectRow.locator("//label").nth(1).click();`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for "//label" and reference it from each test instead of repeating the raw selector.
+- `/src/utils/utils.js:1670:49` — `* await utils.handleFileChooser(page.locator('#uploadButton'), '/path/to/file.png', 'Upload Image');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#uploadButton' and reference it from each test instead of repeating the raw selector.
+- `/src/utils/utils.js:1673:49` — `* await utils.handleFileChooser(page.locator('#uploadButton'), ['/path/file1.pdf', '/path/file2.pdf'], 'Upload Documents');`
+  - **suggested_fix:** Extract a reusable locator (shared constant or Page Object field) for '#uploadButton' and reference it from each test instead of repeating the raw selector.
 
 ## Poor Assertions
 
-No findings.
+- `/src/pages/basePage.js:3965:7` — `expect(await this.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:3980:7` — `expect(await this.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:3996:7` — `expect(await this.videoValidation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:4010:7` — `expect(await this.videoValidation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:4271:7` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:4275:7` — `expect(await this.watchlist_label_name).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:4337:7` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:4341:7` — `expect(await this.watchlist_label_name).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:4344:7` — `expect(noDataVisible || !tabIconVisible).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:4367:7` — `expect(await this.watchlist_label_name).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/basePage.js:4370:7` — `expect(noDataVisible || !tabIconVisible).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:867:9` — `expect(isChecked).toBeTruthy(); // Validate the checkbox is checked`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:1390:9` — `expect(isChecked).toBeTruthy(); // Validate the checkbox is checked`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:2984:9` — `expect(await this.toogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3026:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3391:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:3403:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_APIPage.js:3037:9` — `expect(await this.toogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_APIPage.js:3080:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_APIPage.js:3423:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_APIPage.js:3435:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_CodesPage.js:2873:9` — `expect(await this.toogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_CodesPage.js:2916:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_CodesPage.js:3267:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_CodesPage.js:3279:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2095:9` — `expect(await this.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2096:9` — `expect(await this.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2221:9` — `expect(await this.toogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2261:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2565:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:2577:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FilePage.js:1760:9` — `expect(await this.toogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FilePage.js:1800:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FilePage.js:2124:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_FilePage.js:2136:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:1889:9` — `expect(await this.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:1890:9` — `expect(await this.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2014:9` — `expect(await this.toogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2054:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2366:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:2378:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportPage.js:2400:9` — `expect(await this.toogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportPage.js:2442:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportPage.js:2453:9` — `expect(await this.report_group_label_in_Summary_Page).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportPage.js:2462:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportPage.js:2828:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_ReportPage.js:2840:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3111:9` — `expect(await this.toogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3122:9` — `expect(await this.untoogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3158:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3211:9` — `expect(await this.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3212:9` — `expect(await this.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3645:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3672:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TablesPage.js:3342:9` — `expect(await this.toogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TablesPage.js:3353:9` — `expect(await this.untoogle_in_relationship_button_in_relationshipTab).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TablesPage.js:3389:9` — `expect(await this.summary_field).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TablesPage.js:3442:9` — `expect(await this.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TablesPage.js:3443:9` — `expect(await this.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TablesPage.js:3877:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TablesPage.js:3890:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TablesPage.js:3903:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataCatalog/dc_TablesPage.js:3932:9` — `expect(await this.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataClassificationReports/dataClassificationReports.js:239:9` — `expect(glossaryVisible || oetableVisible).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3899:9` — `expect(tabPaneText).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:1489:13` — `expect(await this.validate_assignable_is_no).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:1490:13` — `expect(await this.validate_Tag_type_is_non_assignable).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:1536:13` — `expect(await this.validate_assignable_is_yes).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:1537:13` — `expect(await this.validate_Tag_type_is_Tag).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:1770:13` — `expect(await this.validate_assignable_is_no).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:1771:13` — `expect(await this.validate_Tag_type_is_non_assignable).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:1824:13` — `expect(await this.validate_assignable_is_yes).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:1825:13` — `expect(await this.validate_Tag_type_is_Tag).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:2252:9` — `expect(await this.tag_Type_Column_Non_Assignable_Validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:2264:9` — `expect(await this.validate_assignable_is_no).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:2265:9` — `expect(await this.validate_Tag_type_is_non_assignable).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:2303:13` — `expect(await this.tag_Type_Column_TagName_Validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:2309:13` — `expect(await this.validate_assignable_is_yes).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_Secure.js:2310:13` — `expect(await this.validate_Tag_type_is_Tag).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:866:9` — `expect(await this.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:867:9` — `expect(await this.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:943:9` — `expect(await this.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:944:9` — `expect(await this.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:2404:13` — `expect(await this.validate_assignable_is_no).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:2405:13` — `expect(await this.validate_Tag_type_is_non_assignable).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:2459:13` — `expect(await this.validate_assignable_is_yes).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:2460:13` — `expect(await this.validate_Tag_type_is_Tag).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:2655:13` — `expect(await this.validate_assignable_is_no).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:2656:13` — `expect(await this.validate_Tag_type_is_non_assignable).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:2714:13` — `expect(await this.validate_assignable_is_yes).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:2715:13` — `expect(await this.validate_Tag_type_is_Tag).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:3089:9` — `expect(await this.tag_Type_Column_Non_Assignable_Validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:3102:9` — `expect(await this.validate_assignable_is_no).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:3103:9` — `expect(await this.validate_Tag_type_is_non_assignable).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:3145:13` — `expect(await this.tag_Type_Column_TagName_Validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:3153:13` — `expect(await this.validate_assignable_is_yes).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/pages/tags/tagsPage_open.js:3154:13` — `expect(await this.validate_Tag_type_is_Tag).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1038:5` — `expect(await apiPage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1342:5` — `expect(await apiPage.rating_history_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1354:5` — `expect(await apiPage.additional_button_of_governanceroles).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1379:5` — `expect(await apiPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1441:5` — `expect(await apiPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1749:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1750:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2203:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2204:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2213:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2214:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2306:5` — `expect(await files.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2307:5` — `expect(await files.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2732:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2739:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2802:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2809:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2860:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:2867:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4419:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1435:5` — `expect(await apiattributePage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1490:5` — `expect(await apiattributePage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1829:5` — `expect(await apiattributePage.rating_history_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1842:5` — `expect(await apiattributePage.additional_button_of_governanceroles).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1873:5` — `expect(await apiattributePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1940:5` — `expect(await apiattributePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2290:5` — `expect(await apiattributePage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2291:5` — `expect(await apiattributePage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2544:5` — `expect(await apiattributePage.graphical_tab_button).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2545:5` — `expect(await apiattributePage.tabular_tab_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2546:5` — `expect(await apiattributePage.auto_Lineage_Label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2547:5` — `expect(await apiattributePage.manual_Lineage_Label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2548:5` — `expect(await apiattributePage.search_field_of_lineage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2549:5` — `expect(await apiattributePage.edit_icon_of_lineagePage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2550:5` — `expect(await apiattributePage.autolineage_color).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2551:5` — `expect(await apiattributePage.manuallineage_color).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:3374:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:3375:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:3384:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:3385:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4248:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4255:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4323:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4331:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4383:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4391:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4849:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:4911:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:554:5` — `expect(await codesPage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:1733:5` — `expect(await codesPage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:1795:5` — `expect(await codesPage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2431:5` — `expect(await codesPage.rating_history_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2457:5` — `expect(await codesPage.additional_button_of_governanceroles).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2503:5` — `expect(await codesPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2616:5` — `expect(await codesPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:3530:5` — `expect(await codesPage.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:3546:5` — `expect(await codesPage.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:3590:5` — `expect(await codesPage.videoValidation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:3605:5` — `expect(await codesPage.videoValidation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:3634:5` — `expect(await codesPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:3635:5` — `expect(await codesPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1101:5` — `expect(await tablesPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1102:5` — `expect(await tablesPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1111:5` — `expect(await tablesPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1112:5` — `expect(await tablesPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1874:3` — `expect(noDataVisible || listCheckPassed).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1982:3` — `expect(noDataVisible || listCheckPassed).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2709:3` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:2772:3` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3204:3` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3211:3` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3286:3` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3293:3` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3344:3` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3351:3` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3373:3` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3380:3` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3446:3` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3453:3` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3504:3` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3511:3` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3830:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3831:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3840:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3841:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3963:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3964:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3973:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:3974:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4097:7` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4098:7` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4107:7` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4108:7` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4238:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4239:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4248:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4249:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4725:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4726:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4735:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4736:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4837:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4838:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4851:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:4852:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5280:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5281:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5290:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5291:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5689:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5690:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5699:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:5700:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6118:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6119:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6128:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6129:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6278:3` — `expect(await files.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6279:3` — `expect(await files.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6408:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6409:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6418:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6419:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6808:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6809:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6818:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6819:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7022:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7023:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7032:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7033:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7420:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7421:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7430:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7431:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:7471:3` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8060:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8061:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8070:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8071:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8468:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8469:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8478:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8479:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8687:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8688:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8697:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8698:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8891:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8944:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8945:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8954:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:8955:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:9147:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:9200:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:9201:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:9210:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:9211:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:9397:5` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:10151:7` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:10349:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:10690:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:10691:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:10814:3` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:10815:3` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2208:5` — `expect(await fileColumns.validate_message_in_notification).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2557:5` — `expect(await fileColumns.ratingField1).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2558:5` — `expect(await fileColumns.ratingField2).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2562:5` — `expect(await fileColumns.rating_history_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2620:5` — `expect(await fileColumns.graphical_tab_button).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2621:5` — `expect(await fileColumns.tabular_tab_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2622:5` — `expect(await fileColumns.auto_Lineage_Label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2623:5` — `expect(await fileColumns.manual_Lineage_Label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2624:5` — `expect(await fileColumns.search_field_of_lineage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2625:5` — `expect(await fileColumns.edit_icon_of_lineagePage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2626:5` — `expect(await fileColumns.autolineage_color).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2627:5` — `expect(await fileColumns.manuallineage_color).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3189:5` — `expect(await fileColumns.lineage_tab_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3190:5` — `expect(await fileColumns.summary_tab_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3191:5` — `expect(await fileColumns.reference_Tab_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3234:5` — `expect(await fileColumns.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3322:5` — `expect(await fileColumns.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:4419:5` — `expect(await fileColumns.horizontal_line_Validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:4431:5` — `expect(await fileColumns.horizontal_line_Validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:4520:5` — `expect(await fileColumns.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:4536:5` — `expect(await fileColumns.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:4574:5` — `expect(await fileColumns.videoValidation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:4589:5` — `expect(await fileColumns.videoValidation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:6631:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:6632:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:6641:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:6642:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:7832:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:8050:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:8106:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:8178:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:8179:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:8255:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:8256:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2860:5` — `expect(await files.ratingField1).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2861:5` — `expect(await files.ratingField2).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2865:5` — `expect(await files.rating_history_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2898:5` — `expect(await files.additional_button_of_governanceroles).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:2942:5` — `expect(await files.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:3028:5` — `expect(await files.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:3471:5` — `expect(await files.rightArrow_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4028:5` — `expect(await files.business_label_in_SummaryPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4341:5` — `expect(await fileColumnsPage.businessDesc_helpcenter_textarea).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4350:5` — `expect(await fileColumnsPage.technicalDesc_helpcenter_textarea).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4381:5` — `expect(await files.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4382:5` — `expect(await files.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4791:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4798:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4861:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4868:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4919:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:4926:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5158:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5221:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5415:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5416:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5425:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5426:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5518:5` — `expect(await files.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5519:5` — `expect(await files.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6423:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7063:5` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7510:5` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:8201:5` — `expect(selectedTitle, "Expected at least one non-empty Title value in Summary grid").toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:2262:5` — `expect(await reportColumns.validate_message_in_notification).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:3745:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:3752:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:3820:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:3827:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:3878:5` — `expect(await apiPage.empty_business_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:3885:5` — `expect(await apiPage.empty_technical_description_ListPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4458:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4513:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4763:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4764:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4773:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4774:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2653:5` — `expect(await reports.ratingField1).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2654:5` — `expect(await reports.ratingField2).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2658:5` — `expect(await reports.rating_history_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2692:5` — `expect(await reports.additional_button_of_governanceroles).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2738:5` — `expect(await reports.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2835:5` — `expect(await reports.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3101:5` — `expect(await reports.validate_message_in_notification).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3187:5` — `expect(await reports.rightArrow_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3774:5` — `expect(await reports.business_label_in_SummaryPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:4083:5` — `expect(await fileColumnsPage.businessDesc_helpcenter_textarea).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:4092:5` — `expect(await fileColumnsPage.technicalDesc_helpcenter_textarea).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:4124:5` — `expect(await reports.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:4125:5` — `expect(await reports.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:4991:6` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:5047:6` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:5908:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:6134:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:6185:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:6186:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:6195:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:6196:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:513:9` — `expect(await validation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:1084:5` — `expect(await tablecolumnsPage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:1864:5` — `expect(await tablecolumnsPage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:1912:5` — `expect(await tablecolumnsPage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2067:5` — `expect(await tablecolumnsPage.download_button_of_relationship).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2832:5` — `expect(await tablecolumnsPage.additional_button_of_governanceroles).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2869:5` — `expect(await tablecolumnsPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2962:5` — `expect(await tablecolumnsPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:3019:8` — `// expect(await tablecolumnsPage.mentionedMessage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:3028:8` — `// expect(await tablecolumnsPage.mentionedMessage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:3379:5` — `expect(await tablecolumnsPage.rightArrow_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4114:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4115:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4124:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4125:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4457:5` — `expect(await tablecolumnsPage.masked_Authorized_roles).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4458:5` — `expect(await tablecolumnsPage.masked_Authorized_users).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4459:5` — `expect(await tablecolumnsPage.masked_policy_name).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4460:5` — `expect(await tablecolumnsPage.masked_policy_scheme).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4564:5` — `expect(await tablecolumnsPage.popup_of_settings).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:5635:5` — `expect(await tablecolumnsPage.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:5651:5` — `expect(await tablecolumnsPage.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:5719:9` — `expect(await tablecolumnsPage.videoValidation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:6058:9` — `expect(await element).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:6107:9` — `expect(await element).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:6111:5` — `expect(await tablecolumnsPage.restricted_Authorized_roles).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:6218:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:6219:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:7081:6` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:7137:6` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:7778:9` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:7779:9` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:8086:9` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:8087:9` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:8790:9` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:8791:9` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9085:9` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9086:9` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9291:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9292:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9466:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9467:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9854:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9855:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10008:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10009:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10172:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10173:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10367:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10368:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10867:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10868:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10995:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10996:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:11540:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:11541:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:11823:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:11824:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:11958:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:11959:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:12093:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:12094:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:12417:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:12418:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:12924:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:12925:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:13472:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:13473:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:13611:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:13612:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:13788:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:13897:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:13898:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14073:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14074:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14201:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14202:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14488:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14489:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14633:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14720:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14721:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14903:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14904:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15067:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15068:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15235:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15236:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15408:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15409:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15841:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15842:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:16177:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:16178:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:16522:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:16523:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:16874:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:16875:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:17471:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:17472:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:17796:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:17797:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18021:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18090:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18091:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18245:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18246:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18453:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18548:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18549:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18763:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18860:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:18861:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:19075:9` — `expect(monthName).toBeDefined();`
+  - **suggested_fix:** Assert the actual outcome: expect(locator).toBeVisible() or toHaveCount(1) instead of toBeDefined().
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:763:5` — `expect(await tablesPage.graphical_tab_button).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:764:5` — `expect(await tablesPage.tabular_tab_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:769:5` — `expect(await tablesPage.graphical_tab_button).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:770:5` — `expect(await tablesPage.tabular_tab_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:771:5` — `expect(await tablesPage.auto_Lineage_Label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:772:5` — `expect(await tablesPage.manual_Lineage_Label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:773:5` — `expect(await tablesPage.search_field_of_lineage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:774:5` — `expect(await tablesPage.edit_icon_of_lineagePage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2808:11` — `// //     expect(await tablesPage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2880:11` — `// //     expect(await tablesPage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4042:11` — `// //     expect(await tablesPage.additional_button_of_governanceroles).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4114:8` — `//     expect(await tablesPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4195:8` — `//     expect(await tablesPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4252:11` — `//     // expect(await tablesPage.mentionedMessage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4261:11` — `//     // expect(await tablesPage.mentionedMessage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4727:11` — `// //     expect(await tablesPage.rightArrow_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4830:11` — `// //     expect(await tablesPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4831:11` — `// //     expect(await tablesPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4840:11` — `// //     expect(await tablesPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4841:11` — `// //     expect(await tablesPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5451:11` — `// //     expect(await tablesPage.masked_Authorized_roles).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5452:11` — `// //     expect(await tablesPage.masked_Authorized_users).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5453:11` — `// //     expect(await tablesPage.masked_policy_name).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5454:11` — `// //     expect(await tablesPage.masked_policy_scheme).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5614:11` — `// //     expect(await tablesPage.popup_of_settings).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7075:11` — `// //     expect(await tablesPage.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7091:11` — `// //     expect(await tablesPage.Desc_Img).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7192:11` — `// //     expect(await tablesPage.videoValidation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7207:11` — `// //     expect(await tablesPage.videoValidation).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7583:11` — `// //     expect(await tablesPage.graphical_tab_button).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7584:11` — `// //     expect(await tablesPage.tabular_tab_button).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7585:11` — `// //     expect(await tablesPage.auto_Lineage_Label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7586:11` — `// //     expect(await tablesPage.manual_Lineage_Label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7587:11` — `// //     expect(await tablesPage.search_field_of_lineage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7588:11` — `// //     expect(await tablesPage.edit_icon_of_lineagePage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7589:11` — `// //     expect(await tablesPage.autolineage_color).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7590:11` — `// //     expect(await tablesPage.manuallineage_color).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7683:11` — `// //     expect(await tablesPage.masked_Authorized_roles).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7684:11` — `// //     expect(await tablesPage.masked_Authorized_users).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7685:11` — `// //     expect(await tablesPage.masked_policy_name).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7686:11` — `// //     expect(await tablesPage.masked_policy_scheme).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7688:11` — `// //     expect(await tablesPage.restricted_Authorized_roles).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8472:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8519:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8837:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8838:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8847:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8848:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8943:5` — `expect(await files.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:8944:5` — `expect(await files.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:9411:5` — `expect(await tablecolumnsPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:9412:5` — `expect(await tablecolumnsPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/databases.spec.js:417:6` — `expect(await tablesPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/databases.spec.js:418:6` — `expect(await tablesPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/databases.spec.js:427:6` — `expect(await tablesPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/databases.spec.js:428:6` — `expect(await tablesPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:576:5` — `expect(await tablesPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:577:5` — `expect(await tablesPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:586:5` — `expect(await tablesPage.my_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:587:5` — `expect(await tablesPage.public_view_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:297:5` — `expect(await apiattributePage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:607:5` — `expect(await apiattributePage.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:634:5` — `expect(await apiattributePage.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:670:5` — `expect(await apiattributePage.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:696:5` — `expect(await apiattributePage.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:1016:5` — `expect(await apiattributePage.rating_history_label).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:1118:5` — `expect(await apiattributePage.no_data_exists_in_watchlist).toBeTruthy()`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/filecolumn_viewer.spec.js:328:5` — `expect(await fileColumns.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/filecolumn_viewer.spec.js:349:5` — `expect(await fileColumns.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/filecolumn_viewer.spec.js:379:5` — `expect(await fileColumns.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/filecolumn_viewer.spec.js:402:5` — `expect(await fileColumns.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:301:5` — `expect(await files.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:336:5` — `expect(await files.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:356:5` — `expect(await files.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:390:5` — `expect(await files.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:412:5` — `expect(await files.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:451:5` — `expect(await files.publish_term_updating_business_description_error_popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:622:5` — `expect(await files.business_label_in_SummaryPage).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:328:5` — `expect(await tablecolumnsPage.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:368:5` — `expect(await tablecolumnsPage.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:388:5` — `expect(await tablecolumnsPage.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:427:5` — `expect(await tablecolumnsPage.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:449:5` — `expect(await tablecolumnsPage.summaryPlaceholder_in_raising_request).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:566:5` — `expect(await tablecolumnsPage.no_data_exists_in_watchlist).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:175:13` — `expect(found).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:269:9` — `expect(found).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:302:9` — `expect(foundTop5BG).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:323:9` — `expect(foundMaterializedView).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:350:9` — `expect(foundCertifiedTablesText).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:375:9` — `expect(foundTablesWithColumnsText).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:1071:13` — `expect(foundDescription).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:1247:9` — `expect(foundDescription).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:2109:9` — `expect(foundDescription).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:2155:9` — `expect(foundDescription).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/AskEdgi/askEdgi.spec.js:2221:13` — `expect(foundDescription).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Business_Glossary/ValidateMaskedData.spec.js:83:21` — `expect(value === "").toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Business_Glossary/ValidateMaskedData.spec.js:90:21` — `expect(value === -1 || value === "-1").toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Business_Glossary/ValidateMaskedData.spec.js:97:21` — `expect(value === -999999999999999 || value === "-999999999999999").toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Business_Glossary/validateMasking.js:85:21` — `expect(value === "").toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Business_Glossary/validateMasking.js:92:21` — `expect(value === -1 || value === "-1").toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Business_Glossary/validateMasking.js:99:21` — `expect(value === -999999999999999 || value === "-999999999999999").toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Data_Stories/DataStories.spec.js:1648:3` — `expect(await dataStoriesPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Data_Stories/DataStories.spec.js:1683:3` — `expect(await dataStoriesPage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Data_Stories/DataStories.spec.js:2172:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Data_Stories/DataStories.spec.js:2218:3` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Data_Stories/DataStories.spec.js:2421:5` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Data_Stories/DataStories.spec.js:2460:3` — `expect(await basePage.pinbutton_validate).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Login/login.spec.js:458:5` — `expect(imageSrc).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Login/login.spec.js:479:5` — `expect(loginLogoSrc).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Login/login.spec.js:506:9` — `expect(reuploadedImageSrc).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyDesk/myDesk.spec.js:1762:9` — `expect(!targetVisible || noDataVisible).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:315:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:388:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:405:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:459:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:529:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:604:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:621:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:674:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:745:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:820:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:837:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:891:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:960:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1035:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1052:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1105:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1177:5` — `expect(await basePage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1248:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1265:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1320:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1393:5` — `expect(await basePage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1464:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1481:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1535:5` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1875:6` — `expect(await tablesPage.popup).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Tags/tags_open.spec.js:2329:5` — `expect(isVisible1).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Tags/tags_open.spec.js:2759:5` — `expect(isVisible2).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Tags/tags_open.spec.js:2958:5` — `expect(isVisible2).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Tags/tags_open.spec.js:3159:5` — `expect(created_BY).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Tags/tags_open.spec.js:3160:5` — `expect(Created_Date).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Tags/tags_open.spec.js:3161:5` — `expect(Last_Modified_Date).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
+- `/src/tests/Tags/tags_open.spec.js:3162:5` — `expect(Modified_By).toBeTruthy();`
+  - **suggested_fix:** Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible()).
 
 ## Unused Functions
 
-No findings.
+- `/src/tests/AskEdgi/askEdgi.spec.js:1770:15` — `aiSuccessTexts`
+- `/src/tests/File_Manager/fileManager.spec.js:14:7` — `createCsvUploadPayload`
+- `/src/utils/reportScreenshot.js:238:16` — `waitForServer`
+- `/src/utils/utils.js:992:30` — `exampleUsage`
 
-## Missing Validations
+## Flaky test risk (by file)
 
-- `/src/main/java/com/hrm/pages/AttendancePage.java:14:19` - `@FindBy(id = "check-in-button")`
-- `/src/main/java/com/hrm/pages/AttendancePage.java:17:19` - `@FindBy(id = "check-out-button")`
-- `/src/main/java/com/hrm/pages/AttendancePage.java:35:30` - `markAttendanceButton.click();`
-- `/src/main/java/com/hrm/pages/AttendancePage.java:39:23` - `checkInButton.click();`
-- `/src/main/java/com/hrm/pages/AttendancePage.java:43:24` - `checkOutButton.click();`
-- `/src/main/java/com/hrm/pages/AttendancePage.java:64:29` - `attendanceDateField.sendKeys(date);`
-- `/src/main/java/com/hrm/pages/DashboardPage.java:35:23` - `employeesLink.click();`
-- `/src/main/java/com/hrm/pages/DashboardPage.java:39:29` - `leaveManagementLink.click();`
-- `/src/main/java/com/hrm/pages/DashboardPage.java:43:24` - `attendanceLink.click();`
-- `/src/main/java/com/hrm/pages/DashboardPage.java:47:25` - `departmentsLink.click();`
-- `/src/main/java/com/hrm/pages/DashboardPage.java:51:22` - `logoutButton.click();`
-- `/src/main/java/com/hrm/pages/EmployeeManagementPage.java:42:27` - `addEmployeeButton.click();`
-- `/src/main/java/com/hrm/pages/EmployeeManagementPage.java:47:27` - `employeeNameField.sendKeys(name);`
-- `/src/main/java/com/hrm/pages/EmployeeManagementPage.java:52:28` - `employeeEmailField.sendKeys(email);`
-- `/src/main/java/com/hrm/pages/EmployeeManagementPage.java:62:31` - `employeePositionField.sendKeys(position);`
-- `/src/main/java/com/hrm/pages/EmployeeManagementPage.java:66:28` - `saveEmployeeButton.click();`
-- `/src/main/java/com/hrm/pages/LeaveManagementPage.java:15:25` - `@FindBy(id = "leave-type")`
-- `/src/main/java/com/hrm/pages/LeaveManagementPage.java:27:19` - `@FindBy(id = "submit-leave-button")`
-- `/src/main/java/com/hrm/pages/LeaveManagementPage.java:42:26` - `applyLeaveButton.click();`
-- `/src/main/java/com/hrm/pages/LeaveManagementPage.java:52:24` - `startDateField.sendKeys(startDate);`
-- `/src/main/java/com/hrm/pages/LeaveManagementPage.java:57:22` - `endDateField.sendKeys(endDate);`
-- `/src/main/java/com/hrm/pages/LeaveManagementPage.java:62:26` - `leaveReasonField.sendKeys(reason);`
-- `/src/main/java/com/hrm/pages/LeaveManagementPage.java:66:27` - `submitLeaveButton.click();`
-- `/src/main/java/com/hrm/pages/LoginPage.java:33:23` - `usernameField.sendKeys(username);`
-- `/src/main/java/com/hrm/pages/LoginPage.java:38:23` - `passwordField.sendKeys(password);`
-- `/src/main/java/com/hrm/pages/LoginPage.java:42:21` - `loginButton.click();`
-- `/src/test/java/com/hrm/tests/AttendanceTest.java:23:47` - `@Test(priority = 1, description = "Verify check-in functionality")`
-- `/src/test/java/com/hrm/tests/AttendanceTest.java:33:47` - `@Test(priority = 2, description = "Verify check-out functionality")`
+| File | flaky_test_risk | hard_waits | retry_usage |
+| --- | --- | ---: | :---: |
+| `/Users/NagaPratap/oe_utat/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js` | **HIGH** | 16 | true |
+| `/Users/NagaPratap/oe_utat/src/utils/utils.js` | **HIGH** | 5 | true |
+| `/Users/NagaPratap/oe_utat/src/pages/administration/dashboard_security_Tab.js` | **MEDIUM** | 7 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/administration/systemSettingsPage.js` | **MEDIUM** | 15 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/basePage.js` | **MEDIUM** | 46 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/businessGlossary/businessGlossaryBasePage.js` | **MEDIUM** | 12 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/businessGlossary/businessGlossary_DomainPage.js` | **MEDIUM** | 82 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/businessGlossary/businessGlossary_ListPage.js` | **MEDIUM** | 11 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/connectorFunctionSupport/connectorFunctionSupportPage.js` | **MEDIUM** | 7 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/customFields/customFieldsPage.js` | **MEDIUM** | 22 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_APIAttributePage.js` | **MEDIUM** | 26 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_APIPage.js` | **MEDIUM** | 26 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_CodesPage.js` | **MEDIUM** | 21 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_DatabasesPage.js` | **MEDIUM** | 10 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_FileColumnPage.js` | **MEDIUM** | 27 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_FilePage.js` | **MEDIUM** | 23 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_ReportColumnPage.js` | **MEDIUM** | 22 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_ReportPage.js` | **MEDIUM** | 25 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_TableColumnsPage.js` | **MEDIUM** | 28 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_TablesPage.js` | **MEDIUM** | 28 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js` | **MEDIUM** | 9 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataMetadataChanges/dataMetadataChangesPage.js` | **MEDIUM** | 7 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataQualityRuleRecommendations/dataQualityRuleRecommendationsPage.js` | **MEDIUM** | 23 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataQualityRules/dataQualityRulesPage.js` | **MEDIUM** | 22 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/elasticSearch/elasticSearchPage.js` | **MEDIUM** | 5 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/fileManager/fileManagerPage.js` | **MEDIUM** | 6 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/governanceCatalog/gdqPage.js` | **MEDIUM** | 18 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/myDesk/myDesk.js` | **MEDIUM** | 6 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/projects/projectsPage.js` | **MEDIUM** | 7 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/reference_data_management/reference_data_management.js` | **MEDIUM** | 39 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/tags/tagsPage_Secure.js` | **MEDIUM** | 21 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/tags/tagsPage_open.js` | **MEDIUM** | 20 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js` | **MEDIUM** | 10 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js` | **MEDIUM** | 11 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js` | **MEDIUM** | 10 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js` | **MEDIUM** | 29 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js` | **MEDIUM** | 17 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js` | **MEDIUM** | 13 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js` | **MEDIUM** | 12 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js` | **MEDIUM** | 23 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js` | **MEDIUM** | 20 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js` | **MEDIUM** | 28 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js` | **MEDIUM** | 8 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_Add_Update_CategoryListPage.spec.js` | **MEDIUM** | 5 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js` | **MEDIUM** | 13 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_Masking.spec.js` | **MEDIUM** | 19 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_SGA.spec.js` | **MEDIUM** | 5 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/businessGlossary_domain.spec.js` | **MEDIUM** | 7 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js` | **MEDIUM** | 32 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Data_Quality_Rules/dQR.spec.js` | **MEDIUM** | 17 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Data_Stories/DataStories.spec.js` | **MEDIUM** | 11 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Datalake_ovalsight/datalake_ovalsight.spec.js` | **MEDIUM** | 4 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Elastic_Search/elastic_search.spec.js` | **MEDIUM** | 8 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/GovernDataQuery/goDQ.spec.js` | **MEDIUM** | 26 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Home_Page/home_page.spec.js` | **MEDIUM** | 22 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Login/login.spec.js` | **MEDIUM** | 5 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/MyWatchList/mywatchlist.spec.js` | **MEDIUM** | 9 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Prompt_AI/prompt_AI.spec.js` | **MEDIUM** | 6 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Tags/tags_open.spec.js` | **MEDIUM** | 21 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Users_And_Roles/Users_Roles_Teams.spec.js` | **MEDIUM** | 5 | false |
+| `/Users/NagaPratap/oe_utat/src/utils/reportScreenshot.js` | **MEDIUM** | 3 | true |
+| `/Users/NagaPratap/oe_utat/src/pages/AI_Prompt/ai_prompt.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/Dashboard/Dashboard.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/DataQualityDashboards/dataQualityDashboards.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/Inbox/inbox.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/AzureSynapse_Data_Access_Audit/Connector_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/AzureSynapse_Data_Access_Audit/Database_permissions_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/AzureSynapse_Data_Access_Audit/Instance_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/AzureSynapse_Data_Access_Audit/Roles_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/AzureSynapse_Data_Access_Audit/Schema_permission_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/AzureSynapse_Data_Access_Audit/Table_permission_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/AzureSynapse_Data_Access_Audit/Users_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Connector_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Database_Permissions_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Groups_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Instance_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Masking_Policies_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Masking_Policy_associations_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Roles_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Row_Access_Policies_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Row_Access_policy_associations_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Schema_Permissions_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Table_Column_Permissions_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Table_Permissions_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/Redshift_Data_Access_Audit/Users_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Connector_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Database_permissions_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Instance_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Masking_Policies_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Masking_policy_Associations_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Roles_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Row_Access_policies_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Row_Access_policy_Associations_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Schema_permissions_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Table_permission_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Tag_Associations_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Tags_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/Users_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/snowflake_Data_Access_Audit/warehouses_tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/tableau_Data_Access_Audit/Project_Permissions_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/tableau_Data_Access_Audit/Report_Permissions_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/tableau_Data_Access_Audit/site_Group_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/tableau_Data_Access_Audit/site_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Audit/tableau_Data_Access_Audit/site_Users_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Connector_Level/Buckets_Folders_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Connector_Level/Connector_Details_Notification_Page_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Connector_Level/Connector_Details_Summary_Page_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Connectors_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Groups_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Notifications_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Policies_Tab..js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Policy_settings_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Role_settings_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Sites_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Summary_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Users_Setting_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Mangement/Warehouse_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Report/Databases_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Report/Roles_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Report/Schema_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Report/Tables_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/RDAM/Data_Access_Report/warehouse_Tab.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/accessCart/accessCartPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/administration/TagsSecurityPage.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/administration/adminSecurityPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/administration/advancedJobsPage.js` | **LOW** | 2 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/administration/auditTrailsPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/administration/auditdata_archival.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/advancedTools/advancedToolsPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/advancedTools/buildAutoLineagePage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/advancedTools/compareSchemasPage.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/advancedTools/connectorsPage.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/advancedTools/impactAnalysisPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/advancedTools/lineageMaintenancePage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/advancedTools/tempLineageCorrectionPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/advancedTools/uploadFilesandFolders.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/askEdgi/askEdgiMarketplacePage.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/askEdgi/askEdgiPage.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/bookMarks/bookMarks.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/businessGlossary/businessGlossaryTreePage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/businessGlossary/businessGlossary_MaskingPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/certificationPolicy/certificationpolicy.js` | **LOW** | 2 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/chromeExtension/chromeExtensionPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/compare_profile_results/compare_profile_results.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/compare_schema/compare_schema.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataCatalog/dc_LineageNavigationPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataClassfifcationRecommendations/dataClassfifcationRecommendations.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataClassificationReports/dataClassificationReports.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataLiteracyPage/dataLiteracyPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataProducts/dataProductsPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataQualityFunctions/dataQualityFunctionsPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataQualityRemediationCenter/dataQualityRemediationCenterPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/dataStories/dataStories.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/governanaceApp/govAppPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/governedDataQuery/gdq.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/homePage/homePage.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/jobWorkFlow/jobWorkFlow.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/jobs/jobsPage.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/lmdf/datasetcorrection.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/lmdf/lmdfPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/login/login.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/loginPage.js` | **LOW** | 2 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/myProfile/myProfilePage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/myWatchlist/myWatchlist.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/navigations.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/notifications/notificationsPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/questionwall/questionwall.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/ropa/Processing_Activites_Page.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/ropa/Reports_page.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/ropa/configureRopaAttributesPage.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/ropa/ropaProcessingActivitiesPage.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/ropa/ropaReportsPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/schedule/schedule_page.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/serviceDesk/accessCart.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/serviceDesk/serviceDeskApprovalPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/serviceDesk/serviceDeskPage.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/serviceDesk/serviceDeskTemplates.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/usersAndRoles/RolesPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/usersAndRoles/teamsPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/usersAndRoles/usersPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/pages/virtualObjects/virtualObjectsPage.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Advanced_Tools/buildAutoLineage.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Advanced_Tools/compareProfileResults.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Advanced_Tools/compareSchemas.spec.js` | **LOW** | 2 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Advanced_Tools/impactAnalysis.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Advanced_Tools/lineageMaintenance.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Advanced_Tools/tempLineageCorrection.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Advanced_Tools/upload_files_folders.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Summarypage/databases.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Viewer/databases.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Viewer/filecolumn_viewer.spec.js` | **LOW** | 2 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/App_Data_Catalog/dataCatalog_Viewer/tables.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/AskEdgi/askEdgi.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Audit_data_archival/audit_data_archival.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Bookmarks/bookmarks.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/ValidateMaskedData.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_AIRecommendations.spec.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_AdvancedSearch.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_AuxTermsAssociateDataObjects.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_CloneTerm.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_ConfigureGovRoles.spec.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_ConfigureView.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_ConfigureViewFilters.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_CutsomerDiary1.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_DeleteTerm.spec.js` | **LOW** | 2 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_DomainCF.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_ManageDataAssociationPreferencesSystemSetting.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_ManageDataAssociations.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_MetadataCurationScore.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_Miscellaneous_Term_Request.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_PermissionsDomain.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_PrimaryTermAssociationDataObject.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_RequesttoPublishTerm.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_SuggestaTermRequest.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_TermChange.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_TermChangetoDraft.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_TermCreation.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_TermCurate.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_TermDirectPublish.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_TermPublishRoleBased.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_TermReferences.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_TermRelationship.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_Term_DataQualityIssueRequest.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_Term_DeAssociate.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_Term_Metadata_Change_Request.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/bg_TreePageScenarios.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/businessGlossary_TermSummaryPage.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/businessGlossay_ListPage.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Business_Glossary/validateMasking.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/ConfigureRoPAAttributes/configureRoPAAttributes.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/ConnectionAndFunctionSupport/coFS.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/CursorAICodegen/AccessCart_Schema_Table.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/CustomExternalDashboard/customExternalDashboard.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Custom_Fields/customFields.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Dashboard/Dashboard.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Dashboard/Data_Quality_Scores.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/DataCatalog_Databases.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/DataLiteracy/dataLiteracy.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/DataMetadataChanges/dataMetadataChanges.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/DataQualityDashboards/dataQualityDashboards.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Data_Classification_Recommendations/Data_Classification_recommendations.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Data_Classification_Reports/dataClassificationReports.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Data_Products/dataProducts.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Data_Quality_Functions/dqFunctions.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Data_Quality_Remediation_Center/dataQualityRemediationCenter.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Data_lineage_dashboard/data_quality_last_execution_dashboard.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/File_Manager/fileManager.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/GoogleLogin.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/GovApps/govApps.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Inbox/inbox.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/LMDF/Dataset_Correction.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/LMDF/impact_Analysis_Objects.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/MyDesk/myDesk.spec.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/MyProject_Tasks/myproject_tasks.spec.js` | **LOW** | 3 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/My_Profile/my_profile.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Projects/projects.spec.js` | **LOW** | 2 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/QuestionWall/question_wall.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/ROPA/ropaProcessingActivities.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Reference_Data_Management/reference_data_management.spec.js` | **LOW** | 2 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Reporting_Framework/reportingFramework.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Security_Dashboard/dashboard_Security.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/addObjectstoACandRaiseSR.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/cloneRequest.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/delegateUserRequest.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/draftRequestandDiscard.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/genericObjectRequest.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/groupingSRConnectionType.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/groupingSRWOrkflow.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/raiseaServiceRequestfromSummaryPage.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/referBackaRequest.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/serviceRequestShutter.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/supersedeRequest.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/tableAccessRequestFromSD.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Service_Desk/withdrawRequest.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Tags/Security_Tags/Tags_Security.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Tags/tags_secure.spec.js` | **LOW** | 2 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Users_List/users_list.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/Virtual_Objects/virtualObjects.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/certification/certification_policy.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/governanceCatalog/createGDQ.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/login.spec.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/tests/utilsTestingcode.spec.js` | **LOW** | 1 | false |
+| `/Users/NagaPratap/oe_utat/src/utils/countNumberOfTests.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/utils/excelWriter.js` | **LOW** | 0 | false |
+| `/Users/NagaPratap/oe_utat/src/utils/updateInstanceExecutionStatus.js` | **LOW** | 0 | false |

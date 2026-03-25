@@ -24,18 +24,25 @@
     /* ----------------------------------------------------- */
 
     :root {
-      --bg: #0b1020;
-      --panel: #131b33;
-      --panel-2: #182240;
-      --text: #e7ecff;
-      --muted: #9ba7cf;
-      --primary: #5f83ff;
-      --ok: #35c98d;
-      --warn: #f3ba4f;
-      --bad: #ff5f7a;
-      --line: #2c3a64;
-      --chip: #23315a;
-      --shadow: 0 18px 40px rgba(0, 0, 0, .28);
+      /* Charcoal dark theme + white type (reference UI) */
+      --bg: #222222;
+      --panel: #2a2a2a;
+      --panel-2: #262626;
+      --text: #ffffff;
+      --text-bright: #ffffff;
+      --text-heading: #e8e8e8;
+      --muted: #b0b0b0;
+      --primary: #5b7fd4;
+      --primary-code: #9eb8e8;
+      --ok: #4ec9a0;
+      --warn: #e0b24a;
+      --bad: #f08090;
+      --line: #3d3d3d;
+      --chip: #333333;
+      --input-bg: #1e1e1e;
+      --selection-bg: #3e4b5b;
+      --selection-text: #ffffff;
+      --shadow: 0 12px 32px rgba(0, 0, 0, .35);
       --radius: 14px;
     }
 
@@ -47,10 +54,20 @@
       box-sizing: border-box;
     }
 
+    ::selection {
+      background: var(--selection-bg);
+      color: var(--selection-text);
+    }
+
+    ::-moz-selection {
+      background: var(--selection-bg);
+      color: var(--selection-text);
+    }
+
     body {
       margin: 0;
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top right, #1e2a50 0%, var(--bg) 45%);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: var(--bg);
       color: var(--text);
       min-height: 100vh;
     }
@@ -79,6 +96,12 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      color: var(--text);
+    }
+
+    .panel.panel-no-border {
+      border: none;
+      box-shadow: none;
     }
 
     /* ----------------------------------------------------- */
@@ -114,6 +137,7 @@
       font-size: 2rem;
       line-height: 1.05;
       letter-spacing: .01em;
+      color: var(--text-bright);
     }
 
     .subtitle {
@@ -125,7 +149,7 @@
 
     .section-label {
       margin: 16px 0 8px;
-      color: #bdd0ff;
+      color: var(--text-heading);
       font-size: .78rem;
       font-weight: 700;
       letter-spacing: .08em;
@@ -136,7 +160,7 @@
       display: block;
       margin: 10px 0 4px;
       font-size: .78rem;
-      color: #c6d5ff;
+      color: var(--text-heading);
       font-weight: 600;
       letter-spacing: .01em;
     }
@@ -144,9 +168,9 @@
     input,
     textarea {
       width: 100%;
-      border: 1px solid #314572;
+      border: 1px solid var(--line);
       border-radius: 10px;
-      background: rgba(8, 16, 36, .75);
+      background: var(--input-bg);
       color: var(--text);
       font: inherit;
       font-size: .86rem;
@@ -160,11 +184,29 @@
       resize: vertical;
     }
 
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--input-bg);
+      color: var(--text);
+      font: inherit;
+      font-size: .86rem;
+      padding: 9px 10px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    select:focus {
+      border-color: #5a6a7a;
+      box-shadow: 0 0 0 2px rgba(62, 75, 91, .45);
+    }
+
     input:focus,
     textarea:focus {
-      border-color: #6f92ff;
-      box-shadow: 0 0 0 3px rgba(95, 131, 255, .22);
-      background: rgba(11, 22, 47, .95);
+      border-color: #5a6a7a;
+      box-shadow: 0 0 0 2px rgba(62, 75, 91, .45);
+      background: #252525;
     }
 
     .row {
@@ -180,7 +222,7 @@
       gap: 8px;
       margin: 8px 0 0;
       font-size: .83rem;
-      color: #d5e0ff;
+      color: var(--text);
       cursor: pointer;
       user-select: none;
     }
@@ -204,7 +246,7 @@
       border-radius: 10px;
       padding: 9px 10px;
       background: linear-gradient(180deg, #6e8fff, #4a6de9);
-      color: #f7f9ff;
+      color: #ffffff;
       font-size: .82rem;
       font-weight: 700;
       letter-spacing: .01em;
@@ -231,20 +273,20 @@
     }
 
     button.secondary {
-      background: rgba(23, 36, 70, .85);
-      border-color: #36508a;
+      background: #333333;
+      border-color: var(--line);
       box-shadow: none;
-      color: #dce6ff;
+      color: var(--text);
     }
 
     .inline-status {
       margin-top: 10px;
-      border: 1px solid #2f4478;
+      border: 1px solid var(--line);
       border-radius: 10px;
       padding: 8px 10px;
       font-size: .78rem;
-      color: #d8e3ff;
-      background: rgba(12, 20, 44, .72);
+      color: var(--text);
+      background: var(--input-bg);
     }
 
     .chips {
@@ -280,7 +322,7 @@
 
     .pattern-label {
       font-weight: 700;
-      color: #bdd0ff;
+      color: var(--text-heading);
       margin-bottom: 6px;
     }
 
@@ -303,46 +345,131 @@
 
     .pattern-table code {
       font-family: ui-monospace, monospace;
-      color: var(--primary);
+      color: var(--primary-code);
       font-size: .85em;
     }
 
     .main-patterns-panel {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .patterns-dropdown-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .patterns-dropdown-wrap label {
+      margin: 0;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .patterns-dropdown-wrap select {
+      width: auto;
+      max-width: 220px;
+      padding: 6px 10px;
+      font-size: .82rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--input-bg);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .patterns-dropdown-wrap select:disabled {
+      opacity: .8;
     }
 
     .main-patterns-panel .pattern-block {
       background: rgba(0, 0, 0, .15);
       border-radius: 10px;
-      padding: 12px 14px;
+      padding: 10px 12px;
       border: 1px solid var(--line);
     }
 
     .main-patterns-panel .pattern-label {
-      font-size: .9rem;
-      margin-bottom: 8px;
+      font-size: .85rem;
+      margin-bottom: 6px;
     }
 
     .main-patterns-panel .pattern-table td {
-      padding: 4px 8px 4px 0;
+      padding: 3px 8px 3px 0;
+      font-size: .8rem;
+    }
+
+    /* Outputs & Issue Types - Quality Dashboard panel */
+    .outputs-issues-panel {
+      padding: 16px 18px;
+    }
+
+    .outputs-issues-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .outputs-issues-title {
+      margin: 0 0 12px;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--text-heading);
+      text-transform: uppercase;
+    }
+
+    .outputs-list,
+    .issues-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .output-item,
+    .issue-type-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .88rem;
+      color: var(--text);
+    }
+
+    .output-dot,
+    .issue-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #555555;
+      flex-shrink: 0;
+    }
+
+    .output-dot.active,
+    .issue-dot.active {
+      background: var(--ok);
+      box-shadow: 0 0 6px rgba(53, 201, 141, .5);
+    }
+
+    @media (max-width: 640px) {
+      .outputs-issues-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .hard-wait-defs code {
       font-family: ui-monospace, monospace;
-      color: var(--primary);
+      color: var(--primary-code);
       font-size: .85em;
     }
 
     .chip {
       display: inline-flex;
       align-items: center;
-      border: 1px solid #35508d;
+      border: 1px solid var(--line);
       border-radius: 999px;
       padding: 7px 10px;
       background: var(--chip);
-      color: #d6e2ff;
+      color: var(--muted);
       font-size: .76rem;
       line-height: 1;
       white-space: nowrap;
@@ -360,15 +487,15 @@
     }
 
     .metric {
-      border: 1px solid #2f4678;
+      border: 1px solid var(--line);
       border-radius: 12px;
       padding: 10px 12px;
-      background: rgba(10, 19, 42, .68);
+      background: var(--input-bg);
       min-height: 72px;
     }
 
     .metric-label {
-      color: #b8c8ef;
+      color: var(--muted);
       font-size: .76rem;
       text-transform: uppercase;
       letter-spacing: .08em;
@@ -378,7 +505,7 @@
       font-size: 1.25rem;
       font-weight: 800;
       margin-top: 4px;
-      color: #f5f8ff;
+      color: var(--text-bright);
     }
 
     .grid {
@@ -395,6 +522,7 @@
       margin: 0 0 10px;
       font-size: .98rem;
       letter-spacing: .01em;
+      color: var(--text-bright);
     }
 
     .tabs {
@@ -405,10 +533,10 @@
     }
 
     .tab {
-      border: 1px solid #375492;
-      background: rgba(16, 29, 62, .85);
+      border: 1px solid var(--line);
+      background: var(--input-bg);
       border-radius: 999px;
-      color: #d7e3ff;
+      color: var(--text);
       padding: 6px 11px;
       font-size: .76rem;
       cursor: pointer;
@@ -416,9 +544,9 @@
     }
 
     .tab.active {
-      background: rgba(75, 110, 234, .26);
-      border-color: #6a8eff;
-      color: #f2f6ff;
+      background: rgba(62, 75, 91, .55);
+      border-color: #4a5568;
+      color: var(--text-bright);
     }
 
     .issue-list {
@@ -431,9 +559,9 @@
     }
 
     .issue-item {
-      border: 1px solid #2e4473;
+      border: 1px solid var(--line);
       border-radius: 10px;
-      background: rgba(9, 18, 38, .66);
+      background: var(--input-bg);
       padding: 10px;
       font-size: .83rem;
       line-height: 1.4;
@@ -442,26 +570,96 @@
     .issue-title {
       font-weight: 700;
       margin-bottom: 2px;
-      color: #f5f8ff;
+      color: var(--text-bright);
     }
 
     .issue-meta {
-      color: #adc0eb;
+      color: var(--muted);
+      font-size: .75rem;
+    }
+
+    .issue-fix {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed var(--line);
+      font-size: .76rem;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .issue-fix-label {
+      color: var(--accent, #7cb7ff);
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    .search-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+
+    .search-filter-bar input[type="text"] {
+      flex: 1;
+      min-width: 160px;
+      padding: 7px 10px;
+      font-size: .84rem;
+    }
+
+    .search-filter-bar select {
+      width: auto;
+      min-width: 140px;
+      flex: 0 1 auto;
+      padding: 7px 10px;
+      font-size: .84rem;
+    }
+
+    .custom-rules-panel {
+      margin-top: 12px;
+      padding: 10px;
+      background: rgba(0, 0, 0, .2);
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+
+    .custom-rule-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      align-items: center;
+    }
+
+    .custom-rule-row input {
+      flex: 1;
+      padding: 6px 8px;
+      font-size: .8rem;
+    }
+
+    .custom-rule-row select {
+      width: 140px;
+      padding: 6px 8px;
+      font-size: .8rem;
+    }
+
+    .custom-rule-row button {
+      padding: 6px 10px;
       font-size: .75rem;
     }
 
     .log-console {
       margin-top: 8px;
-      border: 1px solid #2f4778;
+      border: 1px solid var(--line);
       border-radius: 12px;
-      background: linear-gradient(180deg, rgba(8, 15, 31, .88), rgba(7, 13, 28, .95));
+      background: #1a1a1a;
       min-height: 150px;
       max-height: 240px;
       overflow: auto;
       padding: 12px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", monospace;
       font-size: .8rem;
-      color: #dbe6ff;
+      color: var(--text);
       line-height: 1.42;
       white-space: pre-wrap;
     }
@@ -498,6 +696,62 @@
       .chips {
         justify-content: flex-start;
       }
+    }
+
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--input-bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+
+    .portfolio-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .portfolio-highlight {
+      padding: 10px 12px;
+      background: var(--input-bg);
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      text-align: center;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .portfolio-highlight-value {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      display: block;
+    }
+
+    .portfolio-highlight-label {
+      font-size: .7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-top: 2px;
+    }
+
+    @media print {
+      .sidebar, .tech-badges, button, .log-console { display: none !important; }
     }
   </style>
 </head>
@@ -588,34 +842,30 @@
 
       </div>
 
-
-      <!-- ===================================================== -->
-      <!-- OUTPUT SETTINGS                                      -->
-      <!-- Defines which report formats should be generated     -->
-      <!-- ===================================================== -->
-
-      <div class="section-label">Outputs</div>
-
-      <label class="check"><input id="outJson" type="checkbox" checked>JSON Report</label>
-      <label class="check"><input id="outTxt" type="checkbox" checked>TXT Report</label>
-      <label class="check"><input id="outMd" type="checkbox" checked>Markdown Report</label>
-      <label class="check"><input id="showLines" type="checkbox" checked>Show Console Lines</label>
-
-      <div class="section-label">Issue Types to Detect</div>
-      <div id="issueTypeChecks" class="issue-checks">
-        <label class="check"><input type="checkbox" id="chkHardWait" data-issue="hard_wait" checked>Hard waits</label>
-        <label class="check"><input type="checkbox" id="chkHardcodedData" data-issue="hardcoded_test_data" checked>Hardcoded test data</label>
-        <label class="check"><input type="checkbox" id="chkDuplicateLocator" data-issue="duplicate_locator" checked>Duplicate locators</label>
-        <label class="check"><input type="checkbox" id="chkPoorAssertion" data-issue="poor_assertion" checked>Weak assertions</label>
-        <label class="check"><input type="checkbox" id="chkUnusedFunction" data-issue="unused_function" checked>Unused helper functions</label>
-        <label class="check"><input type="checkbox" id="chkMissingValidation" data-issue="missing_validation" checked>Missing validations</label>
-      </div>
-
-      <div class="section-label">Detection Patterns</div>
-      <div id="detectionPatternsPanel" class="patterns-panel"></div>
       <input type="hidden" id="hardWaitPreset" value="selenium">
-      <label class="check" id="seleniumAssertionLabel"><input id="seleniumAssertionAsHardWait" type="checkbox">Include assertions as hard wait (Java/Selenium mode)</label>
+      <input type="checkbox" id="seleniumAssertionAsHardWait" hidden>
 
+      <!-- ===================================================== -->
+      <!-- CUSTOM RULES                                         -->
+      <!-- User-defined regex patterns for detection            -->
+      <!-- ===================================================== -->
+
+      <div class="section-label">Custom Rules</div>
+      <div class="custom-rules-panel">
+        <div id="customRulesList"></div>
+        <div class="custom-rule-row">
+          <input id="customRulePattern" placeholder="Regex pattern (e.g. Thread\.sleep)" type="text">
+          <select id="customRuleIssueType">
+            <option value="hard_wait">Hard Wait</option>
+            <option value="hardcoded_test_data">Hardcoded Data</option>
+            <option value="duplicate_locator">Duplicate Locator</option>
+            <option value="poor_assertion">Poor Assertion</option>
+            <option value="unused_function">Unused Function</option>
+          </select>
+          <button id="addCustomRule" type="button">Add</button>
+        </div>
+        <div style="font-size:.72rem;color:var(--muted);margin-top:6px;">Rules are stored locally. Backend support pending.</div>
+      </div>
 
       <!-- ===================================================== -->
       <!-- SCAN CONTROL BUTTONS                                 -->
@@ -666,7 +916,7 @@
       <section class="panel toolbar">
 
         <div>
-          <div style="font-size:1rem;font-weight:700;">
+          <div style="font-size:1rem;font-weight:700;color:var(--text-bright);">
             Quality Dashboard
           </div>
 
@@ -674,14 +924,65 @@
             Monitor flaky patterns, triage findings, and inspect impacted tests.
           </div>
 
+          <!-- Tech Stack Badges - Recruiter Visibility -->
+          <div class="tech-badges">
+            <span class="tech-badge">Java 11+</span>
+            <span class="tech-badge">Python 3</span>
+            <span class="tech-badge">Selenium</span>
+            <span class="tech-badge">Playwright</span>
+            <span class="tech-badge">Cypress</span>
+            <span class="tech-badge">TypeScript</span>
+          </div>
         </div>
 
         <!-- Information chips -->
         <div class="chips">
-          <span class="chip">Issue Order: Hard Wait | Hardcoded Data | Duplicate Locator | Poor Assertion | Unused Function | Missing Validation</span>
+          <span class="chip">Issue Order: Hard Wait | Hardcoded Data | Duplicate Locator | Poor Assertion | Unused Function</span>
           <span class="chip">Source: report.json or mock payload</span>
         </div>
 
+      </section>
+
+
+      <!-- Portfolio Highlights -->
+      <section class="panel panel-no-border">
+        <div class="portfolio-highlights" id="portfolioHighlights">
+          <div class="portfolio-highlight"><span class="portfolio-highlight-value">5</span><span class="portfolio-highlight-label">Issue Types</span></div>
+          <div class="portfolio-highlight"><span class="portfolio-highlight-value">5</span><span class="portfolio-highlight-label">Languages</span></div>
+          <div class="portfolio-highlight"><span class="portfolio-highlight-value">CLI + UI</span><span class="portfolio-highlight-label">Dual Interface</span></div>
+          <div class="portfolio-highlight"><span class="portfolio-highlight-value">CI-Ready</span><span class="portfolio-highlight-label">JSON/TXT/MD</span></div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- OUTPUTS & ISSUE TYPES (Quality Dashboard)              -->
+      <!-- Displays active outputs and issue types to detect     -->
+      <!-- ===================================================== -->
+
+      <section class="panel card outputs-issues-panel">
+        <div class="outputs-issues-grid">
+          <div class="outputs-block">
+            <h3 class="outputs-issues-title">Outputs</h3>
+            <div class="outputs-list" id="dashboardOutputs">
+              <span class="output-item"><span class="output-dot"></span>Console summary</span>
+              <span class="output-item"><span class="output-dot active"></span>JSON report</span>
+              <span class="output-item"><span class="output-dot active"></span>TXT report</span>
+              <span class="output-item"><span class="output-dot active"></span>Markdown report</span>
+              <span class="output-item"><span class="output-dot active"></span>Show console lines</span>
+            </div>
+          </div>
+          <div class="issues-block">
+            <h3 class="outputs-issues-title">Issue Types to Detect</h3>
+            <div class="issues-list" id="dashboardIssueTypes">
+              <span class="issue-type-item"><span class="issue-dot"></span>Hard waits</span>
+              <span class="issue-type-item"><span class="issue-dot"></span>Hardcoded test data</span>
+              <span class="issue-type-item"><span class="issue-dot"></span>Duplicate locators</span>
+              <span class="issue-type-item"><span class="issue-dot"></span>Weak assertions</span>
+              <span class="issue-type-item"><span class="issue-dot"></span>Unused helper functions</span>
+            </div>
+          </div>
+        </div>
       </section>
 
 
@@ -694,6 +995,14 @@
         <div class="metrics" id="metrics"></div>
       </section>
 
+      <section class="panel card">
+        <h3>Flaky test risk (by file)</h3>
+        <p style="color:var(--muted);font-size:.8rem;margin:0 0 10px 0;">
+          Heuristic score from hard waits and retry APIs (<code>flaky_test_analysis</code> in JSON).
+        </p>
+        <div class="issue-list" id="flakyPanel"></div>
+      </section>
+
 
       <!-- ===================================================== -->
       <!-- DETECTION PATTERNS PANEL                              -->
@@ -702,8 +1011,17 @@
 
       <section class="panel card">
         <h3>Detection Patterns</h3>
-        <div class="patterns-subtitle" style="color:var(--muted);font-size:.84rem;margin-bottom:12px;">
+        <div class="patterns-subtitle" style="color:var(--muted);font-size:.84rem;margin-bottom:8px;">
           Patterns used for scanning based on selected Programming Language
+        </div>
+        <div class="patterns-dropdown-wrap">
+          <label for="patternsLanguage">View patterns for:</label>
+          <select id="patternsLanguage">
+            <option value="java">Java (Selenium)</option>
+            <option value="javascript_playwright">Playwright JS/TS</option>
+            <option value="javascript_cypress">Cypress</option>
+            <option value="python">Python</option>
+          </select>
         </div>
         <div id="mainDetectionPatterns" class="main-patterns-panel"></div>
       </section>
@@ -719,6 +1037,15 @@
         <article class="panel card">
 
           <h3>Issue Breakdown</h3>
+
+          <!-- Search & Filter -->
+          <div class="search-filter-bar">
+            <input id="searchFindings" type="text" placeholder="Search file, detail, suggested fix, or line...">
+            <select id="filterFile">
+              <option value="">All files</option>
+            </select>
+            <button id="clearFilter" class="secondary" type="button">Clear filter</button>
+          </div>
 
           <!-- Issue filter tabs -->
           <div class="tabs" id="issueTabs"></div>
@@ -764,8 +1091,7 @@
       { id: "hardcoded_test_data", label: "Hardcoded Data", summaryKey: "hardcoded_test_data" },
       { id: "duplicate_locator", label: "Duplicate Locator", summaryKey: "duplicate_locators" },
       { id: "poor_assertion", label: "Poor Assertion", summaryKey: "poor_assertions" },
-      { id: "unused_function", label: "Unused Function", summaryKey: "unused_functions" },
-      { id: "missing_validation", label: "Missing Validation", summaryKey: "missing_validations" }
+      { id: "unused_function", label: "Unused Function", summaryKey: "unused_functions" }
     ];
 
     const state = {
@@ -773,7 +1099,10 @@
       runId: null,
       eventSource: null,
       selectedIssue: ISSUE_CONFIG[0].id,
-      currentPayload: null
+      currentPayload: null,
+      searchText: "",
+      filterFile: "",
+      customRules: []
     };
 
     const refs = {
@@ -790,19 +1119,27 @@
       extensions: document.getElementById("extensions"),
       maxLines: document.getElementById("maxLines"),
       maxImpacted: document.getElementById("maxImpacted"),
-      outJson: document.getElementById("outJson"),
-      outTxt: document.getElementById("outTxt"),
-      outMd: document.getElementById("outMd"),
-      showLines: document.getElementById("showLines"),
       automationLanguage: document.getElementById("automationLanguage"),
       hardWaitPreset: document.getElementById("hardWaitPreset"),
       seleniumAssertionAsHardWait: document.getElementById("seleniumAssertionAsHardWait"),
-      seleniumAssertionLabel: document.getElementById("seleniumAssertionLabel"),
-      detectionPatternsPanel: document.getElementById("detectionPatternsPanel"),
-      mainDetectionPatterns: document.getElementById("mainDetectionPatterns")
+      mainDetectionPatterns: document.getElementById("mainDetectionPatterns"),
+      patternsLanguage: document.getElementById("patternsLanguage"),
+      dashboardOutputs: document.getElementById("dashboardOutputs"),
+      dashboardIssueTypes: document.getElementById("dashboardIssueTypes"),
+      portfolioHighlights: document.getElementById("portfolioHighlights"),
+      flakyPanel: document.getElementById("flakyPanel"),
+      searchFindings: document.getElementById("searchFindings"),
+      filterFile: document.getElementById("filterFile"),
+      clearFilter: document.getElementById("clearFilter"),
+      customRulesList: document.getElementById("customRulesList"),
+      customRulePattern: document.getElementById("customRulePattern"),
+      customRuleIssueType: document.getElementById("customRuleIssueType"),
+      addCustomRule: document.getElementById("addCustomRule")
     };
 
-    const ISSUE_IDS = ["hard_wait", "hardcoded_test_data", "duplicate_locator", "poor_assertion", "unused_function", "missing_validation"];
+    const CUSTOM_RULES_KEY = "automationQualityChecker_customRules";
+
+    const ISSUE_IDS = ["hard_wait", "hardcoded_test_data", "duplicate_locator", "poor_assertion", "unused_function"];
 
     const DETECTION_PATTERNS = {
       java: {
@@ -811,8 +1148,7 @@
         hardcodedData: ["password", "token", "email", "url"],
         locator: ["By.id(", "By.xpath(", "By.cssSelector("],
         weakAssertion: ["assert(", "assertTrue(true)", "assertEquals(..., true)"],
-        unusedFunction: ["function ", "def "],
-        assertion: ["assert", "assertTrue", "assertEquals", "assertThat"]
+        unusedFunction: ["function ", "def "]
       },
       javascript_playwright: {
         label: "Playwright JS/TS",
@@ -820,8 +1156,7 @@
         hardcodedData: ["password", "token", "email", "url"],
         locator: ["locator("],
         weakAssertion: ["expect().toBeTruthy(", "expect().toBeDefined("],
-        unusedFunction: ["function ", "const ... =>"],
-        assertion: ["expect", "toBe", "toEqual", "toContain"]
+        unusedFunction: ["function ", "const ... =>"]
       },
       javascript_cypress: {
         label: "Cypress",
@@ -829,8 +1164,7 @@
         hardcodedData: ["password", "token", "email", "url"],
         locator: ["cy.get("],
         weakAssertion: [".should('exist')", ".should('be.visible')"],
-        unusedFunction: ["function ", "const ... =>"],
-        assertion: ["should", "expect"]
+        unusedFunction: ["function ", "const ... =>"]
       },
       python: {
         label: "Python (Selenium / Playwright)",
@@ -838,8 +1172,7 @@
         hardcodedData: ["password", "token", "email", "url"],
         locator: ["find_element("],
         weakAssertion: ["assert ", "expect().to_be_truthy("],
-        unusedFunction: ["def "],
-        assertion: ["assert", "expect", "to_be_attached", "to_be_visible"]
+        unusedFunction: ["def "]
       }
     };
 
@@ -912,8 +1245,7 @@
         { label: "Hardcoded Data", value: summary.hardcoded_test_data ?? 0 },
         { label: "Duplicate Locator", value: summary.duplicate_locators ?? 0 },
         { label: "Poor Assertion", value: summary.poor_assertions ?? 0 },
-        { label: "Unused Function", value: summary.unused_functions ?? 0 },
-        { label: "Missing Validation", value: summary.missing_validations ?? 0 }
+        { label: "Unused Function", value: summary.unused_functions ?? 0 }
       ];
       refs.metrics.innerHTML = cards.map((card) => `
         <div class="metric">
@@ -921,11 +1253,33 @@
           <div class="metric-value">${escapeHtml(card.value)}</div>
         </div>
       `).join("");
+      updatePortfolioHighlights(payload);
+    }
+
+    function updatePortfolioHighlights(payload) {
+      if (!refs.portfolioHighlights) return;
+      const s = payload?.summary || {};
+      const files = s.total_files_scanned ?? 0;
+      const totalIssues = (s.hard_wait_found ?? 0) + (s.hardcoded_test_data ?? 0) + (s.duplicate_locators ?? 0) +
+        (s.poor_assertions ?? 0) + (s.unused_functions ?? 0);
+      refs.portfolioHighlights.innerHTML = `
+        <div class="portfolio-highlight"><span class="portfolio-highlight-value">5</span><span class="portfolio-highlight-label">Issue Types</span></div>
+        <div class="portfolio-highlight"><span class="portfolio-highlight-value">5</span><span class="portfolio-highlight-label">Languages</span></div>
+        <div class="portfolio-highlight"><span class="portfolio-highlight-value">${files || "—"}</span><span class="portfolio-highlight-label">Files Scanned</span></div>
+        <div class="portfolio-highlight"><span class="portfolio-highlight-value">${totalIssues || "—"}</span><span class="portfolio-highlight-label">Total Findings</span></div>
+      `;
+    }
+
+    function getFilteredIssueCount(payload, issueId) {
+      const items = payload?.findings?.[issueId];
+      if (!Array.isArray(items)) return 0;
+      return items.filter(matchesFilter).length;
     }
 
     function renderIssueTabs(payload) {
+      const countFn = state.filterFile || state.searchText ? getFilteredIssueCount : (p, id) => getIssueCount(p, id);
       refs.issueTabs.innerHTML = ISSUE_CONFIG.map((issue) => {
-        const count = getIssueCount(payload, issue.id);
+        const count = countFn(payload, issue.id);
         const active = state.selectedIssue === issue.id ? "active" : "";
         return `<button class="tab ${active}" data-issue="${issue.id}" type="button">${escapeHtml(issue.label)} (${count})</button>`;
       }).join("");
@@ -939,24 +1293,96 @@
       });
     }
 
+    function normalizePath(p) {
+      return String(p || "").replace(/\\/g, "/").trim();
+    }
+
+    function matchesFilter(item) {
+      const loc = formatLocation(item.file, item.line, item.column);
+      const detail = (item.detail || item.issue || "").toLowerCase();
+      const fix = (item.suggested_fix || "").toLowerCase();
+      const file = (item.file || "").toLowerCase();
+      const search = state.searchText.toLowerCase().trim();
+      if (search && !detail.includes(search) && !fix.includes(search) && !file.includes(search) && !loc.toLowerCase().includes(search)) return false;
+      if (state.filterFile && normalizePath(item.file) !== normalizePath(state.filterFile)) return false;
+      return true;
+    }
+
     function renderIssueList(payload) {
       const items = payload?.findings?.[state.selectedIssue];
       if (!Array.isArray(items) || items.length === 0) {
         refs.issueList.innerHTML = "<div class=\"issue-item\"><div class=\"issue-title\">No findings in this category</div><div class=\"issue-meta\">Try another tab or run a new scan.</div></div>";
         return;
       }
-      refs.issueList.innerHTML = items.map((item, idx) => `
+      const filtered = items.filter(matchesFilter);
+      if (filtered.length === 0) {
+        refs.issueList.innerHTML = "<div class=\"issue-item\"><div class=\"issue-title\">No findings match the current filter</div><div class=\"issue-meta\">Try clearing the search or file filter.</div></div>";
+        return;
+      }
+      refs.issueList.innerHTML = filtered.map((item, idx) => {
+        const fixBlock = item.suggested_fix
+          ? `<div class="issue-fix"><span class="issue-fix-label">Suggested fix</span>${escapeHtml(item.suggested_fix)}</div>`
+          : "";
+        return `
         <div class="issue-item">
           <div class="issue-title">${idx + 1}. ${escapeHtml(item.detail || item.issue || "Issue")}</div>
           <div class="issue-meta">${escapeHtml(formatLocation(item.file, item.line, item.column))}</div>
+          ${fixBlock}
+        </div>
+      `;
+      }).join("");
+    }
+
+    function renderFlakyPanel(payload) {
+      if (!refs.flakyPanel) return;
+      const rows = payload?.flaky_test_analysis;
+      if (!Array.isArray(rows) || rows.length === 0) {
+        refs.flakyPanel.innerHTML = "<div class=\"issue-item\"><div class=\"issue-title\">No flaky analysis rows</div><div class=\"issue-meta\">Run a scan with <code>--json</code> or load demo data to populate <code>flaky_test_analysis</code>.</div></div>";
+        return;
+      }
+      const badgeClass = (risk) => {
+        const r = String(risk || "").toUpperCase();
+        if (r === "HIGH") return "style=\"color:#f87171;font-weight:700\"";
+        if (r === "MEDIUM") return "style=\"color:#fbbf24;font-weight:700\"";
+        return "style=\"color:var(--muted);font-weight:600\"";
+      };
+      refs.flakyPanel.innerHTML = rows.map((r) => `
+        <div class="issue-item">
+          <div class="issue-title">${escapeHtml(r.file || "")}</div>
+          <div class="issue-meta">
+            <span ${badgeClass(r.flaky_test_risk)}>flaky_test_risk: ${escapeHtml(String(r.flaky_test_risk ?? ""))}</span>
+            · hard_waits: ${escapeHtml(String(r.hard_wait_count ?? 0))}
+            · retry_usage: ${r.retry_usage_detected ? "yes" : "no"}
+          </div>
         </div>
       `).join("");
+    }
+
+    function updateFilterFileDropdown(payload) {
+      if (!refs.filterFile) return;
+      const files = new Set();
+      ISSUE_IDS.forEach((id) => {
+        const items = payload?.findings?.[id] || [];
+        items.forEach((item) => { if (item.file) files.add(item.file); });
+      });
+      const current = refs.filterFile.value;
+      const truncate = (s, len = 50) => s.length <= len ? s : "..." + s.slice(-len);
+      refs.filterFile.innerHTML = "<option value=\"\">All files</option>" +
+        [...files].sort().map((f) => `<option value="${escapeHtml(f)}" title="${escapeHtml(f)}">${escapeHtml(truncate(f))}</option>`).join("");
+      if (files.has(current)) {
+        refs.filterFile.value = current;
+      } else {
+        refs.filterFile.value = "";
+        state.filterFile = "";
+      }
     }
 
     function renderPayload(payload) {
       state.currentPayload = payload || {};
       renderMetrics(state.currentPayload);
+      renderFlakyPanel(state.currentPayload);
       renderIssueTabs(state.currentPayload);
+      updateFilterFileDropdown(state.currentPayload);
       renderIssueList(state.currentPayload);
     }
 
@@ -968,17 +1394,16 @@
           hardcoded_test_data: 0,
           duplicate_locators: 0,
           poor_assertions: 0,
-          unused_functions: 0,
-          missing_validations: 0
+          unused_functions: 0
         },
         findings: {
           hard_wait: [],
           hardcoded_test_data: [],
           duplicate_locator: [],
           poor_assertion: [],
-          unused_function: [],
-          missing_validation: []
-        }
+          unused_function: []
+        },
+        flaky_test_analysis: []
       };
     }
 
@@ -1002,10 +1427,10 @@
         changedFile: "",
         maxLinesPerIssue: Number(refs.maxLines.value || 0),
         maxImpactedPerFunction: Number(refs.maxImpacted.value || 0),
-        outputJson: refs.outJson.checked,
-        outputTxt: refs.outTxt.checked,
-        outputMd: refs.outMd.checked,
-        showLines: refs.showLines.checked,
+        outputJson: true,
+        outputTxt: true,
+        outputMd: true,
+        showLines: true,
         hardWaitPreset: refs.hardWaitPreset.value.trim(),
         seleniumAssertionAsHardWait: refs.seleniumAssertionAsHardWait.checked,
         enabledIssues: getEnabledIssues(),
@@ -1108,30 +1533,40 @@
           duplicate_locators: 2,
           poor_assertions: 5,
           unused_functions: 1,
-          missing_validations: 6,
           total_files_scanned: 19
         },
         findings: {
           hard_wait: [
-            { file: "src/pages/login.spec.ts", line: 24, column: 9, issue: "hard_wait", detail: "waitForTimeout(3000) used before assertion." },
-            { file: "src/tests/order.test.js", line: 88, column: 5, issue: "hard_wait", detail: "sleep(2000) introduces flaky timing dependency." }
+            { file: "src/pages/login.spec.ts", line: 24, column: 9, issue: "hard_wait", detail: "await page.waitForTimeout(5000);", suggested_fix: "Replace with waitForSelector('#login-btn') or locator('#login-btn').waitFor() instead of a fixed delay." },
+            { file: "src/tests/order.test.js", line: 88, column: 5, issue: "hard_wait", detail: "sleep(2000) introduces flaky timing dependency.", suggested_fix: "Use a condition-based wait (element visible/clickable/network idle) instead of sleep()." }
           ],
           hardcoded_test_data: [
             { file: "src/tests/auth.spec.ts", line: 17, column: 15, issue: "hardcoded_test_data", detail: "Inline email/password string found in test." }
           ],
           duplicate_locator: [
-            { file: "src/pages/cart.page.ts", line: 36, column: 12, issue: "duplicate_locator", detail: "Locator '#submit-order' repeated across modules." }
+            { file: "src/pages/cart.page.ts", line: 36, column: 12, issue: "duplicate_locator", detail: "page.locator('#submit-order')", suggested_fix: "Extract a reusable locator (shared constant or Page Object field) for '#submit-order' and reference it from each test instead of repeating the raw selector." }
           ],
           poor_assertion: [
-            { file: "src/tests/payment.spec.ts", line: 44, column: 10, issue: "poor_assertion", detail: "Generic truthy assertion with low signal." }
+            { file: "src/tests/payment.spec.ts", line: 44, column: 10, issue: "poor_assertion", detail: "expect(x).toBeTruthy()", suggested_fix: "Replace with a specific check: expect(locator).toBeVisible() / toHaveText('expected') (or Python: expect(loc).to_be_visible())." }
           ],
           unused_function: [
             { file: "src/helpers/legacy.ts", line: 91, column: 1, issue: "unused_function", detail: "Function 'formatOtpLegacy' is never referenced." }
-          ],
-          missing_validation: [
-            { file: "src/tests/checkout.spec.ts", line: 52, column: 7, issue: "missing_validation", detail: "Click action has no nearby validation step." }
           ]
-        }
+        },
+        flaky_test_analysis: [
+          {
+            file: "src/tests/checkout.spec.ts",
+            flaky_test_risk: "HIGH",
+            hard_wait_count: 3,
+            retry_usage_detected: true
+          },
+          {
+            file: "src/pages/login.spec.ts",
+            flaky_test_risk: "MEDIUM",
+            hard_wait_count: 2,
+            retry_usage_detected: false
+          }
+        ]
       };
       renderPayload(demoPayload);
       appendLog("Demo payload loaded.");
@@ -1149,33 +1584,31 @@
       { key: "hardcodedData", label: "Hardcoded test data" },
       { key: "locator", label: "Duplicate locators" },
       { key: "weakAssertion", label: "Weak assertions" },
-      { key: "unusedFunction", label: "Unused helper functions" },
-      { key: "assertion", label: "Missing validations" }
+      { key: "unusedFunction", label: "Unused helper functions" }
     ];
 
     function renderDetectionPatterns(lang) {
-      const langKeys = ["java", "javascript_playwright", "javascript_cypress", "python"];
-      const patterns = lang === "all"
-        ? langKeys.map((k) => DETECTION_PATTERNS[k]).filter(Boolean)
-        : [DETECTION_PATTERNS[lang]].filter(Boolean);
-      if (patterns.length === 0) return;
+      if (refs.patternsLanguage) {
+        refs.patternsLanguage.disabled = (lang !== "all");
+        if (lang !== "all") {
+          refs.patternsLanguage.value = lang;
+        }
+      }
+      const selectedLang = refs.patternsLanguage?.value || "java";
+      const p = DETECTION_PATTERNS[selectedLang];
+      if (!p) return;
 
-      const renderTable = (p) => {
+      const renderTable = (pat) => {
         let rows = "";
         PATTERN_ROWS.forEach((row) => {
-          const vals = p[row.key];
+          const vals = pat[row.key];
           if (!vals || !Array.isArray(vals)) return;
           rows += `<tr><td class="pattern-key">${escapeHtml(row.label)}</td><td>${vals.map((x) => `<code>${escapeHtml(x)}</code>`).join(" ")}</td></tr>`;
         });
         return rows;
       };
 
-      let html = "";
-      patterns.forEach((p) => {
-        html += `<div class="pattern-block">`;
-        html += `<div class="pattern-label">${escapeHtml(p.label)}</div>`;
-        html += `<table class="pattern-table"><tbody>${renderTable(p)}</tbody></table></div>`;
-      });
+      const html = `<div class="pattern-block"><div class="pattern-label">${escapeHtml(p.label)}</div><table class="pattern-table"><tbody>${renderTable(p)}</tbody></table></div>`;
 
       if (refs.detectionPatternsPanel) refs.detectionPatternsPanel.innerHTML = html;
       if (refs.mainDetectionPatterns) refs.mainDetectionPatterns.innerHTML = html;
@@ -1186,30 +1619,116 @@
       const config = AUTOMATION_LANGUAGE_CONFIG[lang] || AUTOMATION_LANGUAGE_CONFIG.all;
       refs.extensions.value = config.extensions;
       refs.hardWaitPreset.value = config.hardWaitPreset;
-      refs.seleniumAssertionLabel.style.display = config.showAssertionCheckbox ? "block" : "none";
-      const enabled = new Set(config.enabledIssues || ISSUE_IDS);
-      ISSUE_IDS.forEach((id) => {
-        const chk = document.querySelector(`#issueTypeChecks input[data-issue="${id}"]`);
-        if (chk) chk.checked = enabled.has(id);
-      });
       renderDetectionPatterns(lang);
+      updateDashboardOutputsAndIssues();
     }
 
     function getEnabledIssues() {
-      return ISSUE_IDS.filter((id) => {
-        const chk = document.querySelector(`#issueTypeChecks input[data-issue="${id}"]`);
-        return chk && chk.checked;
+      return ISSUE_IDS;
+    }
+
+    function updateDashboardOutputsAndIssues() {
+      if (!refs.dashboardOutputs || !refs.dashboardIssueTypes) return;
+
+      const outputs = [
+        { label: "Console summary", active: true },
+        { label: "JSON report", active: true },
+        { label: "TXT report", active: true },
+        { label: "Markdown report", active: true },
+        { label: "Show console lines", active: true }
+      ];
+
+      const issueLabels = {
+        hard_wait: "Hard waits",
+        hardcoded_test_data: "Hardcoded test data",
+        duplicate_locator: "Duplicate locators",
+        poor_assertion: "Weak assertions",
+        unused_function: "Unused helper functions"
+      };
+
+      const issues = ISSUE_IDS.map((id) => ({ label: issueLabels[id] || id, active: true }));
+
+      refs.dashboardOutputs.innerHTML = outputs.map((o) =>
+        `<span class="output-item"><span class="output-dot${o.active ? " active" : ""}"></span>${escapeHtml(o.label)}</span>`
+      ).join("");
+
+      refs.dashboardIssueTypes.innerHTML = issues.map((i) =>
+        `<span class="issue-type-item"><span class="issue-dot${i.active ? " active" : ""}"></span>${escapeHtml(i.label)}</span>`
+      ).join("");
+    }
+
+    function loadCustomRules() {
+      try {
+        const raw = localStorage.getItem(CUSTOM_RULES_KEY);
+        state.customRules = raw ? JSON.parse(raw) : [];
+      } catch {
+        state.customRules = [];
+      }
+      renderCustomRules();
+    }
+
+    function saveCustomRules() {
+      try {
+        localStorage.setItem(CUSTOM_RULES_KEY, JSON.stringify(state.customRules));
+      } catch (e) {
+        appendLog("Failed to save custom rules.");
+      }
+    }
+
+    function renderCustomRules() {
+      if (!refs.customRulesList) return;
+      const issueLabel = (id) => ISSUE_CONFIG.find((c) => c.id === id)?.label || id;
+      refs.customRulesList.innerHTML = state.customRules.map((rule, idx) => `
+        <div class="custom-rule-row" data-idx="${idx}">
+          <input type="text" value="${escapeHtml(rule.pattern)}" readonly style="background:rgba(0,0,0,.3);">
+          <span style="font-size:.78rem;color:var(--muted);">${escapeHtml(issueLabel(rule.issueType || "hard_wait"))}</span>
+          <button type="button" class="secondary remove-rule">Remove</button>
+        </div>
+      `).join("");
+      refs.customRulesList.querySelectorAll(".remove-rule").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const idx = parseInt(btn.closest("[data-idx]").getAttribute("data-idx"), 10);
+          state.customRules.splice(idx, 1);
+          saveCustomRules();
+          renderCustomRules();
+        });
       });
     }
 
+    function addCustomRule() {
+      const pattern = refs.customRulePattern?.value?.trim();
+      if (!pattern) return;
+      const issueType = refs.customRuleIssueType?.value || "hard_wait";
+      state.customRules.push({ pattern, issueType });
+      saveCustomRules();
+      renderCustomRules();
+      refs.customRulePattern.value = "";
+    }
+
     refs.automationLanguage.addEventListener("change", updateAutomationLanguageUI);
+    if (refs.searchFindings) refs.searchFindings.addEventListener("input", (e) => { state.searchText = e.target.value; renderIssueTabs(state.currentPayload); renderIssueList(state.currentPayload); });
+    if (refs.filterFile) refs.filterFile.addEventListener("change", (e) => { state.filterFile = e.target.value || ""; renderIssueTabs(state.currentPayload); renderIssueList(state.currentPayload); });
+    if (refs.clearFilter) refs.clearFilter.addEventListener("click", (e) => {
+      e.preventDefault();
+      state.searchText = "";
+      state.filterFile = "";
+      if (refs.searchFindings) refs.searchFindings.value = "";
+      if (refs.filterFile) { refs.filterFile.value = ""; refs.filterFile.blur(); }
+      renderIssueTabs(state.currentPayload);
+      renderIssueList(state.currentPayload);
+      refs.clearFilter.blur();
+    });
+    if (refs.addCustomRule) refs.addCustomRule.addEventListener("click", addCustomRule);
+    if (refs.patternsLanguage) refs.patternsLanguage.addEventListener("change", () => renderDetectionPatterns(refs.automationLanguage.value));
     refs.liveRun.addEventListener("click", runLiveScan);
     refs.stopRun.addEventListener("click", stopLiveScan);
     refs.simulateRun.addEventListener("click", runDemoData);
     refs.resetData.addEventListener("click", resetDashboard);
 
     updateAutomationLanguageUI();
+    updateDashboardOutputsAndIssues();
     setButtons();
+    loadCustomRules();
     renderPayload(getEmptyPayload());
     checkBackendHealth();
     setInterval(checkBackendHealth, 5000);

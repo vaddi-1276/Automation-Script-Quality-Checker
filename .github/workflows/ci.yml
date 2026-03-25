@@ -1,0 +1,46 @@
+# Automation Quality Checker - CI Pipeline
+# Demonstrates build, test, and report generation for recruiter visibility
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Compile AutomationQualityChecker
+        run: javac AutomationQualityChecker.java
+
+      - name: Compile LocatorHealthMonitor
+        run: javac LocatorHealthMonitor.java
+
+      - name: Run Quality Scan (self-scan)
+        run: |
+          java AutomationQualityChecker \
+            --json report.json \
+            --txt report.txt \
+            --md report.md \
+            --show-lines \
+            --max-lines-per-issue 10 \
+            .
+
+      - name: Upload Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-reports
+          path: |
+            report.json
+            report.txt
+            report.md

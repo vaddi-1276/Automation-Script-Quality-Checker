@@ -1,23 +1,38 @@
 # Automation Quality Checker
 
+[![CI](https://github.com/YOUR_USERNAME/Tool_Creation/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/Tool_Creation/actions/workflows/ci.yml)
+> Replace `YOUR_USERNAME` with your GitHub username for the CI badge to work.
+![Java](https://img.shields.io/badge/Java-11+-orange)
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 `AutomationQualityChecker` is a standalone Java-based automation test quality scanner. It analyzes source files and reports common reliability/maintainability issues, then optionally exports structured reports for dashboards and CI use.
+
+## Highlights for Recruiters
+
+| Feature | Description |
+|---------|-------------|
+| **5 Issue Types** | Hard waits, hardcoded data, duplicate locators, poor assertions, unused functions |
+| **5+ Languages** | Java (Selenium), Playwright, Cypress, Python — `.js`, `.ts`, `.jsx`, `.tsx`, `.py` |
+| **CI-Ready** | JSON/TXT/MD reports, GitHub Actions workflow, artifact upload |
+| **Dual Interface** | CLI for automation + interactive web dashboard |
 
 This repository includes:
 
 - `AutomationQualityChecker.java` (core CLI scanner)
+- `LocatorHealthMonitor.java` (segregated locator health module — tracks brittle, duplicate, outdated selectors)
 - `AutomationQualityChecker_UI_Design.html` (interactive dashboard UI)
 - `ui_live_server.py` (local backend to run CLI from UI and stream logs)
 
 ## What It Detects
 
-The scanner reports six issue categories:
+The scanner reports five issue categories:
 
 - `hard_wait` - explicit sleeps/waits (for example `waitForTimeout`, `sleep`, `cy.wait`)
 - `hardcoded_test_data` - inline credentials/data literals in likely test contexts
 - `duplicate_locator` - same locator reused across files/areas
 - `poor_assertion` - weak assertions that provide low verification value
 - `unused_function` - declared helper/functions not referenced
-- `missing_validation` - test action flows with no nearby assertion/validation
 
 ## Supported Languages and Extensions
 
@@ -136,7 +151,6 @@ The CLI always prints summary counters:
 - Duplicate Locators
 - Poor Assertions
 - Unused Functions
-- Missing Validations
 - Files Scanned
 
 With `--show-lines`, detailed findings are printed in fixed issue order for stable triage output.
@@ -158,7 +172,6 @@ Top-level keys in generated payload:
 - `duplicate_locators`
 - `poor_assertions`
 - `unused_functions`
-- `missing_validations`
 - `total_files_scanned`
 
 `findings[issue]` entry shape:
@@ -194,6 +207,8 @@ Open:
 
 ### UI Features
 
+ **Tech Stack Badges** — Java, Python, Selenium, Playwright, Cypress, TypeScript
+- **Portfolio Highlights** — Quick stats: issue types, languages, files scanned
 - Configure scan targets/extensions and changed-function inputs
 - Trigger real run (`Run Live Scan`) or demo payload (`Run Demo Data`)
 - Stream build/run logs in real time
@@ -207,6 +222,34 @@ Open:
 - `GET /api/logs/{runId}` - SSE log stream
 - `GET /api/result/{runId}` - run completion state + report payload
 - `POST /api/stop/{runId}` - stop active run
+
+## Locator Health Monitor (Segregated Module)
+
+`LocatorHealthMonitor` is a **separate, segregated module** that tracks UI locators and flags:
+
+- **Brittle selectors** — long xpaths, index-based (`[1]`, `nth-child`), text-based, `contains()`
+- **Duplicate selectors** — same locator used in multiple files/lines
+- **Outdated selectors** — deprecated patterns (`position()`, `following-sibling::*[n]`, deep `ancestor::`)
+
+### Run Locator Health Monitor
+
+```bash
+javac LocatorHealthMonitor.java
+java LocatorHealthMonitor .
+```
+
+With JSON output:
+
+```bash
+java LocatorHealthMonitor --json locator_report.json .
+```
+
+### Output
+
+- Console summary with counts and detailed findings
+- Optional JSON report for dashboard integration
+
+The module is self-contained and can be run independently of the main AutomationQualityChecker.
 
 ## Behavior and Limitations
 
