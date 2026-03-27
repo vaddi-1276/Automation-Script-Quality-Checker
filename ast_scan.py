@@ -28,9 +28,9 @@ def main() -> None:
         start = node.lineno
         end = getattr(node, "end_lineno", node.lineno) or node.lineno
         nlines = end - start + 1
-        if nlines > 50:
+        if nlines > 100:
             print(
-                f"AST|long_test_method|{start}|1|Python test '{name}' is {nlines} lines (consider splitting)"
+                f"AST|lengthy_test_script|{start}|1|Python test '{name}' is {nlines} lines (more than 100; consider splitting)"
             )
 
 

@@ -16,7 +16,9 @@ Detects Issues Such As:
 • Duplicate locators
 • Weak assertions
 • Unused helper functions
-• Missing validations
+• Long tests (100+ lines in test-like files)
+• Positional index selectors ([1], nth-child(1), nth-of-type(1))
+• Consecutive duplicate steps (identical line on the next line)
 
 Outputs:
 • Console summary
@@ -122,8 +124,9 @@ public class AutomationQualityChecker {
 
             "brittle_locator",
             "random_timing",
-            "long_test_method",
-            "duplicate_step_block"
+            "lengthy_test_script",
+            "duplicate_step_block",
+            "locator_index_one"
     };
 
     /** JSON summary field names (parallel to ISSUE_ORDER). */
@@ -135,15 +138,17 @@ public class AutomationQualityChecker {
             "unused_functions",
             "brittle_locators",
             "random_timing_hits",
-            "long_test_methods",
-            "duplicate_step_blocks"
+            "lengthy_test_scripts",
+            "duplicate_step_blocks",
+            "locator_index_one_hits"
     };
 
     private static final String[] GROUP_ADVANCED = {
             "brittle_locator",
             "random_timing",
-            "long_test_method",
-            "duplicate_step_block"
+            "lengthy_test_script",
+            "duplicate_step_block",
+            "locator_index_one"
     };
 
     private static final String[] GROUP_SECURITY = {
@@ -156,12 +161,13 @@ public class AutomationQualityChecker {
     };
 
     private static final String[] GROUP_TEST_DESIGN = {
-            "long_test_method",
+            "lengthy_test_script",
             "poor_assertion"
     };
 
     private static final String[] GROUP_FLAKY = {
             "brittle_locator",
+            "locator_index_one",
             "random_timing",
             "hard_wait"
     };
@@ -671,9 +677,6 @@ public class AutomationQualityChecker {
         // Optional hard wait behavior preset (for example: selenium)
         String hardWaitPreset = "";
 
-        // In selenium preset mode, optionally treat assertions as hard wait markers
-        boolean seleniumAssertionAsHardWait = false;
-
         // Comma-separated list of issue types to detect (empty = all)
         String enableIssues = "";
 
@@ -812,16 +815,13 @@ public class AutomationQualityChecker {
     private static DynamicArray<Finding> detectHardWaits(
             Path path,
             DynamicArray<String> lines,
-            String hardWaitPreset,
-            boolean seleniumAssertionAsHardWait) {
+            String hardWaitPreset) {
 
         Pattern threadSleepPattern = Pattern.compile("\\bThread\\.sleep\\s*\\(\\s*\\d+\\s*\\)");
         Pattern waitForTimeoutPattern = Pattern.compile("\\bwaitForTimeout\\s*\\(\\s*\\d+\\s*\\)");
         Pattern pythonSleepPattern = Pattern.compile("\\btime\\.sleep\\s*\\(\\s*\\d+(\\.\\d+)?\\s*\\)");
         Pattern genericSleepPattern = Pattern.compile("\\bsleep\\s*\\(\\s*\\d+(\\.\\d+)?\\s*\\)");
         Pattern cypressWaitPattern = Pattern.compile("\\bcy\\.wait\\s*\\(\\s*\\d+\\s*\\)");
-        Pattern seleniumAssertionPattern = Pattern.compile(
-                "\\b(assert|assertTrue|assertEquals|assertThat|Assertions\\.[A-Za-z_][A-Za-z0-9_]*|Assert\\.[A-Za-z_][A-Za-z0-9_]*)\\s*\\(");
 
         boolean seleniumPreset = "selenium".equalsIgnoreCase(hardWaitPreset == null ? "" : hardWaitPreset.trim());
 
@@ -859,18 +859,6 @@ public class AutomationQualityChecker {
                                 "hard_wait",
                                 line.trim()));
                     }
-                }
-            }
-
-            if (seleniumPreset && seleniumAssertionAsHardWait) {
-                Matcher assertion = seleniumAssertionPattern.matcher(line);
-                if (assertion.find()) {
-                    findings.add(new Finding(
-                            path.toString(),
-                            i + 1,
-                            assertion.start() + 1,
-                            "hard_wait",
-                            line.trim()));
                 }
             }
         }
@@ -1017,76 +1005,6 @@ public class AutomationQualityChecker {
                     break;
                 }
             }
-        }
-
-        return findings;
-    }
-
-    // ------------------------------------------------------------------
-    // Returns assertion keyword pattern for missing validation detection.
-    // ------------------------------------------------------------------
-    private static Pattern getAssertionKeywordsPattern(String automationLanguage) {
-        String lang = automationLanguage == null ? "" : automationLanguage.trim().toLowerCase();
-        boolean useAll = lang.isEmpty() || "all".equals(lang);
-
-        if (useAll) {
-            return Pattern.compile(
-                    "\\b(expect|assert|assertTrue|assertEquals|assertThat|should|verify|toBe|toEqual|toContain|to_be_attached|to_be_visible|to_contain_text)\\b");
-        }
-        switch (lang) {
-            case "java":
-                return Pattern.compile("\\b(assert|assertTrue|assertEquals|assertThat|Assertions?\\.[A-Za-z_][A-Za-z0-9_]*)\\b");
-            case "javascript_playwright":
-                return Pattern.compile("\\b(expect|toBe|toEqual|toContain|toBeAttached|toBeVisible|toContainText)\\b");
-            case "javascript_cypress":
-                return Pattern.compile("\\b(should|expect)\\b");
-            case "python":
-                return Pattern.compile("\\b(assert|expect|to_be_attached|to_be_visible|to_contain_text)\\b");
-            default:
-                return Pattern.compile("\\b(expect|assert|should)\\b");
-        }
-    }
-
-    // ------------------------------------------------------------------
-    // Detects test actions that do not have validation.
-    // Uses framework-specific assertion keywords based on automation language.
-    // ------------------------------------------------------------------
-    private static DynamicArray<Finding> detectMissingValidations(
-            Path path,
-            DynamicArray<String> lines,
-            String automationLanguage) {
-
-        // Test actions (common across frameworks)
-        // Use \\.check\\( and \\.uncheck\\( to avoid matching "check" in "check-in-button"
-        Pattern actionPattern = Pattern.compile(
-                "\\b(click|fill|type|tap|submit|navigate|goto|goTo|sendKeys|selectOption)\\b|\\.(check|uncheck)\\s*\\(");
-
-        Pattern assertionPattern = getAssertionKeywordsPattern(automationLanguage);
-
-        DynamicArray<Finding> findings = new DynamicArray<>();
-
-        for (int i = 0; i < lines.size(); i++) {
-
-            String line = lines.get(i);
-
-            Matcher action = actionPattern.matcher(line);
-
-            // Skip lines that do not contain actions
-            if (!action.find()) {
-                continue;
-            }
-
-            // Skip lines that already contain validation
-            if (assertionPattern.matcher(line).find()) {
-                continue;
-            }
-
-            findings.add(new Finding(
-                    path.toString(),
-                    i + 1,
-                    action.start() + 1,
-                    "missing_validation",
-                    line.trim()));
         }
 
         return findings;
@@ -1267,12 +1185,16 @@ public class AutomationQualityChecker {
             findings.list("random_timing").addAll(detectRandomTiming(path, lines));
         }
 
-        if (isIssueEnabled(enabled, "long_test_method")) {
-            findings.list("long_test_method").addAll(detectLongTestFileHeuristic(path, lines));
+        if (isIssueEnabled(enabled, "lengthy_test_script")) {
+            findings.list("lengthy_test_script").addAll(detectLengthyTestScript(path, lines));
         }
 
         if (isIssueEnabled(enabled, "duplicate_step_block")) {
             findings.list("duplicate_step_block").addAll(detectDuplicateStepBlocks(path, lines));
+        }
+
+        if (isIssueEnabled(enabled, "locator_index_one")) {
+            findings.list("locator_index_one").addAll(detectLocatorIndexOne(path, lines));
         }
     }
 
@@ -1332,16 +1254,26 @@ public class AutomationQualityChecker {
         return out;
     }
 
-    private static DynamicArray<Finding> detectLongTestFileHeuristic(Path path, DynamicArray<String> lines) {
+    /** Test-like files with more than this many lines are flagged as lengthy scripts. */
+    private static final int LENGTHY_TEST_SCRIPT_LINE_THRESHOLD = 100;
+
+    private static boolean isTestLikeFileName(String lowerFileName) {
+
+        return lowerFileName.contains(".spec.")
+                || lowerFileName.contains(".test.")
+                || lowerFileName.contains(".cy.")
+                || lowerFileName.startsWith("test_")
+                || lowerFileName.endsWith("_test.py")
+                || lowerFileName.endsWith("test.java");
+    }
+
+    private static DynamicArray<Finding> detectLengthyTestScript(Path path, DynamicArray<String> lines) {
 
         DynamicArray<Finding> out = new DynamicArray<>();
 
         String name = path.getFileName() == null ? "" : path.getFileName().toString().toLowerCase();
 
-        boolean testLike = name.contains(".spec.") || name.contains(".test.") || name.startsWith("test_")
-                || name.endsWith("_test.py");
-
-        if (!testLike || lines.size() <= 120) {
+        if (!isTestLikeFileName(name) || lines.size() <= LENGTHY_TEST_SCRIPT_LINE_THRESHOLD) {
             return out;
         }
 
@@ -1350,17 +1282,105 @@ public class AutomationQualityChecker {
                         path.toString(),
                         1,
                         1,
-                        "long_test_method",
-                        "Test file has " + lines.size() + " lines — consider splitting into smaller focused tests.",
-                        "Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability."));
+                        "lengthy_test_script",
+                        "Test script has "
+                                + lines.size()
+                                + " lines (more than "
+                                + LENGTHY_TEST_SCRIPT_LINE_THRESHOLD
+                                + "); consider splitting into smaller tests or steps.",
+                        "Split into Arrange/Act/Assert blocks, multiple it()/test() cases, or helper functions."));
 
         return out;
     }
 
     /**
+     * Lists uses of positional index selectors: XPath/CSS {@code [1]}, or {@code nth-child(1)} /
+     * {@code nth-of-type(1)}.
+     */
+    private static DynamicArray<Finding> detectLocatorIndexOne(Path path, DynamicArray<String> lines) {
+
+        DynamicArray<Finding> out = new DynamicArray<>();
+
+        Pattern bracketOne = Pattern.compile("\\[1\\]");
+        Pattern nthFirst =
+                Pattern.compile("nth-child\\s*\\(\\s*1\\s*\\)|nth-of-type\\s*\\(\\s*1\\s*\\)", Pattern.CASE_INSENSITIVE);
+
+        for (int i = 0; i < lines.size(); i++) {
+
+            String line = lines.get(i);
+
+            if (!lineLooksLikeLocatorLine(line)) {
+                continue;
+            }
+
+            Matcher b = bracketOne.matcher(line);
+
+            while (b.find()) {
+
+                out.add(
+                        new Finding(
+                                path.toString(),
+                                i + 1,
+                                b.start() + 1,
+                                "locator_index_one",
+                                line.trim(),
+                                "Prefer stable selectors (data-testid, role, accessible name) instead of positional index [1] or first nth-child."));
+            }
+
+            Matcher n = nthFirst.matcher(line);
+
+            while (n.find()) {
+
+                out.add(
+                        new Finding(
+                                path.toString(),
+                                i + 1,
+                                n.start() + 1,
+                                "locator_index_one",
+                                line.trim(),
+                                "Prefer stable selectors (data-testid, role, accessible name) instead of nth-child(1) / nth-of-type(1)."));
+            }
+        }
+
+        return out;
+    }
+
+    /** True when the line likely contains a UI locator (XPath, CSS, or framework API). */
+    private static boolean lineLooksLikeLocatorLine(String line) {
+
+        String low = line.toLowerCase();
+
+        return low.contains("//")
+                || low.contains("xpath")
+                || low.contains("by.")
+                || low.contains("locator(")
+                || low.contains("getby")
+                || low.contains("cy.get")
+                || low.contains("find_element")
+                || low.contains("page.locator")
+                || low.contains("$$(")
+                || low.contains("$(")
+                || low.contains("nth-child")
+                || low.contains("nth-of-type");
+    }
+
+    /**
      * Flags when the same step line appears again immediately on the next line (after trim).
+     * Comparison ignores trailing semicolons so the same automation step matches across styles.
      * The finding detail is the repeated line text (trimmed, capped for very long lines).
      */
+    private static String normalizeStepLineForDuplicateCompare(String line) {
+
+        String t = line.trim();
+
+        while (t.endsWith(";")) {
+
+            t = t.substring(0, t.length() - 1).trim();
+        }
+
+        return t;
+    }
+
     private static DynamicArray<Finding> detectDuplicateStepBlocks(Path path, DynamicArray<String> lines) {
 
         DynamicArray<Finding> out = new DynamicArray<>();
@@ -1371,9 +1391,9 @@ public class AutomationQualityChecker {
 
         for (int i = 0; i + 1 < lines.size(); i++) {
 
-            String cur = lines.get(i).trim();
+            String cur = normalizeStepLineForDuplicateCompare(lines.get(i));
 
-            String next = lines.get(i + 1).trim();
+            String next = normalizeStepLineForDuplicateCompare(lines.get(i + 1));
 
             if (cur.length() < minLen || next.length() < minLen) {
                 continue;
@@ -1857,8 +1877,7 @@ public class AutomationQualityChecker {
                 DynamicArray<Finding> hardWaitBatch = detectHardWaits(
                         path,
                         lines,
-                        args.hardWaitPreset,
-                        args.seleniumAssertionAsHardWait);
+                        args.hardWaitPreset);
 
                 allFindings.list("hard_wait").addAll(hardWaitBatch);
             }
@@ -2428,11 +2447,14 @@ public class AutomationQualityChecker {
             case "random_timing":
                 return "Random / Non-Deterministic Timing";
 
-            case "long_test_method":
-                return "Long Test / Large Files";
+            case "lengthy_test_script":
+                return "Long test (100+ lines)";
 
             case "duplicate_step_block":
-                return "Duplicate consecutive steps";
+                return "Consecutive duplicate step";
+
+            case "locator_index_one":
+                return "Positional index";
 
             default:
                 return issue;
@@ -3362,7 +3384,6 @@ public class AutomationQualityChecker {
     // "duplicate_locators": 5,
     // "poor_assertions": 1,
     // "unused_functions": 4,
-    // "missing_validations": 2,
     // "total_files_scanned": 25
     // }
     // ------------------------------------------------------------------
@@ -3641,10 +3662,6 @@ public class AutomationQualityChecker {
                     args.hardWaitPreset = requireValue(argv, ++i, arg);
                     break;
 
-                case "--selenium-assertion-as-hard-wait":
-                    args.seleniumAssertionAsHardWait = true;
-                    break;
-
                 case "--enable-issues":
                     args.enableIssues = requireValue(argv, ++i, arg);
                     break;
@@ -3882,7 +3899,6 @@ public class AutomationQualityChecker {
         System.err.println("  --changed-file <path>               Optional changed file path for function validation.");
         System.err.println("  --max-impacted-per-function <n>     Limit impacted test lines per changed function.");
         System.err.println("  --hard-wait-preset <name>           Hard wait preset (for example: selenium).");
-        System.err.println("  --selenium-assertion-as-hard-wait   In selenium preset, treat assertions as hard wait.");
         System.err.println("  --enable-issues <csv>               Issue types or groups: all, advanced, security, performance, test_design, flaky.");
         System.err.println("  --python-ast / --no-python-ast      Run Python ast_scan.py on .py files (default: on).");
         System.err.println("  --automation-language <name>        Language for patterns (all, java, javascript_playwright, javascript_cypress, python).");

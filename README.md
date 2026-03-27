@@ -114,7 +114,6 @@ java AutomationQualityChecker [options] <targets...>
 | `--enable-issues <csv>` | **Restrict** which issue IDs run (e.g. `hard_wait,poor_assertion`). If omitted, **all** five types run. |
 | `--automation-language <name>` | Pattern set for assertions/locators: `all`, `java`, `javascript_playwright`, `javascript_cypress`, `python` (or empty for defaults). |
 | `--hard-wait-preset <name>` | e.g. `selenium` — changes how hard waits are interpreted. |
-| `--selenium-assertion-as-hard-wait` | With selenium hard-wait preset, optionally treat certain assertions as sync points (see tool behavior). |
 | `--changed-function <name>` | Repeatable — function names to search for in tests (impact / reference listing). |
 | `--changed-file <path>` | Optional file context for changed-function analysis. |
 | `--max-impacted-per-function <n>` | Limit lines printed per changed function for impacted tests. |
