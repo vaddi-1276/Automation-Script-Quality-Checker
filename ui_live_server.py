@@ -79,9 +79,6 @@ def build_command(body):
     if automation_language:
         cmd += ["--automation-language", automation_language]
 
-    if body.get("seleniumAssertionAsHardWait", False):
-        cmd.append("--selenium-assertion-as-hard-wait")
-
     enabled_issues = body.get("enabledIssues", [])
     if isinstance(enabled_issues, list) and enabled_issues:
         cmd += ["--enable-issues", ",".join(str(x) for x in enabled_issues)]

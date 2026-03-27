@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type WheelEvent } from "react";
 import { flushSync } from "react-dom";
 import {
   AUTOMATION_LANGUAGE_CONFIG,
@@ -93,7 +93,7 @@ export default function App() {
   }, [extensionsDraft]);
 
   /** Keep wheel / trackpad scroll inside the modal textarea when it overflows. */
-  const onModalFolderWheel = useCallback((e: React.WheelEvent<HTMLTextAreaElement>) => {
+  const onModalFolderWheel = useCallback((e: WheelEvent<HTMLTextAreaElement>) => {
     const el = e.currentTarget;
     if (el.scrollHeight <= el.clientHeight) return;
     const { scrollTop, scrollHeight, clientHeight } = el;
@@ -138,7 +138,7 @@ export default function App() {
   }, [scanInputsEditable]);
 
   useEffect(() => {
-    setScanTargetChoice((prev) => {
+    setScanTargetChoice((prev: string) => {
       if (folderPaths.length <= 1) return "__all__";
       if (prev === "__all__") return "__all__";
       return folderPaths.includes(prev) ? prev : "__all__";
@@ -158,7 +158,7 @@ export default function App() {
     const mm = String(now.getMinutes()).padStart(2, "0");
     const ss = String(now.getSeconds()).padStart(2, "0");
     const prefix = `[${hh}:${mm}:${ss}] `;
-    setLogText((prev) => {
+    setLogText((prev: string) => {
       let base = prev;
       if (!prev || prev.includes("will appear here")) {
         base = "";
@@ -467,7 +467,7 @@ export default function App() {
   const patternBlock = patternLang ? DETECTION_PATTERNS[patternLang] : null;
 
   const toggleIssue = (id: IssueId) => {
-    setIssueEnabled((prev) => ({ ...prev, [id]: !prev[id] }));
+    setIssueEnabled((prev: Record<IssueId, boolean>) => ({ ...prev, [id]: !prev[id] }));
   };
 
   return (

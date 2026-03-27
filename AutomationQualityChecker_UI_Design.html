@@ -37,6 +37,8 @@
       --chip: #23315a;
       --shadow: 0 18px 40px rgba(0, 0, 0, .28);
       --radius: 14px;
+      --primary-code: #7c9cff;
+      --text-bright: #f5f8ff;
     }
 
     /* ----------------------------------------------------- */
@@ -52,8 +54,8 @@
       margin: 0;
       font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top right, #1e2a50 0%, var(--bg) 45%);
+      background-attachment: fixed;
       color: var(--text);
-      min-height: 100vh;
     }
 
     /* ----------------------------------------------------- */
@@ -65,9 +67,10 @@
       width: 100%;
       max-width: none;
       margin: 0;
-      padding: 20px;
+      padding: 16px clamp(12px, 2vw, 28px) 24px;
+      box-sizing: border-box;
       display: grid;
-      grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 16px;
     }
 
@@ -90,9 +93,7 @@
 
     .sidebar {
       padding: 16px;
-      position: sticky;
-      top: 18px;
-      height: fit-content;
+      position: static;
       min-width: 0;
       overflow-wrap: anywhere;
     }
@@ -102,6 +103,7 @@
       flex-direction: column;
       gap: 16px;
       min-width: 0;
+      padding-bottom: 0;
     }
 
     .toolbar {
@@ -153,7 +155,8 @@
     }
 
     input,
-    textarea {
+    textarea,
+    select {
       width: 100%;
       border: 1px solid #314572;
       border-radius: 10px;
@@ -168,7 +171,159 @@
 
     textarea {
       min-height: 58px;
-      resize: vertical;
+      resize: none;
+    }
+
+    textarea.textarea-folder-input {
+      min-height: 58px;
+      max-height: 240px;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      box-sizing: border-box;
+    }
+
+    textarea.textarea-folder-input.textarea-folder-input--scrollable {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+    }
+
+    button.folder-names-trigger {
+      width: 100%;
+      display: block;
+      text-align: left;
+      min-height: 58px;
+      max-height: 240px;
+      padding: 9px 10px;
+      border: 1px solid #314572;
+      border-radius: 10px;
+      background: rgba(8, 16, 36, .75);
+      color: var(--text);
+      font: inherit;
+      font-size: .86rem;
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: normal;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: none;
+      transform: none;
+      filter: none;
+    }
+
+    button.folder-names-trigger:hover {
+      border-color: #6f92ff;
+      filter: brightness(1.05);
+    }
+
+    button.folder-names-trigger:focus-visible {
+      outline: none;
+      border-color: #6f92ff;
+      box-shadow: 0 0 0 3px rgba(95, 131, 255, .22);
+      background: rgba(11, 22, 47, .95);
+    }
+
+    .folder-names-trigger__text {
+      display: block;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      max-height: 220px;
+      text-align: left;
+    }
+
+    .folder-names-trigger__text--placeholder {
+      color: var(--muted);
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    button.folder-names-trigger.folder-names-trigger--compact {
+      min-height: 42px;
+      max-height: none;
+    }
+
+    .extensions-trigger__text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: none;
+      overflow-y: hidden;
+    }
+
+    .scan-inputs-enable {
+      margin: 0 0 12px;
+      font-size: 0.83rem;
+    }
+
+    .scan-target-hint {
+      margin: 6px 0 0;
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(0, 0, 0, .55);
+      backdrop-filter: blur(3px);
+    }
+
+    .modal-dialog {
+      width: min(100%, 480px);
+      max-height: min(92vh, 560px);
+      display: flex;
+      flex-direction: column;
+      padding: 18px 20px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(160deg, var(--panel) 0%, var(--panel-2) 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-dialog__title {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-bright);
+    }
+
+    .modal-dialog__hint {
+      margin: 0 0 12px;
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    textarea.modal-folder-textarea {
+      width: 100%;
+      min-height: 220px;
+      max-height: min(360px, 50vh);
+      margin-bottom: 14px;
+      overflow-y: auto;
+      resize: none;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+      flex: 1 1 auto;
+    }
+
+    textarea.modal-extensions-textarea {
+      min-height: 120px;
+      max-height: min(280px, 40vh);
+    }
+
+    .modal-dialog__actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
     }
 
     input:focus,
@@ -277,6 +432,26 @@
       margin-top: 0;
 }
 
+    /* Outputs + issue types (main column, below Quality Dashboard) */
+    .dashboard-outputs {
+      padding: 16px 18px 18px;
+    }
+
+    .dashboard-outputs > .section-label:first-of-type {
+      margin-top: 0;
+    }
+
+    .outputs-checks {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px 20px;
+      margin-bottom: 4px;
+    }
+
+    .outputs-checks .check {
+      margin: 6px 0 0;
+    }
+
     .issue-scan-hint {
       font-size: 0.72rem;
       color: var(--muted);
@@ -293,10 +468,28 @@
     }
 
     .issue-checks {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px 18px;
       margin: 0;
+      align-items: start;
+    }
+
+    .issue-checks .check {
+      margin: 0;
+    }
+
+    @media (min-width: 900px) {
+      .issue-checks {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .outputs-checks,
+      .issue-checks {
+        grid-template-columns: 1fr;
+      }
     }
 
     label.issue-toggle-row {
@@ -345,27 +538,59 @@
       word-break: break-word;
     }
 
-    .patterns-panel {
-      margin-top: 8px;
-      padding: 10px;
-      background: rgba(0, 0, 0, .2);
-      border-radius: 8px;
-      font-size: .78rem;
+    /* Detection patterns (main column only; not shown in sidebar) */
+    .main-patterns-panel {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .main-patterns-panel .pattern-block:only-child {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 720px) {
+      .main-patterns-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .main-patterns-panel .pattern-block:only-child {
+        grid-column: auto;
+      }
+    }
+
+    .main-patterns-panel.patterns-idle {
+      display: block;
+    }
+
+    .patterns-empty-hint {
+      margin: 0;
+      padding: 14px 16px;
+      font-size: 0.84rem;
+      line-height: 1.45;
       color: var(--muted);
+      background: rgba(0, 0, 0, .12);
+      border-radius: 10px;
+      border: 1px dashed var(--line);
     }
 
-    .pattern-block {
-      margin-bottom: 10px;
+    .main-patterns-panel .pattern-block {
+      background: rgba(0, 0, 0, .15);
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
     }
 
-    .pattern-block:last-child {
+    .main-patterns-panel .pattern-block:last-child {
       margin-bottom: 0;
     }
 
-    .pattern-label {
+    .main-patterns-panel .pattern-label {
+      font-size: .9rem;
       font-weight: 700;
       color: #bdd0ff;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .pattern-table {
@@ -375,7 +600,7 @@
     }
 
     .pattern-table td {
-      padding: 3px 8px 3px 0;
+      padding: 4px 8px 4px 0;
       vertical-align: top;
     }
 
@@ -387,30 +612,29 @@
 
     .pattern-table code {
       font-family: ui-monospace, monospace;
-      color: var(--primary);
+      color: var(--primary-code);
       font-size: .85em;
     }
 
-    .main-patterns-panel {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+    .patterns-lang-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem 1rem;
+      margin-bottom: 14px;
     }
 
-    .main-patterns-panel .pattern-block {
-      background: rgba(0, 0, 0, .15);
-      border-radius: 10px;
-      padding: 12px 14px;
-      border: 1px solid var(--line);
+    .patterns-lang-row label {
+      margin: 0;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #c6d5ff;
     }
 
-    .main-patterns-panel .pattern-label {
-      font-size: .9rem;
-      margin-bottom: 8px;
-    }
-
-    .main-patterns-panel .pattern-table td {
-      padding: 4px 8px 4px 0;
+    .patterns-lang-row select {
+      flex: 1;
+      min-width: min(100%, 220px);
+      max-width: 400px;
     }
 
     .hard-wait-defs code {
@@ -488,6 +712,26 @@
       margin-bottom: 10px;
     }
 
+    .issue-filters {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin: 2px 0 10px;
+    }
+
+    .issue-filter {
+      flex: 1;
+      min-width: min(100%, 320px);
+    }
+
+    .issue-filter-hint {
+      margin: 6px 0 0;
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
     .tab {
       border: 1px solid #375492;
       background: rgba(16, 29, 62, .85);
@@ -551,14 +795,6 @@
     }
 
     @media (max-width: 1080px) {
-      .app {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-      }
-
       .metrics {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -636,19 +872,26 @@
 
       <div class="section-label">Scan Inputs</div>
 
-      <!-- Folder Input -->
-      <label for="scanFolder">Folder Names</label>
+      <label class="check scan-inputs-enable">
+        <input id="enableScanInputs" type="checkbox" checked />
+        Customize folder names and extensions
+      </label>
 
-      <!-- Multiple folders can be provided -->
-      <textarea id="scanFolder">
-./src/pages
-./src/components
-  </textarea>
+      <!-- Folder Input: click opens modal; value kept in hidden textarea for scan payload -->
+      <label for="folderNamesTrigger">Folder Names</label>
+      <button type="button" id="folderNamesTrigger" class="folder-names-trigger" aria-haspopup="dialog" aria-expanded="false">
+        <span class="folder-names-trigger__text" id="folderNamesPreview"></span>
+      </button>
+      <textarea id="scanFolder" aria-hidden="true" tabindex="-1" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">./src/pages
+./src/components</textarea>
 
 
-      <!-- File Extensions to scan -->
-      <label for="extensions">Extensions CSV</label>
-      <input id="extensions" value=".java,.js,.ts,.jsx,.tsx,.py">
+      <!-- File Extensions: click opens modal; value in hidden input for scan payload -->
+      <label for="extensionsTrigger">Extensions CSV</label>
+      <button type="button" id="extensionsTrigger" class="folder-names-trigger folder-names-trigger--compact" aria-haspopup="dialog" aria-expanded="false">
+        <span class="folder-names-trigger__text extensions-trigger__text" id="extensionsPreview"></span>
+      </button>
+      <input type="hidden" id="extensions" value=".java,.js,.ts,.jsx,.tsx,.py">
 
 
       <!-- ===================================================== -->
@@ -672,34 +915,7 @@
 
       </div>
 
-
-      <!-- ===================================================== -->
-      <!-- OUTPUT SETTINGS                                      -->
-      <!-- Defines which report formats should be generated     -->
-      <!-- ===================================================== -->
-
-      <div class="section-label">Outputs</div>
-
-      <label class="check"><input id="outJson" type="checkbox" checked>JSON Report</label>
-      <label class="check"><input id="outTxt" type="checkbox" checked>TXT Report</label>
-      <label class="check"><input id="outMd" type="checkbox" checked>Markdown Report</label>
-      <label class="check"><input id="showLines" type="checkbox" checked>Show Console Lines</label>
-
-      <div class="section-label">Issue Types to Detect</div>
-      <div id="issueTypeChecks" class="issue-checks">
-        <label class="check"><input type="checkbox" id="chkHardWait" data-issue="hard_wait" checked>Hard waits</label>
-        <label class="check"><input type="checkbox" id="chkHardcodedData" data-issue="hardcoded_test_data" checked>Hardcoded test data</label>
-        <label class="check"><input type="checkbox" id="chkDuplicateLocator" data-issue="duplicate_locator" checked>Duplicate locators</label>
-        <label class="check"><input type="checkbox" id="chkPoorAssertion" data-issue="poor_assertion" checked>Weak assertions</label>
-        <label class="check"><input type="checkbox" id="chkUnusedFunction" data-issue="unused_function" checked>Unused helper functions</label>
-        <label class="check"><input type="checkbox" id="chkMissingValidation" data-issue="missing_validation" checked>Missing validations</label>
-      </div>
-
-      <div class="section-label">Detection Patterns</div>
-      <div id="detectionPatternsPanel" class="patterns-panel"></div>
       <input type="hidden" id="hardWaitPreset" value="selenium">
-      <label class="check" id="seleniumAssertionLabel"><input id="seleniumAssertionAsHardWait" type="checkbox">Include assertions as hard wait (Java/Selenium mode)</label>
-
 
       <!-- ===================================================== -->
       <!-- SCAN CONTROL BUTTONS                                 -->
@@ -762,8 +978,37 @@
 
         <!-- Information chips -->
         <div class="chips">
-          <span class="chip">Issue Order: Hard Wait | Hardcoded Data | Duplicate Locator | Poor Assertion | Unused Function | Missing Validation</span>
+          <span class="chip">Issue Order: Hard Wait | Hardcoded Data | Duplicate Locator | Poor Assertion | Unused Function | Consecutive duplicate step | Long test (100+ lines) | Positional index</span>
           <span class="chip">Source: report.json or mock payload</span>
+        </div>
+
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- OUTPUTS & ISSUE TYPES (below Quality Dashboard)       -->
+      <!-- ===================================================== -->
+
+      <section class="panel dashboard-outputs" aria-label="Report outputs and issue types">
+
+        <div class="section-label">Outputs</div>
+
+        <div class="outputs-checks">
+          <label class="check"><input id="outJson" type="checkbox" checked>JSON Report</label>
+          <label class="check"><input id="outTxt" type="checkbox" checked>TXT Report</label>
+          <label class="check"><input id="outMd" type="checkbox" checked>Markdown Report</label>
+          <label class="check"><input id="showLines" type="checkbox" checked>Show Console Lines</label>
+        </div>
+
+        <div class="section-label">Issue Types to Detect</div>
+        <div id="issueTypeChecks" class="issue-checks">
+          <label class="check"><input type="checkbox" id="chkHardWait" data-issue="hard_wait" checked>Hard waits</label>
+          <label class="check"><input type="checkbox" id="chkHardcodedData" data-issue="hardcoded_test_data" checked>Hardcoded test data</label>
+          <label class="check"><input type="checkbox" id="chkDuplicateLocator" data-issue="duplicate_locator" checked>Duplicate locators</label>
+          <label class="check"><input type="checkbox" id="chkDuplicateStep" data-issue="duplicate_step_block" checked>Consecutive duplicate step</label>
+          <label class="check"><input type="checkbox" id="chkPoorAssertion" data-issue="poor_assertion" checked>Weak assertions</label>
+          <label class="check"><input type="checkbox" id="chkUnusedFunction" data-issue="unused_function" checked>Unused helper functions</label>
+          <label class="check"><input type="checkbox" id="chkLengthyTestScript" data-issue="lengthy_test_script" checked>Long test (100+ lines)</label>
+          <label class="check"><input type="checkbox" id="chkLocatorIndexOne" data-issue="locator_index_one" checked>Positional index</label>
         </div>
 
       </section>
@@ -780,15 +1025,27 @@
 
 
       <!-- ===================================================== -->
-      <!-- DETECTION PATTERNS PANEL                              -->
-      <!-- Shows patterns used for each language based on selection -->
+      <!-- DETECTION PATTERNS (main column only)                 -->
       <!-- ===================================================== -->
 
-      <section class="panel card">
+      <section class="panel card" aria-label="Detection patterns by language">
         <h3>Detection Patterns</h3>
-        <div class="patterns-subtitle" style="color:var(--muted);font-size:.84rem;margin-bottom:12px;">
-          Patterns used for scanning based on selected Programming Language
+        <div class="patterns-subtitle" style="color:var(--muted);font-size:.84rem;margin-bottom:10px;">
+          Pick one stack to preview its keyword patterns. With <strong>All</strong>, tables stay hidden (the scan still applies every stack). This control is linked with <strong>Automation Language</strong> in the sidebar.
         </div>
+        <div class="patterns-lang-row">
+          <label for="detectionPatternLanguage">Programming language</label>
+          <select id="detectionPatternLanguage" aria-describedby="patterns-hint">
+            <option value="all">All</option>
+            <option value="java">Java (Selenium)</option>
+            <option value="javascript_playwright">JavaScript / TypeScript (Playwright)</option>
+            <option value="javascript_cypress">JavaScript / TypeScript (Cypress)</option>
+            <option value="python">Python</option>
+          </select>
+        </div>
+        <p id="patterns-hint" class="issue-scan-hint" style="margin-top:0;margin-bottom:12px;">
+          Changing this dropdown or the sidebar language keeps both in sync and updates extensions and presets for the next scan. Select Java, Playwright, Cypress, or Python to load that stack’s pattern table below.
+        </p>
         <div id="mainDetectionPatterns" class="main-patterns-panel"></div>
       </section>
 
@@ -806,6 +1063,17 @@
 
           <!-- Issue filter tabs -->
           <div class="tabs" id="issueTabs"></div>
+
+          <!-- Per-issue file filter -->
+          <div class="issue-filters" aria-label="Issue list filters">
+            <div class="issue-filter">
+              <label for="fileFilter">Filter by file</label>
+              <select id="fileFilter" disabled>
+                <option value="__all__">All files</option>
+              </select>
+              <p id="fileFilterHint" class="issue-filter-hint"></p>
+            </div>
+          </div>
 
           <!-- List of issues -->
           <div class="issue-list" id="issueList"></div>
@@ -842,14 +1110,42 @@
   <!-- Handles API calls, rendering dashboard and logs       -->
   <!-- ===================================================== -->
 
+  <!-- Folder names editor (modal) -->
+  <div id="folderModalBackdrop" class="modal-backdrop" style="display: none" role="presentation">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="folder-modal-title">
+      <h2 id="folder-modal-title" class="modal-dialog__title">Folder Names</h2>
+      <p class="modal-dialog__hint">One path per line. Save applies to the next scan.</p>
+      <textarea id="folderModalTextarea" class="modal-folder-textarea" rows="10" spellcheck="false"></textarea>
+      <div class="modal-dialog__actions">
+        <button type="button" id="folderModalSave">Save</button>
+        <button type="button" id="folderModalCancel" class="secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Extensions CSV editor (modal) -->
+  <div id="extensionsModalBackdrop" class="modal-backdrop" style="display: none" role="presentation">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="extensions-modal-title">
+      <h2 id="extensions-modal-title" class="modal-dialog__title">Extensions CSV</h2>
+      <p class="modal-dialog__hint">Comma-separated file extensions (include the dot). Save applies to the next scan.</p>
+      <textarea id="extensionsModalTextarea" class="modal-folder-textarea modal-extensions-textarea" rows="6" spellcheck="false"></textarea>
+      <div class="modal-dialog__actions">
+        <button type="button" id="extensionsModalSave">Save</button>
+        <button type="button" id="extensionsModalCancel" class="secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const ISSUE_CONFIG = [
       { id: "hard_wait", label: "Hard Wait", summaryKey: "hard_wait_found" },
       { id: "hardcoded_test_data", label: "Hardcoded Data", summaryKey: "hardcoded_test_data" },
       { id: "duplicate_locator", label: "Duplicate Locator", summaryKey: "duplicate_locators" },
+      { id: "duplicate_step_block", label: "Consecutive duplicate step", summaryKey: "duplicate_step_blocks" },
       { id: "poor_assertion", label: "Poor Assertion", summaryKey: "poor_assertions" },
       { id: "unused_function", label: "Unused Function", summaryKey: "unused_functions" },
-      { id: "missing_validation", label: "Missing Validation", summaryKey: "missing_validations" }
+      { id: "lengthy_test_script", label: "Long test (100+ lines)", summaryKey: "lengthy_test_scripts" },
+      { id: "locator_index_one", label: "Positional index", summaryKey: "locator_index_one_hits" }
     ];
 
     const state = {
@@ -857,20 +1153,37 @@
       runId: null,
       eventSource: null,
       selectedIssue: ISSUE_CONFIG[0].id,
-      currentPayload: null
+      selectedFile: "__all__",
+      currentPayload: null,
+      scanTargetChoice: "__all__"
     };
 
     const refs = {
       metrics: document.getElementById("metrics"),
       issueTabs: document.getElementById("issueTabs"),
       issueList: document.getElementById("issueList"),
+      fileFilter: document.getElementById("fileFilter"),
+      fileFilterHint: document.getElementById("fileFilterHint"),
       logConsole: document.getElementById("logConsole"),
       backendStatus: document.getElementById("backendStatus"),
       liveRun: document.getElementById("liveRun"),
       stopRun: document.getElementById("stopRun"),
       simulateRun: document.getElementById("simulateRun"),
       resetData: document.getElementById("resetData"),
+      enableScanInputs: document.getElementById("enableScanInputs"),
       scanFolder: document.getElementById("scanFolder"),
+      folderNamesTrigger: document.getElementById("folderNamesTrigger"),
+      folderNamesPreview: document.getElementById("folderNamesPreview"),
+      folderModalBackdrop: document.getElementById("folderModalBackdrop"),
+      folderModalTextarea: document.getElementById("folderModalTextarea"),
+      folderModalSave: document.getElementById("folderModalSave"),
+      folderModalCancel: document.getElementById("folderModalCancel"),
+      extensionsTrigger: document.getElementById("extensionsTrigger"),
+      extensionsPreview: document.getElementById("extensionsPreview"),
+      extensionsModalBackdrop: document.getElementById("extensionsModalBackdrop"),
+      extensionsModalTextarea: document.getElementById("extensionsModalTextarea"),
+      extensionsModalSave: document.getElementById("extensionsModalSave"),
+      extensionsModalCancel: document.getElementById("extensionsModalCancel"),
       extensions: document.getElementById("extensions"),
       maxLines: document.getElementById("maxLines"),
       maxImpacted: document.getElementById("maxImpacted"),
@@ -879,14 +1192,12 @@
       outMd: document.getElementById("outMd"),
       showLines: document.getElementById("showLines"),
       automationLanguage: document.getElementById("automationLanguage"),
+      detectionPatternLanguage: document.getElementById("detectionPatternLanguage"),
       hardWaitPreset: document.getElementById("hardWaitPreset"),
-      seleniumAssertionAsHardWait: document.getElementById("seleniumAssertionAsHardWait"),
-      seleniumAssertionLabel: document.getElementById("seleniumAssertionLabel"),
-      detectionPatternsPanel: document.getElementById("detectionPatternsPanel"),
       mainDetectionPatterns: document.getElementById("mainDetectionPatterns")
     };
 
-    const ISSUE_IDS = ["hard_wait", "hardcoded_test_data", "duplicate_locator", "poor_assertion", "unused_function", "missing_validation"];
+    const ISSUE_IDS = ["hard_wait", "hardcoded_test_data", "duplicate_locator", "duplicate_step_block", "poor_assertion", "unused_function", "lengthy_test_script", "locator_index_one"];
 
     const DETECTION_PATTERNS = {
       java: {
@@ -927,12 +1238,21 @@
       }
     };
 
+    const PATTERN_ROWS = [
+      { key: "hardWait", label: "Hard waits" },
+      { key: "hardcodedData", label: "Hardcoded test data" },
+      { key: "locator", label: "Duplicate locators" },
+      { key: "weakAssertion", label: "Weak assertions" },
+      { key: "unusedFunction", label: "Unused helper functions" },
+      { key: "assertion", label: "Assertion keywords" }
+    ];
+
     const AUTOMATION_LANGUAGE_CONFIG = {
-      all: { extensions: ".java,.js,.ts,.jsx,.tsx,.py", hardWaitPreset: "javascript", showAssertionCheckbox: false, enabledIssues: ISSUE_IDS },
-      java: { extensions: ".java", hardWaitPreset: "selenium", showAssertionCheckbox: true, enabledIssues: ISSUE_IDS },
-      javascript_playwright: { extensions: ".js,.ts,.jsx,.tsx", hardWaitPreset: "javascript", showAssertionCheckbox: false, enabledIssues: ISSUE_IDS },
-      javascript_cypress: { extensions: ".js,.ts,.jsx,.tsx", hardWaitPreset: "javascript", showAssertionCheckbox: false, enabledIssues: ISSUE_IDS },
-      python: { extensions: ".py", hardWaitPreset: "python", showAssertionCheckbox: false, enabledIssues: ISSUE_IDS }
+      all: { extensions: ".java,.js,.ts,.jsx,.tsx,.py", hardWaitPreset: "javascript", enabledIssues: ISSUE_IDS },
+      java: { extensions: ".java", hardWaitPreset: "selenium", enabledIssues: ISSUE_IDS },
+      javascript_playwright: { extensions: ".js,.ts,.jsx,.tsx", hardWaitPreset: "javascript", enabledIssues: ISSUE_IDS },
+      javascript_cypress: { extensions: ".js,.ts,.jsx,.tsx", hardWaitPreset: "javascript", enabledIssues: ISSUE_IDS },
+      python: { extensions: ".py", hardWaitPreset: "python", enabledIssues: ISSUE_IDS }
     };
 
     function escapeHtml(value) {
@@ -1003,9 +1323,11 @@
         { label: "Hard Wait", value: summary.hard_wait_found ?? 0 },
         { label: "Hardcoded Data", value: summary.hardcoded_test_data ?? 0 },
         { label: "Duplicate Locator", value: summary.duplicate_locators ?? 0 },
+        { label: "Consecutive duplicate step", value: summary.duplicate_step_blocks ?? 0 },
         { label: "Poor Assertion", value: summary.poor_assertions ?? 0 },
         { label: "Unused Function", value: summary.unused_functions ?? 0 },
-        { label: "Missing Validation", value: summary.missing_validations ?? 0 }
+        { label: "Long test (100+ lines)", value: summary.lengthy_test_scripts ?? 0 },
+        { label: "Positional index", value: summary.locator_index_one_hits ?? 0 }
       ];
       refs.metrics.innerHTML = cards.map((card) => `
         <div class="metric">
@@ -1025,19 +1347,72 @@
       refs.issueTabs.querySelectorAll("button[data-issue]").forEach((btn) => {
         btn.addEventListener("click", () => {
           state.selectedIssue = btn.getAttribute("data-issue");
+          state.selectedFile = "__all__";
           renderIssueTabs(state.currentPayload);
+          renderFileFilter(state.currentPayload);
           renderIssueList(state.currentPayload);
         });
       });
+    }
+
+    function formatFileOptionLabel(file) {
+      const raw = String(file || "");
+      const parts = raw.split("/").filter(Boolean);
+      if (parts.length <= 2) return raw;
+      return `${parts[parts.length - 2]}/${parts[parts.length - 1]}`;
+    }
+
+    function buildFileOptions(items) {
+      const set = new Set();
+      (items || []).forEach((x) => {
+        if (x && x.file) set.add(String(x.file));
+      });
+      return Array.from(set).sort((a, b) => String(a).localeCompare(String(b)));
+    }
+
+    function renderFileFilter(payload) {
+      const items = payload?.findings?.[state.selectedIssue];
+      const list = Array.isArray(items) ? items : [];
+      const files = buildFileOptions(list);
+
+      refs.fileFilter.innerHTML = [
+        `<option value="__all__">All files</option>`,
+        ...files.map((f) => `<option value="${escapeHtml(f)}" title="${escapeHtml(f)}">${escapeHtml(formatFileOptionLabel(f))}</option>`)
+      ].join("");
+
+      refs.fileFilter.disabled = files.length === 0;
+
+      // If the current file isn't present anymore, fall back to All.
+      if (state.selectedFile !== "__all__" && !files.includes(state.selectedFile)) {
+        state.selectedFile = "__all__";
+      }
+
+      refs.fileFilter.value = state.selectedFile;
+      const shown = state.selectedFile === "__all__" ? list.length : list.filter((x) => x && x.file === state.selectedFile).length;
+      refs.fileFilterHint.textContent = files.length === 0
+        ? ""
+        : `Showing ${shown} of ${list.length} findings.`;
     }
 
     function renderIssueList(payload) {
       const items = payload?.findings?.[state.selectedIssue];
       if (!Array.isArray(items) || items.length === 0) {
         refs.issueList.innerHTML = "<div class=\"issue-item\"><div class=\"issue-title\">No findings in this category</div><div class=\"issue-meta\">Try another tab or run a new scan.</div></div>";
+        refs.fileFilterHint.textContent = "";
         return;
       }
-      refs.issueList.innerHTML = items.map((item, idx) => `
+
+      const filtered = state.selectedFile === "__all__"
+        ? items
+        : items.filter((x) => x && x.file === state.selectedFile);
+
+      if (!Array.isArray(filtered) || filtered.length === 0) {
+        refs.issueList.innerHTML = "<div class=\"issue-item\"><div class=\"issue-title\">No findings for this file</div><div class=\"issue-meta\">Pick “All files” or select another file.</div></div>";
+        refs.fileFilterHint.textContent = `Showing 0 of ${items.length} findings.`;
+        return;
+      }
+
+      refs.issueList.innerHTML = filtered.map((item, idx) => `
         <div class="issue-item">
           <div class="issue-title">${idx + 1}. ${escapeHtml(item.detail || item.issue || "Issue")}</div>
           <div class="issue-meta">${escapeHtml(formatLocation(item.file, item.line, item.column))}</div>
@@ -1049,6 +1424,7 @@
       state.currentPayload = payload || {};
       renderMetrics(state.currentPayload);
       renderIssueTabs(state.currentPayload);
+      renderFileFilter(state.currentPayload);
       renderIssueList(state.currentPayload);
     }
 
@@ -1059,17 +1435,21 @@
           hard_wait_found: 0,
           hardcoded_test_data: 0,
           duplicate_locators: 0,
+          duplicate_step_blocks: 0,
           poor_assertions: 0,
           unused_functions: 0,
-          missing_validations: 0
+          lengthy_test_scripts: 0,
+          locator_index_one_hits: 0
         },
         findings: {
           hard_wait: [],
           hardcoded_test_data: [],
           duplicate_locator: [],
+          duplicate_step_block: [],
           poor_assertion: [],
           unused_function: [],
-          missing_validation: []
+          lengthy_test_script: [],
+          locator_index_one: []
         }
       };
     }
@@ -1092,9 +1472,17 @@
       }
     }
 
+    function resolveScanTargets() {
+      const lines = toLines(refs.scanFolder.value);
+      if (lines.length === 0) return [];
+      if (lines.length === 1 || state.scanTargetChoice === "__all__") return lines;
+      if (lines.includes(state.scanTargetChoice)) return [state.scanTargetChoice];
+      return lines;
+    }
+
     function collectRunPayload() {
       return {
-        targets: toLines(refs.scanFolder.value),
+        targets: resolveScanTargets(),
         extensions: refs.extensions.value.trim(),
         changedFunctions: [],
         changedFile: "",
@@ -1105,7 +1493,6 @@
         outputMd: refs.outMd.checked,
         showLines: refs.showLines.checked,
         hardWaitPreset: refs.hardWaitPreset.value.trim(),
-        seleniumAssertionAsHardWait: refs.seleniumAssertionAsHardWait.checked,
         enabledIssues: getEnabledIssues(),
         automationLanguage: refs.automationLanguage.value.trim(),
         pythonAst: refs.pythonAst ? refs.pythonAst.checked : true,
@@ -1207,9 +1594,11 @@
           hard_wait_found: 4,
           hardcoded_test_data: 3,
           duplicate_locators: 2,
+          duplicate_step_blocks: 1,
           poor_assertions: 5,
           unused_functions: 1,
-          missing_validations: 6,
+          lengthy_test_scripts: 1,
+          locator_index_one_hits: 2,
           total_files_scanned: 19
         },
         findings: {
@@ -1223,14 +1612,20 @@
           duplicate_locator: [
             { file: "src/pages/cart.page.ts", line: 36, column: 12, issue: "duplicate_locator", detail: "Locator '#submit-order' repeated across modules." }
           ],
+          duplicate_step_block: [
+            { file: "src/tests/navigation.spec.ts", line: 31, column: 5, issue: "duplicate_step_block", detail: "await configuration.persistSession()" }
+          ],
           poor_assertion: [
             { file: "src/tests/payment.spec.ts", line: 44, column: 10, issue: "poor_assertion", detail: "Generic truthy assertion with low signal." }
           ],
           unused_function: [
             { file: "src/helpers/legacy.ts", line: 91, column: 1, issue: "unused_function", detail: "Function 'formatOtpLegacy' is never referenced." }
           ],
-          missing_validation: [
-            { file: "src/tests/checkout.spec.ts", line: 52, column: 7, issue: "missing_validation", detail: "Click action has no nearby validation step." }
+          lengthy_test_script: [
+            { file: "src/tests/monolithic.spec.ts", line: 1, column: 1, issue: "lengthy_test_script", detail: "Test script has 240 lines (more than 100); consider splitting into smaller tests or steps." }
+          ],
+          locator_index_one: [
+            { file: "src/pages/LoginPage.java", line: 44, column: 38, issue: "locator_index_one", detail: "driver.findElement(By.xpath(\"(//input[@type='text'])[1]\"))" }
           ]
         }
       };
@@ -1240,26 +1635,37 @@
 
     function resetDashboard() {
       state.selectedIssue = ISSUE_CONFIG[0].id;
+      state.selectedFile = "__all__";
       renderPayload(getEmptyPayload());
       refs.logConsole.textContent = "Live scan logs will appear here...";
       appendLog("Dashboard reset.");
     }
 
-    const PATTERN_ROWS = [
-      { key: "hardWait", label: "Hard waits" },
-      { key: "hardcodedData", label: "Hardcoded test data" },
-      { key: "locator", label: "Duplicate locators" },
-      { key: "weakAssertion", label: "Weak assertions" },
-      { key: "unusedFunction", label: "Unused helper functions" },
-      { key: "assertion", label: "Missing validations" }
-    ];
+    // File filter dropdown handler (filters the issue list only).
+    refs.fileFilter.addEventListener("change", () => {
+      state.selectedFile = refs.fileFilter.value || "__all__";
+      renderFileFilter(state.currentPayload);
+      renderIssueList(state.currentPayload);
+    });
 
     function renderDetectionPatterns(lang) {
-      const langKeys = ["java", "javascript_playwright", "javascript_cypress", "python"];
-      const patterns = lang === "all"
-        ? langKeys.map((k) => DETECTION_PATTERNS[k]).filter(Boolean)
-        : [DETECTION_PATTERNS[lang]].filter(Boolean);
-      if (patterns.length === 0) return;
+      if (!refs.mainDetectionPatterns) return;
+      const key = String(lang ?? "").trim().toLowerCase();
+      if (key === "all" || key === "") {
+        refs.mainDetectionPatterns.className = "main-patterns-panel patterns-idle";
+        refs.mainDetectionPatterns.innerHTML = "";
+        return;
+      }
+
+      const patterns = [DETECTION_PATTERNS[key]].filter(Boolean);
+      if (patterns.length === 0) {
+        refs.mainDetectionPatterns.className = "main-patterns-panel patterns-idle";
+        refs.mainDetectionPatterns.innerHTML =
+          '<p class="patterns-empty-hint" role="status">No pattern set is defined for this selection.</p>';
+        return;
+      }
+
+      refs.mainDetectionPatterns.className = "main-patterns-panel";
 
       const renderTable = (p) => {
         let rows = "";
@@ -1278,16 +1684,18 @@
         html += `<table class="pattern-table"><tbody>${renderTable(p)}</tbody></table></div>`;
       });
 
-      if (refs.detectionPatternsPanel) refs.detectionPatternsPanel.innerHTML = html;
-      if (refs.mainDetectionPatterns) refs.mainDetectionPatterns.innerHTML = html;
+      refs.mainDetectionPatterns.innerHTML = html;
     }
 
     function updateAutomationLanguageUI() {
       const lang = refs.automationLanguage.value;
+      if (refs.detectionPatternLanguage) {
+        refs.detectionPatternLanguage.value = lang;
+      }
       const config = AUTOMATION_LANGUAGE_CONFIG[lang] || AUTOMATION_LANGUAGE_CONFIG.all;
       refs.extensions.value = config.extensions;
+      syncExtensionsPreview();
       refs.hardWaitPreset.value = config.hardWaitPreset;
-      refs.seleniumAssertionLabel.style.display = config.showAssertionCheckbox ? "block" : "none";
       const enabled = new Set(config.enabledIssues || ISSUE_IDS);
       ISSUE_IDS.forEach((id) => {
         const chk = document.querySelector(`#issueTypeChecks input[data-issue="${id}"]`);
@@ -1303,7 +1711,182 @@
       });
     }
 
+    function syncFolderButtonPreview() {
+      const span = refs.folderNamesPreview;
+      if (!span || !refs.scanFolder) return;
+      const v = refs.scanFolder.value || "";
+      if (v.trim()) {
+        span.textContent = v;
+        span.className = "folder-names-trigger__text";
+      } else {
+        span.textContent = "Click to enter folder paths (one per line)";
+        span.className = "folder-names-trigger__text folder-names-trigger__text--placeholder";
+      }
+    }
+
+    function syncExtensionsPreview() {
+      const span = refs.extensionsPreview;
+      const inp = refs.extensions;
+      if (!span || !inp) return;
+      const v = (inp.value || "").trim();
+      if (v) {
+        span.textContent = inp.value;
+        span.className = "folder-names-trigger__text extensions-trigger__text";
+      } else {
+        span.textContent = "Click to enter extensions (comma-separated, e.g. .java, .ts)";
+        span.className =
+          "folder-names-trigger__text extensions-trigger__text folder-names-trigger__text--placeholder";
+      }
+    }
+
+    function syncScanInputsDisabled() {
+      const enabled = refs.enableScanInputs && refs.enableScanInputs.checked;
+      const hint = "Check the option above to enable editing folder names and extensions";
+      if (refs.folderNamesTrigger) {
+        refs.folderNamesTrigger.disabled = !enabled;
+        refs.folderNamesTrigger.title = enabled ? "" : hint;
+      }
+      if (refs.extensionsTrigger) {
+        refs.extensionsTrigger.disabled = !enabled;
+        refs.extensionsTrigger.title = enabled ? "" : hint;
+      }
+      if (!enabled) {
+        if (refs.folderModalBackdrop) refs.folderModalBackdrop.style.display = "none";
+        if (refs.extensionsModalBackdrop) refs.extensionsModalBackdrop.style.display = "none";
+        if (refs.folderNamesTrigger) refs.folderNamesTrigger.setAttribute("aria-expanded", "false");
+        if (refs.extensionsTrigger) refs.extensionsTrigger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+    }
+
+    function openFolderModal() {
+      if (refs.enableScanInputs && !refs.enableScanInputs.checked) return;
+      if (!refs.folderModalBackdrop || !refs.folderModalTextarea || !refs.scanFolder) return;
+      refs.folderModalTextarea.value = refs.scanFolder.value;
+      refs.folderModalBackdrop.style.display = "flex";
+      if (refs.folderNamesTrigger) refs.folderNamesTrigger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => refs.folderModalTextarea.focus());
+    }
+
+    function closeFolderModal() {
+      if (!refs.folderModalBackdrop) return;
+      refs.folderModalBackdrop.style.display = "none";
+      if (refs.folderNamesTrigger) refs.folderNamesTrigger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    function saveFolderModal() {
+      if (!refs.scanFolder || !refs.folderModalTextarea) return;
+      refs.scanFolder.value = refs.folderModalTextarea.value;
+      syncFolderButtonPreview();
+      closeFolderModal();
+    }
+
+    function onFolderModalWheel(e) {
+      const el = refs.folderModalTextarea;
+      if (!el || el.scrollHeight <= el.clientHeight) return;
+      const dy = e.deltaY;
+      const st = el.scrollTop;
+      const ch = el.clientHeight;
+      const sh = el.scrollHeight;
+      const atTop = st <= 0;
+      const atBottom = st + ch >= sh - 1;
+      if (dy < 0 && atTop) return;
+      if (dy > 0 && atBottom) return;
+      e.stopPropagation();
+    }
+
+    function onModalEscape(e) {
+      if (e.key !== "Escape") return;
+      if (refs.extensionsModalBackdrop && refs.extensionsModalBackdrop.style.display === "flex") {
+        closeExtensionsModal();
+        return;
+      }
+      if (refs.folderModalBackdrop && refs.folderModalBackdrop.style.display === "flex") {
+        closeFolderModal();
+      }
+    }
+
+    function openExtensionsModal() {
+      if (refs.enableScanInputs && !refs.enableScanInputs.checked) return;
+      if (!refs.extensionsModalBackdrop || !refs.extensionsModalTextarea || !refs.extensions) return;
+      refs.extensionsModalTextarea.value = refs.extensions.value;
+      refs.extensionsModalBackdrop.style.display = "flex";
+      if (refs.extensionsTrigger) refs.extensionsTrigger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => refs.extensionsModalTextarea.focus());
+    }
+
+    function closeExtensionsModal() {
+      if (!refs.extensionsModalBackdrop) return;
+      refs.extensionsModalBackdrop.style.display = "none";
+      if (refs.extensionsTrigger) refs.extensionsTrigger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    function saveExtensionsModal() {
+      if (!refs.extensions || !refs.extensionsModalTextarea) return;
+      refs.extensions.value = refs.extensionsModalTextarea.value.trim();
+      syncExtensionsPreview();
+      closeExtensionsModal();
+    }
+
+    function onExtensionsModalWheel(e) {
+      const el = refs.extensionsModalTextarea;
+      if (!el || el.scrollHeight <= el.clientHeight) return;
+      const dy = e.deltaY;
+      const st = el.scrollTop;
+      const ch = el.clientHeight;
+      const sh = el.scrollHeight;
+      const atTop = st <= 0;
+      const atBottom = st + ch >= sh - 1;
+      if (dy < 0 && atTop) return;
+      if (dy > 0 && atBottom) return;
+      e.stopPropagation();
+    }
+
+    syncFolderButtonPreview();
+    syncExtensionsPreview();
+    syncScanInputsDisabled();
+
+    if (refs.enableScanInputs) refs.enableScanInputs.addEventListener("change", syncScanInputsDisabled);
+
+    if (refs.scanTargetSelect) {
+      refs.scanTargetSelect.addEventListener("change", () => {
+        state.scanTargetChoice = refs.scanTargetSelect.value;
+      });
+    }
+
+    refs.folderNamesTrigger.addEventListener("click", openFolderModal);
+    refs.folderModalBackdrop.addEventListener("click", (e) => {
+      if (e.target === refs.folderModalBackdrop) closeFolderModal();
+    });
+    refs.folderModalSave.addEventListener("click", saveFolderModal);
+    refs.folderModalCancel.addEventListener("click", closeFolderModal);
+    refs.folderModalTextarea.addEventListener("wheel", onFolderModalWheel, { passive: true });
+    window.addEventListener("keydown", onModalEscape);
+
+    if (refs.extensionsTrigger) refs.extensionsTrigger.addEventListener("click", openExtensionsModal);
+    if (refs.extensionsModalBackdrop) {
+      refs.extensionsModalBackdrop.addEventListener("click", (e) => {
+        if (e.target === refs.extensionsModalBackdrop) closeExtensionsModal();
+      });
+    }
+    if (refs.extensionsModalSave) refs.extensionsModalSave.addEventListener("click", saveExtensionsModal);
+    if (refs.extensionsModalCancel) refs.extensionsModalCancel.addEventListener("click", closeExtensionsModal);
+    if (refs.extensionsModalTextarea) {
+      refs.extensionsModalTextarea.addEventListener("wheel", onExtensionsModalWheel, { passive: true });
+    }
+
     refs.automationLanguage.addEventListener("change", updateAutomationLanguageUI);
+
+    if (refs.detectionPatternLanguage) {
+      refs.detectionPatternLanguage.addEventListener("change", () => {
+        refs.automationLanguage.value = refs.detectionPatternLanguage.value;
+        updateAutomationLanguageUI();
+      });
+    }
     refs.liveRun.addEventListener("click", runLiveScan);
     refs.stopRun.addEventListener("click", stopLiveScan);
     refs.simulateRun.addEventListener("click", runDemoData);
