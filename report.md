@@ -2,13 +2,17 @@
 
 ## Summary
 
-- Hard Wait Found: **15**
-- Test Data Hardcoding: **0**
-- Duplicate Locators: **0**
-- Poor Assertions: **0**
-- Unused Functions: **0**
-- Missing Validations: **28**
-- Files Scanned: **10**
+
+- Hard Wait Found: **1119**
+- Test Data Hardcoding: **57**
+- Duplicate Locators: **251**
+- Poor Assertions: **617**
+- Unused Functions: **4**
+- Brittle / Index Locators: **527**
+- Random / Non-Deterministic Timing: **9**
+- Long Test / Large Files: **112**
+- Duplicate consecutive steps: **484**
+- Files Scanned: **290**
 
 ## Hard Wait Found
 
@@ -44,7 +48,2284 @@ No findings.
 
 No findings.
 
-## Missing Validations
+
+## Brittle / Index Locators
+
+- `/src/pages/Dashboard/Dashboard.js:66:95` — `this.data_quality_dashboard_searched_click = this.page.locator('(//*[@id="tabContent"]//span[@tooltip-text])[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/Dashboard/Dashboard.js:157:75` — `this.select_copy_button = this.page.locator('(//tr[@class="group"]//*[@shape])[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/Dashboard/Dashboard.js:253:97` — `this.favourite_dashboard_name_text=this.page.locator('(//*[@data-testid="dashbaordTile"]//*)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Groups_Tab.js:15:67` — `this.redshift_group_mouseover_label = this.page.locator('(//tbody//td[2]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Groups_Tab.js:18:61` — `this.redshift_group_edit_icon = this.page.locator('(//tbody//td[2]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Groups_Tab.js:21:62` — `this.redshift_group_name_field = this.page.locator('(//tbody//td[2]//*[@type="text"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Groups_Tab.js:24:61` — `this.redshift_group_save_icon = this.page.locator('(//tbody//td[2]//*[@data-testid="button_save_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Groups_Tab.js:27:63` — `this.redshift_group_cancel_icon = this.page.locator('(//tbody//td[2]//*[@data-testid="button_close_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Groups_Tab.js:36:67` — `this.redshift_users_mouseover_label = this.page.locator('(//tbody//td[3]//div[@data-testid="EntityPopperLayout-component"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:19:67` — `this.Snowflake_Role_Mouseover_label = this.page.locator('(//tbody//td[2]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:22:71` — `this.Snowflake_Role_Name_text_Edit_Icon = this.page.locator('(//tbody//td[2]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:25:73` — `this.Snowflake_Role_Name_Enter_text_field = this.page.locator('(//tbody//td[2]//*[@type="text"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:28:66` — `this.Snowflake_Role_Name_Save_Icon = this.page.locator('(//tbody//td[2]//*[@data-testid="button_save_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:31:68` — `this.Snowflake_Role_Name_Cancel_Icon = this.page.locator('(//tbody//td[2]//div[@data-testid="preview-container"]//button)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:52:64` — `this.Description_Mouseover_label = this.page.locator('(//tbody//td[4]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:55:58` — `this.Description_Edit_Icon = this.page.locator('(//tbody//td[4]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:58:65` — `this.Description_Enter_text_field = this.page.locator('(//tbody//td[4]//*[@type="text"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:61:58` — `this.Description_Save_Icon = this.page.locator('(//tbody//td[4]//*[@data-testid="button_save_outline"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:64:60` — `this.Description_Cancel_Icon = this.page.locator('(//tbody//td[4]//*[@data-testid="button_close_outline"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:75:71` — `this.Account_Privileges_Mouseover_label = this.page.locator('(//tbody//td[5]//div[@data-testid="EntityPopperLayout-component"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:78:65` — `this.Account_Privileges_Edit_Icon = this.page.locator('(//tbody//td[5]//div[@data-testid="OeOptionSelector-component"]//*[@data-testid="edit_click"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:108:62` — `this.Warehouse_Mouseover_label = this.page.locator('(//tbody//td[7]//div[@data-testid="EntityPopperLayout-component"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:111:65` — `this.Warehouse_Column_Edit_button = this.page.locator('(//tbody//td[7]//div[@data-testid="EntityPopperLayout-component"]//*[@data-testid="edit_click"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:135:64` — `this.Parent_Role_Mouseover_label = this.page.locator('(//tbody//td[11]//div[@data-testid="OeOptionSelector-component"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Roles_Tab.js:138:58` — `this.Parent_Role_Edit_Icon = this.page.locator('(//tbody//td[11]//div[@data-testid="OeOptionSelector-component"]//*[@data-testid="edit_click"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:20:71` — `this.Snowflake_Username_Mouseover_label = this.page.locator('(//tbody//td[2]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:23:75` — `this.Snowflake_Username_Name_text_Edit_Icon = this.page.locator('(//tbody//td[2]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:26:77` — `this.Snowflake_Username_Name_Enter_text_field = this.page.locator('(//tbody//td[2]//*[@type="text"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:29:70` — `this.Snowflake_Username_Name_Save_Icon = this.page.locator('(//tbody//td[2]//*[@data-testid="button_save_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:32:72` — `this.Snowflake_Username_Name_Cancel_Icon = this.page.locator('(//tbody//td[2]//*[@data-testid="button_close_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:41:63` — `this.Login_Name_Mouseover_label = this.page.locator('(//tbody//td[2]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:44:67` — `this.Login_Name_Name_text_Edit_Icon = this.page.locator('(//tbody//td[2]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:47:69` — `this.Login_Name_Name_Enter_text_field = this.page.locator('(//tbody//td[2]//*[@type="text"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:50:62` — `this.Login_Name_Name_Save_Icon = this.page.locator('(//tbody//td[2]//*[@data-testid="button_save_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:53:64` — `this.Login_Name_Name_Cancel_Icon = this.page.locator('(//tbody//td[2]//*[@data-testid="button_close_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:62:65` — `this.Display_Name_Mouseover_label = this.page.locator('(//tbody//td[4]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:65:69` — `this.Display_Name_Name_text_Edit_Icon = this.page.locator('(//tbody//td[4]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:68:71` — `this.Display_Name_Name_Enter_text_field = this.page.locator('(//tbody//td[4]//*[@type="text"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:71:64` — `this.Display_Name_Name_Save_Icon = this.page.locator('(//tbody//td[4]//*[@data-testid="button_save_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:74:66` — `this.Display_Name_Name_Cancel_Icon = this.page.locator('(//tbody//td[4]//*[@data-testid="button_close_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:83:63` — `this.First_Name_Mouseover_label = this.page.locator('(//tbody//td[5]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:86:67` — `this.First_Name_Name_text_Edit_Icon = this.page.locator('(//tbody//td[5]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:89:69` — `this.First_Name_Name_Enter_text_field = this.page.locator('(//tbody//td[5]//*[@type="text"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:92:62` — `this.First_Name_Name_Save_Icon = this.page.locator('(//tbody//td[5]//*[@data-testid="button_save_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:95:64` — `this.First_Name_Name_Cancel_Icon = this.page.locator('(//tbody//td[5]//*[@data-testid="button_close_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:104:62` — `this.Last_Name_Mouseover_label = this.page.locator('(//tbody//td[6]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:107:66` — `this.Last_Name_Name_text_Edit_Icon = this.page.locator('(//tbody//td[6]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:110:68` — `this.Last_Name_Name_Enter_text_field = this.page.locator('(//tbody//td[6]//*[@type="text"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:113:61` — `this.Last_Name_Name_Save_Icon = this.page.locator('(//tbody//td[6]//*[@data-testid="button_save_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:116:63` — `this.Last_Name_Name_Cancel_Icon = this.page.locator('(//tbody//td[6]//*[@data-testid="button_close_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:125:58` — `this.Email_Mouseover_label = this.page.locator('(//tbody//td[7]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:128:62` — `this.Email_Name_text_Edit_Icon = this.page.locator('(//tbody//td[7]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:131:64` — `this.Email_Name_Enter_text_field = this.page.locator('(//tbody//td[7]//*[@type="text"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:134:57` — `this.Email_Name_Save_Icon = this.page.locator('(//tbody//td[7]//*[@data-testid="button_save_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:137:59` — `this.Email_Name_Cancel_Icon = this.page.locator('(//tbody//td[7]//*[@data-testid="button_close_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:146:58` — `this.Roles_Mouseover_label = this.page.locator('(//tbody//td[8]//div[@data-testid="EntityPopperLayout-component"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:149:62` — `this.Roles_Name_text_Edit_Icon = this.page.locator('(//tbody//td[8]//div[@data-testid="OeOptionSelector-component"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:167:64` — `this.Description_Mouseover_label = this.page.locator('(//tbody//td[9]//div[@data-testid="preview-container"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:170:68` — `this.Description_Name_text_Edit_Icon = this.page.locator('(//tbody//td[9]//div[@data-testid="preview-container"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:173:70` — `this.Description_Name_Enter_text_field = this.page.locator('(//tbody//td[9]//*[@type="text"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:176:63` — `this.Description_Name_Save_Icon = this.page.locator('(//tbody//td[9]//*[@data-testid="button_save_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:179:65` — `this.Description_Name_Cancel_Icon = this.page.locator('(//tbody//td[9]//*[@data-testid="button_close_outline"])')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:188:62` — `this.Warehouse_Mouseover_label = this.page.locator('(//tbody//td[10]//div[@data-testid="EntityPopperLayout-component"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/RDAM/Data_Access_Mangement/Users_Tab.js:191:66` — `this.Warehouse_Name_text_Edit_Icon = this.page.locator('(//tbody//td[10]//div[@data-testid="EntityPopperLayout-component"]//*[@type="button"])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/accessCart/accessCartPage.js:22:69` — `this.tableRowCheckbox = (rowIndex) => this.page.locator(`tr:nth-child(${rowIndex}) > td > .checkbox > .oe-control`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/administration/TagsSecurityPage.js:84:94` — `this.editIconOfMasterTag = this.page.locator('(//td[@data-fieldname="mastertagsname"]//following-sibling::div//div//clr-icon[@shape])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/administration/TagsSecurityPage.js:263:143` — `this.editIconOfAuthorizedRolesAndUsers = this.page.locator('(//*[@id="mastertagListContainer"]//td[@data-testid="authorizedrole_cell"]//following-sibling::clr-icon[@shape])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/administration/adminSecurityPage.js:10:77` — `this.conSeclabel =this.page.locator('(//section[@id="widget-grid-2"]//h2)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/administration/advancedJobsPage.js:42:121` — `this.selectFirstReportGroupCheckBox = this.page.locator('(//*[@data-ot="oedomain"]//td[@data-fieldname="select"]//label)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/administration/advancedJobsPage.js:106:91` — `this.securityRestrictColumnCheckboxInRow = (rowLocator) => rowLocator.locator('td:nth-child(11) .checkbox .oe-control').first();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/administration/advancedJobsPage.js:740:52` — `const toggleSwitch = this.page.locator('td:nth-child(5) > .text-center > .oe-switch > span').first();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/advancedTools/impactAnalysisPage.js:42:105` — `this.select_table_name=this.page.locator('(//ul[@id="associateImpactObject_oetable_scrollvalue"]//li)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/advancedTools/impactAnalysisPage.js:44:106` — `this.select_table_name1=this.page.locator('(//ul[@id="associateImpactObject_oetable_scrollvalue"]//li)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/advancedTools/impactAnalysisPage.js:68:145` — `this.table_fields_in_impacted_objects_tab=this.page.locator('(//*[@data-testid="automation.impact-analysis-detail.bind_impactedobjects"]//tbody//tr)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/advancedTools/impactAnalysisPage.js:82:123` — `this.impa_obj_lower_limit_field=this.page.locator('(//*[@data-testid="automation.impact-analysis-detail.elem_297"]//input)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/advancedTools/impactAnalysisPage.js:84:123` — `this.impa_obj_upper_limit_field=this.page.locator('(//*[@data-testid="automation.impact-analysis-detail.elem_297"]//input)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/advancedTools/impactAnalysisPage.js:120:146` — `this.imp_ana_page_validate_row_in_impact_analysis_page=this.page.locator('(//*[@data-testid="automation.impact-analysis-detail.elem_197"]//tbody//tr)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/advancedTools/lineageMaintenancePage.js:119:192` — `this.click_on_code_name=this.page.locator('(//*[@data-testid="popperwithclickaway-PopperOptionsContainer-OeOptionSelector-defaultId-OeOptionSelector-PopperOptionsContainer-popper-manual"]//*[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/askEdgi/askEdgiPage.js:98:97` — `this.metadataSearchResultRow = (tableName) => this.page.locator(`(//td[.="${tableName}"]//parent::tr)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/askEdgi/askEdgiPage.js:232:97` — `this.catalogButtonFirstRow = this.page.locator(`(//*[@id="bind_object_selector_oetable"]//tbody//tr)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/askEdgi/askEdgiPage.js:367:61` — `this.resultsTableContainer = this.page.locator('div:nth-child(4) > .MuiBox-root.css-bijamw > .MuiBox-root.css-1pihyma');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/askEdgi/askEdgiPage.js:399:192` — `this.systemSettingsKeyField = (key_name) => this.page.locator('(//td[contains(@class, "configureKey") and contains(.,"' + key_name + '")]//following-sibling::td[@id="config-val-cell"]//button)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:21:108` — `this.searchConditionInputField = (attribute) => this.page.locator(`(//*[@data-fieldname="${attribute}"]//input)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:35:98` — `this.filterInput = (attribute) => this.page.locator(`(//*[@search-filter-type="${attribute}"]//input[@placeholder])[1]`).first();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:45:102` — `this.activeSortedContainer = this.page.locator(`(//*[contains(@class,"active-sorting-container")]//li)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:46:110` — `this.sortingContainerColumnValue = (columnName) => this.page.locator(`(//*[@tooltip-text="${columnName}"]//parent::li)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:213:136` — `this.businessDesc_video_Validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:216:138` — `this.technicalDesc_video_Validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//iframe)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:228:143` — `this.businessDescription_image_validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//img)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:231:145` — `this.technicalDescription_image_validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//img)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:311:69` — `return this.page.locator(`(//td[contains(.,"${searchedname}")]//a[text()])[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:442:58` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:516:234` — `this.mywatchlist_Tab_icon = (Tabname) => this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:606:359` — `this.Tabname_column_value_with_displayingname_attributes_common_author_link_with_indec = (tabname, columnName) => this.page.locator(`(//div[@id="${tabname}"]//thead//tr//th[@data-displayname="${columnName}"]/ancestor::thead/following-sibling::tbody//tr[.//div[text()]]/td[count(//thead//tr//th[@data-displayname="${columnName}"]/preceding-sibling::th)+1]//a)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:767:248` — `this.display_name_data_fieldname_navigate_link_with_index = (Tabname, columnname, fieldname) => this.page.locator(`(//div[@id="${Tabname}"][.//th[@data-displayname="${columnname}"]]//following-sibling::tbody//td[@data-fieldname="${fieldname}"]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:1717:78` — `let jobStatus = await this.page.locator('(//*[@data-testid="jobs.status"]//span)[1]').textContent();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:1722:76` — `jobStatus = await this.page.locator('(//*[@data-testid="jobs.status"]//span)[1]').textContent();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:4681:47` — `let jobValue = (await this.page.locator('(//td[@jobid])[1]').textContent()).trim();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:4688:78` — `let jobStatus = await this.page.locator('(//*[@data-testid="jobs.status"]//span)[1]').textContent();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/basePage.js:4693:76` — `jobStatus = await this.page.locator('(//*[@data-testid="jobs.status"]//span)[1]').textContent();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossaryTreePage.js:20:113` — `this.bg_Tree_TreeTitle = this.page.locator('(//div[@id="oe-treeview-list"]//span[@class="rc-tree-title"]//span[@data-testid])[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:55:173` — `this.domainGoverUser = (governance_user) => this.page.locator(`(//*[contains(@class,"list-container") and @style="display: block;" and contains(.,"${governance_user}")]//li)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:189:111` — `this.domainiFirstDomainDescriptionEditInputField = this.page.locator('(//td[@data-fieldname="description"]//input)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:192:100` — `this.domainFirstDomaingovRoleHover = this.page.locator(`(//*[@id="oeglobaldomainListContainer"]//tr)[2]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:976:100` — `await this.page.locator(`(//td[@data-fieldname="domainname"]//a[contains(., '${domainname}')]//ancestor::tr//span)[1]`).click({ timeout: 2000 });`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1016:69` — `await this.page.locator(`(//li[@data-id="${governance_user}"][1]//span)[1]`).click();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1046:69` — `await this.page.locator(`(//li[@data-id="${governance_user}"][1]//span)[1]`).click();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1076:69` — `await this.page.locator(`(//li[@data-id="${governance_user}"][1]//span)[1]`).click();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1150:72` — `await this.page.locator('(//ul[@id="multiselect-container-listbox"]//li)[1]').click();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1254:83` — `let assigned_Tag = await this.page.locator('(//*[@data-file="tags_outline"]/..//span)[1]').textContent();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1307:31` — `await this.page.locator('(//tbody//tr)[1]//td[@data-testid="select"]//span').click();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1309:74` — `await this.page.locator('(//li[@data-testid="terms-list.deleteterms"]//span)[2]').click();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1465:65` — `await this.page.locator('((//tr[@data-testid="tableRow"])[1]//td)[3]//a').click();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:26:179` — `this.bg_ListView_SelectSearchTermCheckbox = (termname) => this.page.locator(`(//td[@data-name="Terms"]//a[contains(., "${termname}")]//ancestor::tr//td[@data-testid="select"]//span)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:79:101` — `this.bg_ListView_selctDomainName = this.page.locator('(//ul[@id="multiselect-container-listbox"]//li)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:120:67` — `this.bg_ListView_selectfirsttermcheckbox = this.page.locator('//tr[1]//td[@data-testid="select"]//span');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:133:67` — `this.bg_ListView_selectfirsttermcheckbox = this.page.locator('//tr[1]//td[@data-testid="select"]//span');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:142:53` — `this.bg_ListPage_selectRow = this.page.locator('//tbody//tr)[1]//td[@data-testid="select"]//span');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:170:95` — `this.bgListView_TermStatusField = this.page.locator('(//td[@data-testid="glossary.status"]//span)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:207:174` — `this.bgListPageViewConfigureViewFieldValueClickView = (fieldValue) => this.page.locator(`(//*[contains(@class,"select-field-container")]//*[@displayname="${fieldValue}"]//label)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_ListPage.js:208:172` — `this.bgListPageViewConfigureViewFieldValueChecked = (fieldValue) => this.page.locator(`(//*[contains(@class,"select-field-container")]//*[@displayname="${fieldValue}"]//*[@checked]//parent::label)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:40:101` — `this.bg_TermSummary_Title = this.page.locator('(//button[@data-testid="EditableInput-component"]//span)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:77:85` — `this.assignedTagSelector = this.page.locator('(//*[@data-file="tags_outline"]/..//span)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:106:101` — `this.bg_TermSummary_DeleteTerms = this.page.locator('//li[@data-testid="terms-list.deleteterms"]//span)[2]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:151:174` — `this.bg_TermSummaryPageClassificationFirstCheckbox = this.page.locator('(//*[contains(@ol-topic-el,"tagclassification")]//parent::div//*[@data-testid="formcontrollabel"]//input)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:224:132` — `this.bgSummaryPageRelationTypes = (index) => this.page.locator(`(//*[contains(@id,"section") and contains(.,"Related Objects")]//table//tr[${index}]//td)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:228:85` — `this.firstObject = this.page.locator('(//div[@id="selectedObjectTableContainer"]//tr[@data-oid])[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:304:169` — `this.bgSummaryPageAdditionalInformationEnterInput = (fieldName) => this.page.locator(`(//h6[.="${fieldName}"]/parent::div//*[@data-testid="EditableInput-component"]//input)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:363:98` — `this.bg_TermSummaryPage_ratingBox = this.page.locator('(//div[@data-testid="comment_history"]//div)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:379:113` — `this.bg_TermSummary_SelectProectFromDropdown = this.page.locator('(//ul[@id="multiselect-container-listbox"]//li)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:465:86` — `this.bg_termSummary_listofUsers = this.page.locator('((//div[@id="bind_allusers"]//tbody//tr)[1]//td)[2]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/certificationPolicy/certificationpolicy.js:484:111` — `const loc = this.page.locator(`(//*[contains(@data-testid,"oetable.tablename")][contains(.,"${text}")]//a)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/certificationPolicy/certificationpolicy.js:491:122` — `const tableLink = this.page.locator(`(//*[contains(@data-testid,"oetable.tablename")][contains(.,"${tableName}")]//a)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/certificationPolicy/certificationpolicy.js:498:122` — `const tableLink = this.page.locator(`(//*[contains(@data-testid,"oetable.tablename")][contains(.,"${tableName}")]//a)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:635:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:989:140` — `this.businessDesc_video_Validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:992:142` — `this.technicalDesc_video_Validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//iframe)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:1004:147` — `this.businessDescription_image_validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//img)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:1007:149` — `this.technicalDescription_image_validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//img)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:1671:74` — `return this.page.locator(`//thead[.//*[@data-displayname="Tags"]]//following-sibling::tbody//tr[1]//*[text()="${tag}"]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:1716:141` — `return this.page.locator(`(//*[@data-testid="Box-ObjectField-ObjectFields-defaultId-ObjectField-title-manual" and text()="${label}"]//following-sibling::*//*[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:2534:204` — `return this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIAttributePage.js:2659:71` — `return this.page.locator(`(//td[contains(.,"${searchedname}")]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:660:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1014:140` — `this.businessDesc_video_Validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1017:142` — `this.technicalDesc_video_Validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//iframe)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1029:147` — `this.businessDescription_image_validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//img)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1032:149` — `this.technicalDescription_image_validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//img)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1202:79` — `this.source_object_name = this.page.locator('(//div[@id="sourcetable"]//a[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1205:79` — `this.target_object_name = this.page.locator('(//div[@id="targettable"]//a[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1606:114` — `return this.page.locator(`(//*[@data-testid="RichTextViewer-ObjectHistory-message-RichTextViewer-manual"]//img)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1610:114` — `return this.page.locator(`(//*[@data-testid="RichTextViewer-ObjectHistory-message-RichTextViewer-manual"]//iframe)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1643:85` — `return this.page.locator(`(//td[@data-testid="auditdescription.description"]//img)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1707:74` — `return this.page.locator(`//thead[.//*[@data-displayname="Tags"]]//following-sibling::tbody//tr[1]//*[text()="${tag}"]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:1752:141` — `return this.page.locator(`(//*[@data-testid="Box-ObjectField-ObjectFields-defaultId-ObjectField-title-manual" and text()="${label}"]//following-sibling::*//*[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:2634:204` — `return this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_APIPage.js:2759:71` — `return this.page.locator(`(//td[contains(.,"${searchedname}")]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_CodesPage.js:701:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_CodesPage.js:1053:140` — `this.businessDesc_video_Validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_CodesPage.js:1056:142` — `this.technicalDesc_video_Validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//iframe)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_CodesPage.js:1068:147` — `this.businessDescription_image_validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//img)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_CodesPage.js:1071:149` — `this.technicalDescription_image_validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//img)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_CodesPage.js:1695:141` — `return this.page.locator(`(//*[@data-testid="Box-ObjectField-ObjectFields-defaultId-ObjectField-title-manual" and text()="${label}"]//following-sibling::*//*[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_CodesPage.js:2467:204` — `return this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_CodesPage.js:2596:71` — `return this.page.locator(`(//td[contains(.,"${searchedname}")]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:99:79` — `this.dcFirstSchema = this.page.locator('(//*[@data-fieldname="schemaname"]//a)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:100:80` — `this.dcSecondSchema = this.page.locator('(//*[@data-fieldname="schemaname"]//a)[2]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:119:132` — `this.dcListPageTooltipValidation = (tooltipValue) => this.page.locator(`(//*[@role="tooltip"]//*[@aria-label="${tooltipValue}"]//div)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:149:88` — `this.dcBulkTermRemoveFirstTermhover = this.page.locator('(//*[@id="oeAssignedTags"]//li)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:151:90` — `this.dcListPageFirstRowCheckBox = this.page.locator('(//tr//td[@data-testid="select"]//label)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:152:91` — `this.dcListPageSecondRowCheckBox = this.page.locator('(//tr//td[@data-testid="select"]//label)[2]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:156:85` — `this.dcFirstRowOfAnyObjectinListPage = this.page.locator(`(//*[@id="tabContent"]//tr)[2]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:468:65` — `return this.page.locator('(//ul[@data-testid="databasename"]//clr-icon)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:485:125` — ``(//tr[contains(.,"${connectionName}")][contains(.,"${database}")][contains(.,"${schema}")]//td[@data-testid="select"]//label)[1]``
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:654:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:1012:140` — `this.businessDesc_video_Validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:1015:142` — `this.technicalDesc_video_Validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//iframe)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:1093:61` — `this.reference_tab_validation = this.page.locator('(//tbody//tr//td//a)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:1417:141` — `return this.page.locator(`(//*[@data-testid="Box-ObjectField-ObjectFields-defaultId-ObjectField-title-manual" and text()="${label}"]//following-sibling::*//*[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FileColumnPage.js:1888:204` — `return this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FilePage.js:665:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FilePage.js:896:61` — `this.reference_tab_validation = this.page.locator('(//tbody//tr//td//a)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FilePage.js:1090:141` — `return this.page.locator(`(//*[@data-testid="Box-ObjectField-ObjectFields-defaultId-ObjectField-title-manual" and text()="${label}"]//following-sibling::*//*[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FilePage.js:1427:68` — `return this.page.locator(`(//td[@data-fieldname="filename"]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FilePage.js:1468:204` — `return this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_FilePage.js:1593:71` — `return this.page.locator(`(//td[contains(.,"${searchedname}")]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:672:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:1026:140` — `this.businessDesc_video_Validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:1029:142` — `this.technicalDesc_video_Validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//iframe)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:1162:83` — `this.column1_value= this.page.locator('(//*[contains(@class,"listColumn")]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:1164:83` — `this.column2_value= this.page.locator('(//*[contains(@class,"listColumn")]//span[text()])[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:1258:141` — `return this.page.locator(`(//*[@data-testid="Box-ObjectField-ObjectFields-defaultId-ObjectField-title-manual" and text()="${label}"]//following-sibling::*//*[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportColumnPage.js:1679:204` — `return this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:647:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:965:140` — `this.businessDesc_video_Validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:968:142` — `this.technicalDesc_video_Validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//iframe)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:1214:75` — `this.subreport_name=this.page.locator('(//*[@id="bind_subreports"]//td//a[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:1261:141` — `return this.page.locator(`(//*[@data-testid="Box-ObjectField-ObjectFields-defaultId-ObjectField-title-manual" and text()="${label}"]//following-sibling::*//*[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:1295:114` — `return this.page.locator(`(//*[@data-testid="RichTextViewer-ObjectHistory-message-RichTextViewer-manual"]//img)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:1299:114` — `return this.page.locator(`(//*[@data-testid="RichTextViewer-ObjectHistory-message-RichTextViewer-manual"]//iframe)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:1332:85` — `return this.page.locator(`(//td[@data-testid="auditdescription.description"]//img)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2032:204` — `return this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_ReportPage.js:2157:71` — `return this.page.locator(`(//td[contains(.,"${searchedname}")]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:762:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:768:73` — `this.referencinglevel2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1061:139` — `this.admSecurityTableColumnMaskingFirstCheckboxClick = this.page.locator(`(//*[@onclick="onClickOnMaskOrRestrictedCheckBox(this)"]//parent::label)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1160:140` — `this.businessDesc_video_Validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1163:142` — `this.technicalDesc_video_Validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//iframe)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1304:61` — `this.reference_tab_validation = this.page.locator('(//tbody//tr//td//a)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1571:86` — `this.reference_column_validate=this.page.locator('(//td[@data-fieldname="url"]//a[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1630:114` — `return this.page.locator(`(//*[@data-testid="RichTextViewer-ObjectHistory-message-RichTextViewer-manual"]//img)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1634:114` — `return this.page.locator(`(//*[@data-testid="RichTextViewer-ObjectHistory-message-RichTextViewer-manual"]//iframe)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1667:85` — `return this.page.locator(`(//td[@data-testid="auditdescription.description"]//img)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:1743:141` — `return this.page.locator(`(//*[@data-testid="Box-ObjectField-ObjectFields-defaultId-ObjectField-title-manual" and text()="${label}"]//following-sibling::*//*[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:2664:204` — `return this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:2789:71` — `return this.page.locator(`(//td[contains(.,"${searchedname}")]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:2793:35` — `return this.page.locator(`//tbody//tr[1]//td[contains(.,"${name}")]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:778:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:784:73` — `this.referencinglevel2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:997:90` — `this.sampleDataFirstMaskedCell = this.page.locator('//*[@id="tableDataContainer"]//tbody/tr[1]/td[8]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1106:139` — `this.admSecurityTableColumnMaskingFirstCheckboxClick = this.page.locator(`(//*[@onclick="onClickOnMaskOrRestrictedCheckBox(this)"]//parent::label)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1204:140` — `this.businessDesc_video_Validate = this.page.locator('(//div[.="Business Description"]/..//button[@data-testid="preview-container"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1207:142` — `this.technicalDesc_video_Validate = this.page.locator('(//div[.="Technical Description"]/..//button[@data-testid="preview-container"]//iframe)[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1348:61` — `this.reference_tab_validation = this.page.locator('(//tbody//tr//td//a)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1542:108` — `this.schema_name_navigating_to_summary_page = this.page.locator('(//*[@data-fieldname="schemaname"]//a[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1710:145` — `this.suggest_content_placeholder=this.page.locator('(//*[@data-testid="OeTextField-RequestMissingContentModal-textInput-options-manual"]//textarea)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1834:114` — `return this.page.locator(`(//*[@data-testid="RichTextViewer-ObjectHistory-message-RichTextViewer-manual"]//img)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1838:114` — `return this.page.locator(`(//*[@data-testid="RichTextViewer-ObjectHistory-message-RichTextViewer-manual"]//iframe)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1871:85` — `return this.page.locator(`(//td[@data-testid="auditdescription.description"]//img)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:1947:141` — `return this.page.locator(`(//*[@data-testid="Box-ObjectField-ObjectFields-defaultId-ObjectField-title-manual" and text()="${label}"]//following-sibling::*//*[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:2891:204` — `return this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3016:71` — `return this.page.locator(`(//td[contains(.,"${searchedname}")]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3024:35` — `return this.page.locator(`//tbody//tr[1]//td[contains(.,"${name}")]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataClassfifcationRecommendations/dataClassfifcationRecommendations.js:37:105` — `this.dCRecoClickFirstObject = (page) => page.locator('(//div[@id="selectedObjectTableContainer"]//tr[@data-oid])[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataClassfifcationRecommendations/dataClassfifcationRecommendations.js:77:124` — `this.dCRecoSelectFirstDropdownValue = (page) => page.locator('(//ul[@aria-labelledby="multiselect-container-label"]//li)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataClassfifcationRecommendations/dataClassfifcationRecommendations.js:108:92` — `this.dCRecoClickFirstAIModelName = this.page.locator('(//*[@data-testid="tableRow"]//a)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataClassfifcationRecommendations/dataClassfifcationRecommendations.js:236:119` — `this.term_name_validate1=(tabName)=>this.page.locator(`(//*[@id="${tabName}"]//*[@data-fieldname="columnname"]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataClassfifcationRecommendations/dataClassfifcationRecommendations.js:238:126` — `this.associated_by_column1=(tabName)=>this.page.locator(`(//div[@id="${tabName}"]//td[@data-fieldname="associatedby"]//*[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataClassfifcationRecommendations/dataClassfifcationRecommendations.js:240:136` — `this.association_method_column1=(tabName)=>this.page.locator(`(//div[@id="${tabName}"]//td[@data-fieldname="associationmethod"]//*[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataClassfifcationRecommendations/dataClassfifcationRecommendations.js:242:129` — `this.associate_date_column1=(tabName)=>this.page.locator(`(//div[@id="${tabName}"]//td[@data-fieldname="associateddate"]//*[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataClassificationReports/dataClassificationReports.js:254:147` — `const domainColumnCells = this.page.locator('//*[@data-testid="automation.dataclassification.bind_glossary"]//tr[contains(@class,"group")]//td[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:81:118` — `this.last_modified_on_column_field = this.page.locator('//th[.//*[@title="Last Modified On"]]/ancestor::table//td[4]//div[@data-testid="OetpEditIcon-OetpTableHeader-headerDetails-defaultId-OetpTDCellCore-OetpTDCellCore-value-manual"]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataLakeOvalSight/dataLakeOvalSightPage.js:82:122` — `this.last_oval_sight_scan_column_field = this.page.locator('//th[.//*[@title="Last Modified On"]]/ancestor::table//td[5]//div[@data-testid="OetpEditIcon-OetpTableHeader-headerDetails-defaultId-OetpTDCellCore-OetpTDCellCore-value-manual"]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:73:71` — `this.typeHeader = this.page.locator(`(//*[@data-testid="type"]//span)[2]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:74:100` — `this.dataChangesconnectionNameHeader = this.page.locator(`(//*[@data-testid="databasename"]//span)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:75:90` — `this.dataChangesschemaHeader = this.page.locator(`(//*[@data-testid="schemaname"]//span)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:76:88` — `this.dataChangestableHeader = this.page.locator(`(//*[@data-testid="tablename"]//span)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:80:102` — `this.dataChangeslastCrawledDateHeader = this.page.locator(`(//*[@data-testid="lastcrawldate"]//span)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:81:100` — `this.dataChangeslastMetaSyncDateHeader = this.page.locator(`(//*[@data-testid="changedate"]//span)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:147:119` — `this.searchInputField = (searchColumnName) => this.page.locator(`(//*[@data-displayname="${searchColumnName}"]//input)[2]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataMetadataChanges/dataMetadataChangesPage.js:159:94` — `this.metadataChangesTabFirstRow = this.page.locator('(//*[@id="bind_metadatachanges"]//tbody//tr)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataProducts/dataProductsPage.js:48:83` — `this.editSubDomainNameInput = this.page.locator(`(//*[@data-testid="name"]//input)[2]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRemediationCenter/dataQualityRemediationCenterPage.js:119:92` — `this.primary_column1_name=this.page.locator('(//*[@data-testid="UsersandTeamsList"]//li)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRemediationCenter/dataQualityRemediationCenterPage.js:174:102` — `this.execution_Tab=this.page.locator('//*[@data-testid="automation.dqrule.bind_dqrexecution"]//tbody//tr[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRemediationCenter/dataQualityRemediationCenterPage.js:176:118` — `this.redemtion_Tab=this.page.locator('(//*[@data-testid="automation.dataqualitycontrolcenter.detail-content"]//tbody//tr)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRemediationCenter/dataQualityRemediationCenterPage.js:212:111` — `this.popup_value1=this.page.locator('(//*[@data-testid="automation.dataqualitycontrolcenter.elem_100"]//tr//td[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRemediationCenter/dataQualityRemediationCenterPage.js:214:111` — `this.popup_value2=this.page.locator('(//*[@data-testid="automation.dataqualitycontrolcenter.elem_100"]//tr//td[text()])[2]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRemediationCenter/dataQualityRemediationCenterPage.js:286:286` — `this.failed_values_reported_column_anchor=this.page.locator('(//thead//tr//th[@data-displayname="Failed Values Reported"]/ancestor::thead/following-sibling::tbody//tr[.//div[text()]]/td[count(//thead//tr//th[@data-displayname="Failed Values Reported"]/preceding-sibling::th)+1]//a)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:118:134` — `this.ruleNameLink = (ruleName) => this.page.locator(`(//*[contains(@data-testid,"dqrule.name") and contains(.,"${ruleName}")]//a)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:454:73` — `this.associatedObjectCellByNth = (nth) => this.page.locator(`td:nth-child(${nth})`).first();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:504:87` — `this.selectFirstRuleCheckbox = this.page.locator('(//td[@data-testid="select"]//label)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:534:120` — `this.associatedObjectValuesQueryMoreOptions = (objectName) => this.associatedObjectRow(objectName).locator('td:nth-child(5) > .cellMoreOptions > .flex > .moreOptionItem').first();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:3315:71` — `await this.utils.clickOnElement(cell, `Associated object cell nth-child(${nth})`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataQualityRules/dataQualityRulesPage.js:4137:71` — `const statsQueryMoreOptions = associatedObjectRow.locator('td:nth-child(4) > .cellMoreOptions > .flex > .moreOptionItem').first();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataStories/dataStories.js:56:83` — `this.dataStories_Endorsement_3Star = this.page.locator('//h6[.="My Rating"]/..//div//label[3]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataStories/dataStories.js:182:126` — `this.ds_report_icon_in_popup_in_data_stories_page = this.page.locator('(//*[@data-testid="automation.story.appendCharts"]//a)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataStories/dataStories.js:184:116` — `this.ds_validate_report_in_data_stories_page = this.page.locator('(//*[@data-testid="automation.story.fr-view"]//canvas)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataStories/dataStories.js:364:118` — `this.audit_trails_action_details_column_field=this.page.locator('(//td[@data-testid="otheraudits.action_details"]//span)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataStories/dataStories.js:401:106` — `this.youtube_video_inserted_validate=this.page.locator('(//*[@data-testid="automation.story.fr-view"]//iframe)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/dataStories/dataStories.js:403:95` — `this.hr_inserted_validate=this.page.locator('(//*[@data-testid="automation.story.fr-view"]//hr)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/elasticSearch/elasticSearchPage.js:97:72` — `this.bg_name=this.page.locator('(//td[@data-fieldname="bgname"]//a[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/elasticSearch/elasticSearchPage.js:107:127` — `this.first_row_text_select_crawl_popup=this.page.locator(`(//*[@data-testid="automation.connectors.sort_rows_crawler"]//td//span[@tooltip-text])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/elasticSearch/elasticSearchPage.js:173:98` — `this.first_term_with_anchor_in_bg_page=this.page.locator(`(//td[@data-fieldname="bgname"]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/elasticSearch/elasticSearchPage.js:185:110` — `this.editIconOfAuthorizedRolesAndUsers = this.page.locator('(//td[@data-testid="authorizedrole_cell"]//following-sibling::clr-icon[@shape])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/governanaceApp/govAppPage.js:108:79` — `this.gaCampgainLink = this.page.locator('(//*[@data-testid="tableRow"]//a)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/governanceCatalog/gdqPage.js:36:110` — `this.searched_user = this.page.locator('(//ul[contains(@class,"full")]//div[@style="display: block;"]//li)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/governanceCatalog/gdqPage.js:79:123` — `this.gdqRow = (gdqName) => this.page.locator(`(//td[@data-fieldname="governeddataquery"][contains(.,"${gdqName}")]//parent::tr)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/governanceCatalog/gdqPage.js:80:124` — `this.gdqLink = (gdqName) => this.page.locator(`(//td[@data-fieldname="governeddataquery"][contains(.,"${gdqName}")]//a)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/homePage/homePage.js:226:75` — `this.select_copy_button = this.page.locator('(//tr[@class="group"]//*[@shape])[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/jobWorkFlow/jobWorkFlow.js:9:98` — `this.jobWorkFlow_DragableTableFiled=this.page.locator('(//table[contains(@class,"dropabletable")]//tr)[1]//td[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/jobWorkFlow/jobWorkFlow.js:29:101` — `this.jobWorkFlow_NotificationSettings1=this.page.locator('(//span[.="Send notification on error"]/..//span)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/jobWorkFlow/jobWorkFlow.js:30:101` — `this.jobWorkFlow_NotificationSettings2=this.page.locator('(//span[.="Send notification on error"]/..//span)[2]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/jobWorkFlow/jobWorkFlow.js:31:101` — `this.jobWorkFlow_NotificationSettings3=this.page.locator('(//span[.="Send notification on error"]/..//span)[3]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/jobWorkFlow/jobWorkFlow.js:36:102` — `this.jobWorkFlow_EveryFiveMinutes=this.page.locator('//select[@data-testid="connector_schedule_time"]//option[10]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/lmdf/datasetcorrection.js:30:89` — `this.job_status_in_Jobs_page=this.page.locator('(//*[@data-testid="jobs.status"]//span)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/myDesk/myDesk.js:43:144` — `this.label_text_without_hyperlink=(tab,column)=>this.page.locator(`(//*[@id="${tab}"]//td[contains(@data-testid,"undefined.${column}")]//span[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/myProfile/myProfilePage.js:146:77` — `this.myProfile_row_data=(tab)=>this.page.locator(`(//*[@id="${tab}"]//tbody//tr)[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/myWatchlist/myWatchlist.js:55:238` — `this.mywatchlist_Tab_icon = (Tabname) => this.page.locator(`(//div[@id="content"]//li[contains(@class,"tabExstingData") and contains(@data-testid,"watchlist") and not(contains(@style, "display: none"))]//span[text()="${Tabname}"]//preceding-sibling::clr-icon[@shape])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/myWatchlist/myWatchlist.js:70:103` — `this.domain_name_click_here_hyperlink=this.page.locator('(//td[@data-testid="glossary_domain"]//a)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/myWatchlist/myWatchlist.js:88:98` — `this.first_term_with_anchor_in_bg_page=this.page.locator(`(//td[@data-fieldname="bgname"]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/notifications/notificationsPage.js:15:99` — `this.notificationHeader = this.page.locator('(//*[@data-testid="RichTextViewer-container"]//p)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/notifications/notificationsPage.js:17:90` — `this.notificationsreq_link = this.page.locator('(//p[contains(.,"Request Link:")]//a)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/projects/projectsPage.js:784:151` — `this.project_page_validate_column_without_data = (tab, fieldname) => this.page.locator(`(//*[@id="${tab}"]//td[@data-fieldname="${fieldname}"]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/projects/projectsPage.js:792:96` — `this.bg_data_navigate_summary_text = this.page.locator('(//td[@data-fieldname="bgname"]//a[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/projects/projectsPage.js:810:127` — `this.next_date_button = this.page.locator('(//*[@data-active="true"]//*[@tabindex="0" and contains(@class,"selected")]//following-sibling::*)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/projects/projectsPage.js:953:121` — `this.fields_in_my_project_tasks_in_list_page = (Tabname, columnname) => this.page.locator(`//*[@id="${Tabname}"]//tbody/tr[1]/td[count(//*[@id="${Tabname}"]//th[@data-displayname="${columnname}"]/preceding-sibling::th) + 1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/projects/projectsPage.js:955:131` — `this.fields_in_my_project_tasks_in_list_page_edit_icon = (Tabname, columnname) => this.page.locator(`//*[@id="${Tabname}"]//tbody/tr[1]/td[count(//*[@id="${Tabname}"]//th[@data-displayname="${columnname}"]/preceding-sibling::th) + 1]//*[@data-file="edit_outline"]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/projects/projectsPage.js:1015:141` — `this.task_name_field_in_all_tasks_page = this.page.locator('(//div[@id="bind_projectalltasks"][.//th[@data-displayname="Task Name"]]//following-sibling::tbody//td[not(@data-fieldname)]//a[not(@href)])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/projects/projectsPage.js:1025:114` — `this.add_task_in_popup = this.page.locator('(//thead[.//div[@title="Task Name"]]/following-sibling::tbody//td)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/questionwall/questionwall.js:30:88` — `this.room_description_field=this.page.locator('(//*[@data-testid="description"]//textarea)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/reference_data_management/reference_data_management.js:209:96` — `this.rdmSummarySelectFirstCheckbox = this.page.locator(`(//td[@data-fieldname="select"]//label)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/ropa/ropaProcessingActivitiesPage.js:53:140` — `".flatpickr-calendar.animate.open > .flatpickr-innerContainer > .flatpickr-rContainer > .flatpickr-days > .dayContainer > span:nth-child(35)"`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/ropa/ropaReportsPage.js:125:86` — `this.page.locator(`(//td[@data-fieldname="name"][contains(.,"${paName}")]//a)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/ropa/ropaReportsPage.js:304:99` — `const link = this.page.locator(`(//td[@data-fieldname="name"][contains(.,"${reportName}")]//a)[1]`);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/serviceDesk/serviceDeskPage.js:111:115` — `this.sdSupersedToFirstUser = this.page.locator('(//div[@role="tooltip"]//div[@data-testid="selected_item"]//div)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/serviceDesk/serviceDeskPage.js:142:89` — `this.firstObject = this.page.locator('(//div[@id="selectedObjectTableContainer"]//tr[@data-oid])[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/serviceDesk/serviceDeskPage.js:169:77` — `this.req_link = this.page.locator('(//p[contains(.,"Request Link:")]//a)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/serviceDesk/serviceDeskPage.js:203:83` — `this.dcselectFirstObject = this.page.locator('(//td[@data-testid="select"]//label)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/serviceDesk/serviceDeskPage.js:302:192` — `this.systemSettingsKeyField = (key_name) => this.page.locator('(//td[contains(@class, "configureKey") and contains(.,"' + key_name + '")]//following-sibling::td[@id="config-val-cell"]//button)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/serviceDesk/serviceDeskPage.js:483:9` — `// const groupID=ticketId[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/serviceDesk/serviceDeskPage.js:492:9` — `// const srID=ticketId[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/serviceDesk/serviceDeskPage.js:886:9` — `// const jobstepid=jobstep[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/serviceDesk/serviceDeskTemplates.js:32:91` — `this.sdtTemplateFirstcolumn = this.page.locator('(//div[@id="bind_tickettemplate"]//td)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/tags/tagsPage_Secure.js:420:124` — `this.associated_Resources_Field_in_Grid_List_page = this.page.locator('(//thead[contains(.,"Associated Resources")]//following-sibling::tbody)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/tags/tagsPage_Secure.js:651:66` — `return this.page.locator(`(//td[contains(.,"${TagName}")]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/tags/tagsPage_open.js:465:124` — `this.associated_Resources_Field_in_Grid_List_page = this.page.locator('(//thead[contains(.,"Associated Resources")]//following-sibling::tbody)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/tags/tagsPage_open.js:583:69` — `this.non_assignable_label_in_AuditPage = this.page.locator('//tr[1]//td[@data-testid="audittag.tagtype"]//*[text()="Non-Assignable Tags"]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/tags/tagsPage_open.js:586:70` — `this.assignable_tags_label_in_AuditPage = this.page.locator('//tr[1]//td[@data-testid="audittag.tagtype"]//*[text()="tags"]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/tags/tagsPage_open.js:657:97` — `this.associate_child_tag_dropdown_button=this.page.locator('(//div[@role="presentation"]//button//div)[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/tags/tagsPage_open.js:698:62` — `this.level2 = this.page.locator('(//a[@type="fields"]//span[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/tags/tagsPage_open.js:1485:66` — `return this.page.locator(`(//td[contains(.,"${TagName}")]//a[text()])[1]`)`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/usersAndRoles/RolesPage.js:34:98` — `this.created_date_in_list_Page=this.page.locator('(//td[@data-testid="oerole.createdate"]//*[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/usersAndRoles/RolesPage.js:36:98` — `this.last_update_in_list_Page=this.page.locator('(//td[@data-testid="oerole.lastmoddate"]//*[text()])[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/usersAndRoles/RolesPage.js:76:86` — `this.audit_trail_page_validate=this.page.locator('//*[@id="bind_otheraudits"]//tbody//tr[1]')`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/usersAndRoles/RolesPage.js:121:88` — `this.roleNameCellFirstButton = this.page.locator('(//td[@data-name="Role Name"]//button)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/usersAndRoles/usersPage.js:17:103` — `this.users_SelectRole=this.page.locator('(//*[@data-testid="automation.user-manager.elem_201"]//span[@title])[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/pages/usersAndRoles/usersPage.js:31:100` — `this.users_ResetPasswordLogin=this.page.locator('(//input[@data-testid="reset_password"]/..//span)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2248:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2342:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:2372:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:3055:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3782:1` — `//         extractedURL = remainingURLArray[0]?.trim(); // Use index 0 and optional chaining`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:3370:1` — `//     const newPageNumber = Number(match[0]) + 1;`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2453:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2531:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2470:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2503:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2524:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:4910:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2089:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2117:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2144:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2168:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2208:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2235:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2258:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2287:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2311:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2338:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2355:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2379:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2407:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2435:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2459:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2485:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2500:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2524:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2554:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2598:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2635:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2671:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2685:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2709:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2772:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2820:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2865:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2890:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2902:1` — `// //     await tablesPage.summary_update_governance_roles(parsedData[1]['GovRole1'], parsedData[1]['GovRole2'], parsedData[1]['GovRole3'], parsedData[1]['GovRole4'], parsedData[1]['GovRole5'], parsedData[1]['GovRole6'])`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2906:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2920:1` — `// //     expect(await tablesPage.summary_update_governanceroles_validate(stewardlabel, parsedData[1]['GovRole1'])).toBeTruthy()`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2921:1` — `// //     expect(await tablesPage.summary_update_governanceroles_validate(custodianlabel, parsedData[1]['GovRole2'])).toBeTruthy()`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2922:1` — `// //     expect(await tablesPage.summary_update_governanceroles_validate(ownerlabel, parsedData[1]['GovRole3'])).toBeTruthy()`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2923:1` — `// //     expect(await tablesPage.summary_update_governanceroles_validate(governancerole4label, parsedData[1]['GovRole4'])).toBeTruthy()`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2924:1` — `// //     expect(await tablesPage.summary_update_governanceroles_validate(governancerole5label, parsedData[1]['GovRole5'])).toBeTruthy()`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2925:1` — `// //     expect(await tablesPage.summary_update_governanceroles_validate(governancerole6label, parsedData[1]['GovRole6'])).toBeTruthy()`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2936:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2974:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3001:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3022:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3043:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3064:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3085:1` — `// //       const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3109:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3155:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3243:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3326:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3416:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3482:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3504:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3525:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3560:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3590:1` — `// //             const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3617:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3640:1` — `// // //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3673:1` — `// // //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3694:1` — `// // //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3730:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3838:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3867:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3969:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3999:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4025:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4034:1` — `// //     await tablesPage.update_governance_role_with_same_user_in_ListPage(parsedData[1]['GovRole6'])`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4039:1` — `// //     await utils.waitForElementAttachedEnabledVisibled(page, tablesPage.user_name_validate_in_SummaryPage(parsedData[1][`GovRole6`]))`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4040:1` — `// //     await utils.fluentWait(page, tablesPage.user_name_validate_in_SummaryPage(parsedData[1][`GovRole6`]));`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4041:1` — `// //     expect(await tablesPage.user_name_validate_in_SummaryPage(parsedData[1][`GovRole6`])).toBeTruthy();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4063:1` — `//         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4285:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4301:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4341:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4401:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4464:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4479:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4550:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4651:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4718:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4764:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4785:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4902:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4941:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4970:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5001:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5030:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5061:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5089:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5120:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5149:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5168:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5187:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5216:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5236:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5256:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5285:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5305:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5325:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5354:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5380:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5405:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5438:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5474:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5523:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5561:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5597:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5627:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5657:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5704:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5767:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5808:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5838:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5869:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5907:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5937:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5967:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6015:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6048:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6089:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6119:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6149:1` — `// // //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6192:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6230:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6260:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6291:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6329:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6361:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6395:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6433:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6464:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6494:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6534:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6565:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6594:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6649:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6679:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6710:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6767:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6798:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6825:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6890:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6923:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:6974:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7005:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7039:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7100:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7130:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7159:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7216:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7247:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7277:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7304:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7366:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7411:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7456:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7502:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7532:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7568:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7614:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7641:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7670:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7700:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7746:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7773:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7801:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7815:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7826:1` — `// //         const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:313:5` — `//     const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:550:5` — `//     const remainingURL = remainingURLArray[0];`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Business_Glossary/bg_AuxTermsAssociateDataObjects.spec.js:68:5` — `// bgAuxTermsAssociateDataObjects_auxDomainFaker = parsedData[0]['DomainName'] + "_Aux_" + faker.number.int(10000);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:547:56` — `// await page.locator('(//tr[@data-ot="oeglobaldomain"]//td)[1]//span').click({timeout:5000});`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:577:56` — `// await page.locator('(//tr[@data-ot="oeglobaldomain"]//td)[1]//span').click({timeout:5000});`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:586:71` — `// const user = await page.locator('(//span[@class="select2-results"])//li[1]').textContent(); //getting adding user`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:587:58` — `// await page.locator('(//span[@class="select2-results"])//li[1]').click({timeout:5000});`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/DataMetadataChanges/dataMetadataChanges.spec.js:245:48` — `const nullCountCell = page.locator('td:nth-child(9)').first();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1666:110` — `const recommendationLink = page.locator('(//*[contains(@data-testid,"OeTooltip-RecommendationRules")]//a)[1]');`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:3005:44` — `// Step 34: Click on cell in table (td:nth-child(4))`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:3008:52` — `// Step 35: Click on another cell in table (td:nth-child(5))`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:4768:61` — `'(//*[@data-testid="automation.user-manager.bind_users"]//tbody//tr[1]//td[@data-fieldname="roles"]//div)[1]'`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/MyDesk/myDesk.spec.js:2038:73` — `let jobStatus = await page.locator('(//*[@data-testid="jobs.status"]//span)[1]').textContent();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/MyDesk/myDesk.spec.js:2043:73` — `jobStatus = await page.locator('(//*[@data-testid="jobs.status"]//span)[1]').textContent();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/MyProject_Tasks/myproject_tasks.spec.js:733:77` — `let jobStatus = await page.locator('(//*[@data-testid="jobs.status"]//span)[1]').textContent();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/MyProject_Tasks/myproject_tasks.spec.js:739:77` — `jobStatus = await page.locator('(//*[@data-testid="jobs.status"]//span)[1]').textContent();`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Service_Desk/genericObjectRequest.spec.js:53:1` — `//     await sdPage.sdTillSelectionPhase(parsedData[3]['ServiceRequest']);`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Service_Desk/genericObjectRequest.spec.js:86:1` — `//         await sdPage.sdEnterSummaryDescriptionPriority(parsedData[3]['ServiceRequest'] + i, parsedData[3]['ServiceRequest'] + " description" + i, "High");`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Tags/tags_secure.spec.js:423:1` — `//     await tagsopen.tree_Tab_update_Governance_Roles(`TestingTeamOvaledge${randomStr}`, parsedData[1]['GovRole6'], parsedData[1]['GovRole5'], parsedData[1]['GovRole4'], parsedData[1]['GovRole3'], parsedData[1]['GovRole2'], parsedData[1]['GovRole1'])`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Tags/tags_secure.spec.js:448:1` — `//     await tagsopen.grid_Tab_update_Governance_Roles(parsedData[1]['GovRole1'], parsedData[1]['GovRole2'], parsedData[1]['GovRole3'], parsedData[1]['GovRole4'], parsedData[1]['GovRole5'], parsedData[1]['GovRole6'])`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Tags/tags_secure.spec.js:468:1` — `//     await tagsopen.tiles_Tab_update_Governance_Roles(`TestingTeamOvaledge${randomStr}`, `TestingTeam1${randomStr}`, parsedData[1]['GovRole6'], parsedData[1]['GovRole5'], parsedData[1]['GovRole4'], parsedData[1]['GovRole3'], parsedData[1]['GovRole2'], parsedData[1]['GovRole1'])`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Tags/tags_secure.spec.js:490:1` — `//     await tagsopen.update_governance_roles_popup_in_Grid_Summary_Page(`TestingTeamOvaledge${randomStr}`, parsedData[1]['GovRole1'], parsedData[1]['GovRole2'], parsedData[1]['GovRole3'], parsedData[1]['GovRole4'], parsedData[1]['GovRole5'], parsedData[1]['GovRole6'])`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+- `/src/tests/Tags/tags_secure.spec.js:1601:1` — `//     await tagsPage.update_governance_roles_popup_in_Grid_Summary_Page(`TestingTeam1${randomStr}`, parsedData[1]['GovRole1'], parsedData[1]['GovRole2'], parsedData[1]['GovRole3'], parsedData[1]['GovRole4'], parsedData[1]['GovRole5'], parsedData[1]['GovRole6'])`
+  - **suggested_fix:** Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS.
+
+## Random / Non-Deterministic Timing
+
+- `/src/pages/businessGlossary/businessGlossaryBasePage.js:50:50` — `result += characters.charAt(Math.floor(Math.random() * characters.length));`
+  - **suggested_fix:** Avoid random timing; use deterministic waits on application state.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1146:26` — `const randomnumber = Math.random();`
+  - **suggested_fix:** Avoid random timing; use deterministic waits on application state.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1176:178` — `const description = `RandomText_${Array(9992).fill().map(() => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?/`~'.charAt(Math.floor(Math.random() * 85))).join('')}`;`
+  - **suggested_fix:** Avoid random timing; use deterministic waits on application state.
+- `/src/pages/businessGlossary/businessGlossary_DomainPage.js:1214:179` — `const description = `RandomText_${Array(10000).fill().map(() => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?/`~'.charAt(Math.floor(Math.random() * 85))).join('')}`;`
+  - **suggested_fix:** Avoid random timing; use deterministic waits on application state.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:628:29` — `let rating = Math.floor(Math.random() * 5) + 1;`
+  - **suggested_fix:** Avoid random timing; use deterministic waits on application state.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:53:42` — `const randomNumber = Math.floor(1000 + Math.random() * 9000); // Generates a 4-digit number`
+  - **suggested_fix:** Avoid random timing; use deterministic waits on application state.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/databases.spec.js:41:42` — `const randomNumber = Math.floor(1000 + Math.random() * 9000); // Generates a 4-digit number`
+  - **suggested_fix:** Avoid random timing; use deterministic waits on application state.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:37:42` — `const randomNumber = Math.floor(1000 + Math.random() * 9000); // Generates a 4-digit number`
+  - **suggested_fix:** Avoid random timing; use deterministic waits on application state.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/databases.spec.js:34:42` — `const randomNumber = Math.floor(1000 + Math.random() * 9000); // Generates a 4-digit number`
+  - **suggested_fix:** Avoid random timing; use deterministic waits on application state.
+
+## Long Test / Large Files
+
+- `/src/tests/Advanced_Tools/buildAutoLineage.spec.js:1:1` — `Test file has 513 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Advanced_Tools/compareSchemas.spec.js:1:1` — `Test file has 664 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Advanced_Tools/impactAnalysis.spec.js:1:1` — `Test file has 1443 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Advanced_Tools/lineageMaintenance.spec.js:1:1` — `Test file has 315 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Advanced_Tools/tempLineageCorrection.spec.js:1:1` — `Test file has 213 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Advanced_Tools/upload_files_folders.spec.js:1:1` — `Test file has 176 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:1:1` — `Test file has 4678 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:1:1` — `Test file has 5281 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:1:1` — `Test file has 3855 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:1:1` — `Test file has 10978 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:1:1` — `Test file has 8520 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:1:1` — `Test file has 8216 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:1:1` — `Test file has 4849 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:1:1` — `Test file has 6522 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:1:1` — `Test file has 19122 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1:1` — `Test file has 10302 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/databases.spec.js:1:1` — `Test file has 541 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:1:1` — `Test file has 636 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/apiattributes_viewer.spec.js:1:1` — `Test file has 1396 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/databases.spec.js:1:1` — `Test file has 701 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/filecolumn_viewer.spec.js:1:1` — `Test file has 406 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/files_viewer.spec.js:1:1` — `Test file has 625 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tablecolumn_viewer.spec.js:1:1` — `Test file has 627 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/App_Data_Catalog/dataCatalog_Viewer/tables.spec.js:1:1` — `Test file has 1080 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/AskEdgi/askEdgi.spec.js:1:1` — `Test file has 2284 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Audit_data_archival/audit_data_archival.spec.js:1:1` — `Test file has 370 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Bookmarks/bookmarks.spec.js:1:1` — `Test file has 1582 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/ValidateMaskedData.spec.js:1:1` — `Test file has 156 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_AIRecommendations.spec.js:1:1` — `Test file has 709 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_Add_Update_CategoryListPage.spec.js:1:1` — `Test file has 319 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_AdvancedSearch.spec.js:1:1` — `Test file has 732 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_AuxTermsAssociateDataObjects.spec.js:1:1` — `Test file has 243 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_CloneTerm.spec.js:1:1` — `Test file has 177 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_ConfigureGovRoles.spec.js:1:1` — `Test file has 257 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_ConfigureView.spec.js:1:1` — `Test file has 358 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_ConfigureViewFilters.spec.js:1:1` — `Test file has 277 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_CustomerDiaryDomain.spec.js:1:1` — `Test file has 652 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_CutsomerDiary1.spec.js:1:1` — `Test file has 390 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_DeleteTerm.spec.js:1:1` — `Test file has 781 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_ManageDataAssociationPreferencesSystemSetting.spec.js:1:1` — `Test file has 128 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_ManageDataAssociations.spec.js:1:1` — `Test file has 931 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_Masking.spec.js:1:1` — `Test file has 1010 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_MetadataCurationScore.spec.js:1:1` — `Test file has 348 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_Miscellaneous_Term_Request.spec.js:1:1` — `Test file has 157 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_PermissionsDomain.spec.js:1:1` — `Test file has 289 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_PrimaryTermAssociationDataObject.spec.js:1:1` — `Test file has 678 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_RequesttoPublishTerm.spec.js:1:1` — `Test file has 401 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_SGA.spec.js:1:1` — `Test file has 1183 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_SuggestaTermRequest.spec.js:1:1` — `Test file has 281 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_TermChangetoDraft.spec.js:1:1` — `Test file has 269 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_TermCreation.spec.js:1:1` — `Test file has 484 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_TermCurate.spec.js:1:1` — `Test file has 509 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_TermDirectPublish.spec.js:1:1` — `Test file has 492 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_TermPublishRoleBased.spec.js:1:1` — `Test file has 161 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_TermReferences.spec.js:1:1` — `Test file has 624 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_TermRelationship.spec.js:1:1` — `Test file has 257 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_Term_DeAssociate.spec.js:1:1` — `Test file has 362 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_Term_Metadata_Change_Request.spec.js:1:1` — `Test file has 207 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/bg_TreePageScenarios.spec.js:1:1` — `Test file has 257 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/businessGlossary_TermSummaryPage.spec.js:1:1` — `Test file has 154 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:1:1` — `Test file has 607 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Business_Glossary/businessGlossay_ListPage.spec.js:1:1` — `Test file has 224 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/ConfigureRoPAAttributes/configureRoPAAttributes.spec.js:1:1` — `Test file has 626 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:1:1` — `Test file has 835 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/CursorAICodegen/AccessCart_Schema_Table.spec.js:1:1` — `Test file has 149 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Custom_Fields/customFields.spec.js:1:1` — `Test file has 918 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Dashboard/Dashboard.spec.js:1:1` — `Test file has 1338 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Dashboard/Data_Quality_Scores.spec.js:1:1` — `Test file has 183 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/DataCatalog_Databases.spec.js:1:1` — `Test file has 157 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/DataLiteracy/dataLiteracy.spec.js:1:1` — `Test file has 177 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/DataMetadataChanges/dataMetadataChanges.spec.js:1:1` — `Test file has 570 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/DataQualityDashboards/dataQualityDashboards.spec.js:1:1` — `Test file has 212 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Data_Classification_Recommendations/Data_Classification_recommendations.spec.js:1:1` — `Test file has 3016 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Data_Classification_Reports/dataClassificationReports.spec.js:1:1` — `Test file has 527 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Data_Products/dataProducts.spec.js:1:1` — `Test file has 260 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Data_Quality_Functions/dqFunctions.spec.js:1:1` — `Test file has 912 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Data_Quality_Remediation_Center/dataQualityRemediationCenter.spec.js:1:1` — `Test file has 5632 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1:1` — `Test file has 1747 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:1:1` — `Test file has 6941 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Data_Stories/DataStories.spec.js:1:1` — `Test file has 2637 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Data_lineage_dashboard/data_quality_last_execution_dashboard.spec.js:1:1` — `Test file has 727 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Datalake_ovalsight/datalake_ovalsight.spec.js:1:1` — `Test file has 1670 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:1:1` — `Test file has 5301 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/File_Manager/fileManager.spec.js:1:1` — `Test file has 1205 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/GovApps/govApps.spec.js:1:1` — `Test file has 399 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/GovernDataQuery/goDQ.spec.js:1:1` — `Test file has 2313 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Home_Page/home_page.spec.js:1:1` — `Test file has 3190 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Inbox/inbox.spec.js:1:1` — `Test file has 951 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/LMDF/Dataset_Correction.spec.js:1:1` — `Test file has 506 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/LMDF/impact_Analysis_Objects.spec.js:1:1` — `Test file has 749 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Login/login.spec.js:1:1` — `Test file has 1287 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/MyDesk/myDesk.spec.js:1:1` — `Test file has 2055 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/MyProject_Tasks/myproject_tasks.spec.js:1:1` — `Test file has 916 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1:1` — `Test file has 3638 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/My_Profile/my_profile.spec.js:1:1` — `Test file has 1143 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Projects/projects.spec.js:1:1` — `Test file has 3069 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:1:1` — `Test file has 2636 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/QuestionWall/question_wall.spec.js:1:1` — `Test file has 522 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/ROPA/ropaProcessingActivities.spec.js:1:1` — `Test file has 573 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Reference_Data_Management/reference_data_management.spec.js:1:1` — `Test file has 1516 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Reporting_Framework/reportingFramework.spec.js:1:1` — `Test file has 164 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Security_Dashboard/dashboard_Security.spec.js:1:1` — `Test file has 174 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Service_Desk/addObjectstoACandRaiseSR.spec.js:1:1` — `Test file has 137 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Service_Desk/delegateUserRequest.spec.js:1:1` — `Test file has 126 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Service_Desk/referBackaRequest.spec.js:1:1` — `Test file has 122 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Tags/Security_Tags/Tags_Security.spec.js:1:1` — `Test file has 483 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Tags/tags_open.spec.js:1:1` — `Test file has 3806 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Tags/tags_secure.spec.js:1:1` — `Test file has 1842 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Users_And_Roles/Users_Roles_Teams.spec.js:1:1` — `Test file has 2085 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Users_List/users_list.spec.js:1:1` — `Test file has 495 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/Virtual_Objects/virtualObjects.spec.js:1:1` — `Test file has 131 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+- `/src/tests/certification/certification_policy.spec.js:1:1` — `Test file has 1061 lines — consider splitting into smaller focused tests.`
+  - **suggested_fix:** Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability.
+
+## Duplicate consecutive steps
+
+- `/src/pages/administration/TagsSecurityPage.js:1068:9` — `await this.page.reload();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:52:5` — `this.bg_ListPage_saveButtonLocator = this.page.locator('[data-testid="RichTextEditor-Oebutton-save-manual"]');`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/businessGlossary/businessGlossary_TermSummaryPage.js:373:5` — `this.tagActionIconSelector = (tagname) => `//span[@data-testid="${tagname}"]/../..//div[@data-testid="tagActionIcon"]`;`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1328:5` — `await this.page.mouse.wheel(1500, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/dataCatalog/dc_DatabasesPage.js:1329:5` — `await this.page.mouse.wheel(1500, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/dataCatalog/dc_TableColumnsPage.js:3291:13` — `await this.utils.waitForPageLoad(this.page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/dataCatalog/dc_TablesPage.js:3522:13` — `await this.utils.waitForPageLoad(this.page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/fileManager/fileManagerPage.js:877:9` — `await this.page.locator(`(//*[@class="rmdp-arrow-container rmdp-up "])[2]`).click();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:515:9` — `try {`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:1296:9` — `await this.utils.waitForElementAttachedEnabledVisibled(this.page, this.Tagname_Visible_in_TreePage(Tagname))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:1302:9` — `await this.utils.waitForElementAttachedEnabledVisibled(this.page, this.collaboration_button)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:1388:9` — `await this.page.reload();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:2152:9` — `await this.page.reload();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:2168:9` — `await this.page.reload();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:2241:13` — `await this.utils.fluentWait(page, this.gridTab_CreateTag_button);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:2250:9` — `await this.utils.waitForElementAttachedEnabledVisibled(this.page, this.tag_Type_Column_Non_Assignable_Validate)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:2251:9` — `await this.utils.waitForElementAttachedEnabledVisibled(this.page, this.tag_Type_Column_Non_Assignable_Validate)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_Secure.js:2267:9` — `await this.page.reload();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_open.js:1661:5` — `try {`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_open.js:2215:9` — `await this.utils.waitForElementAttachedEnabledVisibled(this.page, this.Tagname_Visible_in_TreePage(Tagname))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_open.js:2221:9` — `await this.utils.waitForElementAttachedEnabledVisibled(this.page, this.collaboration_button)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_open.js:2307:9` — `await this.page.reload();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_open.js:3078:13` — `await this.utils.fluentWait(page, this.gridTab_CreateTag_button);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_open.js:3087:9` — `await this.utils.waitForElementAttachedEnabledVisibled(this.page, this.tag_Type_Column_Non_Assignable_Validate)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_open.js:3088:9` — `await this.utils.waitForElementAttachedEnabledVisibled(this.page, this.tag_Type_Column_Non_Assignable_Validate)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/pages/tags/tagsPage_open.js:3105:9` — `await this.page.reload();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Advanced_Tools/buildAutoLineage.spec.js:317:5` — `await dcLineagePage.clickSummaryLineageSwitch();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Advanced_Tools/buildAutoLineage.spec.js:499:5` — `await page.goBack();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Advanced_Tools/compareSchemas.spec.js:632:5` — `// await compareSchemasPage.selectActionFilter(0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Advanced_Tools/impactAnalysis.spec.js:646:5` — `await utils.fluentWait(page,impactAnalysisPage.impa_obj_page_range_radio_button);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Advanced_Tools/impactAnalysis.spec.js:693:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Advanced_Tools/impactAnalysis.spec.js:802:5` — `await utils.fluentWait(page, impactAnalysisPage.compare_schema_checkbox_in_compare_schema_page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Advanced_Tools/impactAnalysis.spec.js:803:5` — `await utils.fluentWait(page, impactAnalysisPage.compare_schema_checkbox_in_compare_schema_page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Advanced_Tools/upload_files_folders.spec.js:163:5` — `await utils.fluentWait(page, uploadFilesandFoldersPage.file_radio_button);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4471:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4561:5` — `// await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4569:5` — `//     await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4637:5` — `// await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4643:5` — `// await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4649:5` — `// await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4656:5` — `// await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4662:5` — `// await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4668:5` — `// await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/api.spec.js:4674:5` — `// await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:771:9` — `await utils.fluentWait(page, apiattributePage.click_on_searched_name_to_Navigate(APIAttributes));`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/apiattributes.spec.js:2401:5` — `await utils.fluentWait(page, apiattributePage.generate_AI_Question_Button)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:249:5` — `await utils.fluentWait(page, codesPage.click_on_searched_name_to_Navigate(APIs))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:292:5` — `await utils.fluentWait(page, codesPage.click_on_searched_name_to_Navigate(APIs))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/codes.spec.js:339:5` — `await utils.fluentWait(page, codesPage.click_on_searched_name_to_Navigate(APIs))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:656:3` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:691:3` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:702:3` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:724:3` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6216:3` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6272:3` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6283:3` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6292:3` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6313:3` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6328:3` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6354:3` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:6368:1` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:10714:3` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/databases.spec.js:10876:7` — `basePage.sort_icon_button_in_List_Page("bind_oeschema", "Environment"),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:2197:5` — `await utils.fluentWait(page, fileColumns.mentions_button)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:3412:5` — `await utils.fluentWait(page, fileColumns.click_on_searched_name_to_Navigate(FileColumn))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/file_columns.spec.js:4648:5` — `await page.reload();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:5112:5` — `await utils.fluentWait(page, basePage.collaboration_button)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6481:5` — `await utils.fluentWait(page, apiPage.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6499:5` — `await utils.fluentWait(page, apiPage.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6526:5` — `await utils.fluentWait(page, apiPage.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6545:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6563:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6581:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6623:5` — `await utils.fluentWait(page, apiPage.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6642:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6648:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6660:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6665:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6713:5` — `await utils.fluentWait(page, apiPage.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6732:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6742:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6745:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6899:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6911:17` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6916:17` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6921:17` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6931:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6940:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6959:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6975:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6989:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:6992:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7029:5` — `await utils.fluentWait(page, apiPage.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7048:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7105:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7242:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7251:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7269:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7288:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7415:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7425:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7437:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7440:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7478:5` — `await utils.fluentWait(page, apiPage.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7497:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7552:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7689:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7698:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7716:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7735:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7862:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7872:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7899:5` — `await utils.fluentWait(page, apiPage.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7918:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7929:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:7932:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:8091:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:8103:17` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:8108:17` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:8113:17` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:8123:13` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:8132:5` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:8151:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/files.spec.js:8167:9` — `await utils.fluentWait(page, files.business_label_in_SummaryPage)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:1589:5` — `await utils.waitForPageLoad(page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:1613:5` — `await utils.waitForPageLoad(page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:1637:5` — `await utils.waitForPageLoad(page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:1662:5` — `await utils.waitForPageLoad(page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:1686:5` — `await utils.waitForPageLoad(page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:2364:5` — `await utils.waitForPageLoad(page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:2394:5` — `await utils.waitForPageLoad(page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:2613:5` — `await utils.waitForPageLoad(page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reportcolumns.spec.js:4412:5` — `await utils.fluentWait(page, basePage.collaboration_button)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:826:5` — `await utils.waitForElementAttachedEnabledVisibled(page, reports.click_on_searched_name_to_Navigate(Report_Name))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:2054:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3279:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3326:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3374:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3423:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3475:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3526:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3578:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3630:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:3690:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:5650:13` — `sortIcon(displayName),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/reports.spec.js:6313:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:426:5` — `await utils.fluentWait(page, tablecolumnsPage.summary_field)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:2850:5` — `await utils.fluentWait(page, tablecolumnsPage.collaboration_button)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:8171:9` — `getDistinctCountSortLocator(),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:8278:9` — `sortIconLocator,`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:8415:9` — `sortIconLocator,`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:8556:9` — `sortIconLocator,`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9170:9` — `basePage.sort_icon_button_in_List_Page(BIND_COLUMN, LENGTH_COLUMN),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9494:9` — `basePage.sort_icon_button_in_List_Page("bind_oecolumn", columnName),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9625:9` — `basePage.sort_icon_button_in_List_Page("bind_oecolumn", columnName),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9758:9` — `basePage.sort_icon_button_in_List_Page("bind_oecolumn", "Column"),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:9817:9` — `await waitForListPageReady();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10032:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10196:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10391:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10549:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10623:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10698:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:10773:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:11112:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:11247:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:11388:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:12729:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:12837:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:13237:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:13347:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:14929:9` — `basePage.sort_icon_button_in_List_Page("bind_oecolumn", "Last Modified By"),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15093:9` — `basePage.sort_icon_button_in_List_Page("bind_oecolumn", "Created By"),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/table_columns.spec.js:15260:9` — `sortIconLocator,`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:375:5` — `await utils.fluentWait(page, tablesPage.summary_field)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1501:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1519:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1537:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1555:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1574:7` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1596:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1618:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1796:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1870:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1943:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:1951:5` — `await utils.waitForPageLoad(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2023:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2092:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2171:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2261:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2268:1` — `// //     await utils.waitForPageLoad(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2341:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2410:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2488:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2557:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2601:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2638:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2674:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2712:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2775:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2823:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2868:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2893:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2939:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:2977:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3004:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3025:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3046:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3067:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3088:1` — `// //       // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3112:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3158:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3246:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3329:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3419:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3485:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3563:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:3870:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4002:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4028:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4066:1` — `//         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4344:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4404:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4553:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4654:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4668:1` — `// //     expect(await tablesPage.validate_breadcrumb_in_SummaryPage(tablename)).toBeTruthy();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4721:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4788:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4905:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4944:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:4973:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5004:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5033:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5064:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5092:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5123:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5152:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5171:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5190:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5219:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5239:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5259:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5288:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5308:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5328:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5357:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5383:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5408:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5441:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5477:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5526:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5536:1` — `// //     expect(await tablesPage.breadcrumb_Navigate_in_Summary_Page(tablename))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5564:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5600:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5630:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5660:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:5707:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7280:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7307:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7345:1` — `// //     await utils.fluentWait(page, tablesPage.generate_AI_Question_Button)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7369:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7414:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7459:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7505:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7535:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7571:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7617:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7644:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7673:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7703:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7749:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7776:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:7804:1` — `// //         // Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:9155:5` — `await waitForTablesListHeaders(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:9220:9` — `basePage.sort_icon_button_in_List_Page("bind_oetable", "Connection Name"),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:9239:9` — `basePage.sort_icon_button_in_List_Page("bind_oetable", "Database"),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:9909:9` — `basePage.sort_icon_button_in_List_Page("bind_oetable", "Environment"),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:10033:9` — `basePage.sort_icon_button_in_List_Page("bind_oetable", "Schema"),`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:10073:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Listpage/tables.spec.js:10158:5` — `await utils.fluentWait(page, basePage.displayingname("Connection Name"))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:195:5` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:220:5` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:247:5` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:272:5` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:300:5` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:325:5` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:399:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:426:7` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:458:7` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:490:7` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:528:7` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/App_Data_Catalog/dataCatalog_Summarypage/tables.spec.js:568:9` — `// Navigate to the URL`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/AskEdgi/askEdgi.spec.js:883:9` — `await askEdgiPage.closeModalByCloseIcon();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Business_Glossary/bg_PermissionsDomain.spec.js:60:13` — `"Purna Chander",`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Business_Glossary/bg_PermissionsDomain.spec.js:61:13` — `"Purna Chander",`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Business_Glossary/bg_PermissionsDomain.spec.js:62:13` — `"Purna Chander",`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Business_Glossary/bg_PermissionsDomain.spec.js:63:13` — `"Purna Chander",`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Business_Glossary/bg_PermissionsDomain.spec.js:64:13` — `"Purna Chander",`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Business_Glossary/businessGlossary_domain.spec.js:607:1` — `// });`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:147:9` — `await connectorFunctionSupportPage.clickAttributeFunctionsSystemText();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:148:9` — `await connectorFunctionSupportPage.clickAttributeFunctionsSystemText();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:176:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 6.666666507720947);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:177:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 6.666666507720947);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:195:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 4.666666507720947);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:196:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 4.666666507720947);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:197:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 4.666666507720947);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:228:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(180, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:229:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(180, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:230:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(180, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:302:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(190.6666717529297, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:303:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(190.6666717529297, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:335:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 390);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:336:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 390);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:337:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 390);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:363:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 390);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:364:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 390);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:365:9` — `await connectorFunctionSupportPage.scrollSummaryTableContainer(0, 390);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:783:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 116);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:784:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 116);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:785:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 116);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:796:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 116);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:797:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 116);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:798:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 116);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:817:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 643.3333129882812);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:824:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 116);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:825:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 116);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ConnectionAndFunctionSupport/coFS.spec.js:826:9` — `await connectorFunctionSupportPage.scrollFunctionHelpModalBody(0, 116);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Custom_Fields/customFields.spec.js:510:9` — `await cfPage.hoverAndClickCallToActionControlCheckbox("Has Header");`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/DataMetadataChanges/dataMetadataChanges.spec.js:516:9` — `await expect(dmcPage.metadataChangesTabFirstRow).toContainText("Sales_Transactions");`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Classification_Recommendations/Data_Classification_recommendations.spec.js:217:5` — `await utils.waitForPageLoad(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Classification_Recommendations/Data_Classification_recommendations.spec.js:359:5` — `await utils.waitForPageLoad(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Classification_Recommendations/Data_Classification_recommendations.spec.js:363:5` — `await utils.waitForPageLoad(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Classification_Recommendations/Data_Classification_recommendations.spec.js:449:5` — `await utils.waitForPageLoad(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Classification_Recommendations/Data_Classification_recommendations.spec.js:453:5` — `await utils.waitForPageLoad(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Classification_Recommendations/Data_Classification_recommendations.spec.js:489:5` — `await utils.waitForPageLoad(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Classification_Recommendations/Data_Classification_recommendations.spec.js:493:5` — `await utils.waitForPageLoad(page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Products/dataProducts.spec.js:59:5` — `await dataProductsPage.scrollBindDpDomain();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Products/dataProducts.spec.js:95:5` — `await dataProductsPage.dpTableRowByName(domainName).hover();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Remediation_Center/dataQualityRemediationCenter.spec.js:4748:9` — `await utils.fluentWait(page, dataQualityRemediationCenterPage.dq_system_view_button);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Remediation_Center/dataQualityRemediationCenter.spec.js:5220:9` — `await utils.fluentWait(page, dataQualityRemediationCenterPage.dq_system_view_button);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Remediation_Center/dataQualityRemediationCenter.spec.js:5269:9` — `await utils.fluentWait(page, dataQualityRemediationCenterPage.dq_system_view_button);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1434:9` — `// await dqrrPage.scrollModelsTableContainer(850.6666870117188, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1435:9` — `// await dqrrPage.scrollModelsTableContainer(850.6666870117188, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1436:9` — `// await dqrrPage.scrollModelsTableContainer(850.6666870117188, 0);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Rule_Recommendations/dQRR.spec.js:1723:9` — `await expect(dqrrPage.firstRow).toContainText("file rule models");`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6213:5` — `// await basePage.scrollMessagesPage(0, 193.75);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6225:5` — `// await basePage.scrollMessagesPage(0, 225);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_Quality_Rules/dQR.spec.js:6392:9` — `await basePage.scrollMessagesPage(0, 578.75);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Data_lineage_dashboard/data_quality_last_execution_dashboard.spec.js:701:10` — `sortColumnTitle,`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Elastic_Search/elastic_search.spec.js:5229:5` — `await utils.fluentWait(page,elasticSearchPage.searched_keyword_placeholder_in_es_page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Home_Page/home_page.spec.js:293:5` — `await utils.clickOnElement(homePage.save_and_continue_button_locator, "Save and Continue Button");`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Home_Page/home_page.spec.js:339:5` — `await utils.clickOnElement(homePage.save_and_continue_button_locator, "Save and Continue Button");`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:147:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:177:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:209:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:246:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:258:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:290:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:303:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:319:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:320:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:343:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:376:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:392:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:393:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:409:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:410:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:436:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:447:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:463:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:507:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:517:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:533:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:534:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:558:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:592:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:608:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:609:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:625:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:626:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:652:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:662:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:678:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:723:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:733:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:749:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:750:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:772:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:804:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:824:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:825:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:841:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:842:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:867:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:877:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:895:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:938:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:948:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:964:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:965:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:987:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1019:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1039:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1040:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1056:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1057:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1081:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1091:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1109:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1152:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1162:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1199:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1232:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1252:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1253:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1269:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1270:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1295:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1306:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1324:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1367:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1378:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1415:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1448:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1468:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1469:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1485:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1486:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1510:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1521:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1539:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1582:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1693:5` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1849:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1880:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1881:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1902:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:1950:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2002:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2003:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2019:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2084:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2085:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2096:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2106:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2158:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2207:6` — `await utils.fluentWait(page,tablesPage.my_watchlist_label_in_Page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2381:5` — `await utils.fluentWait(page, basePage.watchlist_label_name);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2720:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2721:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2763:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2764:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2957:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2958:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:2982:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3000:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3010:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3120:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3121:9` — `await utils.fluentWait(page, tablesPage.my_watchlist_label_in_Page);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3243:9` — `await utils.fluentWait(page, basePage.watchlist_label_name);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3253:13` — `sortIconLocator,`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/MyWatchList/mywatchlist.spec.js:3534:9` — `await utils.fluentWait(page, basePage.watchlist_label_name);`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/My_Profile/my_profile.spec.js:527:5` — `expect(myProfilePage.mp9dots).toBeVisible();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/My_Profile/my_profile.spec.js:557:9` — `expect(myProfilePage.mp9dots).toBeVisible();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/My_Profile/my_profile.spec.js:581:5` — `expect(myProfilePage.mp9dots).toBeVisible();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:245:9` — `await utils.fluentWait(page, aipromptPage.question_name_in_AI_description_generator_popup.first());`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:246:9` — `await utils.fluentWait(page, aipromptPage.question_name_in_AI_description_generator_popup.first());`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:247:9` — `await utils.fluentWait(page, aipromptPage.question_name_in_AI_description_generator_popup.first());`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:324:9` — `await utils.fluentWait(page, aipromptPage.question_name_in_AI_description_generator_popup.first());`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:325:9` — `await utils.fluentWait(page, aipromptPage.question_name_in_AI_description_generator_popup.first());`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:326:9` — `await utils.fluentWait(page, aipromptPage.question_name_in_AI_description_generator_popup.first());`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:1456:5` — `await utils.fluentWait(page, aipromptPage.bg_description_placeholder("Business Description"));`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:1468:5` — `await utils.fluentWait(page, aipromptPage.bg_description_placeholder("Business Description"));`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:1481:5` — `await utils.fluentWait(page, aipromptPage.bg_description_placeholder("Detailed Description"));`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:1647:5` — `await utils.fluentWait(page, aipromptPage.bg_description_placeholder("Business Description"));`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:1672:5` — `await utils.fluentWait(page, aipromptPage.bg_description_placeholder("Business Description"));`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:1698:5` — `await utils.fluentWait(page, aipromptPage.bg_description_placeholder("Detailed Description"));`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:2240:9` — `await utils.fluentWait(page,basePage.generate_description_button_common_in_box_in_list_page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:2261:10` — `await utils.fluentWait(page,basePage.generate_description_button_common_in_box_in_list_page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:2417:9` — `await utils.fluentWait(page,basePage.generate_description_button_common_in_box_in_list_page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Prompt_AI/prompt_AI.spec.js:2435:10` — `await utils.fluentWait(page,basePage.generate_description_button_common_in_box_in_list_page)`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/ROPA/ropaProcessingActivities.spec.js:437:13` — `await approvalPopup.goBack();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Tags/tags_open.spec.js:2373:5` — `await page.reload();`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+- `/src/tests/Tags/tags_secure.spec.js:534:5` — `await utils.fluentWait(page, tagsopen.child_Tag_validate(`TestingTeam1${randomStr}`))`
+  - **suggested_fix:** Remove the redundant line or move shared logic into a helper.
+
+## Flaky test risk (by file)
 
 - `/src/main/java/com/hrm/pages/AttendancePage.java:14:19` - `@FindBy(id = "check-in-button")`
 - `/src/main/java/com/hrm/pages/AttendancePage.java:17:19` - `@FindBy(id = "check-out-button")`

@@ -1,0 +1,11 @@
+# Build artifacts
+*.class
+
+# Python
+__pycache__/
+*.pyc
+
+# Generated reports (optional — remove if you want reports in git)
+report.json
+report.txt
+report.md

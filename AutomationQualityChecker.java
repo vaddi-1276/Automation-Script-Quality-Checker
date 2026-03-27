@@ -61,6 +61,9 @@ import java.util.LinkedHashSet;
 // Generic set interface for extension lists and unique values.
 import java.util.Set;
 
+// Preserves insertion order for issue buckets and summary JSON.
+import java.util.LinkedHashMap;
+
 // Maintains sorted unique paths for deterministic scan order.
 import java.util.TreeSet;
 
@@ -72,6 +75,12 @@ import java.util.regex.Pattern;
 
 // Stream support for efficient file traversal and line processing.
 import java.util.stream.Stream;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.Duration;
 
 /* =========================================================
    MAIN TOOL CLASS
@@ -100,13 +109,61 @@ public class AutomationQualityChecker {
      * across Console, TXT, Markdown, and JSON outputs.
      * -----------------------------------------------------
      */
+    /*
+     * Core + advanced issue IDs (order = JSON / report order).
+     * CLI groups: all, advanced, security, performance, test_design, flaky — see expandEnableIssues.
+     */
     private static final String[] ISSUE_ORDER = {
             "hard_wait",
             "hardcoded_test_data",
             "duplicate_locator",
             "poor_assertion",
             "unused_function",
-            "missing_validation"
+
+            "brittle_locator",
+            "random_timing",
+            "long_test_method",
+            "duplicate_step_block"
+    };
+
+    /** JSON summary field names (parallel to ISSUE_ORDER). */
+    private static final String[] ISSUE_SUMMARY_KEYS = {
+            "hard_wait_found",
+            "hardcoded_test_data",
+            "duplicate_locators",
+            "poor_assertions",
+            "unused_functions",
+            "brittle_locators",
+            "random_timing_hits",
+            "long_test_methods",
+            "duplicate_step_blocks"
+    };
+
+    private static final String[] GROUP_ADVANCED = {
+            "brittle_locator",
+            "random_timing",
+            "long_test_method",
+            "duplicate_step_block"
+    };
+
+    private static final String[] GROUP_SECURITY = {
+            "hardcoded_test_data"
+    };
+
+    private static final String[] GROUP_PERFORMANCE = {
+            "duplicate_step_block",
+            "hard_wait"
+    };
+
+    private static final String[] GROUP_TEST_DESIGN = {
+            "long_test_method",
+            "poor_assertion"
+    };
+
+    private static final String[] GROUP_FLAKY = {
+            "brittle_locator",
+            "random_timing",
+            "hard_wait"
     };
 
     /*
@@ -224,12 +281,38 @@ public class AutomationQualityChecker {
         final String issue;
         final String detail;
 
+        /** Optional auto-fix hint for JSON/console/TXT/MD when non-null. */
+        final String suggestedFix;
+
+        /** Optional OpenAI-generated remediation when --openai is used (JSON key: ai_suggestion). */
+        final String aiSuggestion;
+
         Finding(String file, int line, int column, String issue, String detail) {
+
+            this(file, line, column, issue, detail, null, null);
+        }
+
+        Finding(String file, int line, int column, String issue, String detail, String suggestedFix) {
+            this(file, line, column, issue, detail, suggestedFix, null);
+        }
+
+        Finding(
+                String file,
+                int line,
+                int column,
+                String issue,
+                String detail,
+                String suggestedFix,
+                String aiSuggestion) {
+
             this.file = file;
             this.line = line;
             this.column = column;
             this.issue = issue;
             this.detail = detail;
+
+            this.suggestedFix = suggestedFix;
+            this.aiSuggestion = aiSuggestion;
         }
     }
 
@@ -322,30 +405,23 @@ public class AutomationQualityChecker {
      */
     private static class Summary {
 
-        final int hardWaitFound;
-        final int hardcodedTestData;
-        final int duplicateLocators;
-        final int poorAssertions;
-        final int unusedFunctions;
-        final int missingValidations;
+
+        /** Counts keyed by ISSUE_SUMMARY_KEYS entries (parallel to ISSUE_ORDER). */
+        final LinkedHashMap<String, Integer> counts;
+
         final int totalFilesScanned;
 
-        Summary(
-                int hardWaitFound,
-                int hardcodedTestData,
-                int duplicateLocators,
-                int poorAssertions,
-                int unusedFunctions,
-                int missingValidations,
-                int totalFilesScanned) {
-            this.hardWaitFound = hardWaitFound;
-            this.hardcodedTestData = hardcodedTestData;
-            this.duplicateLocators = duplicateLocators;
-            this.poorAssertions = poorAssertions;
-            this.unusedFunctions = unusedFunctions;
-            this.missingValidations = missingValidations;
+        Summary(LinkedHashMap<String, Integer> counts, int totalFilesScanned) {
+            this.counts = counts;
             this.totalFilesScanned = totalFilesScanned;
         }
+    }
+
+    private static int summaryInt(Summary s, String summaryKey) {
+
+        Integer v = s.counts.get(summaryKey);
+
+        return v == null ? 0 : v;
     }
 
     /*
@@ -358,37 +434,34 @@ public class AutomationQualityChecker {
      */
     private static class FindingsByIssue {
 
-        final DynamicArray<Finding> hardWait = new DynamicArray<>();
-        final DynamicArray<Finding> hardcodedTestData = new DynamicArray<>();
-        final DynamicArray<Finding> duplicateLocator = new DynamicArray<>();
-        final DynamicArray<Finding> poorAssertion = new DynamicArray<>();
-        final DynamicArray<Finding> unusedFunction = new DynamicArray<>();
-        final DynamicArray<Finding> missingValidation = new DynamicArray<>();
+
+        private final LinkedHashMap<String, DynamicArray<Finding>> byId = new LinkedHashMap<>();
+
+        FindingsByIssue() {
+
+            for (int i = 0; i < ISSUE_ORDER.length; i++) {
+
+                byId.put(ISSUE_ORDER[i], new DynamicArray<>());
+            }
+        }
+
+        DynamicArray<Finding> list(String issueId) {
+
+            DynamicArray<Finding> d = byId.get(issueId);
+
+            if (d == null) {
+
+                d = new DynamicArray<>();
+
+                byId.put(issueId, d);
+            }
+
+            return d;
+        }
 
         DynamicArray<Finding> get(String issue) {
 
-            switch (issue) {
-                case "hard_wait":
-                    return hardWait;
-
-                case "hardcoded_test_data":
-                    return hardcodedTestData;
-
-                case "duplicate_locator":
-                    return duplicateLocator;
-
-                case "poor_assertion":
-                    return poorAssertion;
-
-                case "unused_function":
-                    return unusedFunction;
-
-                case "missing_validation":
-                    return missingValidation;
-
-                default:
-                    return new DynamicArray<>();
-            }
+            return list(issue);
         }
     }
 
@@ -606,6 +679,18 @@ public class AutomationQualityChecker {
 
         // Automation language for framework-specific patterns (all, java, javascript_playwright, javascript_cypress, python)
         String automationLanguage = "";
+
+        // Run python3 ast_scan.py on .py files when available (deeper analysis)
+        boolean pythonAst = true;
+
+        /** When true, enrich findings with OpenAI (requires OPENAI_API_KEY in the environment). */
+        boolean openAi = false;
+
+        /** Max findings to send to OpenAI (default 20). */
+        int openAiMaxFindings = 20;
+
+        /** Model override; if empty, uses env OPENAI_MODEL or gpt-4o-mini. */
+        String openAiModel = "";
     }
 
     // ------------------------------------------------------------------
@@ -1165,6 +1250,557 @@ public class AutomationQualityChecker {
     }
 
     // ------------------------------------------------------------------
+    // Advanced heuristic detectors (regex + light structure — not full AST for JS/Java).
+    // ------------------------------------------------------------------
+    private static void runAdvancedHeuristicDetectors(
+            Path path,
+            DynamicArray<String> lines,
+            java.util.Set<String> enabled,
+            FindingsByIssue findings,
+            CliArgs args) {
+
+        if (isIssueEnabled(enabled, "brittle_locator")) {
+            findings.list("brittle_locator").addAll(detectBrittleLocators(path, lines));
+        }
+
+        if (isIssueEnabled(enabled, "random_timing")) {
+            findings.list("random_timing").addAll(detectRandomTiming(path, lines));
+        }
+
+        if (isIssueEnabled(enabled, "long_test_method")) {
+            findings.list("long_test_method").addAll(detectLongTestFileHeuristic(path, lines));
+        }
+
+        if (isIssueEnabled(enabled, "duplicate_step_block")) {
+            findings.list("duplicate_step_block").addAll(detectDuplicateStepBlocks(path, lines));
+        }
+    }
+
+    private static DynamicArray<Finding> detectBrittleLocators(Path path, DynamicArray<String> lines) {
+
+        Pattern p = Pattern.compile("//[^\\n\"']*\\[\\d+\\]|nth-child\\s*\\(|nth-of-type\\s*\\(|\\[@\\w+\\s*=\\s*'[^']*'\\]\\[\\d+\\]");
+
+        DynamicArray<Finding> out = new DynamicArray<>();
+
+        for (int i = 0; i < lines.size(); i++) {
+
+            String line = lines.get(i);
+
+            Matcher m = p.matcher(line);
+
+            if (m.find()) {
+
+                out.add(
+                        new Finding(
+                                path.toString(),
+                                i + 1,
+                                m.start() + 1,
+                                "brittle_locator",
+                                line.trim(),
+                                "Prefer stable selectors (data-testid, role, accessible name) instead of index-based XPath/CSS."));
+            }
+        }
+
+        return out;
+    }
+
+    private static DynamicArray<Finding> detectRandomTiming(Path path, DynamicArray<String> lines) {
+
+        Pattern p = Pattern.compile("Math\\.random\\s*\\(|\\brandint\\s*\\(|random\\.randint|crypto\\.getRandomValues");
+
+        DynamicArray<Finding> out = new DynamicArray<>();
+
+        for (int i = 0; i < lines.size(); i++) {
+
+            String line = lines.get(i);
+
+            Matcher m = p.matcher(line);
+
+            if (m.find()) {
+
+                out.add(
+                        new Finding(
+                                path.toString(),
+                                i + 1,
+                                m.start() + 1,
+                                "random_timing",
+                                line.trim(),
+                                "Avoid random timing; use deterministic waits on application state."));
+            }
+        }
+
+        return out;
+    }
+
+    private static DynamicArray<Finding> detectLongTestFileHeuristic(Path path, DynamicArray<String> lines) {
+
+        DynamicArray<Finding> out = new DynamicArray<>();
+
+        String name = path.getFileName() == null ? "" : path.getFileName().toString().toLowerCase();
+
+        boolean testLike = name.contains(".spec.") || name.contains(".test.") || name.startsWith("test_")
+                || name.endsWith("_test.py");
+
+        if (!testLike || lines.size() <= 120) {
+            return out;
+        }
+
+        out.add(
+                new Finding(
+                        path.toString(),
+                        1,
+                        1,
+                        "long_test_method",
+                        "Test file has " + lines.size() + " lines — consider splitting into smaller focused tests.",
+                        "Split into Arrange/Act/Assert blocks or multiple it()/test() cases for readability."));
+
+        return out;
+    }
+
+    /**
+     * Flags when the same step line appears again immediately on the next line (after trim).
+     * The finding detail is the repeated line text (trimmed, capped for very long lines).
+     */
+    private static DynamicArray<Finding> detectDuplicateStepBlocks(Path path, DynamicArray<String> lines) {
+
+        DynamicArray<Finding> out = new DynamicArray<>();
+
+        final int minLen = 5;
+
+        final int detailMax = 400;
+
+        for (int i = 0; i + 1 < lines.size(); i++) {
+
+            String cur = lines.get(i).trim();
+
+            String next = lines.get(i + 1).trim();
+
+            if (cur.length() < minLen || next.length() < minLen) {
+                continue;
+            }
+
+            if (!cur.equals(next)) {
+                continue;
+            }
+
+            String rawNext = lines.get(i + 1);
+
+            int col = 1;
+
+            for (int k = 0; k < rawNext.length(); k++) {
+
+                if (!Character.isWhitespace(rawNext.charAt(k))) {
+
+                    col = k + 1;
+
+                    break;
+                }
+            }
+
+            String detail = cur;
+
+            if (detail.length() > detailMax) {
+
+                detail = detail.substring(0, detailMax - 3) + "...";
+            }
+
+            out.add(
+                    new Finding(
+                            path.toString(),
+                            i + 2,
+                            col,
+                            "duplicate_step_block",
+                            detail,
+                            "Remove the redundant line or move shared logic into a helper."));
+        }
+
+        return out;
+    }
+
+    private static final String OPENAI_SYSTEM_PROMPT =
+            "You are a senior test automation engineer. Based on a static-analysis finding "
+                    + "(Selenium, Playwright, Cypress, Python tests), reply with concise remediation "
+                    + "in plain text or GitHub-flavored Markdown. Prefer concrete replacement code where applicable.";
+
+    private static void enrichFindingsWithOpenAi(FindingsByIssue findings, CliArgs args) {
+
+        if (!args.openAi) {
+
+            return;
+        }
+
+        String apiKey = System.getenv("OPENAI_API_KEY");
+
+        if (apiKey == null || apiKey.trim().isEmpty()) {
+
+            System.err.println("[openai] --openai was set but OPENAI_API_KEY is not set; skipping enrichment.");
+
+            return;
+        }
+
+        String model =
+                args.openAiModel != null && !args.openAiModel.trim().isEmpty()
+                        ? args.openAiModel.trim()
+                        : defaultOpenAiModel();
+
+        int max = args.openAiMaxFindings > 0 ? args.openAiMaxFindings : 20;
+
+        int done = 0;
+
+        outer:
+        for (String issue : ISSUE_ORDER) {
+
+            DynamicArray<Finding> list = findings.list(issue);
+
+            for (int j = 0; j < list.size(); j++) {
+
+                if (done >= max) {
+
+                    break outer;
+                }
+
+                Finding f = list.get(j);
+
+                String ai = callOpenAiForFinding(f, issue, apiKey, model);
+
+                if (ai != null && !ai.trim().isEmpty()) {
+
+                    list.set(
+                            j,
+                            new Finding(
+                                    f.file,
+                                    f.line,
+                                    f.column,
+                                    f.issue,
+                                    f.detail,
+                                    f.suggestedFix,
+                                    ai.trim()));
+
+                    done++;
+                }
+            }
+        }
+
+        if (done > 0) {
+
+            System.out.println("[openai] Enriched " + done + " finding(s) with AI suggestions.");
+        }
+    }
+
+    private static String defaultOpenAiModel() {
+
+        String m = System.getenv("OPENAI_MODEL");
+
+        return (m != null && !m.trim().isEmpty()) ? m.trim() : "gpt-4o-mini";
+    }
+
+    private static String callOpenAiForFinding(
+            Finding f,
+            String issueId,
+            String apiKey,
+            String model) {
+
+        String userJson =
+                "{"
+                        + "\"file\":"
+                        + quote(f.file)
+                        + ",\"line\":"
+                        + f.line
+                        + ",\"column\":"
+                        + f.column
+                        + ",\"issue\":"
+                        + quote(f.issue)
+                        + ",\"detail\":"
+                        + quote(f.detail)
+                        + (f.suggestedFix != null ? ",\"suggested_fix\":" + quote(f.suggestedFix) : "")
+                        + ",\"issue_label\":"
+                        + quote(issueLabel(issueId))
+                        + "}";
+
+        String userMsg =
+                "Finding JSON:\n" + userJson + "\n\nProvide concise remediation for this automation test quality issue.";
+
+        String body =
+                "{"
+                        + "\"model\":"
+                        + quote(model)
+                        + ",\"messages\":[{\"role\":\"system\",\"content\":"
+                        + quote(OPENAI_SYSTEM_PROMPT)
+                        + "},{\"role\":\"user\",\"content\":"
+                        + quote(userMsg)
+                        + "}],\"temperature\":0.25,\"max_tokens\":1200"
+                        + "}";
+
+        try {
+
+            HttpClient client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(30)).build();
+
+            HttpRequest req =
+                    HttpRequest.newBuilder()
+                            .uri(URI.create("https://api.openai.com/v1/chat/completions"))
+                            .header("Authorization", "Bearer " + apiKey)
+                            .header("Content-Type", "application/json")
+                            .timeout(Duration.ofSeconds(90))
+                            .POST(HttpRequest.BodyPublishers.ofString(body, StandardCharsets.UTF_8))
+                            .build();
+
+            HttpResponse<String> resp =
+                    client.send(req, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+
+            if (resp.statusCode() != 200) {
+
+                String rb = resp.body();
+
+                int cap = Math.min(220, rb.length());
+
+                System.err.println(
+                        "[openai] HTTP "
+                                + resp.statusCode()
+                                + " for "
+                                + formatLocation(f)
+                                + ": "
+                                + rb.substring(0, cap));
+
+                return null;
+            }
+
+            return extractAssistantContent(resp.body());
+
+        } catch (InterruptedException e) {
+
+            Thread.currentThread().interrupt();
+
+            System.err.println("[openai] Request interrupted for " + formatLocation(f));
+
+            return null;
+
+        } catch (Exception e) {
+
+            System.err.println("[openai] Failed for " + formatLocation(f) + ": " + e.getMessage());
+
+            return null;
+        }
+    }
+
+    private static String extractAssistantContent(String responseBody) {
+
+        if (responseBody == null) {
+
+            return null;
+        }
+
+        int start = responseBody.indexOf("\"role\":\"assistant\"");
+
+        if (start < 0) {
+
+            start = responseBody.indexOf("\"role\": \"assistant\"");
+        }
+
+        if (start < 0) {
+
+            return null;
+        }
+
+        int contentKey = responseBody.indexOf("\"content\"", start);
+
+        if (contentKey < 0) {
+
+            return null;
+        }
+
+        int colon = responseBody.indexOf(':', contentKey + 8);
+
+        if (colon < 0) {
+
+            return null;
+        }
+
+        int i = colon + 1;
+
+        while (i < responseBody.length() && Character.isWhitespace(responseBody.charAt(i))) {
+
+            i++;
+        }
+
+        if (i >= responseBody.length() || responseBody.charAt(i) != '"') {
+
+            return null;
+        }
+
+        return parseJsonStringContents(responseBody, i + 1);
+    }
+
+    private static String parseJsonStringContents(String s, int start) {
+
+        StringBuilder sb = new StringBuilder();
+
+        int i = start;
+
+        while (i < s.length()) {
+
+            char c = s.charAt(i);
+
+            if (c == '\\') {
+
+                if (i + 1 >= s.length()) {
+
+                    break;
+                }
+
+                char n = s.charAt(i + 1);
+
+                switch (n) {
+
+                    case '"':
+                        sb.append('"');
+                        i += 2;
+                        continue;
+
+                    case '\\':
+                        sb.append('\\');
+                        i += 2;
+                        continue;
+
+                    case 'n':
+                        sb.append('\n');
+                        i += 2;
+                        continue;
+
+                    case 'r':
+                        sb.append('\r');
+                        i += 2;
+                        continue;
+
+                    case 't':
+                        sb.append('\t');
+                        i += 2;
+                        continue;
+
+                    case '/':
+                        sb.append('/');
+                        i += 2;
+                        continue;
+
+                    case 'u':
+
+                        if (i + 5 < s.length()) {
+
+                            try {
+
+                                int code = Integer.parseInt(s.substring(i + 2, i + 6), 16);
+
+                                sb.append((char) code);
+
+                            } catch (NumberFormatException ignored) {
+
+                                sb.append('?');
+                            }
+
+                            i += 6;
+
+                            continue;
+                        }
+
+                        break;
+
+                    default:
+
+                        sb.append(n);
+
+                        i += 2;
+
+                        continue;
+                }
+            }
+
+            if (c == '"') {
+
+                break;
+            }
+
+            sb.append(c);
+
+            i++;
+        }
+
+        return sb.toString();
+    }
+
+    private static void mergePythonAstFindings(
+            Path path,
+            FindingsByIssue findings,
+            java.util.Set<String> enabled) {
+
+        Path script = Paths.get("ast_scan.py");
+
+        if (!Files.exists(script)) {
+
+            script = Paths.get(System.getProperty("user.dir"), "ast_scan.py");
+        }
+
+        if (!Files.exists(script)) {
+            return;
+        }
+
+        try {
+
+            ProcessBuilder pb = new ProcessBuilder("python3", script.toAbsolutePath().toString(), path.toString());
+
+            pb.redirectErrorStream(true);
+
+            Process proc = pb.start();
+
+            byte[] raw = proc.getInputStream().readAllBytes();
+
+            int code = proc.waitFor();
+
+            if (code != 0) {
+                return;
+            }
+
+            String out = new String(raw, StandardCharsets.UTF_8);
+
+            for (String line : out.split("\r?\n")) {
+
+                if (!line.startsWith("AST|")) {
+                    continue;
+                }
+
+                String[] parts = line.split("\\|", 5);
+
+                if (parts.length < 5) {
+                    continue;
+                }
+
+                String issue = parts[1];
+
+                int ln = Integer.parseInt(parts[2]);
+
+                int col = Integer.parseInt(parts[3]);
+
+                String detail = parts[4];
+
+                if (!isIssueEnabled(enabled, issue)) {
+                    continue;
+                }
+
+                findings.list(issue).add(
+                        new Finding(
+                                path.toString(),
+                                ln,
+                                col,
+                                issue,
+                                detail,
+                                "Python AST: refine structure or add missing assertions."));
+            }
+
+        } catch (Exception ignored) {
+
+            // Optional helper — ignore if python3 or script missing
+        }
+    }
+
+    // ------------------------------------------------------------------
     // Core Analysis Pipeline
     //
     // This method is the heart of the AutomationQualityChecker.
@@ -1217,24 +1853,28 @@ public class AutomationQualityChecker {
             // -----------------------------------------------------------
 
             if (isIssueEnabled(enabledIssues, "hard_wait")) {
-                allFindings.hardWait.addAll(
-                        detectHardWaits(
-                                path,
-                                lines,
-                                args.hardWaitPreset,
-                                args.seleniumAssertionAsHardWait));
+
+                DynamicArray<Finding> hardWaitBatch = detectHardWaits(
+                        path,
+                        lines,
+                        args.hardWaitPreset,
+                        args.seleniumAssertionAsHardWait);
+
+                allFindings.list("hard_wait").addAll(hardWaitBatch);
             }
 
             if (isIssueEnabled(enabledIssues, "hardcoded_test_data")) {
-                allFindings.hardcodedTestData.addAll(detectHardcodedTestData(path, lines));
+                allFindings.list("hardcoded_test_data").addAll(detectHardcodedTestData(path, lines));
             }
 
             if (isIssueEnabled(enabledIssues, "poor_assertion")) {
-                allFindings.poorAssertion.addAll(detectPoorAssertions(path, lines, args.automationLanguage));
+                allFindings.list("poor_assertion").addAll(detectPoorAssertions(path, lines, args.automationLanguage));
             }
 
-            if (isIssueEnabled(enabledIssues, "missing_validation")) {
-                allFindings.missingValidation.addAll(detectMissingValidations(path, lines, args.automationLanguage));
+            runAdvancedHeuristicDetectors(path, lines, enabledIssues, allFindings, args);
+
+            if (args.pythonAst && path.toString().toLowerCase().endsWith(".py")) {
+                mergePythonAstFindings(path, allFindings, enabledIssues);
             }
 
             // -----------------------------------------------------------
@@ -1247,6 +1887,10 @@ public class AutomationQualityChecker {
 
                     LocatorMatch lm = locators.get(j);
 
+                    String dupFix = "Extract a reusable locator (shared constant or Page Object field) for "
+                            + lm.value
+                            + " and reference it from each test instead of repeating the raw selector.";
+
                     // Store locator occurrence
                     addLocatorOccurrence(
                             locatorOccurrences,
@@ -1256,7 +1900,8 @@ public class AutomationQualityChecker {
                                     lm.line,
                                     lm.column,
                                     "duplicate_locator",
-                                    lm.source));
+                                    lm.source,
+                                    dupFix));
                 }
             }
 
@@ -1294,7 +1939,7 @@ public class AutomationQualityChecker {
             LocatorBucket bucket = locatorOccurrences.get(i);
 
             if (bucket.occurrences.size() > 1) {
-                allFindings.duplicateLocator.addAll(bucket.occurrences);
+                    allFindings.list("duplicate_locator").addAll(bucket.occurrences);
             }
         }
 
@@ -1324,23 +1969,18 @@ public class AutomationQualityChecker {
                 Finding finding = declaredFunctions.get(i);
 
                 if (getTokenCount(functionMentions, finding.detail) <= 1) {
-                    allFindings.unusedFunction.add(finding);
+                    allFindings.list("unused_function").add(finding);
                 }
             }
         }
 
+        enrichFindingsWithOpenAi(allFindings, args);
+
         // ---------------------------------------------------------------
         // Build summary statistics
         // ---------------------------------------------------------------
-        Summary summary = new Summary(
 
-                allFindings.hardWait.size(),
-                allFindings.hardcodedTestData.size(),
-                allFindings.duplicateLocator.size(),
-                allFindings.poorAssertion.size(),
-                allFindings.unusedFunction.size(),
-                allFindings.missingValidation.size(),
-                files.size());
+        Summary summary = new Summary(buildSummaryCounts(allFindings), files.size());
 
         // ---------------------------------------------------------------
         // Group duplicate locators for structured reporting
@@ -1781,8 +2421,18 @@ public class AutomationQualityChecker {
             case "unused_function":
                 return "Unused Functions";
 
-            case "missing_validation":
-                return "Missing Validations";
+
+            case "brittle_locator":
+                return "Brittle / Index Locators";
+
+            case "random_timing":
+                return "Random / Non-Deterministic Timing";
+
+            case "long_test_method":
+                return "Long Test / Large Files";
+
+            case "duplicate_step_block":
+                return "Duplicate consecutive steps";
 
             default:
                 return issue;
@@ -1800,17 +2450,13 @@ public class AutomationQualityChecker {
         System.out.println("Automation Script Quality Report");
         System.out.println("--------------------------------");
 
-        System.out.println("Hard Wait Found: " + summary.hardWaitFound);
+        for (int i = 0; i < ISSUE_ORDER.length; i++) {
 
-        System.out.println("Test Data Hardcoding: " + summary.hardcodedTestData);
-
-        System.out.println("Duplicate Locators: " + summary.duplicateLocators);
-
-        System.out.println("Poor Assertions: " + summary.poorAssertions);
-
-        System.out.println("Unused Functions: " + summary.unusedFunctions);
-
-        System.out.println("Missing Validations: " + summary.missingValidations);
+            System.out.println(
+                    issueLabel(ISSUE_ORDER[i])
+                            + ": "
+                            + summaryInt(summary, ISSUE_SUMMARY_KEYS[i]));
+        }
 
         System.out.println("Files Scanned: " + summary.totalFilesScanned);
     }
@@ -2028,6 +2674,17 @@ public class AutomationQualityChecker {
 
                 System.out.println(
                         "  " + formatLocation(f) + " | " + f.detail);
+
+
+                if (f.suggestedFix != null) {
+
+                    System.out.println("      suggested_fix: " + f.suggestedFix);
+                }
+
+                if (f.aiSuggestion != null) {
+
+                    System.out.println("      ai_suggestion: " + f.aiSuggestion);
+                }
             }
         }
     }
@@ -2378,12 +3035,15 @@ public class AutomationQualityChecker {
         out.add("Summary");
         out.add("-------");
 
-        out.add("Hard Wait Found: " + summary.hardWaitFound);
-        out.add("Test Data Hardcoding: " + summary.hardcodedTestData);
-        out.add("Duplicate Locators: " + summary.duplicateLocators);
-        out.add("Poor Assertions: " + summary.poorAssertions);
-        out.add("Unused Functions: " + summary.unusedFunctions);
-        out.add("Missing Validations: " + summary.missingValidations);
+
+        for (int i = 0; i < ISSUE_ORDER.length; i++) {
+
+            out.add(
+                    issueLabel(ISSUE_ORDER[i])
+                            + ": "
+                            + summaryInt(summary, ISSUE_SUMMARY_KEYS[i]));
+        }
+
         out.add("Files Scanned: " + summary.totalFilesScanned);
 
         out.add("");
@@ -2418,6 +3078,17 @@ public class AutomationQualityChecker {
 
                 out.add(
                         formatLocation(f) + " | " + f.detail);
+
+
+                if (f.suggestedFix != null) {
+
+                    out.add("    suggested_fix: " + f.suggestedFix);
+                }
+
+                if (f.aiSuggestion != null) {
+
+                    out.add("    ai_suggestion: " + f.aiSuggestion);
+                }
             }
 
             out.add("");
@@ -2458,12 +3129,17 @@ public class AutomationQualityChecker {
         out.add("## Summary");
         out.add("");
 
-        out.add("- Hard Wait Found: **" + summary.hardWaitFound + "**");
-        out.add("- Test Data Hardcoding: **" + summary.hardcodedTestData + "**");
-        out.add("- Duplicate Locators: **" + summary.duplicateLocators + "**");
-        out.add("- Poor Assertions: **" + summary.poorAssertions + "**");
-        out.add("- Unused Functions: **" + summary.unusedFunctions + "**");
-        out.add("- Missing Validations: **" + summary.missingValidations + "**");
+
+        for (int i = 0; i < ISSUE_ORDER.length; i++) {
+
+            out.add(
+                    "- "
+                            + issueLabel(ISSUE_ORDER[i])
+                            + ": **"
+                            + summaryInt(summary, ISSUE_SUMMARY_KEYS[i])
+                            + "**");
+        }
+
         out.add("- Files Scanned: **" + summary.totalFilesScanned + "**");
 
         out.add("");
@@ -2494,7 +3170,18 @@ public class AutomationQualityChecker {
                 Finding f = issueFindings.get(i);
 
                 out.add(
-                        "- `" + formatLocation(f) + "` - `" + f.detail + "`");
+
+                        "- `" + formatLocation(f) + "` — `" + f.detail + "`");
+
+                if (f.suggestedFix != null) {
+
+                    out.add("  - **suggested_fix:** " + f.suggestedFix);
+                }
+
+                if (f.aiSuggestion != null) {
+
+                    out.add("  - **ai_suggestion:** " + f.aiSuggestion);
+                }
             }
 
             out.add("");
@@ -2657,6 +3344,9 @@ public class AutomationQualityChecker {
                 + "\"column\":" + f.column + ","
                 + "\"issue\":" + quote(f.issue) + ","
                 + "\"detail\":" + quote(f.detail)
+
+                + (f.suggestedFix != null ? ",\"suggested_fix\":" + quote(f.suggestedFix) : "")
+                + (f.aiSuggestion != null ? ",\"ai_suggestion\":" + quote(f.aiSuggestion) : "")
                 + "}";
     }
 
@@ -2678,15 +3368,22 @@ public class AutomationQualityChecker {
     // ------------------------------------------------------------------
     private static String summaryToJson(Summary summary) {
 
-        return "{"
-                + "\"hard_wait_found\":" + summary.hardWaitFound + ","
-                + "\"hardcoded_test_data\":" + summary.hardcodedTestData + ","
-                + "\"duplicate_locators\":" + summary.duplicateLocators + ","
-                + "\"poor_assertions\":" + summary.poorAssertions + ","
-                + "\"unused_functions\":" + summary.unusedFunctions + ","
-                + "\"missing_validations\":" + summary.missingValidations + ","
-                + "\"total_files_scanned\":" + summary.totalFilesScanned
-                + "}";
+
+        StringBuilder sb = new StringBuilder("{");
+
+        for (int i = 0; i < ISSUE_SUMMARY_KEYS.length; i++) {
+
+            if (i > 0) {
+                sb.append(",");
+            }
+
+            sb.append("\"").append(ISSUE_SUMMARY_KEYS[i]).append("\":")
+                    .append(summaryInt(summary, ISSUE_SUMMARY_KEYS[i]));
+        }
+
+        sb.append(",\"total_files_scanned\":").append(summary.totalFilesScanned).append("}");
+
+        return sb.toString();
     }
 
     // ------------------------------------------------------------------
@@ -2876,6 +3573,8 @@ public class AutomationQualityChecker {
                 + "\"duplicate_refactor_intelligence\":" + duplicateRefactorInsightsToJson(duplicateRefactorInsights)
                 + ","
                 + "\"impacted_tests\":" + impactedTestsToJson(impactedTests)
+                + ","
+                + "\"flaky_test_analysis\":[]"
                 + "}";
     }
 
@@ -2950,8 +3649,28 @@ public class AutomationQualityChecker {
                     args.enableIssues = requireValue(argv, ++i, arg);
                     break;
 
+                case "--python-ast":
+                    args.pythonAst = true;
+                    break;
+
+                case "--no-python-ast":
+                    args.pythonAst = false;
+                    break;
+
                 case "--automation-language":
                     args.automationLanguage = requireValue(argv, ++i, arg);
+                    break;
+
+                case "--openai":
+                    args.openAi = true;
+                    break;
+
+                case "--openai-max-findings":
+                    args.openAiMaxFindings = Integer.parseInt(requireValue(argv, ++i, arg));
+                    break;
+
+                case "--openai-model":
+                    args.openAiModel = requireValue(argv, ++i, arg);
                     break;
 
                 default:
@@ -3045,19 +3764,93 @@ public class AutomationQualityChecker {
     // ------------------------------------------------------------------
     // Parses --enable-issues CSV into a set of issue IDs.
     // Empty or null input means all issues are enabled.
+    // Supports groups: all, advanced, security, performance, test_design, flaky
     // ------------------------------------------------------------------
     private static java.util.Set<String> parseEnableIssues(String value) {
-        java.util.Set<String> set = new java.util.LinkedHashSet<>();
+        java.util.LinkedHashSet<String> set = new java.util.LinkedHashSet<>();
         if (value == null || value.trim().isEmpty()) {
             return set; // empty = all enabled
         }
         for (String s : value.split(",")) {
             String id = s.trim();
             if (!id.isEmpty()) {
-                set.add(id);
+                expandEnableIssueToken(id, set);
             }
         }
         return set;
+    }
+
+    private static void expandEnableIssueToken(String token, java.util.LinkedHashSet<String> out) {
+
+        String t = token.trim().toLowerCase();
+
+        if ("all".equals(t)) {
+
+            for (int i = 0; i < ISSUE_ORDER.length; i++) {
+                out.add(ISSUE_ORDER[i]);
+            }
+
+            return;
+        }
+
+        if ("advanced".equals(t)) {
+
+            for (int i = 0; i < GROUP_ADVANCED.length; i++) {
+                out.add(GROUP_ADVANCED[i]);
+            }
+
+            return;
+        }
+
+        if ("security".equals(t)) {
+
+            for (int i = 0; i < GROUP_SECURITY.length; i++) {
+                out.add(GROUP_SECURITY[i]);
+            }
+
+            return;
+        }
+
+        if ("performance".equals(t)) {
+
+            for (int i = 0; i < GROUP_PERFORMANCE.length; i++) {
+                out.add(GROUP_PERFORMANCE[i]);
+            }
+
+            return;
+        }
+
+        if ("test_design".equals(t)) {
+
+            for (int i = 0; i < GROUP_TEST_DESIGN.length; i++) {
+                out.add(GROUP_TEST_DESIGN[i]);
+            }
+
+            return;
+        }
+
+        if ("flaky".equals(t) || "flaky_advanced".equals(t)) {
+
+            for (int i = 0; i < GROUP_FLAKY.length; i++) {
+                out.add(GROUP_FLAKY[i]);
+            }
+
+            return;
+        }
+
+        out.add(token.trim());
+    }
+
+    private static LinkedHashMap<String, Integer> buildSummaryCounts(FindingsByIssue f) {
+
+        LinkedHashMap<String, Integer> m = new LinkedHashMap<>();
+
+        for (int i = 0; i < ISSUE_ORDER.length; i++) {
+
+            m.put(ISSUE_SUMMARY_KEYS[i], f.list(ISSUE_ORDER[i]).size());
+        }
+
+        return m;
     }
 
     private static boolean isIssueEnabled(java.util.Set<String> enabled, String issueId) {
@@ -3090,8 +3883,12 @@ public class AutomationQualityChecker {
         System.err.println("  --max-impacted-per-function <n>     Limit impacted test lines per changed function.");
         System.err.println("  --hard-wait-preset <name>           Hard wait preset (for example: selenium).");
         System.err.println("  --selenium-assertion-as-hard-wait   In selenium preset, treat assertions as hard wait.");
-        System.err.println("  --enable-issues <csv>               Comma-separated issue types (empty = all).");
+        System.err.println("  --enable-issues <csv>               Issue types or groups: all, advanced, security, performance, test_design, flaky.");
+        System.err.println("  --python-ast / --no-python-ast      Run Python ast_scan.py on .py files (default: on).");
         System.err.println("  --automation-language <name>        Language for patterns (all, java, javascript_playwright, javascript_cypress, python).");
+        System.err.println("  --openai                            Enrich findings via OpenAI (needs OPENAI_API_KEY).");
+        System.err.println("  --openai-max-findings <n>           Cap AI-enriched findings (default: 20).");
+        System.err.println("  --openai-model <name>               Model override (default: env OPENAI_MODEL or gpt-4o-mini).");
     }
 
     // ------------------------------------------------------------------

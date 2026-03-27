@@ -1,229 +1,210 @@
 # Automation Quality Checker
 
-`AutomationQualityChecker` is a standalone Java-based automation test quality scanner. It analyzes source files and reports common reliability/maintainability issues, then optionally exports structured reports for dashboards and CI use.
 
-This repository includes:
+Static analysis for automation tests: scan JavaScript, TypeScript, Python, and Java test files for common quality problems, then export **JSON**, **TXT**, or **Markdown** for CI and dashboards. A small **web UI** can drive the same Java engine locally.
 
-- `AutomationQualityChecker.java` (core CLI scanner)
-- `AutomationQualityChecker_UI_Design.html` (interactive dashboard UI)
-- `ui_live_server.py` (local backend to run CLI from UI and stream logs)
+[![CI](https://github.com/YOUR_USERNAME/Tool_Creation/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/Tool_Creation/actions/workflows/ci.yml)
 
-## What It Detects
+Replace `YOUR_USERNAME` in the badge URL with your GitHub username if you use this repo on GitHub.
 
-The scanner reports six issue categories:
+![Java](https://img.shields.io/badge/Java-11+-orange)
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-- `hard_wait` - explicit sleeps/waits (for example `waitForTimeout`, `sleep`, `cy.wait`)
-- `hardcoded_test_data` - inline credentials/data literals in likely test contexts
-- `duplicate_locator` - same locator reused across files/areas
-- `poor_assertion` - weak assertions that provide low verification value
-- `unused_function` - declared helper/functions not referenced
-- `missing_validation` - test action flows with no nearby assertion/validation
+---
 
-## Supported Languages and Extensions
+## Contents
 
-Default extensions:
+- [What it does](#what-it-does)
+- [Requirements](#requirements)
+- [Quick start](#quick-start)
+- [Repository layout](#repository-layout)
+- [CLI: compile and run](#cli-compile-and-run)
+- [CLI options (full list)](#cli-options-full-list)
+- [Console output](#console-output)
+- [JSON report](#json-report)
+- [Web UI](#web-ui)
+- [Locator Health Monitor](#locator-health-monitor-separate-tool)
+- [Limitations](#limitations)
+- [Exit codes](#exit-codes)
 
-- `.js`
-- `.ts`
-- `.jsx`
-- `.tsx`
-- `.py`
+---
 
-Override with `--extensions` to scan other text-based automation files.
+## What it does
+
+`AutomationQualityChecker` walks your chosen files or folders and reports findings in **five categories**:
+
+
+| Issue ID | What it means |
+|----------|----------------|
+| `hard_wait` | Fixed sleeps / timed waits (`Thread.sleep`, `waitForTimeout`, `cy.wait`, `time.sleep`, etc.) |
+| `hardcoded_test_data` | Inline credentials, tokens, emails, URLs in test-like code |
+| `duplicate_locator` | The same locator string appears more than once (duplicate tracking) |
+| `poor_assertion` | Weak checks (e.g. truthy-only assertions), tuned by `--automation-language` |
+| `unused_function` | Declared helpers that are never referenced |
+
+Optional extras in reports:
+
+- **Suggested fixes** — many findings include a `suggested_fix` string (e.g. prefer explicit waits over hard waits).
+- **Flaky risk (per file)** — `flaky_test_analysis` scores files using hard-wait counts and retry-style patterns (not a substitute for real flake detection).
+
+Detection is **regex-based** (no test runner required). Tune behavior with `--automation-language` and `--enable-issues`.
+
+---
 
 ## Requirements
 
-- Java 11+
-- Python 3.8+ (only if you use the live UI backend)
+| Tool | When you need it |
+|------|------------------|
+| **Java 11+** | Always — to compile and run `AutomationQualityChecker` |
+| **Python 3.8+** | Only if you use `ui_live_server.py` for the web UI |
 
-## Project Structure
+---
 
-- `AutomationQualityChecker.java` - parser, detectors, summary, and report serialization
-- `AutomationQualityChecker_UI_Design.html` - static frontend to configure runs and visualize results
-- `ui_live_server.py` - local HTTP API:
-  - compiles/runs Java checker
-  - streams execution logs via Server-Sent Events (SSE)
-  - returns parsed `report.json` payload to UI
+## Quick start
 
-## CLI Usage
+```bash
+# 1) Compile
+javac AutomationQualityChecker.java
 
-Compile:
+# 2) Scan current directory, write JSON, show line details in the terminal
+java AutomationQualityChecker --show-lines --json report.json .
+
+# 3) Optional: web UI (separate terminal)
+python3 ui_live_server.py
+# Open http://127.0.0.1:8787/AutomationQualityChecker_UI_Design.html
+```
+
+---
+
+## Repository layout
+
+| File | Role |
+|------|------|
+| `AutomationQualityChecker.java` | Main CLI: scanning, detectors, summaries, JSON/TXT/MD output |
+| `AutomationQualityChecker_UI_Design.html` | Browser UI: configure targets, issue types, view reports |
+| `ui_live_server.py` | Local HTTP server: compiles/runs Java, streams logs (SSE), returns `report.json` to the UI |
+| `LocatorHealthMonitor.java` | **Separate** tool for locator brittleness / duplication (see [below](#locator-health-monitor-separate-tool)) |
+| `.github/workflows/ci.yml` | CI: compile and run a self-scan |
+
+---
+
+## CLI: compile and run
 
 ```bash
 javac AutomationQualityChecker.java
-```
-
-Run:
-
-```bash
 java AutomationQualityChecker [options] <targets...>
 ```
 
-`<targets...>` can be one or more files or directories.
+- **`<targets...>`** — One or more files and/or directories. Directories are scanned recursively (filtered by `--extensions`).
+- **Outputs** — Only written when you pass `--json`, `--txt`, and/or `--md`.
 
-## CLI Options
+---
 
-- `--extensions <.js,.ts,...>`  
-  Comma-separated extensions; values are normalized to lowercase and dot-prefixed.
+## CLI options (full list)
 
-- `--json <output.json>`  
-  Write JSON payload with summary, findings, duplicate analysis, and impacted tests.
+| Option | Purpose |
+|--------|---------|
+| `--extensions <.js,.ts,...>` | Comma-separated file extensions (normalized to lowercase with a leading dot). Default includes `.js`, `.ts`, `.jsx`, `.tsx`, `.py`. |
+| `--json <file>` | Write machine-readable report (summary, findings, duplicate groups, refactor hints, impacted tests, flaky analysis). |
+| `--txt <file>` | Write plain-text report. |
+| `--md <file>` | Write Markdown report. |
+| `--show-lines` | Print each finding as `file:line:column \| detail` in the console. |
+| `--max-lines-per-issue <n>` | Cap how many lines per issue type are printed with `--show-lines`. |
+| `--enable-issues <csv>` | **Restrict** which issue IDs run (e.g. `hard_wait,poor_assertion`). If omitted, **all** five types run. |
+| `--automation-language <name>` | Pattern set for assertions/locators: `all`, `java`, `javascript_playwright`, `javascript_cypress`, `python` (or empty for defaults). |
+| `--hard-wait-preset <name>` | e.g. `selenium` — changes how hard waits are interpreted. |
+| `--selenium-assertion-as-hard-wait` | With selenium hard-wait preset, optionally treat certain assertions as sync points (see tool behavior). |
+| `--changed-function <name>` | Repeatable — function names to search for in tests (impact / reference listing). |
+| `--changed-file <path>` | Optional file context for changed-function analysis. |
+| `--max-impacted-per-function <n>` | Limit lines printed per changed function for impacted tests. |
 
-- `--txt <output.txt>`  
-  Write detailed plain-text report grouped by issue.
-
-- `--md <output.md>`  
-  Write detailed Markdown report grouped by issue.
-
-- `--show-lines`  
-  Print issue lines to terminal in `file:line:column | detail` format.
-
-- `--max-lines-per-issue <n>`  
-  Limit number of detailed console lines printed per issue category.
-
-- `--changed-function <name>` (repeatable)  
-  Function(s) to map test-impact references.
-
-- `--changed-file <path>`  
-  Optional path used to validate changed function names.
-
-- `--max-impacted-per-function <n>`  
-  Limit impacted-reference lines shown in console output.
-
-## CLI Examples
-
-Basic recursive scan:
+**Examples**
 
 ```bash
-java AutomationQualityChecker .
+# Only hard waits and poor assertions
+java AutomationQualityChecker --enable-issues hard_wait,poor_assertion --json report.json ./tests
+
+# Playwright-oriented assertion patterns
+java AutomationQualityChecker --automation-language javascript_playwright --json report.json .
+
+# All report formats
+java AutomationQualityChecker --json report.json --txt report.txt --md report.md --show-lines .
 ```
 
-Scan selected folders with detailed console lines:
+---
+
+## Console output
+
+Every run prints a **short summary** (counts per category + files scanned). With `--show-lines`, findings print in a **fixed order** by issue type for stable diffs in CI.
+
+---
+
+## JSON report
+
+Top-level keys:
+
+| Key | Meaning |
+|-----|---------|
+| `summary` | Counts: `hard_wait_found`, `hardcoded_test_data`, `duplicate_locators`, `poor_assertions`, `unused_functions`, `total_files_scanned` |
+| `findings` | Object keyed by issue id; each value is an array of finding objects |
+| `duplicate_locator_groups` | Groups of duplicate locator occurrences |
+| `duplicate_refactor_intelligence` | Ranked suggestions to consolidate duplicate locators |
+| `impacted_tests` | Populated when you use `--changed-function` |
+| `flaky_test_analysis` | Array of per-file objects: `file`, `flaky_test_risk` (`LOW` / `MEDIUM` / `HIGH`), `hard_wait_count`, `retry_usage_detected` |
+
+Each finding object includes:
+
+- `file`, `line`, `column`, `issue`, `detail`
+- `suggested_fix` (optional string) when the tool can suggest a remediation
+
+---
+
+
+## Web UI
+
+1. Start the server: `python3 ui_live_server.py`
+2. Open: `http://127.0.0.1:8787/AutomationQualityChecker_UI_Design.html`
+
+The UI lets you set scan folders, extensions, automation language, and **which issue types to include** (mapped to `--enable-issues`). It loads the same `report.json` the CLI would write. **Run Live Scan** triggers compile + run on the server; **Run Demo Data** loads sample JSON without scanning.
+
+**API (used by the UI)**
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET | `/api/health` | Server alive |
+| POST | `/api/run` | Body: JSON config → compile and run checker |
+| GET | `/api/logs/{runId}` | Server-Sent Events log stream |
+| GET | `/api/result/{runId}` | When done: parsed report payload |
+| POST | `/api/stop/{runId}` | Stop a run |
+
+---
+
+
+## Locator Health Monitor (separate tool)
+
+`LocatorHealthMonitor.java` is **not** the main quality checker. It focuses on **selector health**: brittle XPaths, duplication, outdated patterns. Build and run it on its own:
 
 ```bash
-java AutomationQualityChecker --show-lines --max-lines-per-issue 20 tests src
+javac LocatorHealthMonitor.java
+java LocatorHealthMonitor .
+java LocatorHealthMonitor --json locator_report.json .
 ```
 
-Custom extension set:
+---
 
-```bash
-java AutomationQualityChecker --extensions .js,.ts,.py .
-```
+## Limitations
 
-Generate all report types:
+- Rules are **heuristic**; expect some false positives and false negatives.
+- Ordering of findings is **deterministic** for repeatable CI output.
+- The flaky-risk section is a **static signal**, not execution-based flake detection.
 
-```bash
-java AutomationQualityChecker --json report.json --txt report.txt --md report.md .
-```
+---
 
-Impacted test lookup for changed functions:
+## Exit codes
 
-```bash
-java AutomationQualityChecker \
-  --changed-function loginUser \
-  --changed-function buildRequest \
-  --changed-file src/utils/api.ts \
-  --max-impacted-per-function 15 \
-  .
-```
-
-## Console Output
-
-The CLI always prints summary counters:
-
-- Hard Wait Found
-- Test Data Hardcoding
-- Duplicate Locators
-- Poor Assertions
-- Unused Functions
-- Missing Validations
-- Files Scanned
-
-With `--show-lines`, detailed findings are printed in fixed issue order for stable triage output.
-
-## JSON Report Schema (`--json`)
-
-Top-level keys in generated payload:
-
-- `summary` (object)
-- `findings` (object keyed by issue id)
-- `duplicate_locator_groups` (object keyed by locator string)
-- `duplicate_refactor_intelligence` (array)
-- `impacted_tests` (object keyed by changed function name)
-
-`summary` fields:
-
-- `hard_wait_found`
-- `hardcoded_test_data`
-- `duplicate_locators`
-- `poor_assertions`
-- `unused_functions`
-- `missing_validations`
-- `total_files_scanned`
-
-`findings[issue]` entry shape:
-
-- `file` (string)
-- `line` (number)
-- `column` (number)
-- `issue` (string)
-- `detail` (string)
-
-`duplicate_refactor_intelligence` entry shape:
-
-- `locator`
-- `occurrences`
-- `distinct_files`
-- `top_module`
-- `priority`
-- `recommendation`
-
-## Live UI Dashboard
-
-The HTML dashboard maps UI controls to CLI flags and displays scan output with tabs, metrics, and logs.
-
-### Start Live UI
-
-```bash
-python3 ui_live_server.py
-```
-
-Open:
-
-- `http://127.0.0.1:8787/AutomationQualityChecker_UI_Design.html`
-
-### UI Features
-
-- Configure scan targets/extensions and changed-function inputs
-- Trigger real run (`Run Live Scan`) or demo payload (`Run Demo Data`)
-- Stream build/run logs in real time
-- Issue tabs with counts and detailed entries
-- Health check indicator using `/api/health`
-
-### Backend API Endpoints (used by UI)
-
-- `GET /api/health` - server status
-- `POST /api/run` - compile and run checker with payload
-- `GET /api/logs/{runId}` - SSE log stream
-- `GET /api/result/{runId}` - run completion state + report payload
-- `POST /api/stop/{runId}` - stop active run
-
-## Behavior and Limitations
-
-- Detection is heuristic and regex-based (fast and dependency-free).
-- False positives/negatives are possible; treat results as quality signals.
-- Report ordering is deterministic for stable outputs in CI and code reviews.
-
-## Exit Codes
-
-- `0` - successful completion
-- `1` - output/report write failure
-- `2` - invalid CLI arguments
-
-## Quick Start
-
-```bash
-javac AutomationQualityChecker.java
-java AutomationQualityChecker --show-lines --json report.json .
-python3 ui_live_server.py
-```
+| Code | Meaning |
+|------|---------|
+| `0` | Success |
+| `1` | Failed to write an output file |
+| `2` | Invalid CLI arguments |
