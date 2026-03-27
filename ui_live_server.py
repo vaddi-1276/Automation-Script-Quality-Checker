@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
+from __future__ import annotations
+
 import json
+import os
 import queue
 import subprocess
 import threading
 import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.parse import unquote, urlparse
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parent
@@ -98,12 +103,89 @@ def build_command(body):
     if max_impacted > 0:
         cmd += ["--max-impacted-per-function", str(max_impacted)]
 
+    if body.get("pythonAst", True):
+        cmd.append("--python-ast")
+    else:
+        cmd.append("--no-python-ast")
+
+    if body.get("openAiInTool", False):
+        cmd.append("--openai")
+
     targets = body.get("targets", [])
     if not targets:
         folder = str(body.get("folder", ".")).strip() or "."
         targets = [folder]
     cmd += [str(t).strip() for t in targets if str(t).strip()]
     return cmd
+
+
+def openai_configured() -> bool:
+    return bool(os.environ.get("OPENAI_API_KEY", "").strip())
+
+
+def openai_suggest_finding(finding: dict):
+    """
+    Call OpenAI Chat Completions. Returns (suggestion_markdown, error_message).
+    API key: environment variable OPENAI_API_KEY. Model: OPENAI_MODEL (default gpt-4o-mini).
+    """
+    api_key = os.environ.get("OPENAI_API_KEY", "").strip()
+    if not api_key:
+        return None, "Set OPENAI_API_KEY in the environment for the process running ui_live_server.py."
+
+    model = (os.environ.get("OPENAI_MODEL") or "gpt-4o-mini").strip() or "gpt-4o-mini"
+    system = (
+        "You are a senior test automation engineer. The user has a static-analysis finding "
+        "from an automation quality checker (Selenium, Playwright, Cypress, Python tests). "
+        "Respond with concise, actionable remediation. Prefer concrete code snippets or clear steps "
+        "in GitHub-flavored Markdown. Do not repeat the issue title alone; give practical changes."
+    )
+    user_text = (
+        "Finding (JSON):\n"
+        + json.dumps(finding, ensure_ascii=False, indent=2)
+        + "\n\nSuggest the best remediation and any replacement code if applicable."
+    )
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user_text},
+        ],
+        "temperature": 0.25,
+        "max_tokens": 1200,
+    }
+    req = Request(
+        "https://api.openai.com/v1/chat/completions",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}",
+        },
+        method="POST",
+    )
+    try:
+        with urlopen(req, timeout=90) as resp:
+            raw = resp.read().decode("utf-8")
+        data = json.loads(raw)
+        choices = data.get("choices") or []
+        if not choices:
+            return None, "OpenAI returned no choices."
+        text = (choices[0].get("message") or {}).get("content") or ""
+        text = text.strip()
+        if not text:
+            return None, "OpenAI returned an empty message."
+        return text, None
+    except HTTPError as e:
+        err_body = e.read().decode("utf-8", errors="replace") if e.fp else ""
+        try:
+            err_json = json.loads(err_body)
+            err_msg = err_json.get("error", {}).get("message") or err_body[:400]
+        except Exception:
+            err_msg = err_body[:400] or str(e)
+        return None, f"OpenAI API error ({e.code}): {err_msg}"
+    except URLError as e:
+        return None, f"Network error calling OpenAI: {e.reason}"
+    except Exception as ex:
+        return None, str(ex)
 
 
 def compile_and_run(run_state: RunState, body):
@@ -197,7 +279,13 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         if path == "/api/health":
-            self._json({"ok": True, "message": "ui_live_server running"})
+            self._json(
+                {
+                    "ok": True,
+                    "message": "ui_live_server running",
+                    "openaiConfigured": openai_configured(),
+                }
+            )
             return
 
         if path.startswith("/api/logs/"):
@@ -286,6 +374,27 @@ class Handler(BaseHTTPRequestHandler):
             self._json({"ok": True, "runId": run_id})
             return
 
+        if path == "/api/openai-suggest":
+            length = int(self.headers.get("Content-Length", "0"))
+            body_raw = self.rfile.read(length) if length else b"{}"
+            try:
+                body = json.loads(body_raw.decode("utf-8") or "{}")
+            except Exception:
+                self._json({"ok": False, "error": "invalid json body"}, status=400)
+                return
+
+            finding = body.get("finding")
+            if not isinstance(finding, dict):
+                self._json({"ok": False, "error": "JSON body must include a \"finding\" object."}, status=400)
+                return
+
+            suggestion, err = openai_suggest_finding(finding)
+            if err:
+                self._json({"ok": False, "error": err}, status=200)
+                return
+            self._json({"ok": True, "suggestion": suggestion})
+            return
+
         self.send_error(404)
 
     def log_message(self, fmt, *args):
@@ -297,6 +406,11 @@ def main():
     server = ThreadingHTTPServer(("127.0.0.1", 8787), Handler)
     print("UI server running at http://127.0.0.1:8787")
     print("Open: http://127.0.0.1:8787/AutomationQualityChecker_UI_Design.html")
+    if openai_configured():
+        model = (os.environ.get("OPENAI_MODEL") or "gpt-4o-mini").strip() or "gpt-4o-mini"
+        print(f"OpenAI: enabled (model={model})")
+    else:
+        print("OpenAI: disabled — set OPENAI_API_KEY to enable AI suggestions in the UI.")
     server.serve_forever()
 
 
